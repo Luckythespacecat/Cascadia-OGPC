@@ -9,7 +9,7 @@ position = Vector2(264, 176)
 
 [node name="TestingTiles" type="Node" parent="."]
 
-[node name="Planks" type="Sprite2D" parent="TestingTiles"]
+[node name="Plank" type="Sprite2D" parent="TestingTiles"]
 position = Vector2(200, 168)
 texture = ExtResource("1_i0o64")
 
