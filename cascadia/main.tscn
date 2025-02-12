@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://dari3urqap7db"]
+
+[ext_resource type="Texture2D" uid="uid://dnrmitqubc1du" path="res://Assets/Art/planks.png" id="1_i0o64"]
+[ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="5_efby2"]
+
+[node name="Main" type="Node2D"]
+position = Vector2(264, 176)
+
+[node name="TestingTiles" type="Node" parent="."]
+
+[node name="Planks" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(200, 168)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks2" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(200, 152)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks3" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(200, 184)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks4" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(216, 184)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks5" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(232, 184)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks6" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(248, 184)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks7" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(248, 168)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks8" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(232, 168)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks9" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(216, 168)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks10" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(216, 152)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks11" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(232, 152)
+texture = ExtResource("1_i0o64")
+
+[node name="Planks12" type="Sprite2D" parent="TestingTiles"]
+position = Vector2(248, 152)
+texture = ExtResource("1_i0o64")
+
+[node name="Player" parent="." instance=ExtResource("2_ybs1s")]
+z_index = 1
+position = Vector2(-40, -16)
+
+[node name="Node2D" type="Node2D" parent="Player"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-40, -24)
+zoom = Vector2(3, 3)
+script = ExtResource("5_efby2")
+
+[node name="Interval" type="Timer" parent="Camera2D"]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Camera2D/Interval" to="Camera2D" method="_on_interval_timeout"]
