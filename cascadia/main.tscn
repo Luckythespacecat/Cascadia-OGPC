@@ -2,7 +2,44 @@
 
 [ext_resource type="Texture2D" uid="uid://dnrmitqubc1du" path="res://Assets/Art/planks.png" id="1_i0o64"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
-[ext_resource type="Script" path="res://camera_2d.gd" id="5_efby2"]
+
+[sub_resource type="GDScript" id="GDScript_xr7tf"]
+script/source = "@tool
+class_name NoiseGeneratorData
+extends Resource
+## Data for [NoiseGenerator]s, it contains a [param threshold] and a [param tile] of the class [TileInfo], also a [param title] for easier identification.
+
+## The name of this resource
+@export var title: String = \"\":
+	set(value):
+		title = value
+		resource_name = title
+## The tile to place
+@export var tile: TileInfo
+## To allow for a range of thresholds
+## Also min and max have a setter that prevents min from being greater than max and vice versa
+@export_group(\"Thresholds\")
+# Note: i just dont want to call them threshold_min and threshold_max, it seems repetitive for me
+## The minimum threshold
+@export_range(-1.0, 1.0) var min: float = -1.0:
+	set(value):
+		min = value
+		if min > max:
+			max = min
+		emit_changed()
+## The maximum threshold
+@export_range(-1.0, 1.0) var max: float = 1.0:
+	set(value):
+		max = value
+		if max < min:
+			min = max
+		emit_changed()
+
+var settings: NoiseGeneratorSettings:
+	set(value):
+		settings = value
+		settings.noise.changed.connect(emit_changed)
+"
 
 [node name="Main" type="Node2D"]
 position = Vector2(264, 176)
@@ -66,7 +103,7 @@ position = Vector2(-40, -16)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-40, -24)
 zoom = Vector2(3, 3)
-script = ExtResource("5_efby2")
+script = SubResource("GDScript_xr7tf")
 
 [node name="Interval" type="Timer" parent="Camera2D"]
 wait_time = 0.5
