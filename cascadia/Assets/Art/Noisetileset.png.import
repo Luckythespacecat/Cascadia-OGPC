@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnvu24wvbmiuc"
-path="res://.godot/imported/watertileset.png-fca0792f45ba9b275a65d51db079d859.ctex"
+uid="uid://bocat1a6xffm8"
+path="res://.godot/imported/Noisetileset.png-0bf29ac8cd51001973658a328d43997d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/watertileset.png"
-dest_files=["res://.godot/imported/watertileset.png-fca0792f45ba9b275a65d51db079d859.ctex"]
+source_file="res://Assets/Art/Noisetileset.png"
+dest_files=["res://.godot/imported/Noisetileset.png-0bf29ac8cd51001973658a328d43997d.ctex"]
 
 [params]
 

@@ -1,98 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dari3urqap7db"]
 
-[ext_resource type="Texture2D" uid="uid://dnrmitqubc1du" path="res://Assets/Art/planks.png" id="1_i0o64"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
-
-[sub_resource type="GDScript" id="GDScript_xr7tf"]
-script/source = "@tool
-class_name NoiseGeneratorData
-extends Resource
-## Data for [NoiseGenerator]s, it contains a [param threshold] and a [param tile] of the class [TileInfo], also a [param title] for easier identification.
-
-## The name of this resource
-@export var title: String = \"\":
-	set(value):
-		title = value
-		resource_name = title
-## The tile to place
-@export var tile: TileInfo
-## To allow for a range of thresholds
-## Also min and max have a setter that prevents min from being greater than max and vice versa
-@export_group(\"Thresholds\")
-# Note: i just dont want to call them threshold_min and threshold_max, it seems repetitive for me
-## The minimum threshold
-@export_range(-1.0, 1.0) var min: float = -1.0:
-	set(value):
-		min = value
-		if min > max:
-			max = min
-		emit_changed()
-## The maximum threshold
-@export_range(-1.0, 1.0) var max: float = 1.0:
-	set(value):
-		max = value
-		if max < min:
-			min = max
-		emit_changed()
-
-var settings: NoiseGeneratorSettings:
-	set(value):
-		settings = value
-		settings.noise.changed.connect(emit_changed)
-"
+[ext_resource type="PackedScene" uid="uid://b6g35j1nhodem" path="res://map.tscn" id="3_ad2nh"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="3_unc4w"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(264, 176)
 
 [node name="TestingTiles" type="Node" parent="."]
-
-[node name="Plank" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(200, 168)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks2" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(200, 152)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks3" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(200, 184)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks4" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(216, 184)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks5" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(232, 184)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks6" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(248, 184)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks7" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(248, 168)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks8" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(232, 168)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks9" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(216, 168)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks10" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(216, 152)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks11" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(232, 152)
-texture = ExtResource("1_i0o64")
-
-[node name="Planks12" type="Sprite2D" parent="TestingTiles"]
-position = Vector2(248, 152)
-texture = ExtResource("1_i0o64")
 
 [node name="Player" parent="." instance=ExtResource("2_ybs1s")]
 z_index = 1
@@ -103,10 +18,13 @@ position = Vector2(-40, -16)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-40, -24)
 zoom = Vector2(3, 3)
-script = SubResource("GDScript_xr7tf")
+script = ExtResource("3_unc4w")
 
 [node name="Interval" type="Timer" parent="Camera2D"]
 wait_time = 0.5
 autostart = true
+
+[node name="Map" parent="." instance=ExtResource("3_ad2nh")]
+position = Vector2(-272, -168)
 
 [connection signal="timeout" from="Camera2D/Interval" to="Camera2D" method="_on_interval_timeout"]

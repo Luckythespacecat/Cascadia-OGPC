@@ -8,6 +8,7 @@ extends ChunkAwareGenerator2D
 
 @export var settings: NoiseGeneratorSettings
 
+var SeedVariable = 1
 
 func generate(starting_grid: GaeaGrid = null) -> void:
 	if Engine.is_editor_hint() and not editor_preview:
@@ -100,3 +101,9 @@ func _set_grid_area(rect: Rect2i) -> void:
 				## Check if the noise is within the threshold
 				if noise >= tile_data.min and noise <= tile_data.max:
 					grid.set_valuexy(x, y, tile_data.tile)
+
+func _process(delta: float) -> void:
+	pass
+
+func _on_noise_timer_timeout() -> void:
+	SeedVariable += 1
