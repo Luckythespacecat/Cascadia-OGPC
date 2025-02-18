@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://ww402wkjm1yq"]
+
+[ext_resource type="Texture2D" uid="uid://bocat1a6xffm8" path="res://Assets/Art/Noisetileset.png" id="1_u02km"]
+[ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_dlj8a"]
+[ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator.gd" id="3_lo7vp"]
+[ext_resource type="Script" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="4_7dmw1"]
+[ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator_settings.gd" id="5_le3sy"]
+[ext_resource type="Script" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="6_a5ven"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfxkn"]
+texture = ExtResource("1_u02km")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hfl84"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Base"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_yfxkn")
+
+[sub_resource type="Resource" id="Resource_o6hcf"]
+script = ExtResource("6_a5ven")
+type = 1
+tilemap_layer = 0
+terrain_set = 0
+terrain = 0
+id = ""
+layer = 0
+
+[sub_resource type="Resource" id="Resource_wqw0k"]
+resource_name = "Settings"
+script = ExtResource("5_le3sy")
+tile = SubResource("Resource_o6hcf")
+fullness_check = 0
+max_tiles = 150
+constrain_world_size = false
+max_walkers = 2
+new_dir_chance = 0.1
+new_walker_chance = 0.05
+destroy_walker_chance = 0.05
+room_chances = {
+Vector2i(2, 2): 0.5,
+Vector2i(3, 3): 0.1
+}
+modifiers = Array[ExtResource("4_7dmw1")]([])
+
+[node name="PathMap" type="Node2D"]
+
+[node name="TileMapNoise" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_hfl84")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, -65536, 0, 0, -131072, 0, 0, -196608, 0, 0, -262144, 0, 0, -327680, 0, 0, -393216, 0, 0, -458752, 0, 0, -524288, 0, 0, -589824, 0, 0, -655360, 0, 0, 65535, 0, 0, -1, 0, 0, -65537, 0, 0, -131073, 0, 0, -196609, 0, 0, -262145, 0, 0, -327681, 0, 0, -393217, 0, 0, -458753, 0, 0, -524289, 0, 0, -589825, 0, 0, 327678, 0, 0, 262142, 0, 0, 196606, 0, 0, 65534, 0, 0, -2, 0, 0, 327677, 0, 0, 262141, 0, 0, 196605, 0, 0, 131069, 0, 0, 65533, 0, 0, 327676, 0, 0, 262140, 0, 0, 196604, 0, 0, 262139, 0, 0, 196603, 0, 0, -262149, 0, 0, -327685, 0, 0, -393221, 0, 0, -589829, 0, 0, -655365, 0, 0, -720901, 0, 0, -786437, 0, 0, -851973, 0, 0, 262138, 0, 0, 196602, 0, 0, 131066, 0, 0, 65530, 0, 0, -6, 0, 0, -65542, 0, 0, -131078, 0, 0, -196614, 0, 0, -262150, 0, 0, -327686, 0, 0, -393222, 0, 0, -458758, 0, 0, -524294, 0, 0, -589830, 0, 0, -655366, 0, 0, -720902, 0, 0, -786438, 0, 0, -851974, 0, 0, 196601, 0, 0, 131065, 0, 0, 65529, 0, 0, -7, 0, 0, -65543, 0, 0, -131079, 0, 0, -196615, 0, 0, -262151, 0, 0, -327687, 0, 0, -393223, 0, 0, -458759, 0, 0, -524295, 0, 0, -589831, 0, 0, -655367, 0, 0, -720903, 0, 0, -786439, 0, 0, -851975, 0, 0, -786440, 0, 0, -851976, 0, 0, -786441, 0, 0, -851977, 0, 0, -786442, 0, 0, -851978, 0, 0, -786443, 0, 0, -851979, 0, 0, -983051, 0, 0, -1048587, 0, 0, -1114123, 0, 0, -1179659, 0, 0, -1245195, 0, 0, -1769483, 0, 0, -1835019, 0, 0, -1900555, 0, 0, -1966091, 0, 0, -2031627, 0, 0, -2097163, 0, 0, -786444, 0, 0, -851980, 0, 0, -917516, 0, 0, -983052, 0, 0, -1048588, 0, 0, -1114124, 0, 0, -1179660, 0, 0, -1245196, 0, 0, -1310732, 0, 0, -1376268, 0, 0, -1441804, 0, 0, -1507340, 0, 0, -1572876, 0, 0, -1638412, 0, 0, -1703948, 0, 0, -1769484, 0, 0, -1835020, 0, 0, -1900556, 0, 0, -1966092, 0, 0, -2031628, 0, 0, -2097164, 0, 0, -2162700, 0, 0, -2228236, 0, 0, -2293772, 0, 0, -2359308, 0, 0, -2424844, 0, 0, -786445, 0, 0, -851981, 0, 0, -917517, 0, 0, -983053, 0, 0, -1048589, 0, 0, -1114125, 0, 0, -1179661, 0, 0, -1245197, 0, 0, -1310733, 0, 0, -1376269, 0, 0, -1441805, 0, 0, -1507341, 0, 0, -1572877, 0, 0, -1638413, 0, 0, -1703949, 0, 0, -1769485, 0, 0, -1835021, 0, 0, -1900557, 0, 0, -1966093, 0, 0, -2031629, 0, 0, -2097165, 0, 0, -2162701, 0, 0, -2228237, 0, 0, -2293773, 0, 0, -2359309, 0, 0, -2424845, 0, 0)
+
+[node name="TilemapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("tile_map", "generator")]
+script = ExtResource("2_dlj8a")
+node_type = 1
+tile_map = NodePath("../TileMapNoise")
+generator = NodePath("../WalkerGenerator")
+
+[node name="WalkerGenerator" type="Node" parent="."]
+script = ExtResource("3_lo7vp")
+settings = SubResource("Resource_wqw0k")

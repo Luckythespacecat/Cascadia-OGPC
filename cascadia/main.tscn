@@ -15,6 +15,9 @@ position = Vector2(-40, -16)
 
 [node name="Node2D" type="Node2D" parent="Player"]
 
+[node name="Map" parent="." instance=ExtResource("3_ad2nh")]
+position = Vector2(-272, -168)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-40, -24)
 zoom = Vector2(3, 3)
@@ -23,8 +26,5 @@ script = ExtResource("3_unc4w")
 [node name="Interval" type="Timer" parent="Camera2D"]
 wait_time = 0.5
 autostart = true
-
-[node name="Map" parent="." instance=ExtResource("3_ad2nh")]
-position = Vector2(-272, -168)
 
 [connection signal="timeout" from="Camera2D/Interval" to="Camera2D" method="_on_interval_timeout"]
