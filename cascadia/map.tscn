@@ -1,10 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://b6g35j1nhodem"]
+[gd_scene load_steps=22 format=3 uid="uid://b6g35j1nhodem"]
 
+[ext_resource type="Script" path="res://map.gd" id="1_0kwsq"]
 [ext_resource type="Script" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="2_l2g6p"]
 [ext_resource type="Script" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="4_28e0p"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="5_phlgj"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="8_emfb1"]
+[ext_resource type="Shader" path="res://WaterShader.gdshader" id="9_qctxw"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_settings.gd" id="9_xl5g0"]
+[ext_resource type="Texture2D" uid="uid://bvubsi4gtupjf" path="res://Assets/Art/watertileset.png" id="10_suyq1"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_data.gd" id="10_yl30i"]
 [ext_resource type="Texture2D" uid="uid://bocat1a6xffm8" path="res://Assets/Art/Noisetileset.png" id="11_icim8"]
 
@@ -50,13 +53,14 @@ min = -0.775
 max = -0.188
 
 [sub_resource type="Resource" id="Resource_twahm"]
+resource_name = "Items"
 script = ExtResource("4_28e0p")
 type = 0
 tilemap_layer = 0
 source_id = 0
 atlas_coord = Vector2i(2, 0)
 alternative_tile = 0
-id = ""
+id = "Items"
 layer = 0
 
 [sub_resource type="Resource" id="Resource_x5cmh"]
@@ -82,6 +86,7 @@ texture = ExtResource("11_icim8")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
@@ -89,9 +94,18 @@ texture = ExtResource("11_icim8")
 7:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_0t0oi"]
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = ""
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_cpgyo")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfwjj"]
+shader = ExtResource("9_qctxw")
+shader_parameter/time_speed = 1.0
+shader_parameter/wave_strength = 0.05
+
 [node name="Map" type="Node2D"]
+script = ExtResource("1_0kwsq")
 
 [node name="NoiseGenerator" type="Node" parent="."]
 script = ExtResource("8_emfb1")
@@ -112,5 +126,11 @@ generator = NodePath("../NoiseGenerator")
 [node name="NoiseTimer" type="Timer" parent="."]
 wait_time = 0.05
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_nfwjj")
+position = Vector2(-56, 64)
+texture = ExtResource("10_suyq1")
 
 [connection signal="timeout" from="NoiseTimer" to="NoiseGenerator" method="_on_noise_timer_timeout"]

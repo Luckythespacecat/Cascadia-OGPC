@@ -15,9 +15,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the eslapsed time since the previous frame.
 func _process(delta: float) -> void:
 	CurrentPos = self.position
-	TargetPos = Vector2(Global.PlayerX, Global.PlayerY)
-	TargetX = TargetPos.x
-	TargetY = TargetPos.y
+	#TargetPos = Vector2(Global.PlayerX, Global.PlayerY)
+	TargetX = Global.PlayerX
+	TargetY = Global.PlayerY
 	
 	if CurrentPos.x > TargetX :
 		MoveX -= 1
