@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dari3urqap7db"]
+
+[ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
+[ext_resource type="PackedScene" uid="uid://b6g35j1nhodem" path="res://map.tscn" id="3_ad2nh"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="3_unc4w"]
+
+[node name="Main" type="Node2D"]
+position = Vector2(264, 176)
+
+[node name="TestingTiles" type="Node" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_ybs1s")]
+z_index = 1
+position = Vector2(-40, -16)
+
+[node name="Node2D" type="Node2D" parent="Player"]
+
+[node name="Map" parent="." instance=ExtResource("3_ad2nh")]
+position = Vector2(-272, -168)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-40, -24)
+zoom = Vector2(3, 3)
+script = ExtResource("3_unc4w")
+
+[node name="Interval" type="Timer" parent="Camera2D"]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Camera2D/Interval" to="Camera2D" method="_on_interval_timeout"]
