@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=5 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Texture2D" uid="uid://dnrmitqubc1du" path="res://Assets/Art/planks.png" id="1_i0o64"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
-[ext_resource type="Script" path="res://camera_2d.gd" id="5_efby2"]
+[ext_resource type="PackedScene" uid="uid://b6g35j1nhodem" path="res://map.tscn" id="3_ad2nh"]
+
+[sub_resource type="GDScript" id="GDScript_xr7tf"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(264, 176)
 
 [node name="TestingTiles" type="Node" parent="."]
 
-[node name="plank" type="Sprite2D" parent="TestingTiles"]
+[node name="Plank" type="Sprite2D" parent="TestingTiles"]
 position = Vector2(200, 168)
 texture = ExtResource("1_i0o64")
 
@@ -66,10 +68,13 @@ position = Vector2(-40, -16)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-40, -24)
 zoom = Vector2(3, 3)
-script = ExtResource("5_efby2")
+script = SubResource("GDScript_xr7tf")
 
 [node name="Interval" type="Timer" parent="Camera2D"]
 wait_time = 0.5
 autostart = true
+
+[node name="Map" parent="." instance=ExtResource("3_ad2nh")]
+position = Vector2(-272, -168)
 
 [connection signal="timeout" from="Camera2D/Interval" to="Camera2D" method="_on_interval_timeout"]
