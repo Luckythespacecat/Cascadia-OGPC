@@ -8,13 +8,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Interval.start()
 	CameraToPlayer()
 
 
-func _on_interval_timeout() -> void:
-	#CameraToPlayer()
-	pass
 
 func CameraToPlayer() :
 	var tween = get_tree().create_tween()
