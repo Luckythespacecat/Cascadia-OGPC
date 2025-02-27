@@ -1,10 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctm54eyu0b5jf"]
+[gd_scene load_steps=4 format=3 uid="uid://ctm54eyu0b5jf"]
+
+[ext_resource type="Script" path="res://boat.gd" id="1_4ia2j"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_mkf18"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mf3jn"]
+size = Vector2(497, 309)
+
 [node name="Boat" type="Node2D"]
+script = ExtResource("1_4ia2j")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(0.25, 0.25)
-scale = Vector2(1.5, 1.5)
+position = Vector2(15.5, 3.5)
+scale = Vector2(187, 149)
 mesh = SubResource("QuadMesh_mkf18")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12.5, -3.5)
+shape = SubResource("RectangleShape2D_mf3jn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
