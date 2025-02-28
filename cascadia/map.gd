@@ -4,7 +4,7 @@ extends Node2D
 @export var new_sprite_scene: PackedScene
 @export var specific_tile_id = "Items"
 
-func _ready():
+func _ready(): 
 	pass
 	
 func _process(delta: float) -> void:
