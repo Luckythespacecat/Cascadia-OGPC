@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://dt460qkf68367" path="res://Assets/Art/Player/Player6.png" id="15_wsjic"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bby0o"]
-radius = 11.0
-height = 42.0
+radius = 13.0
+height = 44.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_70fjt"]
 animations = [{
@@ -90,11 +90,12 @@ script = ExtResource("1_tpr4o")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, 0)
 shape = SubResource("CapsuleShape2D_bby0o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1, 2)
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_70fjt")
 animation = &"Run"
 frame_progress = 0.298351

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd150n0k7527m"]
+
+[ext_resource type="Script" path="res://lighthouse.gd" id="1_i1j62"]
+[ext_resource type="Texture2D" uid="uid://dmcy138av13tk" path="res://Assets/Art/lighthouse.png" id="2_l0btj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1rqk"]
+size = Vector2(151, 368)
+
+[node name="Lighthouse" type="Node2D"]
+script = ExtResource("1_i1j62")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -55)
+shape = SubResource("RectangleShape2D_k1rqk")
+debug_color = Color(0, 0.606959, 0.657981, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Lighthouse" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -64)
+scale = Vector2(3, 3)
+texture = ExtResource("2_l0btj")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+blend_mode = 2
+shadow_enabled = true

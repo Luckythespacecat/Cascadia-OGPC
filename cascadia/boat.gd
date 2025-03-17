@@ -13,12 +13,12 @@ func _process(delta: float) -> void:
 #Rowing speed 1 - change the float value to change speed
 func BoatToPlayer1(): 
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "position", Global.PlayerPos, 0.25).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self, "position", Global.PlayerPos, 0.50).set_trans(Tween.TRANS_LINEAR)
 
 #Rowing speed 2 - change the float value to change speed
 func BoatToPlayer2(): 
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "position", Global.PlayerPos, 0.75).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self, "position", Global.PlayerPos, 0.60).set_trans(Tween.TRANS_LINEAR)
 
 #Ensure boat follows player - does nothing
 func BoatToPlayer(): 
@@ -28,6 +28,7 @@ func BoatToPlayer():
 func PlayerExited(): 
 	Global.PlayerX == 0
 	Global.PlayerY == 0
+	
 
 #Player death continued
 func _on_area_2d_area_exited(area: Area2D) -> void:
