@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bn60mckxh70u3"]
 
-[ext_resource type="Shader" path="res://WaterShader.gdshader" id="1_k18y4"]
+[ext_resource type="Shader" uid="uid://4tfbdt88txeo" path="res://WaterShader.gdshader" id="1_k18y4"]
 [ext_resource type="Texture2D" uid="uid://bvubsi4gtupjf" path="res://Assets/Art/watertileset.png" id="2_b85ji"]
-[ext_resource type="Script" path="res://sprite_2d.gd" id="3_yed5x"]
+[ext_resource type="Script" uid="uid://cu7vlaxfhovyf" path="res://sprite_2d.gd" id="3_yed5x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g5ytg"]
 shader = ExtResource("1_k18y4")
@@ -17,7 +17,7 @@ position = Vector2(0, -18)
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_g5ytg")
-position = Vector2(8, 26)
+position = Vector2(0, 26)
 texture = ExtResource("2_b85ji")
 region_rect = Rect2(0, 0, 16, 16)
 script = ExtResource("3_yed5x")

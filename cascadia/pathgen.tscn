@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://ww402wkjm1yq"]
 
 [ext_resource type="Texture2D" uid="uid://bocat1a6xffm8" path="res://Assets/Art/Noisetileset.png" id="1_u02km"]
-[ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_dlj8a"]
-[ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator.gd" id="3_lo7vp"]
-[ext_resource type="Script" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="4_7dmw1"]
-[ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator_settings.gd" id="5_le3sy"]
-[ext_resource type="Script" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="6_a5ven"]
+[ext_resource type="Script" uid="uid://do1tuib1xg2r1" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_dlj8a"]
+[ext_resource type="Script" uid="uid://bfxkdej05neec" path="res://addons/gaea/generators/2D/walker_generator/walker_generator.gd" id="3_lo7vp"]
+[ext_resource type="Script" uid="uid://blcc0uwwe4bav" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="4_7dmw1"]
+[ext_resource type="Script" uid="uid://djsgwtiiseaat" path="res://addons/gaea/generators/2D/walker_generator/walker_generator_settings.gd" id="5_le3sy"]
+[ext_resource type="Script" uid="uid://sshhc0d35dki" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="6_a5ven"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfxkn"]
 texture = ExtResource("1_u02km")

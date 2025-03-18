@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctm54eyu0b5jf"]
 
-[ext_resource type="Script" path="res://boat.gd" id="1_4ia2j"]
+[ext_resource type="Script" uid="uid://b3fqfh4vyhfl5" path="res://boat.gd" id="1_4ia2j"]
 [ext_resource type="Texture2D" uid="uid://bbafpys644ub2" path="res://Assets/Art/newraft.png" id="2_donrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf3jn"]

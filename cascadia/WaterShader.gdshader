@@ -10,7 +10,7 @@ void fragment() {
 
     // Sample noise for wave effect
     float noise = texture(noise_texture, uv + vec2(time_offset * 0.1, 0)).r;
-    
+
     // Offset the UVs based on noise
     uv.y += sin(uv.x * 10.0 + time_offset) * wave_strength;
     uv.y += noise * wave_strength;
