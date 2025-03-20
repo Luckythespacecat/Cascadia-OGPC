@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform float time_speed = 1.0;
-uniform float wave_strength = 0.05;
+uniform float wave_strength = .05;
 uniform sampler2D noise_texture;
 
 void fragment() {

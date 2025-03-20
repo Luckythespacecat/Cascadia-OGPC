@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvubsi4gtupjf"
-path="res://.godot/imported/watertileset.png-fca0792f45ba9b275a65d51db079d859.ctex"
+uid="uid://br8iafy565nv"
+path="res://.godot/imported/CascadiaName.png-101d94da38e9f45fea0785d709f3551c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/watertileset.png"
-dest_files=["res://.godot/imported/watertileset.png-fca0792f45ba9b275a65d51db079d859.ctex"]
+source_file="res://Assets/Art/CascadiaName.png"
+dest_files=["res://.godot/imported/CascadiaName.png-101d94da38e9f45fea0785d709f3551c.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

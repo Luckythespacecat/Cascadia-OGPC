@@ -4,6 +4,7 @@ var rand
 
 #Timer for the 'rowing animation'
 func _ready(): 
+	$AnimatedSprite2D.play("default")
 	$Timer.start()
 
 #function to choose which rowing speed will occur

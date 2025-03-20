@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bd150n0k7527m" path="res://lighthouse.tscn" id="5_ixv4j"]
 
 [node name="Main" type="Node2D"]
-position = Vector2(264, 176)
 
 [node name="TestingTiles" type="Node" parent="."]
 
@@ -26,6 +25,7 @@ zoom = Vector2(3, 3)
 script = ExtResource("3_unc4w")
 
 [node name="Boat" parent="." instance=ExtResource("5_hm6kk")]
+position = Vector2(16, -24)
 
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
 position = Vector2(319, 217)

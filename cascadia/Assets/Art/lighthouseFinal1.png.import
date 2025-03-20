@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvubsi4gtupjf"
-path="res://.godot/imported/watertileset.png-fca0792f45ba9b275a65d51db079d859.ctex"
+uid="uid://bqhwu7o77gi3y"
+path="res://.godot/imported/lighthouseFinal1.png-6186bf029c30fc5e257bc1499e58d77e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/watertileset.png"
-dest_files=["res://.godot/imported/watertileset.png-fca0792f45ba9b275a65d51db079d859.ctex"]
+source_file="res://Assets/Art/lighthouseFinal1.png"
+dest_files=["res://.godot/imported/lighthouseFinal1.png-6186bf029c30fc5e257bc1499e58d77e.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

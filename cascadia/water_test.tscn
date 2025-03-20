@@ -12,12 +12,14 @@ shader_parameter/wave_strength = 0.05
 [node name="WaterTest" type="Node2D"]
 texture_repeat = 3
 position = Vector2(0, -18)
+scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture_repeat = 2
+texture_repeat = 3
 material = SubResource("ShaderMaterial_g5ytg")
 position = Vector2(0, 26)
 texture = ExtResource("2_b85ji")
-region_rect = Rect2(0, 0, 16, 16)
+region_enabled = true
+region_rect = Rect2(-758.163, -554.231, 1576.9, 1085.91)
 script = ExtResource("3_yed5x")

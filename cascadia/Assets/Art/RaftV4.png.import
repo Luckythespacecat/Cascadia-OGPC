@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvubsi4gtupjf"
-path="res://.godot/imported/watertileset.png-fca0792f45ba9b275a65d51db079d859.ctex"
+uid="uid://c4c7p5r8thfny"
+path="res://.godot/imported/RaftV4.png-4502f47d321ac834eaee3a83eaddc962.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/watertileset.png"
-dest_files=["res://.godot/imported/watertileset.png-fca0792f45ba9b275a65d51db079d859.ctex"]
+source_file="res://Assets/Art/RaftV4.png"
+dest_files=["res://.godot/imported/RaftV4.png-4502f47d321ac834eaee3a83eaddc962.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

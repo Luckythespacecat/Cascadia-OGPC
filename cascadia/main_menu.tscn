@@ -1,9 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvu6axyirsbo3"]
+[gd_scene load_steps=10 format=3 uid="uid://bvu6axyirsbo3"]
 
 [ext_resource type="Script" uid="uid://08uyu2rgfl6d" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://c24vv1byekdgj" path="res://Assets/Art/TitlescreenImage1.png" id="2_jix8l"]
 [ext_resource type="Texture2D" uid="uid://dpjyrtbti1su4" path="res://Assets/Art/TitlescreenImage2.png" id="3_glbon"]
 [ext_resource type="Texture2D" uid="uid://dg5hsejvatqj6" path="res://Assets/Art/TitlescreenImage3.png" id="4_jix8l"]
+[ext_resource type="Texture2D" uid="uid://br8iafy565nv" path="res://Assets/Art/CascadiaName.png" id="5_glbon"]
+
+[sub_resource type="Animation" id="Animation_glbon"]
+resource_name = "Stretch"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.295933, 0.3, 0.4, 0.5, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 6), Vector2(5, 6), Vector2(4.8, 6), Vector2(5, 6), Vector2(6.2, 6), Vector2(5.6, 6), Vector2(6, 6)]
+}
+
+[sub_resource type="Animation" id="Animation_nlkkf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 6)]
+}
+
+[sub_resource type="Animation" id="Animation_qe12f"]
+resource_name = "Zoominandout"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe12f"]
+_data = {
+&"RESET": SubResource("Animation_nlkkf"),
+&"Stretch": SubResource("Animation_glbon"),
+&"Zoominandout": SubResource("Animation_qe12f")
+}
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_fu7sn")
@@ -11,19 +53,47 @@ script = ExtResource("1_fu7sn")
 [node name="Island" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-position = Vector2(1194, 400)
+position = Vector2(1282, 400)
 scale = Vector2(4, 4)
 texture = ExtResource("2_jix8l")
 
 [node name="Sea" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-294, 400)
+position = Vector2(-446, 534)
 scale = Vector2(4, 4)
 texture = ExtResource("3_glbon")
 
 [node name="Sky" type="Sprite2D" parent="."]
 z_index = -1
 texture_filter = 1
-position = Vector2(399, 278)
+position = Vector2(386, 266)
 scale = Vector2(6, 6)
 texture = ExtResource("4_jix8l")
+
+[node name="Name" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(773, -341)
+rotation = 0.150768
+scale = Vector2(6, 6)
+texture = ExtResource("5_glbon")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Name"]
+libraries = {
+&"": SubResource("AnimationLibrary_qe12f")
+}
+
+[node name="StretchOutFinished" type="Timer" parent="Name"]
+wait_time = 0.65
+one_shot = true
+
+[node name="StretchOut" type="Timer" parent="Name"]
+wait_time = 5.0
+
+[node name="TweenMoreTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="animation_finished" from="Name/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Name/StretchOutFinished" to="." method="_on_stretch_out_finished_timeout"]
+[connection signal="timeout" from="Name/StretchOut" to="." method="_on_stretch_out_timeout"]
+[connection signal="timeout" from="TweenMoreTimer" to="." method="_on_tween_more_timer_timeout"]
