@@ -66,7 +66,7 @@ texture = ExtResource("3_glbon")
 [node name="Sky" type="Sprite2D" parent="."]
 z_index = -1
 texture_filter = 1
-position = Vector2(386, 266)
+position = Vector2(386, 278)
 scale = Vector2(6, 6)
 texture = ExtResource("4_jix8l")
 
