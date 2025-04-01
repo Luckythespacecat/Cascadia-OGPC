@@ -100,3 +100,5 @@ sprite_frames = SubResource("SpriteFrames_70fjt")
 animation = &"Run"
 frame_progress = 0.298351
 flip_h = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

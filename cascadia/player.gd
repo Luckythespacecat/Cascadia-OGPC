@@ -34,3 +34,4 @@ func _process(delta: float) -> void:
 	Global.PlayerPos = Vector2(Global.PlayerX, Global.PlayerY)
 	self.position = Global.PlayerPos
 	print(Global.PlayerPos)
+	
