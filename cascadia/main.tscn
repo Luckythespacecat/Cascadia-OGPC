@@ -13,7 +13,7 @@ script = ExtResource("1_7mycd")
 [node name="TestingTiles" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_ybs1s")]
-z_index = 1
+z_index = 2
 position = Vector2(-40, -16)
 
 [node name="Node2D" type="Node2D" parent="Player"]
@@ -27,6 +27,7 @@ zoom = Vector2(3, 3)
 script = ExtResource("3_unc4w")
 
 [node name="Boat" parent="." instance=ExtResource("5_hm6kk")]
+z_index = 1
 position = Vector2(16, -24)
 
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]

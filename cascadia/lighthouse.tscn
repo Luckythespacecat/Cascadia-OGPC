@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd150n0k7527m"]
+[gd_scene load_steps=8 format=3 uid="uid://bd150n0k7527m"]
 
 [ext_resource type="Script" uid="uid://bvd7syx0v57eg" path="res://lighthouse.gd" id="1_i1j62"]
 [ext_resource type="Texture2D" uid="uid://bqhwu7o77gi3y" path="res://Assets/Art/lighthouseFinal1.png" id="3_edbo1"]
@@ -28,6 +28,10 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3m66"]
+radius = 25.011
+height = 174.005
+
 [node name="Lighthouse" type="Node2D"]
 script = ExtResource("1_i1j62")
 
@@ -50,3 +54,13 @@ texture_filter = 1
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_sgpi0")
 frame_progress = 0.20606
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+z_index = 1
+position = Vector2(-4, 78)
+rotation = 1.57356
+shape = SubResource("CapsuleShape2D_p3m66")
+
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
