@@ -14,20 +14,20 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play("Idle")
 		# Movement animation, pos and horizantal flip for Left
 	if Input.is_action_pressed("Left") :
-		Global.PlayerX -= 1
+		Global.PlayerX -= 1.5
 		$AnimatedSprite2D.play("Run")
 		$AnimatedSprite2D.flip_h = false
 		# Movement animation, pos and horizantal flip for Right
 	if Input.is_action_pressed("Right") :
-		Global.PlayerX += 1
+		Global.PlayerX += 1.5
 		$AnimatedSprite2D.play("Run")
 		$AnimatedSprite2D.flip_h = true
 		#up and down movement
 	if Input.is_action_pressed("Down") :
-		Global.PlayerY += 1
+		Global.PlayerY += 1.5
 		$AnimatedSprite2D.play("Run")
 	if Input.is_action_pressed("Up") :
-		Global.PlayerY -= 1
+		Global.PlayerY -= 1.5
 		$AnimatedSprite2D.play("Run")
 		
 	#Change the players position accordingly every frame

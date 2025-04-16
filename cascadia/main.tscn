@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=8 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Script" uid="uid://bf5q0piq01r8i" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dn1m482vui8s" path="res://camera_2d.gd" id="3_unc4w"]
 [ext_resource type="PackedScene" uid="uid://ctm54eyu0b5jf" path="res://boat.tscn" id="5_hm6kk"]
 [ext_resource type="PackedScene" uid="uid://bd150n0k7527m" path="res://lighthouse.tscn" id="5_ixv4j"]
+[ext_resource type="Script" uid="uid://bn4wp6o06s4ha" path="res://day.gd" id="7_272bh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7mycd")
@@ -32,3 +33,13 @@ position = Vector2(16, -24)
 
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
 position = Vector2(319, 217)
+
+[node name="Day" type="DirectionalLight2D" parent="."]
+position = Vector2(100, 100)
+energy = 0.1
+shadow_enabled = true
+script = ExtResource("7_272bh")
+
+[node name="Timer" type="Timer" parent="Day"]
+wait_time = 30.0
+autostart = true
