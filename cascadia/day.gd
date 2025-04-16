@@ -1,11 +1,12 @@
 extends DirectionalLight2D
 
-var night_duration = 5.0
-var day_duration = 5.0
-var sunrise_duration = 5.0
-var sunset_duration = 5.0
+var cycle_duration: float = 4.0
+var night_duration = 1.0
+var day_duration = 1.0
+var sunrise_duration = 1.0
+var sunset_duration = 1.0
 
-var night_color := Color(0.5, 1, 2)
+@export var night_color := Color(0.5, 1, 2)
 var day_color := Color(1.0, 0.95, 0.8)
 var sunrise_color := Color(1.0, 0.6, 0.3)
 var sunset_color := Color(1.0, 0.4, 0.3)
@@ -23,7 +24,6 @@ var sunset_angle := deg_to_rad(0)
 var light_2d: DirectionalLight2D
 
 var time_passed := 0.0
-var cycle_duration: float = 20.0
 var _current_time = time_passed
 
 func _ready():
