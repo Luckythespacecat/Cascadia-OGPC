@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxv1m6f121ouq"]
+[gd_scene load_steps=22 format=3 uid="uid://bxv1m6f121ouq"]
 
 [ext_resource type="Script" uid="uid://e2pbsyv7kytl" path="res://player.gd" id="1_tpr4o"]
 [ext_resource type="Texture2D" uid="uid://cajtm0lw2mkvl" path="res://Assets/Art/Player/Player12.png" id="1_y8x56"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://dvld857qo3oqi" path="res://Assets/Art/Player/Player4.png" id="13_ikqbg"]
 [ext_resource type="Texture2D" uid="uid://dwvwgtuth5gwr" path="res://Assets/Art/Player/Player5.png" id="14_8ttfc"]
 [ext_resource type="Texture2D" uid="uid://dt460qkf68367" path="res://Assets/Art/Player/Player6.png" id="15_wsjic"]
+[ext_resource type="Texture2D" uid="uid://dwpwmvfv8rb45" path="res://Assets/Art/Player/PlayerSwim1.png" id="17_pylmc"]
+[ext_resource type="Texture2D" uid="uid://bmp1x50e7mrx0" path="res://Assets/Art/Player/PlayerSwim2.png" id="18_pbfsw"]
+[ext_resource type="Texture2D" uid="uid://0esjvdq7hs5o" path="res://Assets/Art/Player/PlayerSwim3.png" id="19_5tmop"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bby0o"]
 radius = 13.0
@@ -82,6 +85,23 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_pylmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_pbfsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5tmop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_pbfsw")
+}],
+"loop": true,
+"name": &"Swim",
+"speed": 5.0
 }]
 
 [node name="Player" type="Node2D"]
@@ -95,10 +115,11 @@ shape = SubResource("CapsuleShape2D_bby0o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 2)
+position = Vector2(3, 8)
 sprite_frames = SubResource("SpriteFrames_70fjt")
-animation = &"Run"
-frame_progress = 0.298351
+animation = &"Swim"
+frame_progress = 0.967254
 flip_h = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
