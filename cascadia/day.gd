@@ -5,15 +5,15 @@ var day_duration = 5.0
 var sunrise_duration = 5.0
 var sunset_duration = 5.0
 
-var night_color := Color(0.05, 0.1, 0.2)
+var night_color := Color(0.5, 1, 2)
 var day_color := Color(1.0, 0.95, 0.8)
 var sunrise_color := Color(1.0, 0.6, 0.3)
 var sunset_color := Color(1.0, 0.4, 0.3)
 
-var night_energy := 0.1
-var day_energy := 10
-var sunrise_energy := 0.06
-var sunset_energy := 0.05
+var night_energy := -20
+var day_energy := 0.5
+var sunrise_energy := 0.5
+var sunset_energy := 0.5
 
 var night_angle := deg_to_rad(-90)
 var day_angle := deg_to_rad(45)
