@@ -14,27 +14,13 @@ script = ExtResource("1_7mycd")
 [node name="Map" parent="." instance=ExtResource("3_ad2nh")]
 position = Vector2(-272, -168)
 
-[node name="TestingTiles" type="Node" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("2_ybs1s")]
-z_index = 2
-position = Vector2(-40, -16)
-
-[node name="Node2D" type="Node2D" parent="Player"]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-40, -24)
 zoom = Vector2(3, 3)
 script = ExtResource("3_unc4w")
 
-[node name="Boat" parent="." instance=ExtResource("5_hm6kk")]
-z_index = 1
-position = Vector2(16, -24)
-
-[node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
-position = Vector2(319, 217)
-
 [node name="Day" type="DirectionalLight2D" parent="."]
+visible = false
 position = Vector2(100, 100)
 energy = 0.1
 shadow_enabled = true
@@ -44,3 +30,18 @@ script = ExtResource("7_272bh")
 [node name="Timer" type="Timer" parent="Day"]
 wait_time = 30.0
 autostart = true
+
+[node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
+position = Vector2(560, 200)
+
+[node name="Boat" parent="." instance=ExtResource("5_hm6kk")]
+z_index = 1
+position = Vector2(24, -24)
+
+[node name="Player" parent="Boat" instance=ExtResource("2_ybs1s")]
+z_index = 2
+position = Vector2(-64, 8)
+
+[node name="Node2D" type="Node2D" parent="Boat/Player"]
+
+[node name="TestingTiles" type="Node" parent="."]

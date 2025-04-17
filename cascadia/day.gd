@@ -1,7 +1,7 @@
 extends DirectionalLight2D
 
-var night_duration = 5.0
-var day_duration = 5.0
+@export var night_duration = 5.0
+@export var day_duration = 5.0
 var sunrise_duration = 5.0
 var sunset_duration = 5.0
 

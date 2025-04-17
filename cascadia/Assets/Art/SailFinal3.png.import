@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cunk74qx63qii"
-path="res://.godot/imported/RaftV3.png-ffe7a36b58a5acf56217d2657fe948a1.ctex"
+uid="uid://bpmfhax18p08s"
+path="res://.godot/imported/SailFinal3.png-2546d136886c449440176578e688021c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/RaftV3.png"
-dest_files=["res://.godot/imported/RaftV3.png-ffe7a36b58a5acf56217d2657fe948a1.ctex"]
+source_file="res://Assets/Art/SailFinal3.png"
+dest_files=["res://.godot/imported/SailFinal3.png-2546d136886c449440176578e688021c.ctex"]
 
 [params]
 

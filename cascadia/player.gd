@@ -9,6 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	Swimming = Global.swimming
 	#basic movement if statements
 		#Sets the animation to idle if input is stopped
 	if Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right") :
@@ -46,15 +47,14 @@ func _process(delta: float) -> void:
 		else :
 			$AnimatedSprite2D.play("Swim")
 		
+	
 	#Change the players position accordingly every frame
 	Global.PlayerPos = Vector2(Global.PlayerX, Global.PlayerY)
-	self.position = Global.PlayerPos
+	global_position = Global.PlayerPos
 	print(Global.PlayerPos)
-	
-
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	Swimming = true
+	pass
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	Swimming = false
+	pass

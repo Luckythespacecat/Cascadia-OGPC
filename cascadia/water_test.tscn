@@ -25,5 +25,5 @@ material = SubResource("ShaderMaterial_g5ytg")
 position = Vector2(0, 26)
 texture = ExtResource("2_b85ji")
 region_enabled = true
-region_rect = Rect2(-758.163, -554.231, 1576.9, 1085.91)
+region_rect = Rect2(-10625.1, -14168.3, 37067.4, 26069.4)
 script = ExtResource("3_yed5x")
