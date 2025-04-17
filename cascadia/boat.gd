@@ -27,9 +27,15 @@ func BoatToPlayer():
 #Generate random number for rowing speed - disabled for now
 func randomgen(): 
 	rand = randi_range(0, 1)
-	
+
 func sailMovement():
 	if Global.boatDirection == "Left" :
+		position.x -= .25
+		position.y += .25
+		if Global.swimming == false:
+			Global.PlayerX -= .25
+			Global.PlayerY += .25
+	if Global.boatDirection == "Right" :
 		position.x += .25
 		position.y += .25
 		if Global.swimming == false:
