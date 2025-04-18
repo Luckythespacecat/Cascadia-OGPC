@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtqqvybjhwxym"
-path="res://.godot/imported/RaftV6.png-6afdd5e8ed31a2e7dd0255af38d8af42.ctex"
+uid="uid://brqeoqxmolemg"
+path="res://.godot/imported/RaftV12.png-0254527af9bfad1ecc292e866fdd9429.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/RaftV6.png"
-dest_files=["res://.godot/imported/RaftV6.png-6afdd5e8ed31a2e7dd0255af38d8af42.ctex"]
+source_file="res://Assets/Art/RaftV12.png"
+dest_files=["res://.godot/imported/RaftV12.png-0254527af9bfad1ecc292e866fdd9429.ctex"]
 
 [params]
 

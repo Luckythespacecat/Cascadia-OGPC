@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8210yobb7uer"
-path="res://.godot/imported/RaftFinal.png-29f8b2b9050fe25542c848e1d7e6199f.ctex"
+uid="uid://dsjrr1asbe034"
+path="res://.godot/imported/point.png-54fb369ca3b1846862a40b0a63f33d30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/RaftFinal.png"
-dest_files=["res://.godot/imported/RaftFinal.png-29f8b2b9050fe25542c848e1d7e6199f.ctex"]
+source_file="res://Assets/Art/point.png"
+dest_files=["res://.godot/imported/point.png-54fb369ca3b1846862a40b0a63f33d30.ctex"]
 
 [params]
 

@@ -21,8 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://0esjvdq7hs5o" path="res://Assets/Art/Player/PlayerSwim3.png" id="19_5tmop"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bby0o"]
-radius = 13.0
-height = 44.0
+height = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_70fjt"]
 animations = [{
@@ -110,15 +109,15 @@ script = ExtResource("1_tpr4o")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(3, 0)
+position = Vector2(3, 10)
+rotation = -0.0892835
 shape = SubResource("CapsuleShape2D_bby0o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(3, 8)
 sprite_frames = SubResource("SpriteFrames_70fjt")
-animation = &"Swim"
-frame_progress = 0.967254
+animation = &"Run"
 flip_h = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

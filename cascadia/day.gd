@@ -5,6 +5,10 @@ var night_duration = 1.0
 var day_duration = 1.0
 var sunrise_duration = 1.0
 var sunset_duration = 1.0
+@export var night_duration = 5.0
+@export var day_duration = 5.0
+var sunrise_duration = 5.0
+var sunset_duration = 5.0
 
 @export var night_color := Color(0.5, 1, 2)
 var day_color := Color(1.0, 0.95, 0.8)

@@ -1,15 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctm54eyu0b5jf"]
+[gd_scene load_steps=15 format=3 uid="uid://ctm54eyu0b5jf"]
 
 [ext_resource type="Script" uid="uid://b3fqfh4vyhfl5" path="res://boat.gd" id="1_4ia2j"]
-[ext_resource type="Texture2D" uid="uid://8210yobb7uer" path="res://Assets/Art/RaftFinal.png" id="2_7ewa0"]
-[ext_resource type="Texture2D" uid="uid://bac4ikdxg6x1d" path="res://Assets/Art/Sail/SailV5.png" id="6_nova1"]
-[ext_resource type="Texture2D" uid="uid://dlkmdj6vr1ghd" path="res://Assets/Art/Sail/SailV6.png" id="7_42cgd"]
-[ext_resource type="Texture2D" uid="uid://bnipnpucu30oo" path="res://Assets/Art/Sail/SailV7.png" id="8_fafw3"]
-[ext_resource type="Texture2D" uid="uid://e0uy6gpybaxk" path="res://Assets/Art/Sail/SailV8.png" id="9_3m54o"]
-[ext_resource type="Texture2D" uid="uid://lr4nyujw3ay5" path="res://Assets/Art/Sail/SailV1.png" id="10_y4pwt"]
-[ext_resource type="Texture2D" uid="uid://6ppe12a7dume" path="res://Assets/Art/Sail/SailV2.png" id="11_xtild"]
-[ext_resource type="Texture2D" uid="uid://b67mq7rx2gnuh" path="res://Assets/Art/Sail/SailV3.png" id="12_mb40f"]
-[ext_resource type="Texture2D" uid="uid://cl7naio47v3bs" path="res://Assets/Art/Sail/SailV4.png" id="13_iqbep"]
+[ext_resource type="Texture2D" uid="uid://dbeqvq6ec66y7" path="res://Assets/Art/RaftV10.png" id="2_nova1"]
+[ext_resource type="Texture2D" uid="uid://opje8qm2xpky" path="res://Assets/Art/RaftV11.png" id="3_42cgd"]
+[ext_resource type="Texture2D" uid="uid://brqeoqxmolemg" path="res://Assets/Art/RaftV12.png" id="4_fafw3"]
+[ext_resource type="Texture2D" uid="uid://bj26j7biq4kx1" path="res://Assets/Art/SailFinal1.png" id="5_c56w4"]
+[ext_resource type="Texture2D" uid="uid://bo7n024if62l" path="res://Assets/Art/SailFinal2.png" id="6_5gt3i"]
+[ext_resource type="Texture2D" uid="uid://bpmfhax18p08s" path="res://Assets/Art/SailFinal3.png" id="7_nova1"]
+[ext_resource type="Texture2D" uid="uid://clxjjcew087fa" path="res://Assets/Art/SailFinal4.png" id="8_42cgd"]
+[ext_resource type="Texture2D" uid="uid://d32mvvrnw4gdk" path="res://Assets/Art/SailFinal5.png" id="9_fafw3"]
+[ext_resource type="Texture2D" uid="uid://bao8kcpfe448j" path="res://Assets/Art/SailFinal6.png" id="10_3m54o"]
+[ext_resource type="Texture2D" uid="uid://ba6hublqfsgni" path="res://Assets/Art/lightTexutre.png" id="11_c56w4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf3jn"]
 size = Vector2(113, 124)
@@ -18,48 +19,57 @@ size = Vector2(113, 124)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7ewa0")
+"texture": ExtResource("2_nova1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_42cgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fafw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_42cgd")
 }],
 "loop": true,
 "name": &"default",
-"speed": 6.0
+"speed": 3.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v5m18"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_nova1")
+"texture": ExtResource("5_c56w4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_42cgd")
+"texture": ExtResource("6_5gt3i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_fafw3")
+"texture": ExtResource("7_nova1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_3m54o")
+"texture": ExtResource("6_5gt3i")
 }],
 "loop": true,
 "name": &"Back",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_y4pwt")
+"texture": ExtResource("8_42cgd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_xtild")
+"texture": ExtResource("9_fafw3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_mb40f")
+"texture": ExtResource("10_3m54o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_iqbep")
+"texture": ExtResource("9_fafw3")
 }],
 "loop": true,
 "name": &"Front",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [node name="Boat" type="Node2D"]
@@ -89,16 +99,23 @@ texture_filter = 1
 position = Vector2(0, 25)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_h5au0")
-frame_progress = 0.705194
 
 [node name="Sail" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-2, -9)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v5m18")
-animation = &"Front"
-frame_progress = 0.59673
+animation = &"Back"
+frame = 2
+frame_progress = 0.0692556
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1, 6)
+color = Color(0.201527, 0.201527, 0.201527, 1)
+energy = 4.15
+texture = ExtResource("11_c56w4")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

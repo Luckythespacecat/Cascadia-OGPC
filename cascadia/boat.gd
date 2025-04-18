@@ -21,21 +21,31 @@ func _process(delta: float) -> void:
 #Ensure boat follows player - does nothing
 func BoatToPlayer(): 
 	pass
-
-#Soon to be player death - not working
-func PlayerExited(): 
-	Global.PlayerX == 0
-	Global.PlayerY == 0
 	
 
-#Player death continued
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	PlayerExited()
 
 #Generate random number for rowing speed - disabled for now
 func randomgen(): 
 	rand = randi_range(0, 1)
-	
+
 func sailMovement():
 	if Global.boatDirection == "Left" :
-		pass
+		position.x -= .25
+		position.y += .25
+		if Global.swimming == false:
+			Global.PlayerX -= .25
+			Global.PlayerY += .25
+	if Global.boatDirection == "Right" :
+		position.x += .25
+		position.y += .25
+		if Global.swimming == false:
+			Global.PlayerX += .25
+			Global.PlayerY += .25
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	Global.swimming = false
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	Global.swimming = true
