@@ -1,5 +1,25 @@
-[gd_scene format=3 uid="uid://dxp6esaousgn2"]
+[gd_scene load_steps=3 format=3 uid="uid://dxp6esaousgn2"]
+
+[ext_resource type="Texture2D" uid="uid://byeb6w7mpyv51" path="res://Assets/Art/navIcon.png" id="1_kxhmu"]
+[ext_resource type="Texture2D" uid="uid://dsjrr1asbe034" path="res://Assets/Art/point.png" id="2_i7dvk"]
 
 [node name="UserInterface" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="NavIcon" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(104, 104)
+scale = Vector2(3, 3)
+texture = ExtResource("1_kxhmu")
+
+[node name="Point" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(104, 104)
+scale = Vector2(3, 3)
+texture = ExtResource("2_i7dvk")
+
+[node name="topLeft" type="Node2D" parent="."]
+
+[node name="bottomRight" type="Node2D" parent="."]
+position = Vector2(1152, 648)

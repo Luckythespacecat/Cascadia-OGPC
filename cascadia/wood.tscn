@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj1pyjya7bxyq"]
+
+[ext_resource type="Texture2D" uid="uid://bykksbb501pdm" path="res://Assets/Art/raft1.png" id="1_fm5dc"]
+
+[node name="wood" type="Node2D"]
+
+[node name="Raft1" type="Sprite2D" parent="."]
+position = Vector2(48, 56)
+texture = ExtResource("1_fm5dc")
