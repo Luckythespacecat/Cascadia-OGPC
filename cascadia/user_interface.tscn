@@ -6,8 +6,10 @@
 [node name="UserInterface" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 
 [node name="NavIcon" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(104, 104)
 scale = Vector2(3, 3)

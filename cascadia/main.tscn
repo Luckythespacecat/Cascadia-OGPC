@@ -51,3 +51,8 @@ position = Vector2(-64, 8)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UserInterface" parent="CanvasLayer" instance=ExtResource("4_5vw27")]
+
+[node name="WoodTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="WoodTimer" to="." method="_on_wood_timer_timeout"]

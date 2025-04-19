@@ -5,5 +5,6 @@
 [node name="wood" type="Node2D"]
 
 [node name="Raft1" type="Sprite2D" parent="."]
-position = Vector2(48, 56)
+position = Vector2(592.324, 630.37)
+scale = Vector2(47.4933, -19.534)
 texture = ExtResource("1_fm5dc")
