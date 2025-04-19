@@ -1,10 +1,7 @@
 extends DirectionalLight2D
 
 var cycle_duration: float = 4.0
-var night_duration = 1.0
-var day_duration = 1.0
-var sunrise_duration = 1.0
-var sunset_duration = 1.0
+
 @export var night_duration = 5.0
 @export var day_duration = 5.0
 var sunrise_duration = 5.0
