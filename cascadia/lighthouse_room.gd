@@ -1,12 +1,6 @@
-extends Node
+extends Node2D
 
-var PlayerX = 0
-var PlayerY = 0
-var PlayerPos : Vector2 = Vector2(0,0)
-var onBoat = false
-var wind = 0
-var boatDirection = "RightDown"
-var swimming = false 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -14,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$Camera2D.position = lerp($Camera2D.position, $CharacterBody2D.position, 5 * delta)

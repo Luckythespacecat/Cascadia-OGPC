@@ -1,11 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj1pyjya7bxyq"]
+[gd_scene load_steps=6 format=3 uid="uid://bj1pyjya7bxyq"]
 
-[ext_resource type="Texture2D" uid="uid://bykksbb501pdm" path="res://Assets/Art/raft1.png" id="1_fm5dc"]
+[ext_resource type="Script" uid="uid://cxkn3ur6dwlce" path="res://wood.gd" id="1_eyjtj"]
+[ext_resource type="Texture2D" uid="uid://xx2pl0ka5xj2" path="res://Assets/Art/Resources/Wood1.png" id="1_l0k7y"]
+[ext_resource type="Texture2D" uid="uid://5xx5g4r3rnqk" path="res://Assets/Art/Resources/Wood2.png" id="2_eyjtj"]
+[ext_resource type="Texture2D" uid="uid://b3dh3kemebpqt" path="res://Assets/Art/Resources/Wood3.png" id="3_o47cf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cb880"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l0k7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eyjtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o47cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eyjtj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="wood" type="Node2D"]
+script = ExtResource("1_eyjtj")
 
-[node name="Raft1" type="Sprite2D" parent="."]
-z_index = 10
-position = Vector2(15396, 9016)
-scale = Vector2(873.083, -627.667)
-texture = ExtResource("1_fm5dc")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_cb880")
+frame = 3
+frame_progress = 0.142324

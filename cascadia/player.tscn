@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxv1m6f121ouq"]
+[gd_scene load_steps=38 format=3 uid="uid://bxv1m6f121ouq"]
 
 [ext_resource type="Script" uid="uid://e2pbsyv7kytl" path="res://player.gd" id="1_tpr4o"]
 [ext_resource type="Texture2D" uid="uid://cajtm0lw2mkvl" path="res://Assets/Art/Player/Player12.png" id="1_y8x56"]
@@ -16,9 +16,25 @@
 [ext_resource type="Texture2D" uid="uid://dvld857qo3oqi" path="res://Assets/Art/Player/Player4.png" id="13_ikqbg"]
 [ext_resource type="Texture2D" uid="uid://dwvwgtuth5gwr" path="res://Assets/Art/Player/Player5.png" id="14_8ttfc"]
 [ext_resource type="Texture2D" uid="uid://dt460qkf68367" path="res://Assets/Art/Player/Player6.png" id="15_wsjic"]
+[ext_resource type="Texture2D" uid="uid://d37hwblsrsn7n" path="res://Assets/Art/Player/PlayerSwim12.png" id="17_hl5qd"]
 [ext_resource type="Texture2D" uid="uid://dwpwmvfv8rb45" path="res://Assets/Art/Player/PlayerSwim1.png" id="17_pylmc"]
+[ext_resource type="Texture2D" uid="uid://ch8e7suadokr2" path="res://Assets/Art/Player/PlayerSwim13.png" id="18_ek41f"]
 [ext_resource type="Texture2D" uid="uid://bmp1x50e7mrx0" path="res://Assets/Art/Player/PlayerSwim2.png" id="18_pbfsw"]
 [ext_resource type="Texture2D" uid="uid://0esjvdq7hs5o" path="res://Assets/Art/Player/PlayerSwim3.png" id="19_5tmop"]
+[ext_resource type="Texture2D" uid="uid://cvb422lu3xsb7" path="res://Assets/Art/Player/PlayerSwim14.png" id="19_khis8"]
+[ext_resource type="Texture2D" uid="uid://n3xrp77s2sl7" path="res://Assets/Art/Player/PlayerSwim15.png" id="20_b88wv"]
+[ext_resource type="Texture2D" uid="uid://dvmgjxfwlyd3t" path="res://Assets/Art/Player/PlayerSwim4.png" id="20_qtqh7"]
+[ext_resource type="Texture2D" uid="uid://cbhmufahp86dq" path="res://Assets/Art/Player/PlayerSwim5.png" id="21_2wuci"]
+[ext_resource type="Texture2D" uid="uid://dhhxji7t7socl" path="res://Assets/Art/Player/PlayerSwim16.png" id="21_pgbbb"]
+[ext_resource type="Texture2D" uid="uid://cg3obnwgovnau" path="res://Assets/Art/Player/PlayerSwim17.png" id="22_331ug"]
+[ext_resource type="Texture2D" uid="uid://uwb3gybph6w8" path="res://Assets/Art/Player/PlayerSwim6.png" id="22_iruf7"]
+[ext_resource type="Texture2D" uid="uid://bv6fmp6mn5mtc" path="res://Assets/Art/Player/PlayerSwim7.png" id="23_j5n4i"]
+[ext_resource type="Texture2D" uid="uid://b2g85xomgsjk0" path="res://Assets/Art/Player/PlayerSwim18.png" id="23_ny14h"]
+[ext_resource type="Texture2D" uid="uid://ciy6shtt4unyl" path="res://Assets/Art/Player/PlayerSwim8.png" id="24_634y6"]
+[ext_resource type="Texture2D" uid="uid://uy83fass76t3" path="res://Assets/Art/Player/PlayerSwim19.png" id="24_ibah8"]
+[ext_resource type="Texture2D" uid="uid://ctshh4ibgi4gx" path="res://Assets/Art/Player/PlayerSwim9.png" id="25_efrwb"]
+[ext_resource type="Texture2D" uid="uid://i4ayrmao00al" path="res://Assets/Art/Player/PlayerSwim10.png" id="26_hiqhm"]
+[ext_resource type="Texture2D" uid="uid://bb063e2wr0dhi" path="res://Assets/Art/Player/PlayerSwim11.png" id="27_tkwlq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bby0o"]
 height = 20.0
@@ -87,6 +103,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("17_hl5qd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ek41f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_khis8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_b88wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pgbbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_331ug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ny14h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ibah8")
+}],
+"loop": false,
+"name": &"Splash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("17_pylmc")
 }, {
 "duration": 1.0,
@@ -99,8 +144,37 @@ animations = [{
 "texture": ExtResource("18_pbfsw")
 }],
 "loop": true,
-"name": &"Swim",
+"name": &"SwimIdle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_qtqh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_2wuci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_iruf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_j5n4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_634y6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_efrwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_hiqhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_tkwlq")
+}],
+"loop": true,
+"name": &"Swimming",
+"speed": 8.0
 }]
 
 [node name="Player" type="Node2D"]
@@ -115,10 +189,11 @@ shape = SubResource("CapsuleShape2D_bby0o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(3, 8)
+position = Vector2(6, -3)
 sprite_frames = SubResource("SpriteFrames_70fjt")
-animation = &"Run"
+animation = &"Idle"
 flip_h = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

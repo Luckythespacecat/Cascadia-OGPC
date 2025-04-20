@@ -49,11 +49,12 @@ position = Vector2(-64, 8)
 
 [node name="TestingTiles" type="Node" parent="."]
 
+[node name="ResourceTimer" type="Timer" parent="."]
+autostart = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UserInterface" parent="CanvasLayer" instance=ExtResource("4_5vw27")]
 
-[node name="WoodTimer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="timeout" from="WoodTimer" to="." method="_on_wood_timer_timeout"]
+[connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]
+[connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]

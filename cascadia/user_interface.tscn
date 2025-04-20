@@ -1,15 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxp6esaousgn2"]
+[gd_scene load_steps=8 format=3 uid="uid://dxp6esaousgn2"]
 
 [ext_resource type="Texture2D" uid="uid://byeb6w7mpyv51" path="res://Assets/Art/navIcon.png" id="1_kxhmu"]
+[ext_resource type="Script" uid="uid://u81t868obtq2" path="res://user_interface.gd" id="1_up53h"]
 [ext_resource type="Texture2D" uid="uid://dsjrr1asbe034" path="res://Assets/Art/point.png" id="2_i7dvk"]
+[ext_resource type="Texture2D" uid="uid://bphepir8f5ult" path="res://Assets/Art/SailDirectionArrow2.png" id="4_r3lf1"]
+[ext_resource type="Texture2D" uid="uid://cqv5fr3b2pv6e" path="res://Assets/Art/SailDirectionArrow1.png" id="5_hsgek"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f4522"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hsgek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r3lf1")
+}],
+"loop": true,
+"name": &"Hover",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q287o"]
+size = Vector2(28.8, 28.8)
 
 [node name="UserInterface" type="Node2D"]
+script = ExtResource("1_up53h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 
 [node name="NavIcon" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 1
 position = Vector2(104, 104)
 scale = Vector2(3, 3)
@@ -25,3 +45,20 @@ texture = ExtResource("2_i7dvk")
 
 [node name="bottomRight" type="Node2D" parent="."]
 position = Vector2(1152, 648)
+
+[node name="LeftArrow" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-128, 440)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_f4522")
+animation = &"Hover"
+
+[node name="Area2D" type="Area2D" parent="LeftArrow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArrow/Area2D"]
+position = Vector2(0, -3.8147e-06)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_q287o")
+
+[connection signal="mouse_entered" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_exited"]
