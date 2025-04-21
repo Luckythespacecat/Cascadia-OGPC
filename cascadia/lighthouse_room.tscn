@@ -246,7 +246,7 @@ shape = SubResource("RectangleShape2D_cde3n")
 [node name="WalLeft" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WalLeft"]
-position = Vector2(-160, 40.5)
+position = Vector2(-160, 72)
 shape = SubResource("RectangleShape2D_mppod")
 
 [node name="WallRight" type="StaticBody2D" parent="."]

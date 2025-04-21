@@ -9,7 +9,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
 func _on_area_2d_mouse_entered() -> void:
 	$LeftArrow.frame = 1
 	print("UM hover pretty pleassseee")

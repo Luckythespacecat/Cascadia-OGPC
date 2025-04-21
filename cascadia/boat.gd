@@ -27,6 +27,7 @@ func boatMovement():
 
 #function to choose which rowing speed will occur
 func _process(delta: float) -> void: 
+	Global.boatPos = self.global_position
 	if $Player/AnimatedSprite2D.animation != "Splash" :
 		sailMovement()
 	boatMovement()

@@ -22,12 +22,8 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
-	pass
-	#var botY = $CanvasLayer/UserInterface/bottomRight.global_position.y
-	#var topY = $CanvasLayer/UserInterface/topLeft.global_position.y
-	#var botX = $CanvasLayer/UserInterface/bottomRight.global_position.x
-	#var topX = $CanvasLayer/UserInterface/topLeft.global_position.x
-
+	var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
+	$CanvasLayer/UserInterface/Point.rotation = dir.angle()
 
 func _on_resource_timer_timeout() -> void:
 	spawnWood()
