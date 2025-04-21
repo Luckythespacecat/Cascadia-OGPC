@@ -2,8 +2,6 @@ extends Node2D
 
 signal inWater
 
-
-
 var rand
 #Timer for the 'rowing animation'
 func _ready(): 
@@ -96,10 +94,20 @@ func sailMovement():
 			Global.PlayerY += .25
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	Global.swimming = false
-
+	if area.name == "FootArea" : 
+		Global.swimming = false
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	if $Player/AnimatedSprite2D.animation != "Splash" and $Player/AnimatedSprite2D.animation != "SwimIdle" :
-		Global.swimming = true
-		inWater.emit()
+	if area.name == "FootArea" : 
+		if $Player/AnimatedSprite2D.animation != "Splash" and $Player/AnimatedSprite2D.animation != "SwimIdle" :
+			Global.swimming = true
+			inWater.emit()
+
+func _on_sail_area_area_entered(area: Area2D) -> void:
+	if area.name == "HeadArea" : 
+		$Player.z_index = 2
+
+
+func _on_sail_area_area_exited(area: Area2D) -> void:
+	if area.name == "HeadArea" : 
+		$Player.z_index = 4

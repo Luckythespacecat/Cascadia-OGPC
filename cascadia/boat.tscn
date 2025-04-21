@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctm54eyu0b5jf"]
+[gd_scene load_steps=15 format=3 uid="uid://ctm54eyu0b5jf"]
 
 [ext_resource type="Script" uid="uid://b3fqfh4vyhfl5" path="res://boat.gd" id="1_4ia2j"]
 [ext_resource type="Texture2D" uid="uid://dbeqvq6ec66y7" path="res://Assets/Art/RaftV10.png" id="2_nova1"]
@@ -71,6 +71,9 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ewa0"]
+size = Vector2(158, 112)
+
 [node name="Boat" type="Node2D"]
 position = Vector2(2, -2)
 script = ExtResource("1_4ia2j")
@@ -101,13 +104,23 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_h5au0")
 
 [node name="Sail" type="AnimatedSprite2D" parent="."]
+z_index = 3
 texture_filter = 1
 position = Vector2(-2, -9)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v5m18")
 animation = &"Back"
 
+[node name="SailArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SailArea"]
+z_index = 4
+position = Vector2(-3, -59)
+shape = SubResource("RectangleShape2D_7ewa0")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="area_entered" from="SailArea" to="." method="_on_sail_area_area_entered"]
+[connection signal="area_exited" from="SailArea" to="." method="_on_sail_area_area_exited"]
