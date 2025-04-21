@@ -66,3 +66,12 @@ func _on_boat_in_water() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "Splash" :
 		$AnimatedSprite2D.play("SwimIdle")
+
+func drown():
+	if Swimming:
+		$Timer.Start
+		on_Timer_timeout()
+			
+
+func on_Timer_timeout():
+	pass
