@@ -57,7 +57,6 @@ animation = &"Hover"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArrow/Area2D"]
 position = Vector2(0, -3.8147e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_q287o")
 
 [connection signal="mouse_entered" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_entered"]
