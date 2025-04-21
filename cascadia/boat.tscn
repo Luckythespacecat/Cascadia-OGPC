@@ -106,8 +106,6 @@ position = Vector2(-2, -9)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v5m18")
 animation = &"Back"
-frame = 2
-frame_progress = 0.0692556
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-1, 6)

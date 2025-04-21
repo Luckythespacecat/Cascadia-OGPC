@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://duuwm1fvd87y"]
+[gd_scene load_steps=46 format=3 uid="uid://duuwm1fvd87y"]
 
 [ext_resource type="Script" uid="uid://dt6ptlffad6xp" path="res://lighthouse_room.gd" id="1_cde3n"]
 [ext_resource type="Texture2D" uid="uid://dvn0u6vi8x38a" path="res://Assets/Art/pink.png" id="1_rhv4f"]
@@ -186,6 +186,12 @@ size = Vector2(384, 21)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mppod"]
 size = Vector2(20, 433)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p70hd"]
+size = Vector2(20, 401)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfdtv"]
+size = Vector2(408.5, 18)
+
 [node name="Lighthouse_Room" type="Node2D"]
 script = ExtResource("1_cde3n")
 
@@ -245,4 +251,12 @@ shape = SubResource("RectangleShape2D_mppod")
 
 [node name="WallRight" type="StaticBody2D" parent="."]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+position = Vector2(192, 55.5)
+shape = SubResource("RectangleShape2D_p70hd")
+
 [node name="Walltop" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walltop"]
+position = Vector2(43.75, -136)
+shape = SubResource("RectangleShape2D_vfdtv")

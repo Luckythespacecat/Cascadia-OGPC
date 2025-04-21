@@ -12,13 +12,13 @@ func _ready():
 	$Timer.start()
 
 func boatMovement():
-	if Input.is_action_just_pressed("boatcounterClockwise"):
+	if Input.is_action_just_pressed("boatcounterClockwise")  and Global.swimming == false:
 		Global.boatDirection += 1
 		if Global.boatDirection > 8:
 			Global.boatDirection = 1
 		elif Global.boatDirection < 1:
 			Global.boatDirection = 8
-	if Input.is_action_just_pressed("boatClockwise"):
+	if Input.is_action_just_pressed("boatClockwise")  and Global.swimming == false:
 		Global.boatDirection -= 1
 		if Global.boatDirection > 8:
 			Global.boatDirection = 1

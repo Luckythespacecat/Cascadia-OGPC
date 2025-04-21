@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvu6axyirsbo3"]
+[gd_scene load_steps=11 format=3 uid="uid://bvu6axyirsbo3"]
 
 [ext_resource type="Script" uid="uid://08uyu2rgfl6d" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://c24vv1byekdgj" path="res://Assets/Art/TitlescreenImage1.png" id="2_jix8l"]
 [ext_resource type="Texture2D" uid="uid://dpjyrtbti1su4" path="res://Assets/Art/TitlescreenImage2.png" id="3_glbon"]
 [ext_resource type="Texture2D" uid="uid://dg5hsejvatqj6" path="res://Assets/Art/TitlescreenImage3.png" id="4_jix8l"]
 [ext_resource type="Texture2D" uid="uid://br8iafy565nv" path="res://Assets/Art/CascadiaName.png" id="5_glbon"]
+[ext_resource type="AudioStream" uid="uid://i6dvhdo8wy54" path="res://Assets/Sound/Music/ANewFuture.mp3" id="6_nlkkf"]
 
 [sub_resource type="Animation" id="Animation_nlkkf"]
 length = 0.001
@@ -92,6 +93,10 @@ wait_time = 5.0
 [node name="TweenMoreTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="ANewFuture" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nlkkf")
+autoplay = true
 
 [connection signal="animation_finished" from="Name/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Name/StretchOutFinished" to="." method="_on_stretch_out_finished_timeout"]
