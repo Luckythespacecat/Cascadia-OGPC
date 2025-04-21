@@ -24,6 +24,26 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
 	$CanvasLayer/UserInterface/Point.rotation = dir.angle()
+	
+# Day and night cycle transitions here
+	if Global.timeOfDay == "Night" and  $sun.energy <= .75:
+		$sun.energy += .0025
+		
+	if Global.timeOfDay == "Day" and  $sun.energy > 0:
+		$sun.energy -= .0025
+
 
 func _on_resource_timer_timeout() -> void:
 	spawnWood()
+
+#Day and night TImers defined here
+#look in scene tree under "sun" node to change the time for day and night cycles
+func _on_day_timeout() -> void:
+	print("Day over")
+	$sun/Night.start()
+	Global.timeOfDay = "Night"
+
+func _on_night_timeout() -> void:
+	print("Nights over")
+	$sun/Day.start()
+	Global.timeOfDay = "Day"

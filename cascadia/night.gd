@@ -9,18 +9,3 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func night():
-	if energy <= .75 :
-		energy += .1
-
-func day():
-	if energy >= .75 :
-		energy -= .0025
-
-func _on_day_timeout() -> void:
-	if Global.timeOfDay == false :
-		Global.timeOfDay = true
-		night()
-	if Global.timeOfDay == true :
-		Global.timeOfDay = false
-		day()

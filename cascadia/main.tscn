@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=9 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Script" uid="uid://bf5q0piq01r8i" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ctm54eyu0b5jf" path="res://boat.tscn" id="5_hm6kk"]
 [ext_resource type="PackedScene" uid="uid://bd150n0k7527m" path="res://lighthouse.tscn" id="5_ixv4j"]
 [ext_resource type="Texture2D" uid="uid://ba6hublqfsgni" path="res://Assets/Art/lightTexutre.png" id="8_4c57u"]
-[ext_resource type="Script" uid="uid://boybl16mtxacm" path="res://night.gd" id="9_kek77"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7mycd")
@@ -53,14 +52,17 @@ autostart = true
 [node name="sun" type="DirectionalLight2D" parent="."]
 energy = 0.0
 blend_mode = 1
-script = ExtResource("9_kek77")
 
 [node name="Day" type="Timer" parent="sun"]
-wait_time = 10.0
+wait_time = 20.0
+one_shot = true
+autostart = true
 
 [node name="Night" type="Timer" parent="sun"]
-wait_time = 5.0
+wait_time = 10.0
+one_shot = true
 
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]
 [connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]
-[connection signal="timeout" from="sun/Day" to="sun" method="_on_day_timeout"]
+[connection signal="timeout" from="sun/Day" to="." method="_on_day_timeout"]
+[connection signal="timeout" from="sun/Night" to="." method="_on_night_timeout"]
