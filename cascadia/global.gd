@@ -5,7 +5,7 @@ var PlayerY = 0
 var PlayerPos : Vector2 = Vector2(0,0)
 var onBoat = false
 var wind = 0
-var boatDirection = "RightDown"
+var boatDirection := 1
 var swimming = false 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

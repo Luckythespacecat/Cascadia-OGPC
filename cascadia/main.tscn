@@ -22,7 +22,6 @@ zoom = Vector2(3, 3)
 script = ExtResource("3_unc4w")
 
 [node name="Day" type="DirectionalLight2D" parent="."]
-visible = false
 position = Vector2(100, 100)
 energy = 0.1
 shadow_enabled = true
