@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=10 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Script" uid="uid://bf5q0piq01r8i" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dxp6esaousgn2" path="res://user_interface.tscn" id="4_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ctm54eyu0b5jf" path="res://boat.tscn" id="5_hm6kk"]
 [ext_resource type="PackedScene" uid="uid://bd150n0k7527m" path="res://lighthouse.tscn" id="5_ixv4j"]
-[ext_resource type="Script" uid="uid://bn4wp6o06s4ha" path="res://day.gd" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://ba6hublqfsgni" path="res://Assets/Art/lightTexutre.png" id="8_4c57u"]
 [ext_resource type="Script" uid="uid://boybl16mtxacm" path="res://night.gd" id="9_kek77"]
 
@@ -22,19 +21,6 @@ position = Vector2(-40, -24)
 scale = Vector2(1e-05, 1e-05)
 zoom = Vector2(3, 3)
 script = ExtResource("3_unc4w")
-
-[node name="Day" type="DirectionalLight2D" parent="."]
-visible = false
-position = Vector2(100, 100)
-energy = 0.1
-shadow_enabled = true
-height = 1.0
-script = ExtResource("7_272bh")
-night_color = Color(0, 0, 0, 1)
-
-[node name="Timer" type="Timer" parent="Day"]
-wait_time = 2.0
-autostart = true
 
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
 position = Vector2(560, 200)
@@ -64,10 +50,17 @@ autostart = true
 
 [node name="UserInterface" parent="CanvasLayer" instance=ExtResource("4_5vw27")]
 
-[node name="Night" type="DirectionalLight2D" parent="."]
+[node name="sun" type="DirectionalLight2D" parent="."]
 energy = 0.0
 blend_mode = 1
 script = ExtResource("9_kek77")
 
+[node name="Day" type="Timer" parent="sun"]
+wait_time = 10.0
+
+[node name="Night" type="Timer" parent="sun"]
+wait_time = 5.0
+
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]
 [connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]
+[connection signal="timeout" from="sun/Day" to="sun" method="_on_day_timeout"]

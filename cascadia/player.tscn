@@ -36,8 +36,8 @@
 [ext_resource type="Texture2D" uid="uid://i4ayrmao00al" path="res://Assets/Art/Player/PlayerSwim10.png" id="26_hiqhm"]
 [ext_resource type="Texture2D" uid="uid://bb063e2wr0dhi" path="res://Assets/Art/Player/PlayerSwim11.png" id="27_tkwlq"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bby0o"]
-height = 20.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ek41f"]
+size = Vector2(18, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_70fjt"]
 animations = [{
@@ -186,13 +186,13 @@ script = ExtResource("1_tpr4o")
 [node name="FootArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FootArea"]
-position = Vector2(3, 10)
-rotation = -0.0892835
-shape = SubResource("CapsuleShape2D_bby0o")
+z_index = 1
+position = Vector2(4, 16)
+shape = SubResource("RectangleShape2D_ek41f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(7, -1)
+position = Vector2(8, -1)
 sprite_frames = SubResource("SpriteFrames_70fjt")
 animation = &"Idle"
 flip_h = true
