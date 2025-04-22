@@ -35,9 +35,9 @@ height = 174.005
 [node name="Lighthouse" type="Node2D"]
 script = ExtResource("1_i1j62")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Door" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
 z_index = 1
 position = Vector2(0, 24)
 rotation = -3.14159
@@ -55,12 +55,14 @@ position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_sgpi0")
 frame_progress = 0.20606
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 z_index = 1
 position = Vector2(-4, 78)
 rotation = 1.57356
 shape = SubResource("CapsuleShape2D_p3m66")
 
-[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="area_entered" from="Door" to="." method="_on_door_area_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

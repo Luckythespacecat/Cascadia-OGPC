@@ -39,7 +39,7 @@ func sailMovement():
 	if Global.boatDirection == 1 :
 		position.x -= .25
 		position.y += .25
-		if Global.swimming == false:
+		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX -= .25
 			Global.PlayerY += .25
 			
@@ -47,60 +47,62 @@ func sailMovement():
 	if Global.boatDirection == 7 :
 		position.x -= .25
 		position.y -= .25
-		if Global.swimming == false:
+		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX -= .25
 			Global.PlayerY -= .25
 	#rightdown
 	if Global.boatDirection == 3 :
 		position.x += .25
 		position.y += .25
-		if Global.swimming == false:
+		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += .25
 			Global.PlayerY += .25
 	#rightup
 	if Global.boatDirection == 5 :
 		position.x += .25
 		position.y -= .25
-		if Global.swimming == false:
+		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += .25
 			Global.PlayerY -= .25
 	#right
 	if Global.boatDirection == 4 :
 		position.x += .25
 		position.y += 0
-		if Global.swimming == false:
+		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += .25
 			Global.PlayerY += 0
 	#up
 	if Global.boatDirection == 6 :
 		position.x += 0
 		position.y -= .25
-		if Global.swimming == false:
+		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += 0
 			Global.PlayerY -= .25
 	#left
 	if Global.boatDirection == 8 :
 		position.x -= .25
 		position.y += 0
-		if Global.swimming == false:
+		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX -= .25
 			Global.PlayerY += 0
 	#down
 	if Global.boatDirection == 2 :
 		position.x += 0
 		position.y += .25
-		if Global.swimming == false:
+		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += 0
 			Global.PlayerY += .25
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "FootArea" : 
 		Global.swimming = false
+		Global.onBoat = true
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" : 
 		if $Player/AnimatedSprite2D.animation != "Splash" and $Player/AnimatedSprite2D.animation != "SwimIdle" :
 			Global.swimming = true
+			Global.onBoat = false
 			inWater.emit()
 
 func _on_sail_area_area_entered(area: Area2D) -> void:

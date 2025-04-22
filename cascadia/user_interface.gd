@@ -8,7 +8,31 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	#left down
+	if Global.boatDirection == 1 :
+		pass
+	#leftup
+	if Global.boatDirection == 7 :
+		pass
+	#rightdown
+	if Global.boatDirection == 3 :
+		pass
+	#rightup
+	if Global.boatDirection == 5 :
+		pass
+	#right
+	if Global.boatDirection == 4 :
+		pass
+	#up
+	if Global.boatDirection == 6 :
+		pass
+	#left
+	if Global.boatDirection == 8 :
+		pass
+	#down
+	if Global.boatDirection == 2 :
+		pass
+	
 func _on_area_2d_mouse_entered() -> void:
 	$LeftArrow.frame = 1
 	print("UM hover pretty pleassseee")

@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Global="*res://global.gd"
 
+[display]
+
+window/size/viewport_width=1784
+window/size/viewport_height=1004
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gaea/plugin.cfg")

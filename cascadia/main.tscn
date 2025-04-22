@@ -1,13 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=16 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Script" uid="uid://bf5q0piq01r8i" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
 [ext_resource type="PackedScene" uid="uid://b6g35j1nhodem" path="res://map.tscn" id="3_ad2nh"]
 [ext_resource type="Script" uid="uid://dn1m482vui8s" path="res://camera_2d.gd" id="3_unc4w"]
+[ext_resource type="Script" uid="uid://ps7jaodjgl4b" path="res://lighthouse_light_body.gd" id="4_4c57u"]
 [ext_resource type="PackedScene" uid="uid://dxp6esaousgn2" path="res://user_interface.tscn" id="4_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ctm54eyu0b5jf" path="res://boat.tscn" id="5_hm6kk"]
 [ext_resource type="PackedScene" uid="uid://bd150n0k7527m" path="res://lighthouse.tscn" id="5_ixv4j"]
+[ext_resource type="Texture2D" uid="uid://dlbdkmdaxo7j7" path="res://Assets/Art/lighthouse-lighttexture.png" id="5_kek77"]
 [ext_resource type="Texture2D" uid="uid://ba6hublqfsgni" path="res://Assets/Art/lightTexutre.png" id="8_4c57u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(1842, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efxa6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycdy4"]
+size = Vector2(2.62201, 287.88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w48qg"]
+size = Vector2(96, 88)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7mycd")
@@ -21,8 +36,58 @@ scale = Vector2(1e-05, 1e-05)
 zoom = Vector2(3, 3)
 script = ExtResource("3_unc4w")
 
+[node name="WallsForLighthouseLight" type="Node2D" parent="Camera2D"]
+
+[node name="Wall1" type="StaticBody2D" parent="Camera2D/WallsForLighthouseLight"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/WallsForLighthouseLight/Wall1"]
+position = Vector2(911, -15)
+shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="Wall2" type="StaticBody2D" parent="Camera2D/WallsForLighthouseLight"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/WallsForLighthouseLight/Wall2"]
+position = Vector2(904, 1048)
+scale = Vector2(109.739, -3.99624)
+shape = SubResource("RectangleShape2D_efxa6")
+
+[node name="Wall3" type="StaticBody2D" parent="Camera2D/WallsForLighthouseLight"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/WallsForLighthouseLight/Wall3"]
+position = Vector2(-40, 152)
+scale = Vector2(3.76, 103.56)
+shape = SubResource("RectangleShape2D_dg77c")
+
+[node name="Wall4" type="StaticBody2D" parent="Camera2D/WallsForLighthouseLight"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/WallsForLighthouseLight/Wall4"]
+position = Vector2(1808, 512)
+scale = Vector2(17.3489, 3.77935)
+shape = SubResource("RectangleShape2D_ycdy4")
+
+[node name="LighthouseLightBody" type="RigidBody2D" parent="Camera2D/WallsForLighthouseLight"]
+position = Vector2(360, 272)
+gravity_scale = 0.0
+script = ExtResource("4_4c57u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/WallsForLighthouseLight/LighthouseLightBody"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_w48qg")
+
+[node name="Lighthouse_light" type="PointLight2D" parent="Camera2D"]
+energy = 0.5
+texture = ExtResource("5_kek77")
+texture_scale = 5.0
+
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
 position = Vector2(560, 200)
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lighthouse"]
+visible = false
+position = Vector2(-2, -154)
+energy = 0.5
+texture = ExtResource("5_kek77")
+texture_scale = 5.0
 
 [node name="Boat" parent="." instance=ExtResource("5_hm6kk")]
 z_index = 1
@@ -45,22 +110,22 @@ texture_scale = 0.5
 [node name="ResourceTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="UserInterface" parent="CanvasLayer" instance=ExtResource("4_5vw27")]
-
 [node name="sun" type="DirectionalLight2D" parent="."]
 energy = 0.0
 blend_mode = 1
 
 [node name="Day" type="Timer" parent="sun"]
-wait_time = 20.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
 [node name="Night" type="Timer" parent="sun"]
-wait_time = 10.0
+wait_time = 60.0
 one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UserInterface" parent="CanvasLayer" instance=ExtResource("4_5vw27")]
 
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]
 [connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]
