@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://duuwm1fvd87y"]
+[gd_scene load_steps=50 format=3 uid="uid://duuwm1fvd87y"]
 
 [ext_resource type="Script" uid="uid://dt6ptlffad6xp" path="res://lighthouse_room.gd" id="1_cde3n"]
 [ext_resource type="Texture2D" uid="uid://dvn0u6vi8x38a" path="res://Assets/Art/pink.png" id="1_rhv4f"]
@@ -39,6 +39,8 @@
 [ext_resource type="Texture2D" uid="uid://ctshh4ibgi4gx" path="res://Assets/Art/Player/PlayerSwim9.png" id="36_4515a"]
 [ext_resource type="Texture2D" uid="uid://i4ayrmao00al" path="res://Assets/Art/Player/PlayerSwim10.png" id="37_yksni"]
 [ext_resource type="Texture2D" uid="uid://bb063e2wr0dhi" path="res://Assets/Art/Player/PlayerSwim11.png" id="38_rds66"]
+[ext_resource type="Texture2D" uid="uid://u730ovs3um4o" path="res://icon.svg" id="40_p70hd"]
+[ext_resource type="Script" uid="uid://bro5i6hqxoiw7" path="res://radio.gd" id="41_vfdtv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_36v51"]
 
@@ -192,6 +194,23 @@ size = Vector2(20, 401)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfdtv"]
 size = Vector2(408.5, 18)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_5fadf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_p70hd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_p70hd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fadf"]
+size = Vector2(65, 74)
+
 [node name="Lighthouse_Room" type="Node2D"]
 script = ExtResource("1_cde3n")
 
@@ -221,16 +240,16 @@ texture_filter = 1
 scale = Vector2(-19.5626, 20.4974)
 texture = ExtResource("5_ug2bp")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="playerBody" type="CharacterBody2D" parent="."]
 script = ExtResource("5_cde3n")
 SPEED = 130.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerBody"]
 position = Vector2(30, 32)
 scale = Vector2(1.05421, -1.26736)
 shape = SubResource("CapsuleShape2D_36v51")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="playerBody"]
 texture_filter = 1
 position = Vector2(32, 32)
 sprite_frames = SubResource("SpriteFrames_shtrl")
@@ -260,3 +279,20 @@ shape = SubResource("RectangleShape2D_p70hd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walltop"]
 position = Vector2(43.75, -136)
 shape = SubResource("RectangleShape2D_vfdtv")
+
+[node name="Radio" type="AnimatedSprite2D" parent="."]
+position = Vector2(-60, -23)
+scale = Vector2(0.5, 0.564)
+sprite_frames = SubResource("SpriteFrames_5fadf")
+frame_progress = 0.0165294
+script = ExtResource("41_vfdtv")
+
+[node name="radArea" type="Area2D" parent="Radio"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Radio/radArea"]
+position = Vector2(1, 0)
+scale = Vector2(2, 1.77305)
+shape = SubResource("RectangleShape2D_5fadf")
+
+[connection signal="area_entered" from="Radio/radArea" to="Radio" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Radio/radArea" to="Radio" method="_on_rad_area_body_entered"]

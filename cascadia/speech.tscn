@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt14f48ont87e"]
+
+[ext_resource type="Texture2D" uid="uid://u730ovs3um4o" path="res://icon.svg" id="1_1tdmq"]
+
+[node name="speech" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 1
+offset_right = 40.0
+offset_bottom = 40.0
+text = "Are you sure?"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="RichTextLabel"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1tdmq")

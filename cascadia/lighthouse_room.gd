@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Camera2D.position = lerp($Camera2D.position, $CharacterBody2D.position, 5 * delta)
+	$Camera2D.position = lerp($Camera2D.position, $playerBody.position, 5 * delta)
