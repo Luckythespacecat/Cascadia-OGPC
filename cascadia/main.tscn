@@ -37,6 +37,7 @@ zoom = Vector2(3, 3)
 script = ExtResource("3_unc4w")
 
 [node name="WallsForLighthouseLight" type="Node2D" parent="Camera2D"]
+visible = false
 
 [node name="Wall1" type="StaticBody2D" parent="Camera2D/WallsForLighthouseLight"]
 
@@ -74,17 +75,12 @@ script = ExtResource("4_4c57u")
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_w48qg")
 
-[node name="Lighthouse_light" type="PointLight2D" parent="Camera2D"]
-energy = 0.5
-texture = ExtResource("5_kek77")
-texture_scale = 5.0
-
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
 position = Vector2(560, 200)
 
 [node name="PointLight2D2" type="PointLight2D" parent="Lighthouse"]
-visible = false
 position = Vector2(-2, -154)
+scale = Vector2(4, 4)
 energy = 0.5
 texture = ExtResource("5_kek77")
 texture_scale = 5.0
@@ -126,6 +122,13 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UserInterface" parent="CanvasLayer" instance=ExtResource("4_5vw27")]
+
+[node name="Lighthouse_light" type="PointLight2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(226, 64)
+energy = 0.5
+texture = ExtResource("5_kek77")
+texture_scale = 5.0
 
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]
 [connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]

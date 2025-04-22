@@ -10,7 +10,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Global.timeOfDay == "Night" :
-		$PointLight2D2.rotate(delta)
+		$PointLight2D2.rotate(delta / 4)
 		if $PointLight2D2.energy <= .5:
 			$PointLight2D2.energy += .001
 	if Global.timeOfDay == "Day" :
