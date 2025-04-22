@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0wo3wr75bh72"]
+
+[ext_resource type="Script" uid="uid://csq74fdemfso1" path="res://lamprey.gd" id="1_x7hqm"]
+[ext_resource type="Script" uid="uid://c8gkhvl3wvcvc" path="res://lampreyBodyCharacterScript.gd" id="2_qa140"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr0c6"]
+size = Vector2(7.19577, 6.05387)
+
+[node name="Lamprey" type="Node2D"]
+script = ExtResource("1_x7hqm")
+head_path = NodePath("CharacterBody2D")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(421, 182)
+antialiased = true
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(421, 182)
+antialiased = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_qa140")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(423.038, 183.59)
+scale = Vector2(4.99246, 6.08192)
+shape = SubResource("RectangleShape2D_vr0c6")
