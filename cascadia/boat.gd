@@ -8,6 +8,7 @@ func _ready():
 	$AnimatedSprite2D.play("default")
 	$Sail.play("Front")
 	$Timer.start()
+	Global.PlayerPos = global_position
 
 func boatMovement():
 	if Input.is_action_just_pressed("boatcounterClockwise")  and Global.swimming == false:

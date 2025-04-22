@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bao8kcpfe448j" path="res://Assets/Art/SailFinal6.png" id="10_3m54o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf3jn"]
-size = Vector2(113, 124)
+size = Vector2(113, 126)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h5au0"]
 animations = [{
@@ -83,7 +83,7 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 z_index = 3
-position = Vector2(-0.5, 30)
+position = Vector2(-0.5, 31)
 shape = SubResource("RectangleShape2D_mf3jn")
 
 [node name="Timer" type="Timer" parent="."]
