@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvu6axyirsbo3"]
+[gd_scene load_steps=14 format=3 uid="uid://bvu6axyirsbo3"]
 
 [ext_resource type="Script" uid="uid://08uyu2rgfl6d" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://c24vv1byekdgj" path="res://Assets/Art/TitlescreenImage1.png" id="2_jix8l"]
@@ -6,6 +6,42 @@
 [ext_resource type="Texture2D" uid="uid://dg5hsejvatqj6" path="res://Assets/Art/TitlescreenImage3.png" id="4_jix8l"]
 [ext_resource type="Texture2D" uid="uid://br8iafy565nv" path="res://Assets/Art/CascadiaName.png" id="5_glbon"]
 [ext_resource type="AudioStream" uid="uid://i6dvhdo8wy54" path="res://Assets/Sound/Music/ANewFuture.mp3" id="6_nlkkf"]
+
+[sub_resource type="Animation" id="Animation_8qtwp"]
+resource_name = "Squish"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.55, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(6.9, 7.1), Vector2(6.5, 7.6), Vector2(6.3, 7.8), Vector2(6.8, 7.1), Vector2(7, 7)]
+}
+
+[sub_resource type="Animation" id="Animation_dy7ct"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6.9, 7.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0o4t1"]
+_data = {
+&"RESET": SubResource("Animation_dy7ct"),
+&"Squish": SubResource("Animation_8qtwp")
+}
 
 [sub_resource type="Animation" id="Animation_nlkkf"]
 length = 0.001
@@ -54,21 +90,26 @@ script = ExtResource("1_fu7sn")
 [node name="Island" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-position = Vector2(1282, 400)
-scale = Vector2(4, 4)
+position = Vector2(1332, 1570)
+scale = Vector2(6.9, 7.1)
 texture = ExtResource("2_jix8l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Island"]
+libraries = {
+&"": SubResource("AnimationLibrary_0o4t1")
+}
 
 [node name="Sea" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-446, 534)
-scale = Vector2(4, 4)
+scale = Vector2(9, 9)
 texture = ExtResource("3_glbon")
 
 [node name="Sky" type="Sprite2D" parent="."]
 z_index = -1
 texture_filter = 1
 position = Vector2(-1022, 790)
-scale = Vector2(6, 6)
+scale = Vector2(10, 10)
 texture = ExtResource("4_jix8l")
 
 [node name="Name" type="Sprite2D" parent="."]
