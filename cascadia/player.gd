@@ -9,15 +9,21 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	#drown function
+	drown()
+	# drowning aftermath
+		
+	
+	
 	#basic movement if statements
 		#Sets the animation to idle if input is stopped
-	if $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) :
+	if $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
 		if Global.swimming == false :
 			$AnimatedSprite2D.play("Idle")
 		else: 
 			$AnimatedSprite2D.play("SwimIdle")
 		# Movement animation, pos and horizantal flip for Left
-	if $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") :
+	if $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerX -= 1.5
 		$AnimatedSprite2D.flip_h = false
 		if Global.swimming == false:
@@ -25,7 +31,7 @@ func _process(delta: float) -> void:
 		else :
 			$AnimatedSprite2D.play("Swimming")
 		# Movement animation, pos and horizantal flip for Right
-	if $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Right") :
+	if $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Right") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerX += 1.5
 		$AnimatedSprite2D.flip_h = true
 		if Global.swimming == false:
@@ -33,13 +39,13 @@ func _process(delta: float) -> void:
 		else :
 			$AnimatedSprite2D.play("Swimming")
 		#up and down movement
-	if $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Down") :
+	if $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Down") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerY += 1.5
 		if Global.swimming == false:
 			$AnimatedSprite2D.play("Run")
 		else :
 			$AnimatedSprite2D.play("Swimming")
-	if $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Up") :
+	if $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Up") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerY -= 1.5
 		if Global.swimming == false: 
 			$AnimatedSprite2D.play("Run")
@@ -64,12 +70,16 @@ func _on_boat_in_water() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "Splash" :
 		$AnimatedSprite2D.play("SwimIdle")
+	if $AnimatedSprite2D.animation == "Drown"  :
+		Global.Dead = true
+		$AnimatedSprite2D.play("Idle")
 
 func drown():
-	if Global.swimming:
-		$Timer.Start
-		on_Timer_timeout()
-			
+	if Global.swimming == true and $drownTimer.time_left == 0:
+		$drownTimer.start()
+	if Global.swimming == false:
+		$drownTimer.stop()
 
-func on_Timer_timeout():
-	pass
+func _on_drown_timer_timeout() -> void:
+	print("DIIIIIIEEEE")
+	$AnimatedSprite2D.play("Drown")
