@@ -10,7 +10,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#left down
 	if Global.boatDirection == 1 :
-		pass
+		print("Its working atleast")
+		$Point.rotation_degrees = lerp($Point.rotation_degrees, 90, 1 * delta)
 	#leftup
 	if Global.boatDirection == 7 :
 		pass

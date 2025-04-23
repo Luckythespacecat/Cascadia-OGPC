@@ -21,8 +21,8 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
-	var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
-	$CanvasLayer/UserInterface/Point.rotation = dir.angle()
+	#var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
+	#$CanvasLayer/UserInterface/Point.rotation = dir.angle()
 
 	if Global.Dead == true:
 		Global.PlayerPos = $Boat.position

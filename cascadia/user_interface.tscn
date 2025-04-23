@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxp6esaousgn2"]
+[gd_scene load_steps=8 format=3 uid="uid://dxp6esaousgn2"]
 
 [ext_resource type="Texture2D" uid="uid://byeb6w7mpyv51" path="res://Assets/Art/navIcon.png" id="1_kxhmu"]
 [ext_resource type="Script" uid="uid://u81t868obtq2" path="res://user_interface.gd" id="1_up53h"]
 [ext_resource type="Texture2D" uid="uid://dsjrr1asbe034" path="res://Assets/Art/point.png" id="2_i7dvk"]
 [ext_resource type="Texture2D" uid="uid://bphepir8f5ult" path="res://Assets/Art/SailDirectionArrow2.png" id="4_r3lf1"]
 [ext_resource type="Texture2D" uid="uid://cqv5fr3b2pv6e" path="res://Assets/Art/SailDirectionArrow1.png" id="5_hsgek"]
-[ext_resource type="Script" uid="uid://ps7jaodjgl4b" path="res://lighthouse_light_body.gd" id="6_hsgek"]
-[ext_resource type="Texture2D" uid="uid://dlbdkmdaxo7j7" path="res://Assets/Art/lighthouse-lighttexture.png" id="6_r3lf1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4522"]
 animations = [{
@@ -25,19 +23,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q287o"]
 size = Vector2(28.8, 28.8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lf1"]
-size = Vector2(1842, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsgek"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4522"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4f8x"]
-size = Vector2(2.62201, 287.88)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe3dc"]
-size = Vector2(96, 88)
-
 [node name="UserInterface" type="Node2D"]
 script = ExtResource("1_up53h")
 
@@ -45,16 +30,15 @@ script = ExtResource("1_up53h")
 visible = false
 
 [node name="NavIcon" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 1
 position = Vector2(104, 104)
 scale = Vector2(3, 3)
 texture = ExtResource("1_kxhmu")
 
 [node name="Point" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 1
 position = Vector2(104, 104)
+rotation = -1.57079
 scale = Vector2(3, 3)
 texture = ExtResource("2_i7dvk")
 
@@ -70,51 +54,6 @@ animation = &"Hover"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArrow/Area2D"]
 position = Vector2(0, -3.8147e-06)
 shape = SubResource("RectangleShape2D_q287o")
-
-[node name="WallsForLighthouseLight" type="Node2D" parent="."]
-visible = false
-
-[node name="Wall1" type="StaticBody2D" parent="WallsForLighthouseLight"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallsForLighthouseLight/Wall1"]
-position = Vector2(911, -15)
-shape = SubResource("RectangleShape2D_r3lf1")
-
-[node name="Wall2" type="StaticBody2D" parent="WallsForLighthouseLight"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallsForLighthouseLight/Wall2"]
-position = Vector2(904, 1048)
-scale = Vector2(109.739, -3.99624)
-shape = SubResource("RectangleShape2D_hsgek")
-
-[node name="Wall3" type="StaticBody2D" parent="WallsForLighthouseLight"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallsForLighthouseLight/Wall3"]
-position = Vector2(-40, 152)
-scale = Vector2(3.76, 103.56)
-shape = SubResource("RectangleShape2D_f4522")
-
-[node name="Wall4" type="StaticBody2D" parent="WallsForLighthouseLight"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallsForLighthouseLight/Wall4"]
-position = Vector2(1808, 512)
-scale = Vector2(17.3489, 3.77935)
-shape = SubResource("RectangleShape2D_q4f8x")
-
-[node name="LighthouseLightBody" type="RigidBody2D" parent="WallsForLighthouseLight"]
-position = Vector2(360, 272)
-gravity_scale = 0.0
-script = ExtResource("6_hsgek")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallsForLighthouseLight/LighthouseLightBody"]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_pe3dc")
-
-[node name="Lighthouse_light" type="PointLight2D" parent="WallsForLighthouseLight/LighthouseLightBody"]
-position = Vector2(-8, 4)
-energy = 0.5
-texture = ExtResource("6_r3lf1")
-texture_scale = 5.0
 
 [connection signal="mouse_entered" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_exited"]
