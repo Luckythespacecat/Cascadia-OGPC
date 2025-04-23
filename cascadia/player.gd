@@ -4,7 +4,6 @@ var PlayerPos : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("Idle")
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -71,8 +70,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "Splash" :
 		$AnimatedSprite2D.play("SwimIdle")
 	if $AnimatedSprite2D.animation == "Drown"  :
-		Global.Dead = true
-		$AnimatedSprite2D.play("Idle")
+		$TImerWaitDeath.start()
 
 func drown():
 	if Global.swimming == true and $drownTimer.time_left == 0:
@@ -83,3 +81,8 @@ func drown():
 func _on_drown_timer_timeout() -> void:
 	print("DIIIIIIEEEE")
 	$AnimatedSprite2D.play("Drown")
+
+func _on_t_imer_wait_death_timeout() -> void:
+		Global.Dead = true
+		$AnimatedSprite2D.play("Idle")
+		$TImerWaitDeath.stop()

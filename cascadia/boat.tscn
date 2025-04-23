@@ -1,15 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctm54eyu0b5jf"]
+[gd_scene load_steps=18 format=3 uid="uid://ctm54eyu0b5jf"]
 
 [ext_resource type="Script" uid="uid://b3fqfh4vyhfl5" path="res://boat.gd" id="1_4ia2j"]
 [ext_resource type="Texture2D" uid="uid://dbeqvq6ec66y7" path="res://Assets/Art/RaftV10.png" id="2_nova1"]
 [ext_resource type="Texture2D" uid="uid://opje8qm2xpky" path="res://Assets/Art/RaftV11.png" id="3_42cgd"]
 [ext_resource type="Texture2D" uid="uid://brqeoqxmolemg" path="res://Assets/Art/RaftV12.png" id="4_fafw3"]
-[ext_resource type="Texture2D" uid="uid://bj26j7biq4kx1" path="res://Assets/Art/SailFinal1.png" id="5_c56w4"]
-[ext_resource type="Texture2D" uid="uid://bo7n024if62l" path="res://Assets/Art/SailFinal2.png" id="6_5gt3i"]
-[ext_resource type="Texture2D" uid="uid://bpmfhax18p08s" path="res://Assets/Art/SailFinal3.png" id="7_nova1"]
-[ext_resource type="Texture2D" uid="uid://clxjjcew087fa" path="res://Assets/Art/SailFinal4.png" id="8_42cgd"]
-[ext_resource type="Texture2D" uid="uid://d32mvvrnw4gdk" path="res://Assets/Art/SailFinal5.png" id="9_fafw3"]
-[ext_resource type="Texture2D" uid="uid://bao8kcpfe448j" path="res://Assets/Art/SailFinal6.png" id="10_3m54o"]
+[ext_resource type="Texture2D" uid="uid://lr4nyujw3ay5" path="res://Assets/Art/Sail/SailV1.png" id="5_nova1"]
+[ext_resource type="Texture2D" uid="uid://b67mq7rx2gnuh" path="res://Assets/Art/Sail/SailV3.png" id="6_42cgd"]
+[ext_resource type="Texture2D" uid="uid://6ppe12a7dume" path="res://Assets/Art/Sail/SailV2.png" id="7_fafw3"]
+[ext_resource type="Texture2D" uid="uid://cl7naio47v3bs" path="res://Assets/Art/Sail/SailV4.png" id="8_3m54o"]
+[ext_resource type="Texture2D" uid="uid://bac4ikdxg6x1d" path="res://Assets/Art/Sail/SailV5.png" id="9_y4pwt"]
+[ext_resource type="Texture2D" uid="uid://dlkmdj6vr1ghd" path="res://Assets/Art/Sail/SailV6.png" id="10_xtild"]
+[ext_resource type="Texture2D" uid="uid://bnipnpucu30oo" path="res://Assets/Art/Sail/SailV7.png" id="11_mb40f"]
+[ext_resource type="Texture2D" uid="uid://e0uy6gpybaxk" path="res://Assets/Art/Sail/SailV8.png" id="12_iqbep"]
+[ext_resource type="Texture2D" uid="uid://dojoemck8htgn" path="res://Assets/Art/Sail/SailV9.png" id="13_v5m18"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf3jn"]
 size = Vector2(113, 126)
@@ -38,16 +41,16 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_c56w4")
+"texture": ExtResource("5_nova1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_5gt3i")
+"texture": ExtResource("7_fafw3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_nova1")
+"texture": ExtResource("6_42cgd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_5gt3i")
+"texture": ExtResource("7_fafw3")
 }],
 "loop": true,
 "name": &"Back",
@@ -55,19 +58,36 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_42cgd")
+"texture": ExtResource("8_3m54o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_fafw3")
+"texture": ExtResource("9_y4pwt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_3m54o")
+"texture": ExtResource("10_xtild")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_fafw3")
+"texture": ExtResource("9_y4pwt")
 }],
 "loop": true,
 "name": &"Front",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_mb40f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_iqbep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_v5m18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_iqbep")
+}],
+"loop": true,
+"name": &"Side",
 "speed": 3.0
 }]
 
@@ -110,6 +130,8 @@ position = Vector2(-2, -9)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v5m18")
 animation = &"Back"
+frame = 1
+frame_progress = 0.839315
 
 [node name="SailArea" type="Area2D" parent="."]
 

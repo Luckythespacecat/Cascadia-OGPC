@@ -252,16 +252,20 @@ frame = 11
 frame_progress = 1.0
 flip_h = true
 
-[node name="drownTimer" type="Timer" parent="."]
-wait_time = 10.0
-
 [node name="HeadArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeadArea"]
 position = Vector2(6.5, -18.5)
 shape = SubResource("RectangleShape2D_hl5qd")
 
+[node name="TImerWaitDeath" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="drownTimer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="area_entered" from="FootArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FootArea" to="." method="_on_area_2d_area_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="TImerWaitDeath" to="." method="_on_t_imer_wait_death_timeout"]
 [connection signal="timeout" from="drownTimer" to="." method="_on_drown_timer_timeout"]

@@ -17,12 +17,18 @@ func boatMovement():
 			Global.boatDirection = 1
 		elif Global.boatDirection < 1:
 			Global.boatDirection = 8
+		$AnimatedSprite2D.frame = 0
+		$Sail.frame = 0
+		$AnimatedSprite2D.play()
+		$Sail.play()
 	if Input.is_action_just_pressed("boatClockwise")  and Global.swimming == false:
 		Global.boatDirection -= 1
 		if Global.boatDirection > 8:
 			Global.boatDirection = 1
 		elif Global.boatDirection < 1:
 			Global.boatDirection = 8
+		$AnimatedSprite2D.frame = 0
+		$Sail.frame = 0
 
 #function to choose which rowing speed will occur
 func _process(delta: float) -> void: 
@@ -40,6 +46,8 @@ func sailMovement():
 	if Global.boatDirection == 1 :
 		position.x -= .25
 		position.y += .25
+		$Sail.flip_h = false
+		$Sail.play("Front")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX -= .25
 			Global.PlayerY += .25
@@ -48,6 +56,8 @@ func sailMovement():
 	if Global.boatDirection == 7 :
 		position.x -= .25
 		position.y -= .25
+		$Sail.flip_h = false
+		$Sail.play("Back")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX -= .25
 			Global.PlayerY -= .25
@@ -55,6 +65,8 @@ func sailMovement():
 	if Global.boatDirection == 3 :
 		position.x += .25
 		position.y += .25
+		$Sail.flip_h = true
+		$Sail.play("Front")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += .25
 			Global.PlayerY += .25
@@ -62,6 +74,8 @@ func sailMovement():
 	if Global.boatDirection == 5 :
 		position.x += .25
 		position.y -= .25
+		$Sail.flip_h = true
+		$Sail.play("Back")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += .25
 			Global.PlayerY -= .25
@@ -69,6 +83,8 @@ func sailMovement():
 	if Global.boatDirection == 4 :
 		position.x += .25
 		position.y += 0
+		$Sail.flip_h = true
+		$Sail.play("Side")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += .25
 			Global.PlayerY += 0
@@ -76,6 +92,8 @@ func sailMovement():
 	if Global.boatDirection == 6 :
 		position.x += 0
 		position.y -= .25
+		$Sail.flip_h = false
+		$Sail.play("Back")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += 0
 			Global.PlayerY -= .25
@@ -83,6 +101,8 @@ func sailMovement():
 	if Global.boatDirection == 8 :
 		position.x -= .25
 		position.y += 0
+		$Sail.flip_h = false
+		$Sail.play("Side")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX -= .25
 			Global.PlayerY += 0
@@ -90,6 +110,8 @@ func sailMovement():
 	if Global.boatDirection == 2 :
 		position.x += 0
 		position.y += .25
+		$Sail.flip_h = false
+		$Sail.play("Front")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += 0
 			Global.PlayerY += .25
