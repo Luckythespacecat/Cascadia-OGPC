@@ -10,29 +10,28 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#left down
 	if Global.boatDirection == 1 :
-		print("Its working atleast")
-		$Point.rotation_degrees = lerp($Point.rotation_degrees, 90, 1 * delta)
+		$Point.rotation = lerp($Point.rotation, deg_to_rad(-225.0), 2 * delta)
 	#leftup
 	if Global.boatDirection == 7 :
-		pass
+		$Point.rotation = lerp($Point.rotation, deg_to_rad(-135), 2 * delta)
 	#rightdown
 	if Global.boatDirection == 3 :
-		pass
+		$Point.rotation = lerp($Point.rotation, deg_to_rad(-315.0), 2 * delta)
 	#rightup
 	if Global.boatDirection == 5 :
-		pass
+		$Point.rotation = lerp($Point.rotation, deg_to_rad(-45), 2 * delta)
 	#right
 	if Global.boatDirection == 4 :
-		pass
+		$Point.rotation = lerp($Point.rotation, deg_to_rad(0), 2 * delta)
 	#up
 	if Global.boatDirection == 6 :
-		pass
+		$Point.rotation = lerp($Point.rotation, deg_to_rad(-90), 2 * delta)
 	#left
 	if Global.boatDirection == 8 :
-		pass
+		$Point.rotation = lerp($Point.rotation, deg_to_rad(-180), 2 * delta)
 	#down
 	if Global.boatDirection == 2 :
-		pass
+		$Point.rotation = lerp($Point.rotation, deg_to_rad(-270.0), 2 * delta)
 	
 func _on_area_2d_mouse_entered() -> void:
 	$LeftArrow.frame = 1

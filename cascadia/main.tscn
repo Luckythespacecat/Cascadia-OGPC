@@ -120,7 +120,6 @@ wait_time = 60.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UserInterface" parent="CanvasLayer" instance=ExtResource("4_5vw27")]
-position = Vector2(-101, 337)
 
 [node name="Lighthouse_light" type="PointLight2D" parent="CanvasLayer"]
 visible = false
