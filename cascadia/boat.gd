@@ -11,31 +11,26 @@ func _ready():
 	Global.PlayerPos = global_position
 
 func boatMovement():
-	if Input.is_action_just_pressed("boatcounterClockwise")  and Global.swimming == false:
-		Global.boatDirection += 1
-		if Global.boatDirection > 8:
-			Global.boatDirection = 1
-		elif Global.boatDirection < 1:
-			Global.boatDirection = 8
-		$AnimatedSprite2D.frame = 0
-		$Sail.frame = 0
-		$AnimatedSprite2D.play()
-		$Sail.play()
-	if Input.is_action_just_pressed("boatClockwise")  and Global.swimming == false:
-		Global.boatDirection -= 1
-		if Global.boatDirection > 8:
-			Global.boatDirection = 1
-		elif Global.boatDirection < 1:
-			Global.boatDirection = 8
-		$AnimatedSprite2D.frame = 0
-		$Sail.frame = 0
+	Global.boatDirection += 1
+	if Global.boatDirection > 8:
+		Global.boatDirection = 1
+	elif Global.boatDirection < 1:
+		Global.boatDirection = 8
+	$AnimatedSprite2D.frame = 0
+	$Sail.frame = 0
+	$AnimatedSprite2D.play()
+	$Sail.play()
 
 #function to choose which rowing speed will occur
 func _process(delta: float) -> void: 
+
+	AdjustSailAction()
+
 	Global.boatPos = self.global_position
 	if $Player/AnimatedSprite2D.animation != "Splash" :
 		sailMovement()
-	boatMovement()
+
+
 #Ensure boat follows player - does nothing
 func randomgen(): 
 	rand = randi_range(0, 1)
@@ -136,3 +131,17 @@ func _on_sail_area_area_entered(area: Area2D) -> void:
 func _on_sail_area_area_exited(area: Area2D) -> void:
 	if area.name == "HeadArea" : 
 		$Player.z_index = 4
+
+func AdjustSailAction() :
+	for area in $SailAdjust.get_overlapping_areas() :
+		if area.name == "BodyArea" : 
+			Global.AdjustSail = true
+
+	if Global.AdjustSail == true and Input.is_action_just_pressed("ui_accept") :
+		$Player/AnimatedSprite2D.play("Pick_Up")
+		boatMovement()
+
+		$AnimatedSprite2D.frame = 0
+		$Sail.frame = 0
+		$AnimatedSprite2D.play()
+		$Sail.play()
