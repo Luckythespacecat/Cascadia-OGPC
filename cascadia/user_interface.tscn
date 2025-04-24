@@ -43,6 +43,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_i7dvk")
 
 [node name="LeftArrow" type="AnimatedSprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(-112, 56)
 scale = Vector2(5, 5)

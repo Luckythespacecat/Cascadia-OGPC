@@ -29,10 +29,11 @@ func _process(delta: float) -> void:
 		Global.PlayerX = Global.PlayerPos.x
 		Global.PlayerY = Global.PlayerPos.y
 		Global.Dead = false
+		
+	$CanvasLayer/Lighthouse_light.global_rotation = $Lighthouse/PointLight2D.rotation
 
 # Day and night cycle transitions here
 	if Global.timeOfDay == "Night" :
-		$CanvasLayer/Lighthouse_light.global_rotation = $Lighthouse/PointLight2D.rotation
 		if $sun.energy <= .75:
 			$sun.energy += .0025
 
