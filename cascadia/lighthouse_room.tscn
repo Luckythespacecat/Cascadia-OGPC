@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://duuwm1fvd87y"]
+[gd_scene load_steps=53 format=3 uid="uid://duuwm1fvd87y"]
 
 [ext_resource type="Script" uid="uid://dt6ptlffad6xp" path="res://lighthouse_room.gd" id="1_cde3n"]
 [ext_resource type="Texture2D" uid="uid://dvn0u6vi8x38a" path="res://Assets/Art/pink.png" id="1_rhv4f"]
@@ -41,6 +41,8 @@
 [ext_resource type="Texture2D" uid="uid://bb063e2wr0dhi" path="res://Assets/Art/Player/PlayerSwim11.png" id="38_rds66"]
 [ext_resource type="Texture2D" uid="uid://u730ovs3um4o" path="res://icon.svg" id="40_p70hd"]
 [ext_resource type="Script" uid="uid://bro5i6hqxoiw7" path="res://radio.gd" id="41_vfdtv"]
+[ext_resource type="Texture2D" uid="uid://c7pj7xythmrw2" path="res://Assets/Art/door.png" id="42_vfdtv"]
+[ext_resource type="Texture2D" uid="uid://34dl6u5ill5" path="res://Assets/Art/Lighthouse-Room_LightTexture.png" id="43_5fadf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_36v51"]
 
@@ -211,6 +213,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fadf"]
 size = Vector2(65, 74)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abqyo"]
+size = Vector2(7.78906, 8.01094)
+
 [node name="Lighthouse_Room" type="Node2D"]
 script = ExtResource("1_cde3n")
 
@@ -237,7 +242,7 @@ texture = ExtResource("4_p2oxh")
 [node name="Back" type="Sprite2D" parent="."]
 z_index = -1
 texture_filter = 1
-scale = Vector2(-19.5626, 20.4974)
+scale = Vector2(-3.6439, 3.8451)
 texture = ExtResource("5_ug2bp")
 
 [node name="playerBody" type="CharacterBody2D" parent="."]
@@ -281,8 +286,8 @@ position = Vector2(43.75, -136)
 shape = SubResource("RectangleShape2D_vfdtv")
 
 [node name="Radio" type="AnimatedSprite2D" parent="."]
-position = Vector2(-60, -23)
-scale = Vector2(0.5, 0.564)
+position = Vector2(-72, -80)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_5fadf")
 frame_progress = 0.0165294
 script = ExtResource("41_vfdtv")
@@ -294,5 +299,33 @@ position = Vector2(1, 0)
 scale = Vector2(2, 1.77305)
 shape = SubResource("RectangleShape2D_5fadf")
 
+[node name="Door" type="Sprite2D" parent="."]
+z_index = 10
+texture_filter = 1
+position = Vector2(16, 256)
+texture = ExtResource("42_vfdtv")
+
+[node name="Doorlight" type="PointLight2D" parent="."]
+position = Vector2(16, 280)
+rotation = 0.865902
+scale = Vector2(2, 2)
+energy = 0.35
+texture = ExtResource("43_5fadf")
+
+[node name="DoorArea" type="Area2D" parent="Doorlight"]
+position = Vector2(-111.819, -84.6201)
+rotation = -0.865902
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doorlight/DoorArea"]
+position = Vector2(16, 252)
+scale = Vector2(6.16249, 6.99043)
+shape = SubResource("RectangleShape2D_abqyo")
+
+[node name="sun" type="DirectionalLight2D" parent="."]
+energy = 0.4
+blend_mode = 1
+
 [connection signal="area_entered" from="Radio/radArea" to="Radio" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Radio/radArea" to="Radio" method="_on_rad_area_body_entered"]
+[connection signal="body_entered" from="Doorlight/DoorArea" to="." method="_on_door_area_body_entered"]

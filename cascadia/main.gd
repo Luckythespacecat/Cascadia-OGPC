@@ -21,18 +21,22 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
-	var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
-	$CanvasLayer/UserInterface/Point.rotation = dir.angle()
-	
+	#var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
+	#$CanvasLayer/UserInterface/Point.rotation = dir.angle()
 
-	
+	if Global.Dead == true:
+		Global.PlayerPos = $Boat.position
+		Global.PlayerX = Global.PlayerPos.x
+		Global.PlayerY = Global.PlayerPos.y
+		Global.Dead = false
 		
+	$CanvasLayer/Lighthouse_light.global_rotation = $Lighthouse/PointLight2D.rotation
+
 # Day and night cycle transitions here
 	if Global.timeOfDay == "Night" :
-		$CanvasLayer/Lighthouse_light.global_rotation = $Lighthouse/PointLight2D2.rotation
 		if $sun.energy <= .75:
 			$sun.energy += .0025
-		
+
 	if Global.timeOfDay == "Day" and  $sun.energy > 0:
 		$sun.energy -= .0025
 

@@ -6,16 +6,16 @@ extends Node
 func _ready() -> void:
 	
 	var Seatween = get_tree().create_tween()
-	Seatween.tween_property($Sea, "position", Vector2(390, 400), 3).set_trans(Tween.TRANS_QUINT)
+	Seatween.tween_property($Sea, "position", Vector2(700, 550), 3).set_trans(Tween.TRANS_QUINT)
 
 	var Landtween = get_tree().create_tween()
-	Landtween.tween_property($Island, "position", Vector2(740, 400), 3).set_trans(Tween.TRANS_QUINT)
+	Landtween.tween_property($Island, "position", Vector2(780, 600), 3).set_trans(Tween.TRANS_QUINT)
 	
 	var Skytween = get_tree().create_tween()
-	Skytween.tween_property($Sky, "position", Vector2(760.0, 367.0), 3).set_trans(Tween.TRANS_QUART)
+	Skytween.tween_property($Sky, "position", Vector2(900.0, 500.0), 3).set_trans(Tween.TRANS_QUART)
 
 	var NametweenPos = get_tree().create_tween()
-	NametweenPos.tween_property($Name, "position", Vector2(582.0, 53.0), 3).set_trans(Tween.TRANS_QUART)
+	NametweenPos.tween_property($Name, "position", Vector2(1100.0, 70.0), 3).set_trans(Tween.TRANS_QUART)
 
 	$Name/StretchOut.start()
 

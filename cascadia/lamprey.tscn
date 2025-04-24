@@ -1,27 +1,80 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0wo3wr75bh72"]
+[gd_scene load_steps=14 format=3 uid="uid://d0wo3wr75bh72"]
 
 [ext_resource type="Script" uid="uid://csq74fdemfso1" path="res://lamprey.gd" id="1_x7hqm"]
-[ext_resource type="Script" uid="uid://c8gkhvl3wvcvc" path="res://lampreyBodyCharacterScript.gd" id="2_qa140"]
+[ext_resource type="Texture2D" uid="uid://dp7ab0jc05lw6" path="res://Assets/Art/Larry/Larry5.png" id="2_q7mru"]
+[ext_resource type="Texture2D" uid="uid://b5pibnqpykkxu" path="res://Assets/Art/Larry/Larry6.png" id="3_ty12h"]
+[ext_resource type="Texture2D" uid="uid://b4fnvvxn5r5ic" path="res://Assets/Art/Larry/Larry7.png" id="4_4cndh"]
+[ext_resource type="Texture2D" uid="uid://3epfu708g3ql" path="res://Assets/Art/Larry/Larry1.png" id="4_xfnb5"]
+[ext_resource type="Texture2D" uid="uid://4071fns8s3j" path="res://Assets/Art/Larry/Larry2.png" id="5_d22oi"]
+[ext_resource type="Texture2D" uid="uid://cwyyrbqvq8hkq" path="res://Assets/Art/Larry/Larry8.png" id="5_jva4m"]
+[ext_resource type="Texture2D" uid="uid://b06khul5ff73r" path="res://Assets/Art/Larry/Larry3.png" id="6_4cndh"]
+[ext_resource type="Texture2D" uid="uid://dmrou1cqiyjj" path="res://Assets/Art/Larry/Larry9.png" id="6_t8itg"]
+[ext_resource type="Texture2D" uid="uid://dov5a3h1tcwms" path="res://Assets/Art/Larry/Larry10.png" id="7_0o351"]
+[ext_resource type="Texture2D" uid="uid://dql5hxpr2gmsv" path="res://Assets/Art/Larry/Larry4.png" id="7_jva4m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr0c6"]
-size = Vector2(7.19577, 6.05387)
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7hqm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q7mru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ty12h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4cndh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jva4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_t8itg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vr0c6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_0o351")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xfnb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d22oi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4cndh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jva4m")
+}],
+"loop": true,
+"name": &"Talk",
+"speed": 5.0
+}]
 
 [node name="Lamprey" type="Node2D"]
 script = ExtResource("1_x7hqm")
-head_path = NodePath("CharacterBody2D")
 
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(421, 182)
-antialiased = true
+[node name="Body" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_x7hqm")
+frame_progress = 0.52224
 
-[node name="Line2D2" type="Line2D" parent="."]
-position = Vector2(421, 182)
-antialiased = true
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("2_qa140")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(423.038, 183.59)
-scale = Vector2(4.99246, 6.08192)
-shape = SubResource("RectangleShape2D_vr0c6")
+[node name="Head" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_vr0c6")
+animation = &"Talk"
+frame_progress = 0.929982

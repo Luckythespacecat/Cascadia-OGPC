@@ -78,12 +78,10 @@ shape = SubResource("RectangleShape2D_w48qg")
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
 position = Vector2(506, 630)
 
-[node name="PointLight2D2" type="PointLight2D" parent="Lighthouse"]
-position = Vector2(-2, -154)
-scale = Vector2(4, 4)
-energy = 0.5
+[node name="PointLight2D" type="PointLight2D" parent="Lighthouse"]
+position = Vector2(0.75, -146.75)
+scale = Vector2(15.8494, 15.3819)
 texture = ExtResource("5_kek77")
-texture_scale = 5.0
 
 [node name="Boat" parent="." instance=ExtResource("5_hm6kk")]
 z_index = 1
@@ -111,18 +109,17 @@ energy = 0.0
 blend_mode = 1
 
 [node name="Day" type="Timer" parent="sun"]
-wait_time = 5.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 
 [node name="Night" type="Timer" parent="sun"]
-wait_time = 60.0
+wait_time = 20.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UserInterface" parent="CanvasLayer" instance=ExtResource("4_5vw27")]
-position = Vector2(-101, 337)
 
 [node name="Lighthouse_light" type="PointLight2D" parent="CanvasLayer"]
 visible = false
