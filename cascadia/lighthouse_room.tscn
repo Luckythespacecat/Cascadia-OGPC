@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://duuwm1fvd87y"]
+[gd_scene load_steps=53 format=3 uid="uid://duuwm1fvd87y"]
 
 [ext_resource type="Script" uid="uid://dt6ptlffad6xp" path="res://lighthouse_room.gd" id="1_cde3n"]
 [ext_resource type="Texture2D" uid="uid://dvn0u6vi8x38a" path="res://Assets/Art/pink.png" id="1_rhv4f"]
@@ -213,6 +213,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fadf"]
 size = Vector2(65, 74)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abqyo"]
+size = Vector2(7.78906, 8.01094)
+
 [node name="Lighthouse_Room" type="Node2D"]
 script = ExtResource("1_cde3n")
 
@@ -313,5 +316,13 @@ texture = ExtResource("43_5fadf")
 energy = 0.4
 blend_mode = 1
 
+[node name="DoorArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2(16, 252)
+scale = Vector2(6.16249, 6.99043)
+shape = SubResource("RectangleShape2D_abqyo")
+
 [connection signal="area_entered" from="Radio/radArea" to="Radio" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Radio/radArea" to="Radio" method="_on_rad_area_body_entered"]
+[connection signal="body_entered" from="DoorArea" to="." method="_on_door_area_body_entered"]
