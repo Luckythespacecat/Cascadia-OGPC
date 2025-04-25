@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvu6axyirsbo3"]
+[gd_scene load_steps=17 format=3 uid="uid://bvu6axyirsbo3"]
 
 [ext_resource type="Script" uid="uid://08uyu2rgfl6d" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://c24vv1byekdgj" path="res://Assets/Art/TitlescreenImage1.png" id="2_jix8l"]
@@ -41,6 +41,43 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_dy7ct"),
 &"Squish": SubResource("Animation_8qtwp")
+}
+
+[sub_resource type="Animation" id="Animation_0k4wn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-446, 534)]
+}
+
+[sub_resource type="Animation" id="Animation_0o4t1"]
+resource_name = "SeaMove"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.16667, 3.76667, 5.63333, 7.73333, 8),
+"transitions": PackedFloat32Array(1, 6.72717, 1, 14.9285, 2.46229, 2.73208),
+"update": 0,
+"values": [Vector2(700, 550), Vector2(720, 550), Vector2(700, 550), Vector2(680, 550), Vector2(695, 550), Vector2(700, 550)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0k4wn"]
+_data = {
+&"RESET": SubResource("Animation_0k4wn"),
+&"SeaMove": SubResource("Animation_0o4t1")
 }
 
 [sub_resource type="Animation" id="Animation_nlkkf"]
@@ -106,16 +143,21 @@ position = Vector2(-446, 534)
 scale = Vector2(9, 9)
 texture = ExtResource("3_glbon")
 
+[node name="SeaAnimation" type="AnimationPlayer" parent="Sea"]
+libraries = {
+&"": SubResource("AnimationLibrary_0k4wn")
+}
+
 [node name="Sky" type="Sprite2D" parent="."]
 z_index = -1
 texture_filter = 1
-position = Vector2(-1022, 790)
-scale = Vector2(10, 10)
+position = Vector2(120, 827)
+scale = Vector2(13, 13)
 texture = ExtResource("4_jix8l")
 
 [node name="Name" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(773, -341)
+position = Vector2(1752, -843)
 rotation = 0.150768
 scale = Vector2(6, 6)
 texture = ExtResource("5_glbon")
