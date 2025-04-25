@@ -1,9 +1,16 @@
 extends Node2D
 
-var next_scene = preload("res://main.tscn")
+@onready var main_scene = preload("res://main.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	print("main_scene set in Inspector:", main_scene)
+	if main_scene:
+		var inst = main_scene.instantiate()
+		print("Can instantiate main_scene:", inst)
+	else:
+		print("main_scene is NULL!")
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,8 +22,11 @@ func _process(delta: float) -> void:
 	if Global.timeOfDay == "Day" :
 		$Doorlight.energy = .35
 
-
 func _on_door_area_body_entered(body: Node2D) -> void:
-	if body.name == "playerBody" :
-		get_tree().change_scene_to_packed(next_scene)
-		
+	if body.name == "playerBody":
+		Global.SceneJustIn = "Lighthouse"
+		print("Scene switching...")
+		if main_scene:
+			get_tree().change_scene_to_file("res://main.tscn")
+		else:
+			print("main_scene is NULL")

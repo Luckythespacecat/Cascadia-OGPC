@@ -19,10 +19,24 @@ func spawnWood():
 	
 func _ready() -> void:
 	pass
-	
+
+
+func ReSetupScene() :
+		Global.boatDirection = 0
+		$SceneReset.start()
+		$Boat.position = Vector2(358.0, 661.0)
+		Global.PlayerY += 10
+
 func _process(delta: float) -> void:
 	#var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
 	#$CanvasLayer/UserInterface/Point.rotation = dir.angle()
+	#scene transition setup
+	if Global.SceneJustIn == "Main" :
+		pass
+	elif  Global.SceneJustIn == "Lighthouse" :
+		get_tree().reload_current_scene()
+		ReSetupScene()
+		Global.SceneJustIn = "Main"
 
 	if Global.Dead == true:
 		Global.PlayerPos = $Boat.position
@@ -39,7 +53,6 @@ func _process(delta: float) -> void:
 
 	if Global.timeOfDay == "Day" and  $sun.energy > 0:
 		$sun.energy -= .0025
-
 
 func _on_resource_timer_timeout() -> void:
 	spawnWood()

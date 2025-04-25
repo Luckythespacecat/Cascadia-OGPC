@@ -22,14 +22,18 @@ func _process(delta: float) -> void:
 		#$AnimatedSprite2D.
 
 func _on_door_area_entered(area: Area2D) -> void:
-	if area.name == "FootArea" :
+	if area.name == "FootArea" and Global.SceneJustIn == "Main" :
 		get_tree().change_scene_to_packed(next_scene)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "HeadArea" :
 		Global.swimming = false
 
-
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" :
 		Global.swimming = true
+
+
+func _on_door_area_exited(area: Area2D) -> void:
+	if area.name == "FootArea" and Global.SceneJustIn == "Lighthouse" :
+		Global.SceneJustIn == "Main"
