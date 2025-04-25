@@ -130,9 +130,10 @@ func AdjustSailAction() :
 		if area.name == "BodyArea" : 
 			Global.AdjustSail = true
 
-	if Global.AdjustSail == true and Input.is_action_just_pressed("ui_accept") :
+	if Global.AdjustSail == true and Input.is_action_just_pressed("boatClockwise") :
 		$Player/AnimatedSprite2D.play("Pick_Up")
 		boatMovement()
+
 
 		$AnimatedSprite2D.frame = 0
 		$Sail.frame = 0
