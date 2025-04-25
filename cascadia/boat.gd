@@ -138,3 +138,5 @@ func AdjustSailAction() :
 		$Sail.frame = 0
 		$AnimatedSprite2D.play()
 		$Sail.play()
+		
+		

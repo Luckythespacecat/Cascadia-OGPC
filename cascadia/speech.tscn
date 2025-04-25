@@ -1,25 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://dt14f48ont87e"]
 
-[ext_resource type="Script" uid="uid://c2w8kx5c5t6q7" path="res://speech.gd" id="1_1tdmq"]
-[ext_resource type="Texture2D" uid="uid://sba2k62dix7h" path="res://Assets/Art/pinkBack.png" id="2_5liiy"]
+[ext_resource type="Script" uid="uid://8tt1wnbia2o4" path="res://text_box.gd" id="1_5liiy"]
+[ext_resource type="Texture2D" uid="uid://cr6bo4jmw2jk5" path="res://Assets/Art/TextBox.png" id="2_5liiy"]
 [ext_resource type="FontFile" uid="uid://cqgfje1k4qld0" path="res://Assets/PixelifySans-VariableFont_wght.ttf" id="3_m41lb"]
 
 [sub_resource type="Theme" id="Theme_tvwxi"]
 default_font = ExtResource("3_m41lb")
 default_font_size = 100
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="TextBox" type="MarginContainer"]
 anchors_preset = -1
 anchor_right = 0.011
 anchor_bottom = 0.02
 offset_right = 20.376
 offset_bottom = 19.92
-script = ExtResource("1_1tdmq")
+script = ExtResource("1_5liiy")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
 layout_mode = 2
 texture = ExtResource("2_5liiy")
-region_rect = Rect2(32, 32, 64, 64)
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -33,5 +34,5 @@ theme_override_fonts/font = ExtResource("3_m41lb")
 vertical_alignment = 1
 justification_flags = 161
 
-[node name="letterTimer" type="Timer" parent="."]
-one_shot = true
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+wait_time = 0.03
