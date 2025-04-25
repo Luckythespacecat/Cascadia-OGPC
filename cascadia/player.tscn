@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bxv1m6f121ouq"]
+[gd_scene load_steps=52 format=3 uid="uid://bxv1m6f121ouq"]
 
 [ext_resource type="Script" uid="uid://e2pbsyv7kytl" path="res://player.gd" id="1_tpr4o"]
 [ext_resource type="Texture2D" uid="uid://cajtm0lw2mkvl" path="res://Assets/Art/Player/Player12.png" id="1_y8x56"]
@@ -127,7 +127,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_n2cml")
 }],
-"loop": true,
+"loop": false,
 "name": &"Pick_Up",
 "speed": 7.0
 }, {
@@ -233,6 +233,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hl5qd"]
 size = Vector2(17, 13)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gr2b"]
+size = Vector2(20, 45)
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_tpr4o")
 
@@ -245,10 +248,10 @@ shape = SubResource("RectangleShape2D_ek41f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(8, -1)
+position = Vector2(9, -1)
 sprite_frames = SubResource("SpriteFrames_70fjt")
-animation = &"Drown"
-frame = 11
+animation = &"Pick_Up"
+frame = 4
 frame_progress = 1.0
 flip_h = true
 
@@ -263,6 +266,12 @@ wait_time = 2.0
 
 [node name="drownTimer" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="BodyArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
+position = Vector2(6, -2.5)
+shape = SubResource("RectangleShape2D_8gr2b")
 
 [connection signal="area_entered" from="FootArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FootArea" to="." method="_on_area_2d_area_exited"]
