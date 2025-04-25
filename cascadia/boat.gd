@@ -134,7 +134,6 @@ func AdjustSailAction() :
 		$Player/AnimatedSprite2D.play("Pick_Up")
 		boatMovement()
 
-
 		$AnimatedSprite2D.frame = 0
 		$Sail.frame = 0
 		$AnimatedSprite2D.play()

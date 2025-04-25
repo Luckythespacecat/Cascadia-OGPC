@@ -22,10 +22,10 @@ func _ready() -> void:
 
 
 func ReSetupScene() :
-		Global.boatDirection = 0
-		$SceneReset.start()
-		$Boat.position = Vector2(358.0, 661.0)
-		Global.PlayerY += 10
+	print("Hey it works?")
+	Global.boatDirection = 0
+	$Boat.position = Vector2(358.0, 661.0)
+	Global.PlayerY += 10
 
 func _process(delta: float) -> void:
 	#var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
