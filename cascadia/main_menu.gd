@@ -1,7 +1,5 @@
 extends Node
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -9,7 +7,7 @@ func _ready() -> void:
 	Seatween.tween_property($Sea, "position", Vector2(700, 550), 3).set_trans(Tween.TRANS_QUINT)
 
 	var Landtween = get_tree().create_tween()
-	Landtween.tween_property($Island, "position", Vector2(780, 600), 3).set_trans(Tween.TRANS_QUINT)
+	Landtween.tween_property($Island, "position", Vector2(1180, 910), 3).set_trans(Tween.TRANS_QUINT)
 	
 	var Skytween = get_tree().create_tween()
 	Skytween.tween_property($Sky, "position", Vector2(900.0, 500.0), 3).set_trans(Tween.TRANS_QUART)
@@ -19,6 +17,7 @@ func _ready() -> void:
 
 	$Name/StretchOut.start()
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -26,6 +25,7 @@ func _process(delta: float) -> void:
 func _on_stretch_out_timeout() -> void:
 	$Name/AnimationPlayer.play("Stretch")
 	$Name/StretchOutFinished.start()
+	$Sea/SeaAnimation.play("SeaMove")
 
 func _on_stretch_out_finished_timeout() -> void:
 	$Name/AnimationPlayer.stop()
