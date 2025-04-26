@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=19 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Script" uid="uid://bf5q0piq01r8i" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ba6hublqfsgni" path="res://Assets/Art/lightTexutre.png" id="8_4c57u"]
 [ext_resource type="PackedScene" uid="uid://d0wo3wr75bh72" path="res://lamprey.tscn" id="10_efxa6"]
 [ext_resource type="AudioStream" uid="uid://cvpm45g7wr55t" path="res://Assets/Sound/Music/TheGreatOcean.mp3" id="12_dg77c"]
+[ext_resource type="AudioStream" uid="uid://i6dvhdo8wy54" path="res://Assets/Sound/Music/ANewFuture.mp3" id="13_ycdy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(1842, 50)
@@ -140,6 +141,9 @@ position = Vector2(901, -314)
 
 [node name="TheGreatOcean" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_dg77c")
+
+[node name="ANewFuture" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ycdy4")
 autoplay = true
 
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]

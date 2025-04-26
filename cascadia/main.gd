@@ -64,10 +64,14 @@ func _on_resource_timer_timeout() -> void:
 #look in scene tree under "sun" node to change the time for day and night cycles
 func _on_day_timeout() -> void:
 	print("Day over")
+	$TheGreatOcean.play()
+	$ANewFuture.stop()
 	$sun/Night.start()
 	Global.timeOfDay = "Night"
 
 func _on_night_timeout() -> void:
+	$TheGreatOcean.stop()
+	$ANewFuture.play()
 	print("Nights over")
 	$sun/Day.start()
 	Global.timeOfDay = "Day"
