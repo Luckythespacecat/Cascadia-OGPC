@@ -38,7 +38,7 @@ texture = ExtResource("1_kxhmu")
 [node name="Point" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(104, 104)
-rotation = 6.28318
+rotation = 7.06857
 scale = Vector2(3, 3)
 texture = ExtResource("2_i7dvk")
 

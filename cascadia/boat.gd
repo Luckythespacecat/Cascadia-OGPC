@@ -13,7 +13,7 @@ func _ready():
 
 func boatMovement():
 	Global.boatDirection += 1
-	Global.SailMoved = true
+	Global.SailMovedE = true
 	if Global.boatDirection > 8:
 		Global.boatDirection = 1
 	elif Global.boatDirection < 1:
@@ -25,7 +25,7 @@ func boatMovement():
 
 func boatMovement2():
 	Global.boatDirection -= 1
-	Global.SailMoved = true
+	Global.SailMovedQ = true
 	if Global.boatDirection > 8:
 		Global.boatDirection = 1
 	elif Global.boatDirection < 1:
