@@ -6,9 +6,11 @@
 
 [sub_resource type="Theme" id="Theme_tvwxi"]
 default_font = ExtResource("3_m41lb")
-default_font_size = 25
+default_font_size = 15
 
 [node name="TextBox" type="MarginContainer"]
+z_index = 100
+texture_filter = 1
 anchors_preset = -1
 anchor_right = 0.011
 anchor_bottom = 0.02
@@ -30,6 +32,7 @@ patch_margin_bottom = 8
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer"]
+z_index = 101
 texture_filter = 1
 layout_mode = 2
 theme = SubResource("Theme_tvwxi")

@@ -3,12 +3,18 @@ extends Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	CameraToPlayer()
-
+	Global.custcene == 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	CameraToPlayer()
+	if zoom.x < 6.0:
+		zoom.x = lerp(zoom.x, 6.0, delta / 4)
+	if zoom.y < 6.0:
+		zoom.y = lerp(zoom.y, 6.0, delta / 4 )
+	if Global.custcene == 0 :
+		self.global_position = $/root/Main/Lamprey.global_position
+	if Global.custcene == 2 :
+		CameraToPlayer()
 
 
 #Creating a tween, 'tween the camera and player
