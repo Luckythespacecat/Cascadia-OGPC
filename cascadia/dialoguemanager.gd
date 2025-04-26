@@ -2,9 +2,7 @@ extends Node
 
 @onready var text_box_scene = preload("res://speech.tscn")
 
-var dialogue_lines: Array[String] = [
-	"HI NATHAN"
-]
+var dialogue_lines: Array[String] = []
 var current_line_index = 0
 
 var text_box
@@ -12,6 +10,9 @@ var text_box_position: Vector2
 
 var is_dialogue_active = false
 var can_advance_line = false
+
+func _ready() -> void:
+	set_process_unhandled_input(true)
 
 func start_dialogue(position: Vector2, lines: Array[String]):
 	if is_dialogue_active:

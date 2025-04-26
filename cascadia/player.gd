@@ -86,7 +86,7 @@ func _on_drown_timer_timeout() -> void:
 	print("DIIIIIIEEEE")
 	$AnimatedSprite2D.play("Drown")
 
-func _on_t_imer_wait_death_timeout() -> void:
+func _on_timer_wait_death_timeout() -> void:
 		Global.Dead = true
 		$AnimatedSprite2D.play("Idle")
 		$TImerWaitDeath.stop()
