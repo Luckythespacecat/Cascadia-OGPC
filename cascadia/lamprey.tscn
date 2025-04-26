@@ -70,7 +70,7 @@ script = ExtResource("1_x7hqm")
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_x7hqm")
-frame_progress = 0.365231
+frame_progress = 0.597533
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

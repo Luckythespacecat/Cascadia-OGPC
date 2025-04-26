@@ -19,7 +19,7 @@ func spawnItems(): #Spawning squence, I will use as template to make more spawn 
 	# statement for print randomized coridanates
 	
 func _ready() -> void:
-	pass
+	Global.custcene = 1
 
 func ReSetupScene() :
 	Global.boatDirection = 0

@@ -18,7 +18,8 @@ func _process(delta):
 		"  a figment of your imagination  "
 	])
 	
-
+	if Dialoguemanager.current_line_index == 8 and Dialoguemanager.can_advance_line == true:
+		Global.custcene = 1
 
 	if Dialoguemanager.can_advance_line == true :
 		$Head.play("Idle")

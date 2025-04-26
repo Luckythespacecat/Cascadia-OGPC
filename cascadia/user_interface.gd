@@ -1,5 +1,6 @@
 extends Node2D
 
+var newPointRotation = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,30 +9,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#left down
-	if Global.boatDirection == 1 :
-		$Point.rotation = lerp($Point.rotation, deg_to_rad(-225.0), 2 * delta)
-	#leftup
-	if Global.boatDirection == 7 :
-		$Point.rotation = lerp($Point.rotation, deg_to_rad(-135), 2 * delta)
-	#rightdown
-	if Global.boatDirection == 3 :
-		$Point.rotation = lerp($Point.rotation, deg_to_rad(-315.0), 2 * delta)
-	#rightup
-	if Global.boatDirection == 5 :
-		$Point.rotation = lerp($Point.rotation, deg_to_rad(-45), 2 * delta)
-	#right
-	if Global.boatDirection == 4 :
-		$Point.rotation = lerp($Point.rotation, deg_to_rad(0), 2 * delta)
-	#up
-	if Global.boatDirection == 6 :
-		$Point.rotation = lerp($Point.rotation, deg_to_rad(-90), 2 * delta)
-	#left
-	if Global.boatDirection == 8 :
-		$Point.rotation = lerp($Point.rotation, deg_to_rad(-180), 2 * delta)
-	#down
-	if Global.boatDirection == 2 :
-		$Point.rotation = lerp($Point.rotation, deg_to_rad(-270.0), 2 * delta)
+	# Detects if the sail is set to a new direction and rotates the compass to indicate to player easier
+	if Global.SailMoved == true :
+		newPointRotation += deg_to_rad($Point.rotation) + 45
+	if $Point.rotation != newPointRotation :
+		$Point.rotation = lerp($Point.rotation, deg_to_rad(newPointRotation), 2 * delta)
+	if $Point.rotation == newPointRotation :
+		Global.SailMoved = false
 	
 func _on_area_2d_mouse_entered() -> void:
 	$LeftArrow.frame = 1

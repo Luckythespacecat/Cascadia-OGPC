@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://kaqax1yo1bqx"]
+
+[ext_resource type="Script" uid="uid://3rofp5eywerl" path="res://larry_introduction.gd" id="1_84xc3"]
+[ext_resource type="PackedScene" uid="uid://b6g35j1nhodem" path="res://map.tscn" id="2_id31e"]
+[ext_resource type="Script" uid="uid://dn1m482vui8s" path="res://camera_2d.gd" id="3_bhgkr"]
+[ext_resource type="PackedScene" uid="uid://d0wo3wr75bh72" path="res://lamprey.tscn" id="11_wmyvf"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_84xc3")
+
+[node name="Map" parent="." instance=ExtResource("2_id31e")]
+position = Vector2(-272, -168)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-40, -24)
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("3_bhgkr")
+
+[node name="TestingTiles" type="Node" parent="."]
+
+[node name="ResourceTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="sun" type="DirectionalLight2D" parent="."]
+energy = 0.0
+blend_mode = 1
+
+[node name="Day" type="Timer" parent="sun"]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="Night" type="Timer" parent="sun"]
+wait_time = 20.0
+one_shot = true
+
+[node name="SceneReset" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Lamprey" parent="." instance=ExtResource("11_wmyvf")]
+position = Vector2(901, -314)
+
+[connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]
+[connection signal="timeout" from="sun/Day" to="." method="_on_day_timeout"]
+[connection signal="timeout" from="sun/Night" to="." method="_on_night_timeout"]
+[connection signal="timeout" from="SceneReset" to="." method="_on_scene_reset_timeout"]
