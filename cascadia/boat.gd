@@ -49,18 +49,17 @@ func sailMovement():
 	if Global.boatDirection == 1 :
 		position.x -= .25
 		position.y += .25
-		$Sail.flip_h = false
-		$Sail.play("Front")
+		$Sail.flip_h = true
+		$Sail.play("AngledFront")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX -= .25
 			Global.PlayerY += .25
-			
 	#leftup
 	if Global.boatDirection == 7 :
 		position.x -= .25
 		position.y -= .25
 		$Sail.flip_h = false
-		$Sail.play("Back")
+		$Sail.play("AngledBack")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX -= .25
 			Global.PlayerY -= .25
@@ -68,8 +67,8 @@ func sailMovement():
 	if Global.boatDirection == 3 :
 		position.x += .25
 		position.y += .25
-		$Sail.flip_h = true
-		$Sail.play("Front")
+		$Sail.flip_h = false
+		$Sail.play("AngledFront")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += .25
 			Global.PlayerY += .25
@@ -78,7 +77,7 @@ func sailMovement():
 		position.x += .25
 		position.y -= .25
 		$Sail.flip_h = true
-		$Sail.play("Back")
+		$Sail.play("AngledBack")
 		if Global.swimming == false and Global.onBoat == true:
 			Global.PlayerX += .25
 			Global.PlayerY -= .25
