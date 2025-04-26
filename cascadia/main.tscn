@@ -102,6 +102,7 @@ texture_scale = 0.5
 [node name="TestingTiles" type="Node" parent="."]
 
 [node name="ResourceTimer" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 
 [node name="sun" type="DirectionalLight2D" parent="."]
@@ -129,8 +130,8 @@ texture = ExtResource("5_kek77")
 texture_scale = 5.0
 
 [node name="SceneReset" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
+wait_time = 5.0
+autostart = true
 
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]
 [connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]
