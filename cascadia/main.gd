@@ -21,7 +21,6 @@ func spawnItems(): #Spawning squence, I will use as template to make more spawn 
 func _ready() -> void:
 	pass
 
-
 func ReSetupScene() :
 	Global.boatDirection = 0
 	Global.PlayerY += 10
