@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvu6axyirsbo3"]
+[gd_scene load_steps=18 format=3 uid="uid://bvu6axyirsbo3"]
 
 [ext_resource type="Script" uid="uid://08uyu2rgfl6d" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://c24vv1byekdgj" path="res://Assets/Art/TitlescreenImage1.png" id="2_jix8l"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dg5hsejvatqj6" path="res://Assets/Art/TitlescreenImage3.png" id="4_jix8l"]
 [ext_resource type="Texture2D" uid="uid://br8iafy565nv" path="res://Assets/Art/CascadiaName.png" id="5_glbon"]
 [ext_resource type="AudioStream" uid="uid://i6dvhdo8wy54" path="res://Assets/Sound/Music/ANewFuture.mp3" id="6_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://u730ovs3um4o" path="res://icon.svg" id="7_qe12f"]
 
 [sub_resource type="Animation" id="Animation_dy7ct"]
 length = 0.6
@@ -182,7 +183,23 @@ one_shot = true
 stream = ExtResource("6_nlkkf")
 autoplay = true
 
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(2650, -532)
+rotation = 0.150098
+scale = Vector2(4.4336, 0.78125)
+texture = ExtResource("7_qe12f")
+
+[node name="Button" type="Button" parent="Icon"]
+offset_left = -62.9252
+offset_top = -58.6201
+offset_right = -13.9252
+offset_bottom = -27.6201
+scale = Vector2(2.57187, 3.91798)
+action_mode = 0
+text = " Play!"
+
 [connection signal="animation_finished" from="Name/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Name/StretchOutFinished" to="." method="_on_stretch_out_finished_timeout"]
 [connection signal="timeout" from="Name/StretchOut" to="." method="_on_stretch_out_timeout"]
 [connection signal="timeout" from="TweenMoreTimer" to="." method="_on_tween_more_timer_timeout"]
+[connection signal="pressed" from="Icon/Button" to="." method="_on_button_pressed"]
