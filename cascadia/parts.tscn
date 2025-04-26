@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bs1yua8vkxwc5"]
+
+[ext_resource type="Texture2D" uid="uid://b1dwqo8rdvgwi" path="res://Assets/Art/Items/Parts1.png" id="1_a0xuf"]
+[ext_resource type="Texture2D" uid="uid://c8i6b06jriok2" path="res://Assets/Art/Items/Parts2.png" id="2_4m10n"]
+[ext_resource type="Texture2D" uid="uid://cxlaisxcdffj2" path="res://Assets/Art/Items/Parts3.png" id="3_tu57c"]
+[ext_resource type="Texture2D" uid="uid://dc2wf2ovarbox" path="res://Assets/Art/Items/Parts7.png" id="4_xyrfh"]
+[ext_resource type="Texture2D" uid="uid://n3onqvxpx4sb" path="res://Assets/Art/Items/Parts4.png" id="4_yt8ac"]
+[ext_resource type="Texture2D" uid="uid://b8soxkq42xipk" path="res://Assets/Art/Items/Parts8.png" id="5_wop78"]
+[ext_resource type="Texture2D" uid="uid://c0u0omjoduslb" path="res://Assets/Art/Items/Parts5.png" id="5_wxa66"]
+[ext_resource type="Texture2D" uid="uid://162gn6c16man" path="res://Assets/Art/Items/Parts6.png" id="6_1gyyu"]
+[ext_resource type="Texture2D" uid="uid://d2mn7xry8xw4m" path="res://Assets/Art/Items/Parts9.png" id="6_5ubre"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yt8ac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a0xuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4m10n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4m10n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tu57c")
+}],
+"loop": true,
+"name": &"Satelite",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xyrfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5ubre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wop78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wop78")
+}],
+"loop": true,
+"name": &"Screw",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yt8ac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wxa66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1gyyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wxa66")
+}],
+"loop": true,
+"name": &"Wires",
+"speed": 3.0
+}]
+
+[node name="Parts" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.00774, 1)
+sprite_frames = SubResource("SpriteFrames_yt8ac")
+animation = &"Satelite"

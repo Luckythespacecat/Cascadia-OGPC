@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=17 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Script" uid="uid://bf5q0piq01r8i" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bd150n0k7527m" path="res://lighthouse.tscn" id="5_ixv4j"]
 [ext_resource type="Texture2D" uid="uid://dlbdkmdaxo7j7" path="res://Assets/Art/lighthouse-lighttexture.png" id="5_kek77"]
 [ext_resource type="Texture2D" uid="uid://ba6hublqfsgni" path="res://Assets/Art/lightTexutre.png" id="8_4c57u"]
+[ext_resource type="PackedScene" uid="uid://d0wo3wr75bh72" path="res://lamprey.tscn" id="10_efxa6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(1842, 50)
@@ -102,6 +103,7 @@ texture_scale = 0.5
 [node name="TestingTiles" type="Node" parent="."]
 
 [node name="ResourceTimer" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 
 [node name="sun" type="DirectionalLight2D" parent="."]
@@ -129,8 +131,11 @@ texture = ExtResource("5_kek77")
 texture_scale = 5.0
 
 [node name="SceneReset" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
+wait_time = 5.0
+autostart = true
+
+[node name="Lamprey" parent="." instance=ExtResource("10_efxa6")]
+position = Vector2(901, -314)
 
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]
 [connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]
