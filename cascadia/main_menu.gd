@@ -1,5 +1,8 @@
 extends Node
 
+var TimeOut1 = 0
+var SkyInitPos = Vector2(120.0, 827.0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -11,20 +14,27 @@ func _ready() -> void:
 	
 	var Skytween = get_tree().create_tween()
 	Skytween.tween_property($Sky, "position", Vector2(900.0, 500.0), 3).set_trans(Tween.TRANS_QUART)
-
+	
 	var NametweenPos = get_tree().create_tween()
 	NametweenPos.tween_property($Name, "position", Vector2(1100.0, 70.0), 3).set_trans(Tween.TRANS_QUART)
+
+	var PlayButtontweenPos = get_tree().create_tween()
+	PlayButtontweenPos.tween_property($Icon, "position", Vector2(1150.0, 550.0), 3).set_trans(Tween.TRANS_QUART)
+
 
 	$Name/StretchOut.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if TimeOut1 == 2:
+		$Sky.global_position = $Sky.global_position - $Sky.global_position.lerp(get_viewport().get_mouse_position(), delta)
 	pass
-
 func _on_stretch_out_timeout() -> void:
+	TimeOut1 = 1
 	$Name/AnimationPlayer.play("Stretch")
 	$Name/StretchOutFinished.start()
 	$Sea/SeaAnimation.play("SeaMove")
+
 
 func _on_stretch_out_finished_timeout() -> void:
 	$Name/AnimationPlayer.stop()
@@ -38,3 +48,7 @@ func SlowTweens() :
 
 	var Landtweenlong = get_tree().create_tween()
 	Landtweenlong.tween_property($Sea, "position", Vector2(381.0, 400), 30).set_trans(Tween.TRANS_QUART)
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://LarryIntroduction.tscn")
