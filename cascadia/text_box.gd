@@ -1,6 +1,5 @@
 extends MarginContainer
 
-
 @onready var label = $MarginContainer/Label
 @onready var timer = $LetterDisplayTimer
 
@@ -18,6 +17,7 @@ signal finished_displaying()
 func _ready():
 	timer.timeout.connect(_on_letter_display_timeout)
 	timer.one_shot = true
+	position = Global.textPos
 
 func display_text(text_to_display: String):
 	text = text_to_display
