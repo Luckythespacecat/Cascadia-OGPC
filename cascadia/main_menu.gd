@@ -17,7 +17,6 @@ func _ready() -> void:
 
 	$Name/StretchOut.start()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
