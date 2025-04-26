@@ -21,6 +21,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if SceneJustIn == "Lighthouse" and boatDirection == 0 :
-		NewBoatPos = Vector2(358.0, 641.0)
+		NewBoatPos = Vector2(320.0, 641.0)
 	elif SceneJustIn == "Main" :
 		NewBoatPos = boatPos
