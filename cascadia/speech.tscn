@@ -6,7 +6,7 @@
 
 [sub_resource type="Theme" id="Theme_tvwxi"]
 default_font = ExtResource("3_m41lb")
-default_font_size = 15
+default_font_size = 5
 
 [node name="TextBox" type="MarginContainer"]
 z_index = 100
@@ -40,6 +40,8 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_m41lb")
+theme_override_font_sizes/font_size = 15
+text = "fdaad"
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 161

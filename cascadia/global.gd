@@ -26,3 +26,6 @@ func _process(delta: float) -> void:
 		NewBoatPos = Vector2(320.0, 641.0)
 	elif SceneJustIn == "Main" :
 		NewBoatPos = boatPos
+		
+	if Dialoguemanager.current_line_index == 8 and Dialoguemanager.can_advance_line == true:
+		custcene = 1

@@ -10,9 +10,16 @@ func _process(delta):
 	"  Hey you, its about time you woke up  ",
 		"  The names Larry  ",
 		"  Larry the lamprey that is  ",
-		"  Anyhow what a good day  "
+		"  You're one of the only survivors  ",
+		"  From what?  ",
+		"  You must've got hit hard  ",
+		"  I guess i'll help you around  ",
+		"  Even though i'm most likely...  ",
+		"  a figment of your imagination  "
 	])
 	
+
+
 	if Dialoguemanager.can_advance_line == true :
 		$Head.play("Idle")
 	else :
