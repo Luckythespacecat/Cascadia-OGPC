@@ -5,23 +5,34 @@ func _ready():
 	Global.textPos = position
 
 func _process(delta):
-
-	Dialoguemanager.start_dialogue( Global.textPos, [
-	"  Hey you, its about time you woke up  ",
-		"  The names Larry  ",
-		"  Larry the lamprey that is  ",
-		"  You're one of the only survivors  ",
-		"  From what?  ",
-		"  You must've got hit hard  ",
-		"  I guess i'll help you around  ",
-		"  Even though i'm most likely...  ",
-		"  a figment of your imagination  "
-	])
 	
-	if Dialoguemanager.current_line_index == 8 and Dialoguemanager.can_advance_line == true:
-		Global.custcene = 1
+	if Global.larryAppear == 2 :
+		$Body.visible = false
+		$Head.visible = false
+		$WaterAnimition.visible = true
+		$WaterAnimition.play("InWater")
+		Global.larryAppear = 0
+
+	if Global.larryAppear == 1 :
+		$Body.visible = false
+		$Head.visible = false
+		$WaterAnimition.visible = true
+		$WaterAnimition.play("OutWater")
+		Global.larryAppear = 1.5
+
 
 	if Dialoguemanager.can_advance_line == true :
 		$Head.play("Idle")
 	else :
 		$Head.play("Talk")
+
+func _on_water_animition_animation_finished() -> void:
+	Global.larryAnimationFinished = 1
+	$WaterAnimition.visible = false
+	if Global.larryAppear == 1.5 :
+		$Body.visible = true
+		$Head.visible = true
+		$Head.play()
+		$Body.play()
+		Global.larryAppear = 0
+		Global.larryAnimationFinished = 0

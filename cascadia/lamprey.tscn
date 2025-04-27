@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0wo3wr75bh72"]
+[gd_scene load_steps=33 format=3 uid="uid://d0wo3wr75bh72"]
 
 [ext_resource type="Script" uid="uid://csq74fdemfso1" path="res://lamprey.gd" id="1_x7hqm"]
 [ext_resource type="Texture2D" uid="uid://dp7ab0jc05lw6" path="res://Assets/Art/Larry/Larry5.png" id="2_q7mru"]
@@ -11,6 +11,24 @@
 [ext_resource type="Texture2D" uid="uid://dmrou1cqiyjj" path="res://Assets/Art/Larry/Larry9.png" id="6_t8itg"]
 [ext_resource type="Texture2D" uid="uid://dov5a3h1tcwms" path="res://Assets/Art/Larry/Larry10.png" id="7_0o351"]
 [ext_resource type="Texture2D" uid="uid://dql5hxpr2gmsv" path="res://Assets/Art/Larry/Larry4.png" id="7_jva4m"]
+[ext_resource type="Texture2D" uid="uid://ctojrhxqnb0oh" path="res://Assets/Art/Larry/InWater/LarryInWater1.png" id="12_0w4b8"]
+[ext_resource type="Texture2D" uid="uid://cyla6ec4ynxuh" path="res://Assets/Art/Larry/InWater/LarryInWater2.png" id="13_c4eub"]
+[ext_resource type="Texture2D" uid="uid://dss62c1wq3nup" path="res://Assets/Art/Larry/InWater/LarryInWater3.png" id="14_4pofg"]
+[ext_resource type="Texture2D" uid="uid://do0563gwbky20" path="res://Assets/Art/Larry/InWater/LarryInWater4.png" id="15_ab3ls"]
+[ext_resource type="Texture2D" uid="uid://dklg0701gkrca" path="res://Assets/Art/Larry/InWater/LarryInWater5.png" id="16_ccjir"]
+[ext_resource type="Texture2D" uid="uid://c16mhnehr8n1" path="res://Assets/Art/Larry/InWater/LarryInWater6.png" id="17_fdy1r"]
+[ext_resource type="Texture2D" uid="uid://b61746uo1a7ui" path="res://Assets/Art/Larry/InWater/LarryInWater7.png" id="18_gxtix"]
+[ext_resource type="Texture2D" uid="uid://xj1lmg2puuk4" path="res://Assets/Art/Larry/InWater/LarryInWater8.png" id="19_ifc7h"]
+[ext_resource type="Texture2D" uid="uid://dx71pbv16brqm" path="res://Assets/Art/Larry/InWater/LarryInWater9.png" id="20_tcip2"]
+[ext_resource type="Texture2D" uid="uid://b6oi5eymcaepk" path="res://Assets/Art/Larry/InWater/LarryInWater11.png" id="21_y73vt"]
+[ext_resource type="Texture2D" uid="uid://bmbudkess510w" path="res://Assets/Art/Larry/InWater/LarryInWater10.png" id="22_b43bv"]
+[ext_resource type="Texture2D" uid="uid://crpeow3gn76d2" path="res://Assets/Art/Larry/OutWater/LarryOutWater1.png" id="23_ifc7h"]
+[ext_resource type="Texture2D" uid="uid://dnx2rit53yd0" path="res://Assets/Art/Larry/OutWater/LarryOutWater2.png" id="24_tcip2"]
+[ext_resource type="Texture2D" uid="uid://dq54ldhvxskwu" path="res://Assets/Art/Larry/OutWater/LarryOutWater3.png" id="25_y73vt"]
+[ext_resource type="Texture2D" uid="uid://kmso4l20tdax" path="res://Assets/Art/Larry/OutWater/LarryOutWater4.png" id="26_b43bv"]
+[ext_resource type="Texture2D" uid="uid://d4ggjkdeoukof" path="res://Assets/Art/Larry/OutWater/LarryOutWater5.png" id="27_m8id0"]
+[ext_resource type="Texture2D" uid="uid://d24mri5uue8x" path="res://Assets/Art/Larry/OutWater/LarryOutWater6.png" id="28_70v3c"]
+[ext_resource type="Texture2D" uid="uid://c6l2p8aqqkobb" path="res://Assets/Art/Larry/OutWater/LarryOutWater7.png" id="29_8ynls"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x7hqm"]
 animations = [{
@@ -63,6 +81,85 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8id0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0w4b8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_c4eub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4pofg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ab3ls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ccjir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_fdy1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gxtix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ifc7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_tcip2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_b43bv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_y73vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_y73vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_y73vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_y73vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_y73vt")
+}],
+"loop": false,
+"name": &"InWater",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_ifc7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_tcip2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_y73vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_b43bv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_m8id0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_70v3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_8ynls")
+}],
+"loop": false,
+"name": &"OutWater",
+"speed": 10.0
+}]
+
 [node name="Lamprey" type="Node2D"]
 script = ExtResource("1_x7hqm")
 
@@ -76,3 +173,12 @@ texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_vr0c6")
 animation = &"Idle"
+
+[node name="WaterAnimition" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_m8id0")
+animation = &"OutWater"
+
+[connection signal="animation_finished" from="WaterAnimition" to="." method="_on_water_animition_animation_finished"]

@@ -2,6 +2,7 @@ extends Node2D
 
 const woodResource = preload("res://wood.tscn")
 
+var larryAppear = 0
 
 func spawnItems(): #Spawning squence, I will use as template to make more spawn functions
 	var playerX = Global.PlayerX
@@ -19,7 +20,9 @@ func spawnItems(): #Spawning squence, I will use as template to make more spawn 
 	# statement for print randomized coridanates
 	
 func _ready() -> void:
-	Global.custcene = 1
+	if Global.SceneJustIn != "Lighthouse":
+		Global.cutscene = 1
+		Global.larryAppear = 1
 
 func ReSetupScene() :
 	Global.boatDirection = 0
@@ -78,5 +81,15 @@ func _on_night_timeout() -> void:
 
 
 func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
-	if area.name == "HeadArea" :
-		
+	Global.larryAppear = 1
+	
+	if area.name == "HeadArea" and Global.larryAnimationFinished == 1 :
+		Dialoguemanager.start_dialogue( Global.textPos, [
+	"  Did you see that?  ",
+		"  That must be coming from a lighthouse  ",
+		"  follow the light and see where it leads  ",
+		"  maybe there, we can call for help  "
+	])
+	
+		if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true:   
+			pass
