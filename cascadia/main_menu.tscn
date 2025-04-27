@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dpjyrtbti1su4" path="res://Assets/Art/TitlescreenImage2.png" id="3_glbon"]
 [ext_resource type="Texture2D" uid="uid://dg5hsejvatqj6" path="res://Assets/Art/TitlescreenImage3.png" id="4_jix8l"]
 [ext_resource type="Texture2D" uid="uid://br8iafy565nv" path="res://Assets/Art/CascadiaName.png" id="5_glbon"]
-[ext_resource type="AudioStream" uid="uid://i6dvhdo8wy54" path="res://Assets/Sound/Music/ANewFuture.mp3" id="6_nlkkf"]
+[ext_resource type="AudioStream" uid="uid://dnohckm05hs4j" path="res://Assets/Sound/Music/FourSeasons.mp3" id="6_qe12f"]
 [ext_resource type="Texture2D" uid="uid://u730ovs3um4o" path="res://icon.svg" id="7_qe12f"]
 
 [sub_resource type="Animation" id="Animation_dy7ct"]
@@ -179,8 +179,9 @@ wait_time = 5.0
 wait_time = 3.0
 one_shot = true
 
-[node name="ANewFuture" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_nlkkf")
+[node name="TheFourSeasons_Summer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qe12f")
+volume_db = -9.643
 autoplay = true
 
 [node name="Icon" type="Sprite2D" parent="."]

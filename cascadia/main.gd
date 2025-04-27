@@ -63,15 +63,20 @@ func _on_resource_timer_timeout() -> void:
 #Day and night TImers defined here
 #look in scene tree under "sun" node to change the time for day and night cycles
 func _on_day_timeout() -> void:
-	print("Day over")
-	$TheGreatOcean.play()
 	$ANewFuture.stop()
+	print("Day over")
+	#$TheGreatOcean.play() #Night Music
 	$sun/Night.start()
 	Global.timeOfDay = "Night"
 
 func _on_night_timeout() -> void:
 	$TheGreatOcean.stop()
-	$ANewFuture.play()
+	#$ANewFuture.play() #Day Music
 	print("Nights over")
 	$sun/Day.start()
 	Global.timeOfDay = "Day"
+
+
+func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
+	if area.name == "HeadArea" :
+		

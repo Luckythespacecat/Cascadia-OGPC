@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=20 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Script" uid="uid://bf5q0piq01r8i" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
@@ -26,6 +26,9 @@ size = Vector2(2.62201, 287.88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w48qg"]
 size = Vector2(96, 88)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
+b = Vector2(-199.44, -205.176)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7mycd")
@@ -79,12 +82,19 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_w48qg")
 
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
-position = Vector2(506, 630)
+position = Vector2(2696, 1587)
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighthouse"]
 position = Vector2(0.75, -146.75)
 scale = Vector2(15.8494, 15.3819)
 texture = ExtResource("5_kek77")
+
+[node name="LighthouseLightArea" type="Area2D" parent="Lighthouse/PointLight2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lighthouse/PointLight2D/LighthouseLightArea"]
+z_index = 10
+position = Vector2(-0.0473204, -0.0812644)
+shape = SubResource("SegmentShape2D_ycdy4")
 
 [node name="Boat" parent="." instance=ExtResource("5_hm6kk")]
 z_index = 1
@@ -113,12 +123,12 @@ energy = 0.0
 blend_mode = 1
 
 [node name="Day" type="Timer" parent="sun"]
-wait_time = 30.0
+wait_time = 15.0
 one_shot = true
 autostart = true
 
 [node name="Night" type="Timer" parent="sun"]
-wait_time = 20.0
+wait_time = 15.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -137,15 +147,15 @@ wait_time = 5.0
 autostart = true
 
 [node name="Lamprey" parent="." instance=ExtResource("10_efxa6")]
-position = Vector2(901, -314)
+position = Vector2(229, 126)
 
 [node name="TheGreatOcean" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_dg77c")
 
 [node name="ANewFuture" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ycdy4")
-autoplay = true
 
+[connection signal="area_entered" from="Lighthouse/PointLight2D/LighthouseLightArea" to="." method="_on_lighthouse_light_area_area_entered"]
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]
 [connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]
 [connection signal="timeout" from="sun/Day" to="." method="_on_day_timeout"]
