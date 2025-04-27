@@ -25,17 +25,16 @@ func _process(delta: float) -> void:
 		"  You must've got hit hard  ",
 		"  I guess i'll help you around  ",
 		"  Even though i'm most likely...  ",
-		"  a figment of your imagination  "
+		"  a figment of your imagination  ",
+		"   ",
+		"   "
 	])
 	
 	if Dialoguemanager.current_line_index == 8 and Dialoguemanager.can_advance_line == true:   
 		Global.larryAppear = 2
-		if Global.larryAnimationFinished == 1 :
-			Global.cutscene = 1
-			Global.larryAnimationFinished = 0
+		$LarryOut.start()
 
-	if  Global.cutscene == 1 :
-		get_tree().change_scene_to_packed(mainScene)
+
 
 # Day and night cycle transitions here
 	if Global.timeOfDay == "Night" :
@@ -57,3 +56,9 @@ func _on_night_timeout() -> void:
 	print("Nights over")
 	$sun/Day.start()
 	Global.timeOfDay = "Day"
+
+
+func _on_larry_out_timeout() -> void:
+	Global.cutscene = 1
+	Global.larryAnimationFinished = 0
+	get_tree().change_scene_to_packed(mainScene)

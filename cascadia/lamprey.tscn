@@ -179,6 +179,6 @@ visible = false
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_m8id0")
-animation = &"OutWater"
+animation = &"InWater"
 
 [connection signal="animation_finished" from="WaterAnimition" to="." method="_on_water_animition_animation_finished"]

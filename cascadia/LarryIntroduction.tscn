@@ -42,7 +42,11 @@ autostart = true
 [node name="Lamprey" parent="." instance=ExtResource("11_wmyvf")]
 position = Vector2(901, -314)
 
+[node name="LarryOut" type="Timer" parent="."]
+wait_time = 1.4
+
 [connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]
 [connection signal="timeout" from="sun/Day" to="." method="_on_day_timeout"]
 [connection signal="timeout" from="sun/Night" to="." method="_on_night_timeout"]
 [connection signal="timeout" from="SceneReset" to="." method="_on_scene_reset_timeout"]
+[connection signal="timeout" from="LarryOut" to="." method="_on_larry_out_timeout"]

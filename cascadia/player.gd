@@ -78,7 +78,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	
 
 func drown():
-	if Global.swimming == true and $drownTimer.time_left == 0:
+	if Global.swimming == true and $drownTimer.time_left == 0 and Global.tutorial == true:
 		$drownTimer.start()
 	if Global.swimming == false:
 		$drownTimer.stop()
@@ -89,5 +89,5 @@ func _on_drown_timer_timeout() -> void:
 	
 func _on_t_imer_wait_death_timeout() -> void:
 		Global.Dead = true
-		$AnimatedSprite2D.play("Idle")
 		$TImerWaitDeath.stop()
+		$AnimatedSprite2D.pause()

@@ -123,7 +123,7 @@ energy = 0.0
 blend_mode = 1
 
 [node name="Day" type="Timer" parent="sun"]
-wait_time = 10.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 
@@ -132,6 +132,7 @@ wait_time = 60.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="UserInterface" parent="CanvasLayer" instance=ExtResource("4_5vw27")]
 
@@ -147,7 +148,10 @@ wait_time = 5.0
 autostart = true
 
 [node name="Lamprey" parent="." instance=ExtResource("10_efxa6")]
-position = Vector2(229, 126)
+position = Vector2(155, 52)
+
+[node name="EndDialogue" type="Timer" parent="Lamprey"]
+wait_time = 1.4
 
 [node name="TheGreatOcean" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_dg77c")
@@ -161,3 +165,4 @@ stream = ExtResource("13_ycdy4")
 [connection signal="timeout" from="sun/Day" to="." method="_on_day_timeout"]
 [connection signal="timeout" from="sun/Night" to="." method="_on_night_timeout"]
 [connection signal="timeout" from="SceneReset" to="." method="_on_scene_reset_timeout"]
+[connection signal="timeout" from="Lamprey/EndDialogue" to="." method="_on_end_dialogue_timeout"]

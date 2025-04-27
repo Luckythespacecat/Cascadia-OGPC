@@ -265,7 +265,7 @@ shape = SubResource("RectangleShape2D_hl5qd")
 wait_time = 2.0
 
 [node name="drownTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 
 [node name="BodyArea" type="Area2D" parent="."]
 

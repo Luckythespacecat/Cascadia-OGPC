@@ -2,7 +2,8 @@ extends Node2D
 
 const woodResource = preload("res://wood.tscn")
 
-var larryAppear = 0
+var drownLarryScene = false
+var texboxRemove = false
 
 func spawnItems(): #Spawning squence, I will use as template to make more spawn functions
 	var playerX = Global.PlayerX
@@ -20,6 +21,7 @@ func spawnItems(): #Spawning squence, I will use as template to make more spawn 
 	# statement for print randomized coridanates
 	
 func _ready() -> void:
+	Global.wind = 1
 	if Global.SceneJustIn != "Lighthouse":
 		Global.cutscene = 1
 		Global.larryAppear = 1
@@ -32,7 +34,9 @@ func ReSetupScene() :
 	print("Timer started")
 
 func _process(delta: float) -> void:
-
+	
+	if Global.tutorial == false :
+		TutorialLarry()
 	
 	#var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
 	#$CanvasLayer/UserInterface/Point.rotation = dir.angle()
@@ -45,10 +49,18 @@ func _process(delta: float) -> void:
 		Global.SceneJustIn = "Main"
 
 	if Global.Dead == true:
-		Global.PlayerPos = $Boat.position
-		Global.PlayerX = Global.PlayerPos.x
-		Global.PlayerY = Global.PlayerPos.y
-		Global.Dead = false
+		if Global.FirstDrown == true :
+			if drownLarryScene == false :
+				Global.larryAppear = 1
+				drownLarryScene = true
+				$Lamprey.global_position.x = $Boat/Player.global_position.x + 30
+				$Lamprey.global_position.y = $Boat/Player.global_position.y 
+			DrownLarry()
+		else :
+			Global.PlayerPos = $Boat.position
+			Global.PlayerX = Global.PlayerPos.x
+			Global.PlayerY = Global.PlayerPos.y
+			Global.Dead = false
 		
 	$CanvasLayer/Lighthouse_light.global_rotation = $Lighthouse/PointLight2D.rotation
 
@@ -71,6 +83,7 @@ func _on_day_timeout() -> void:
 	#$TheGreatOcean.play() #Night Music
 	$sun/Night.start()
 	Global.timeOfDay = "Night"
+	Global.wind = randf_range(1, 4) / 2
 
 func _on_night_timeout() -> void:
 	$TheGreatOcean.stop()
@@ -78,18 +91,64 @@ func _on_night_timeout() -> void:
 	print("Nights over")
 	$sun/Day.start()
 	Global.timeOfDay = "Day"
+	Global.wind = randf_range(1, 4) / 4
 
+func DrownLarry() :
+	Global.textPos = $Lamprey.position
+	$Boat/Player/AnimatedSprite2D.pause()
+	Dialoguemanager.start_dialogue( Global.textPos, [
+		"  WOOAAH  ",
+		"  Watch it you almost drowned!  ",
+		"  If you drown I might not be able to save you  ",
+		"  and then you'll get sick or something  " ])
+	
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 3 :
+		Global.FirstDrown = false
+		Dialoguemanager.is_dialogue_active = false
+		$Lamprey/EndDialogue.start()
+		Global.larryAppear = 2
+		Global.PlayerPos = $Boat.position
+		Global.PlayerX = Global.PlayerPos.x
+		Global.PlayerY = Global.PlayerPos.y
+		$Boat/Player/AnimatedSprite2D.play("Idle")
+		Global.Dead = false
+		texboxRemove = true
+		
+func TutorialLarry() :
+	Dialoguemanager.start_dialogue( Global.textPos, [
+		"  Hey over here!  ",
+		"  that's a very convienent raft you got there  ",
+		"  Press 'E' and 'Q' to rotate the sail  " ])
+	
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 :
+		Global.tutorial = true
+		Dialoguemanager.is_dialogue_active = false
+		$Lamprey/EndDialogue.start()
+		Global.larryAppear = 2
+		texboxRemove = true
 
 func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
-	Global.larryAppear = 1
-	
-	if area.name == "HeadArea" and Global.larryAnimationFinished == 1 :
-		Dialoguemanager.start_dialogue( Global.textPos, [
-	"  Did you see that?  ",
-		"  That must be coming from a lighthouse  ",
-		"  follow the light and see where it leads  ",
-		"  maybe there, we can call for help  "
-	])
-	
-		if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true:   
-			pass
+	if area.name == "HeadArea" :
+		if Global.LighthouseCutsceneDone == false:
+			Global.larryAppear = 1
+			$Lamprey.global_position.x = $Boat/Player.global_position.x + 30
+			$Lamprey.global_position.y = $Boat/Player.global_position.y
+			Global.textPos = $Lamprey.position
+			Dialoguemanager.start_dialogue( Global.textPos, [
+			"  Did you see that?  ",
+			"  That must be coming from a lighthouse  ",
+			"  follow the light and see where it leads  ",
+			"  maybe there, we can call for help  "
+			])
+			if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true:   
+				Global.LighthouseCutsceneDone == true
+				$Lamprey/EndDialogue.start()
+				Global.larryAppear = 2
+				texboxRemove = true
+
+
+func _on_end_dialogue_timeout() -> void:
+	if texboxRemove == true:
+		Dialoguemanager.text_box.queue_free()
+		Dialoguemanager.current_line_index = 0
+		texboxRemove = false
