@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://ee1tq5rrmaey"]
+
+[ext_resource type="Script" uid="uid://c27r7uwju0lpb" path="res://radio_station.gd" id="1_1855q"]
+[ext_resource type="Texture2D" uid="uid://cxsqtd7mo31k6" path="res://Assets/Art/Items/BENWOODradiostationFixed.png" id="1_vfmoy"]
+[ext_resource type="Texture2D" uid="uid://dvgxvh6o0oo8" path="res://Assets/Art/Items/BENWOODradiostation.png" id="2_1855q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sg0re"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vfmoy")
+}],
+"loop": true,
+"name": &"Fixed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1855q")
+}],
+"loop": true,
+"name": &"Unfixed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfmoy"]
+size = Vector2(48, 36)
+
+[node name="RadioStation" type="Node2D"]
+script = ExtResource("1_1855q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_sg0re")
+animation = &"Fixed"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8, -1)
+shape = SubResource("RectangleShape2D_vfmoy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
