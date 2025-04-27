@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://duuwm1fvd87y"]
+[gd_scene load_steps=54 format=3 uid="uid://duuwm1fvd87y"]
 
 [ext_resource type="Script" uid="uid://dt6ptlffad6xp" path="res://lighthouse_room.gd" id="1_cde3n"]
 [ext_resource type="Texture2D" uid="uid://dvn0u6vi8x38a" path="res://Assets/Art/pink.png" id="1_rhv4f"]
@@ -43,6 +43,7 @@
 [ext_resource type="Script" uid="uid://bro5i6hqxoiw7" path="res://radio.gd" id="41_vfdtv"]
 [ext_resource type="Texture2D" uid="uid://c7pj7xythmrw2" path="res://Assets/Art/door.png" id="42_vfdtv"]
 [ext_resource type="Texture2D" uid="uid://34dl6u5ill5" path="res://Assets/Art/Lighthouse-Room_LightTexture.png" id="43_5fadf"]
+[ext_resource type="PackedScene" uid="uid://ee1tq5rrmaey" path="res://radio_station.tscn" id="44_abqyo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_36v51"]
 
@@ -286,7 +287,7 @@ position = Vector2(43.75, -136)
 shape = SubResource("RectangleShape2D_vfdtv")
 
 [node name="Radio" type="AnimatedSprite2D" parent="."]
-position = Vector2(-72, -80)
+position = Vector2(-16, -192)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_5fadf")
 frame_progress = 0.0165294
@@ -325,6 +326,10 @@ shape = SubResource("RectangleShape2D_abqyo")
 [node name="sun" type="DirectionalLight2D" parent="."]
 energy = 0.4
 blend_mode = 1
+
+[node name="RadioStation" parent="." instance=ExtResource("44_abqyo")]
+position = Vector2(-88, -80)
+scale = Vector2(2, 2)
 
 [connection signal="area_entered" from="Radio/radArea" to="Radio" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Radio/radArea" to="Radio" method="_on_rad_area_body_entered"]

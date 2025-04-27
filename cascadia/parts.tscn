@@ -70,4 +70,4 @@ animations = [{
 texture_filter = 1
 scale = Vector2(1.00774, 1)
 sprite_frames = SubResource("SpriteFrames_yt8ac")
-animation = &"Satelite"
+animation = &"Screw"

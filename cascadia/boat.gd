@@ -129,7 +129,6 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 		if $Player/AnimatedSprite2D.animation != "Splash" and $Player/AnimatedSprite2D.animation != "SwimIdle" :
 			Global.swimming = true
 			Global.onBoat = false
-			Global.boatDirection = 0
 			inWater.emit()
 
 func _on_sail_area_area_entered(area: Area2D) -> void:
