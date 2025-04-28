@@ -29,9 +29,9 @@ func _process(delta: float) -> void:
 		"  You're one of the only survivors  ",
 		"  From what?  ",
 		"  You must've got hit hard  ",
-		"  I guess i'll help you around  ",
+		"  I guess I'll help you around  ",
 		"  Even though i'm most likely...  ",
-		"  a figment of your imagination  ",
+		"  a figment of your imagination!  ",
 		"   ",
 		"   "
 	])

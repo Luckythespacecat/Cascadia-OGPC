@@ -54,5 +54,4 @@ func _display_letter():
 			timer.start(letter_time)
 
 func _on_letter_display_timeout():
-	print("Successful")
 	_display_letter()
