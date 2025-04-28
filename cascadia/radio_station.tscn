@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c27r7uwju0lpb" path="res://radio_station.gd" id="1_1855q"]
 [ext_resource type="Texture2D" uid="uid://cxsqtd7mo31k6" path="res://Assets/Art/Items/BENWOODradiostationFixed.png" id="1_vfmoy"]
-[ext_resource type="Texture2D" uid="uid://dvgxvh6o0oo8" path="res://Assets/Art/Items/BENWOODradiostation.png" id="2_1855q"]
+[ext_resource type="Texture2D" uid="uid://dvgxvh6o0oo8" path="res://Assets/Art/BENWOODradiostation.png" id="2_1855q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sg0re"]
 animations = [{

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj1pyjya7bxyq"]
+[gd_scene load_steps=7 format=3 uid="uid://bj1pyjya7bxyq"]
 
 [ext_resource type="Script" uid="uid://cxkn3ur6dwlce" path="res://wood.gd" id="1_eyjtj"]
 [ext_resource type="Texture2D" uid="uid://xx2pl0ka5xj2" path="res://Assets/Art/Resources/Wood1.png" id="1_l0k7y"]
@@ -25,7 +25,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyjtj"]
+size = Vector2(17, 13)
+
 [node name="wood" type="Node2D"]
+position = Vector2(9, 7)
 script = ExtResource("1_eyjtj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -33,3 +37,9 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_cb880")
 frame = 3
 frame_progress = 0.142324
+
+[node name="WoodBody" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodBody"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_eyjtj")
