@@ -21,6 +21,7 @@ var larryAnimationFinished = 0
 var textPos : Vector2 = Vector2( 0, 0)
 var tutorial = false
 var FirstDrown = true
+var damage = 0
 var LighthouseCutsceneDone = false
 var Hunger = 250
 

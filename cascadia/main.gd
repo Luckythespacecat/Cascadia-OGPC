@@ -4,6 +4,7 @@ const woodResource = preload("res://wood.tscn")
 
 var drownLarryScene = false
 var texboxRemove = false
+var wood_instances = {}
 
 func spawnItems(): #Spawning squence, I will use as template to make more spawn functions
 	var playerX = Global.PlayerX
@@ -16,9 +17,21 @@ func spawnItems(): #Spawning squence, I will use as template to make more spawn 
 		add_child(woodInstance)
 		woodInstance.position.y = spawnPosY
 		woodInstance.position.x = spawnPosX
+		
+		wood_instances[woodInstance] = woodInstance
+		woodInstance.connect("input_event", Callable(self, "_on_wood_interacted"))
+		
 	elif itemToSpawn >= 10 and itemToSpawn < 40 :
 		pass
 	# statement for print randomized coridanates
+	
+func _on_wood_interacted(viewport, event, shape_idx):
+	if Input.is_action_pressed("interact"):
+		for woodInstance in wood_instances.keys():
+			if woodInstance:
+				woodInstance.queue_free()
+				wood_instances.erase(woodInstance)
+				break
 	
 func _ready() -> void:
 	Global.wind = 1
