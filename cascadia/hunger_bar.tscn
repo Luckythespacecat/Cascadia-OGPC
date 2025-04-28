@@ -21,7 +21,7 @@ patch_margin_bottom = 16
 [node name="Fill" type="NinePatchRect" parent="."]
 z_index = -1
 texture_filter = 1
-offset_right = 10.0
+offset_right = 250.0
 offset_bottom = 40.0
 texture = ExtResource("1_sgh5k")
 region_rect = Rect2(0, 0, 35, 35)
