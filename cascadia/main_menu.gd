@@ -1,7 +1,7 @@
 extends Node
 
 var TimeOut1 = 0
-var SkyInitPos = Vector2(120.0, 827.0)
+var SkyFinalPos = Vector2(900.0, 500.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,8 +26,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if TimeOut1 == 2:
-		$Sky.global_position = $Sky.global_position - $Sky.global_position.lerp(get_viewport().get_mouse_position(), delta)
+	var MouseRelativePosition = get_viewport().get_mouse_position() + SkyFinalPos
+	if TimeOut1 == 1:
+		$Sky.global_position = SkyFinalPos - SkyFinalPos.lerp(MouseRelativePosition, delta)
 	pass
 func _on_stretch_out_timeout() -> void:
 	TimeOut1 = 1

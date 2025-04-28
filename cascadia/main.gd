@@ -113,10 +113,10 @@ func DrownLarry() :
 	Global.textPos = $Lamprey.position
 	$Boat/Player/AnimatedSprite2D.pause()
 	Dialoguemanager.start_dialogue( Global.textPos, [
-		"  WOOAAH  ",
-		"  Watch it you almost drowned!  ",
-		"  If you drown I might not be able to save you  ",
-		"  and then you'll get sick or something  " ])
+		"  WOOAAH ! ! !  ",
+		"  Watch it, you almost drowned!  ",
+		"  If you drown I might not be able to save you!  ",
+		"  And then you might get sick or something  " ])
 	
 	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 3 :
 		Global.FirstDrown = false
@@ -133,7 +133,7 @@ func DrownLarry() :
 func TutorialLarry() :
 	Dialoguemanager.start_dialogue( Global.textPos, [
 		"  Hey over here!  ",
-		"  that's a very convienent raft you got there  ",
+		"  That is a very convienent raft you got there!  ",
 		"  Press 'E' and 'Q' to rotate the sail  " ])
 	
 	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 :
@@ -152,9 +152,9 @@ func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
 			Global.textPos = $Lamprey.position
 			Dialoguemanager.start_dialogue( Global.textPos, [
 			"  Did you see that?  ",
-			"  That must be coming from a lighthouse  ",
-			"  follow the light and see where it leads  ",
-			"  maybe there, we can call for help  "
+			"  That must be coming from a lighthouse!  ",
+			"  Follow the light and see where it leads!  ",
+			"  Maybe there, we can call for help!  "
 			])
 			if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true:   
 				Global.LighthouseCutsceneDone == true
