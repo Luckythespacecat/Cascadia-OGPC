@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://f6fwuoooqgah"]
+[gd_scene load_steps=12 format=3 uid="uid://f6fwuoooqgah"]
 
+[ext_resource type="Script" uid="uid://bq2t62q7hnq4f" path="res://fish.gd" id="1_8ndls"]
 [ext_resource type="Texture2D" uid="uid://n82hlfy0lpdj" path="res://Assets/Art/Resources/Fish/fish1.png" id="1_qgvfm"]
 [ext_resource type="Texture2D" uid="uid://bgvgxkdooph1j" path="res://Assets/Art/Resources/Fish/fish2.png" id="2_8ndls"]
 [ext_resource type="Texture2D" uid="uid://lcqxdyfmbasv" path="res://Assets/Art/Resources/Fish/fish3.png" id="3_pgahs"]
@@ -49,8 +50,9 @@ animations = [{
 }]
 
 [node name="Fish" type="Node2D"]
+script = ExtResource("1_8ndls")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_k2gqy")
-frame_progress = 0.829615

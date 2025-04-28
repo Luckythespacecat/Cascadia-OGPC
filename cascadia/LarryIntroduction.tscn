@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://kaqax1yo1bqx"]
+[gd_scene load_steps=7 format=3 uid="uid://kaqax1yo1bqx"]
 
 [ext_resource type="Script" uid="uid://3rofp5eywerl" path="res://larry_introduction.gd" id="1_84xc3"]
 [ext_resource type="PackedScene" uid="uid://b6g35j1nhodem" path="res://map.tscn" id="2_id31e"]
 [ext_resource type="Script" uid="uid://dn1m482vui8s" path="res://camera_2d.gd" id="3_bhgkr"]
 [ext_resource type="Texture2D" uid="uid://dnkh4vl54sg5" path="res://Assets/Art/interactTextPrompt.png" id="5_i4mce"]
+[ext_resource type="AudioStream" uid="uid://cufp4ck8q87b5" path="res://Assets/Sound/Music/LampreyIntro.mp3" id="6_e5y1n"]
 [ext_resource type="PackedScene" uid="uid://d0wo3wr75bh72" path="res://lamprey.tscn" id="11_wmyvf"]
 
 [node name="Main" type="Node2D"]
@@ -55,8 +56,13 @@ position = Vector2(936, 1127)
 scale = Vector2(4, 4)
 texture = ExtResource("5_i4mce")
 
+[node name="LampreyIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_e5y1n")
+autoplay = true
+
 [connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]
 [connection signal="timeout" from="sun/Day" to="." method="_on_day_timeout"]
 [connection signal="timeout" from="sun/Night" to="." method="_on_night_timeout"]
 [connection signal="timeout" from="SceneReset" to="." method="_on_scene_reset_timeout"]
 [connection signal="timeout" from="LarryOut" to="." method="_on_larry_out_timeout"]
+[connection signal="finished" from="LampreyIntro" to="." method="_on_lamprey_intro_finished"]

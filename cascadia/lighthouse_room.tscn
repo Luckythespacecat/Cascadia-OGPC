@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://duuwm1fvd87y"]
+[gd_scene load_steps=53 format=3 uid="uid://duuwm1fvd87y"]
 
 [ext_resource type="Script" uid="uid://dt6ptlffad6xp" path="res://lighthouse_room.gd" id="1_cde3n"]
 [ext_resource type="Texture2D" uid="uid://dvn0u6vi8x38a" path="res://Assets/Art/pink.png" id="1_rhv4f"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://bb063e2wr0dhi" path="res://Assets/Art/Player/PlayerSwim11.png" id="38_rds66"]
 [ext_resource type="Texture2D" uid="uid://c7pj7xythmrw2" path="res://Assets/Art/door.png" id="42_vfdtv"]
 [ext_resource type="Texture2D" uid="uid://34dl6u5ill5" path="res://Assets/Art/Lighthouse-Room_LightTexture.png" id="43_5fadf"]
+[ext_resource type="AudioStream" uid="uid://dvofuvx5uvkmv" path="res://Assets/Sound/Music/Raindrops.mp3" id="43_abqyo"]
 [ext_resource type="PackedScene" uid="uid://ee1tq5rrmaey" path="res://radio_station.tscn" id="44_abqyo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_36v51"]
@@ -235,7 +236,7 @@ texture = ExtResource("5_ug2bp")
 
 [node name="playerBody" type="CharacterBody2D" parent="."]
 z_index = 1
-position = Vector2(-16, 184)
+position = Vector2(-39, 126)
 script = ExtResource("5_cde3n")
 SPEED = 130.0
 
@@ -315,4 +316,9 @@ blend_mode = 1
 position = Vector2(-88, -80)
 scale = Vector2(2, 2)
 
+[node name="Raindrops" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("43_abqyo")
+autoplay = true
+
 [connection signal="body_entered" from="Doorlight/DoorArea" to="." method="_on_door_area_body_entered"]
+[connection signal="finished" from="Raindrops" to="." method="_on_raindrops_finished"]

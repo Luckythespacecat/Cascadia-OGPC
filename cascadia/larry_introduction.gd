@@ -23,8 +23,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("advance_dialogue") or Dialoguemanager.current_line_index != 0 :
 		$CanvasLayer/Sprite2D.position = lerp($CanvasLayer/Sprite2D.position, Vector2(936.0, 1127.0), delta / 2)
 	
-	Dialoguemanager.start_dialogue( Global.textPos, [
-	"  Hey you, its about time you woke up  ",
+	if thispartisdone == false :
+		Dialoguemanager.start_dialogue( Global.textPos, [
+		"  Hey you, its about time you woke up  ",
 		"  The names Larry  ",
 		"  Larry the Lamprey, that is!  ",
 		"  You're one of the only survivors.  ",
@@ -33,13 +34,12 @@ func _process(delta: float) -> void:
 		"  I guess I'll help you around,  ",
 		"  even though I'm most likely...  ",
 		"  a figment of your imagination!  "
-	])
+		])
 	
 	if Dialoguemanager.current_line_index == 8 and Dialoguemanager.can_advance_line == true and thispartisdone == false:   
 		Global.larryAppear = 2
 		$LarryOut.start()
-		Dialoguemanager.text_box.queue_free()
-		Dialoguemanager.current_line_index = 0
+		Dialoguemanager.is_dialogue_active = false
 		thispartisdone = true
 
 
@@ -67,5 +67,10 @@ func _on_night_timeout() -> void:
 func _on_larry_out_timeout() -> void:
 	Global.cutscene = 1
 	Global.larryAnimationFinished = 0
+	Dialoguemanager.text_box.queue_free()
 	Dialoguemanager.current_line_index = 0
 	get_tree().change_scene_to_packed(mainScene)
+
+
+func _on_lamprey_intro_finished() -> void:
+	$LampreyIntro.play()

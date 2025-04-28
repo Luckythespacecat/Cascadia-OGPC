@@ -15,21 +15,22 @@ autostart = true
 position = Vector2(960, 896)
 
 [node name="Rock" parent="." instance=ExtResource("3_e0an3")]
+position = Vector2(318, 593)
 
 [node name="Rock2" parent="." instance=ExtResource("3_e0an3")]
-position = Vector2(67, 25)
+position = Vector2(1006, 160)
 
 [node name="Rock3" parent="." instance=ExtResource("3_e0an3")]
 position = Vector2(-86, 55)
 
 [node name="Rock4" parent="." instance=ExtResource("3_e0an3")]
-position = Vector2(-133, -92)
+position = Vector2(-2072, -312)
 
 [node name="Rock5" parent="." instance=ExtResource("3_e0an3")]
-position = Vector2(90, -108)
+position = Vector2(-271, -304)
 
 [node name="Rock6" parent="." instance=ExtResource("3_e0an3")]
-position = Vector2(192, 0)
+position = Vector2(-829, 483)
 
 [node name="Rock7" parent="." instance=ExtResource("3_e0an3")]
-position = Vector2(192, 0)
+position = Vector2(687, -746)

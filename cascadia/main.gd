@@ -2,6 +2,7 @@ extends Node2D
 
 const woodResource = preload("res://wood.tscn")
 const radioParts = preload("res://parts.tscn") # load the parts scene for radio repair
+const fish = preload("res://fish.tscn")
 
 var drownLarryScene = false
 var texboxRemove = false
@@ -23,7 +24,11 @@ func spawnItems(): #Spawning squence, I will use as template to make more spawn 
 		woodInstance.connect("input_event", Callable(self, "_on_wood_interacted"))
 		
 	elif itemToSpawn >= 10 and itemToSpawn < 40 :
-		pass
+		var fishInstance = fish.instantiate()
+		add_child(fishInstance)
+		fishInstance.position.y = spawnPosY
+		fishInstance.position.x = spawnPosX
+		
 	# statement for print randomized coridanates
 	
 func _on_wood_interacted(viewport, event, shape_idx):
@@ -96,14 +101,14 @@ func _on_resource_timer_timeout() -> void:
 func _on_day_timeout() -> void:
 	$ANewFuture.stop()
 	print("Day over")
-	#$TheGreatOcean.play() #Night Music
+	$TheGreatOcean.play() #Night Music
 	$sun/Night.start()
 	Global.timeOfDay = "Night"
 	Global.wind = randf_range(1, 4) / 2
 
 func _on_night_timeout() -> void:
 	$TheGreatOcean.stop()
-	#$ANewFuture.play() #Day Music
+	$ANewFuture.play() #Day Music
 	print("Nights over")
 	$sun/Day.start()
 	Global.timeOfDay = "Day"

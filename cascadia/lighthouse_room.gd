@@ -30,3 +30,7 @@ func _on_door_area_body_entered(body: Node2D) -> void:
 			get_tree().change_scene_to_file("res://main.tscn")
 		else:
 			print("main_scene is NULL")
+
+
+func _on_raindrops_finished() -> void:
+	$Raindrops.play()

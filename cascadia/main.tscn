@@ -160,6 +160,7 @@ stream = ExtResource("12_dg77c")
 
 [node name="ANewFuture" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ycdy4")
+autoplay = true
 
 [node name="Rock" parent="." instance=ExtResource("14_w48qg")]
 position = Vector2(200, 200)
