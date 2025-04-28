@@ -16,6 +16,12 @@ func ReSetupScene() :
 
 func _process(delta: float) -> void:
 	
+	if Dialoguemanager.current_line_index == 0 : 
+		$CanvasLayer/Sprite2D.position = lerp($CanvasLayer/Sprite2D.position, Vector2(913.0, 850.0), delta / 4)
+
+	if Input.is_action_just_pressed("advance_dialogue") or Dialoguemanager.current_line_index != 0 :
+		$CanvasLayer/Sprite2D.position = lerp($CanvasLayer/Sprite2D.position, Vector2(936.0, 1127.0), delta / 2)
+	
 	Dialoguemanager.start_dialogue( Global.textPos, [
 	"  Hey you, its about time you woke up  ",
 		"  The names Larry  ",
@@ -61,4 +67,5 @@ func _on_night_timeout() -> void:
 func _on_larry_out_timeout() -> void:
 	Global.cutscene = 1
 	Global.larryAnimationFinished = 0
+	Dialoguemanager.current_line_index = 0
 	get_tree().change_scene_to_packed(mainScene)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://kaqax1yo1bqx"]
+[gd_scene load_steps=6 format=3 uid="uid://kaqax1yo1bqx"]
 
 [ext_resource type="Script" uid="uid://3rofp5eywerl" path="res://larry_introduction.gd" id="1_84xc3"]
 [ext_resource type="PackedScene" uid="uid://b6g35j1nhodem" path="res://map.tscn" id="2_id31e"]
 [ext_resource type="Script" uid="uid://dn1m482vui8s" path="res://camera_2d.gd" id="3_bhgkr"]
+[ext_resource type="Texture2D" uid="uid://dnkh4vl54sg5" path="res://Assets/Art/interactTextPrompt.png" id="5_i4mce"]
 [ext_resource type="PackedScene" uid="uid://d0wo3wr75bh72" path="res://lamprey.tscn" id="11_wmyvf"]
 
 [node name="Main" type="Node2D"]
@@ -44,6 +45,15 @@ position = Vector2(901, -314)
 
 [node name="LarryOut" type="Timer" parent="."]
 wait_time = 1.4
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(936, 1127)
+scale = Vector2(4, 4)
+texture = ExtResource("5_i4mce")
 
 [connection signal="timeout" from="ResourceTimer" to="." method="_on_resource_timer_timeout"]
 [connection signal="timeout" from="sun/Day" to="." method="_on_day_timeout"]

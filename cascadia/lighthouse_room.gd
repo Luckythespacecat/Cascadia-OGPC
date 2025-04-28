@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	$Camera2D.position = lerp($Camera2D.position, $playerBody.position, 5 * delta)
 	
 	if Global.timeOfDay == "Night" :
-		$Doorlight.energy = .2
+		$Doorlight.energy = .15
 	if Global.timeOfDay == "Day" :
 		$Doorlight.energy = .35
 

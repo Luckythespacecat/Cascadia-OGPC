@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://f6fwuoooqgah"]
+
+[ext_resource type="Texture2D" uid="uid://n82hlfy0lpdj" path="res://Assets/Art/Resources/Fish/fish1.png" id="1_qgvfm"]
+[ext_resource type="Texture2D" uid="uid://bgvgxkdooph1j" path="res://Assets/Art/Resources/Fish/fish2.png" id="2_8ndls"]
+[ext_resource type="Texture2D" uid="uid://lcqxdyfmbasv" path="res://Assets/Art/Resources/Fish/fish3.png" id="3_pgahs"]
+[ext_resource type="Texture2D" uid="uid://b6o5c6aq3yvc4" path="res://Assets/Art/Resources/Fish/fish4.png" id="4_xjgvs"]
+[ext_resource type="Texture2D" uid="uid://bxnpdffx1k0b8" path="res://Assets/Art/Resources/Fish/fish5.png" id="5_mbtcg"]
+[ext_resource type="Texture2D" uid="uid://d1wgclc0o3beq" path="res://Assets/Art/Resources/Fish/fish6.png" id="6_ix0rj"]
+[ext_resource type="Texture2D" uid="uid://ccjqq3cqnyn7y" path="res://Assets/Art/Resources/Fish/fish7.png" id="7_x3ly3"]
+[ext_resource type="Texture2D" uid="uid://bvblnjawsh3ui" path="res://Assets/Art/Resources/Fish/fish8.png" id="8_88fb6"]
+[ext_resource type="Texture2D" uid="uid://b6oi5eymcaepk" path="res://Assets/Art/Larry/InWater/LarryInWater11.png" id="9_8v5cd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2gqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qgvfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8ndls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pgahs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xjgvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mbtcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ix0rj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x3ly3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_88fb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8v5cd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8v5cd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Fish" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_k2gqy")
