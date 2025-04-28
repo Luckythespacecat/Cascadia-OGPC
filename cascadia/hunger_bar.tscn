@@ -1,15 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmjyq5h6g6krt"]
+[gd_scene load_steps=5 format=3 uid="uid://cmjyq5h6g6krt"]
 
 [ext_resource type="Script" uid="uid://l0qy8t8ga87x" path="res://hunger_bar.gd" id="1_ojjo8"]
 [ext_resource type="Texture2D" uid="uid://bigcqgic56imb" path="res://Assets/Art/HungerBarFill.png" id="1_sgh5k"]
 [ext_resource type="Texture2D" uid="uid://b67fkvxme4m6l" path="res://Assets/Art/HungerBar.png" id="2_ojjo8"]
+[ext_resource type="Texture2D" uid="uid://cqqh0m74qpveo" path="res://Assets/Art/raft.png" id="4_85wko"]
 
 [node name="HungerBar" type="Node2D"]
 script = ExtResource("1_ojjo8")
 
 [node name="HungerBar" type="NinePatchRect" parent="."]
 texture_filter = 1
-offset_right = 250.0
+offset_right = 253.0
 offset_bottom = 40.0
 texture = ExtResource("2_ojjo8")
 region_rect = Rect2(0, 0, 35, 35)
@@ -29,3 +30,9 @@ patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
+
+[node name="Raft" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(125.5, 21)
+scale = Vector2(2.53125, 0.333333)
+texture = ExtResource("4_85wko")

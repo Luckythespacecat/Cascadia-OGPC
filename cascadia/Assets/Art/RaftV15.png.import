@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bykksbb501pdm"
-path="res://.godot/imported/raft1.png-463ad4355d572272064f3e55ca22c989.ctex"
+uid="uid://tnkmfpo17wlm"
+path="res://.godot/imported/RaftV15.png-01e5cc0f7356432654260a99a484ca16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/raft1.png"
-dest_files=["res://.godot/imported/raft1.png-463ad4355d572272064f3e55ca22c989.ctex"]
+source_file="res://Assets/Art/RaftV15.png"
+dest_files=["res://.godot/imported/RaftV15.png-01e5cc0f7356432654260a99a484ca16.ctex"]
 
 [params]
 

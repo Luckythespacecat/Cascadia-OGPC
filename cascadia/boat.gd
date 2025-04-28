@@ -5,12 +5,32 @@ signal inWater
 var rand
 #Timer for the 'rowing animation'
 func _ready(): 
-	$AnimatedSprite2D.play("default")
+	$AnimatedSprite2D.play("Fixed")
 	$Sail.play("Front")
 	$Timer.start()
 	Global.PlayerPos = global_position
 	position = Global.NewBoatPos
-
+	
+func BoatDamage():
+	if Global.damage == 0 :
+		$AnimatedSprite2D.frame = 0
+		$Sail.frame = 0
+		$AnimatedSprite2D.play("Fixed")
+	elif Global.damage == 1:
+		$AnimatedSprite2D.frame = 0
+		$Sail.frame = 0
+		$AnimatedSprite2D.play("Damaged1")
+	elif Global.damage == 2: 
+		$AnimatedSprite2D.frame = 0
+		$Sail.frame = 0
+		$AnimatedSprite2D.play("Damaged2")
+	elif Global.damage == 3: 
+		$AnimatedSprite2D.frame = 0
+		$Sail.frame = 0
+		$AnimatedSprite2D.play("Damaged3")
+	else:
+		pass
+		
 func boatMovement():
 	Global.boatDirection += 1
 	Global.SailMovedE = true
@@ -39,6 +59,8 @@ func boatMovement2():
 #function to choose which rowing speed will occur
 func _process(delta: float) -> void: 
 	AdjustSailAction()
+	
+	BoatDamage()
 
 	Global.boatPos = position
 	if $Player/AnimatedSprite2D.animation != "Splash" :

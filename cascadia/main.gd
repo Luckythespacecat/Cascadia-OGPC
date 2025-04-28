@@ -70,9 +70,11 @@ func _process(delta: float) -> void:
 				$Lamprey.global_position.y = $Boat/Player.global_position.y 
 			DrownLarry()
 		else :
+			Global.Hunger -= 50
 			Global.PlayerPos = $Boat.position
 			Global.PlayerX = Global.PlayerPos.x
 			Global.PlayerY = Global.PlayerPos.y
+			$Boat/Player/AnimatedSprite2D.play("Idle")
 			Global.Dead = false
 		
 	$CanvasLayer/Lighthouse_light.global_rotation = $Lighthouse/PointLight2D.rotation
@@ -158,6 +160,7 @@ func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
 				$Lamprey/EndDialogue.start()
 				Global.larryAppear = 2
 				texboxRemove = true
+				Global.LighthouseCutsceneDone = true
 
 
 func _on_end_dialogue_timeout() -> void:

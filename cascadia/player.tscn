@@ -250,9 +250,7 @@ shape = SubResource("RectangleShape2D_ek41f")
 texture_filter = 1
 position = Vector2(9, -1)
 sprite_frames = SubResource("SpriteFrames_70fjt")
-animation = &"Pick_Up"
-frame = 4
-frame_progress = 1.0
+animation = &"Splash"
 flip_h = true
 
 [node name="HeadArea" type="Area2D" parent="."]
@@ -273,8 +271,13 @@ wait_time = 5.0
 position = Vector2(6, -2.5)
 shape = SubResource("RectangleShape2D_8gr2b")
 
+[node name="HungerTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="area_entered" from="FootArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FootArea" to="." method="_on_area_2d_area_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="TImerWaitDeath" to="." method="_on_t_imer_wait_death_timeout"]
 [connection signal="timeout" from="drownTimer" to="." method="_on_drown_timer_timeout"]
+[connection signal="timeout" from="HungerTimer" to="." method="_on_hunger_timer_timeout"]

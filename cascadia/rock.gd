@@ -3,6 +3,7 @@ extends Node2D
 @onready var RockArea = $RockArea
 
 func _ready():
+	$RockArea/AnimatedSprite2D.play()
 	RockArea.area_entered.connect(_on_area_entered)
 
 func _on_area_entered(area: Area2D) -> void:
