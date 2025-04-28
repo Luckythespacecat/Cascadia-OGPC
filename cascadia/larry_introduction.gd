@@ -31,9 +31,7 @@ func _process(delta: float) -> void:
 		"  You must've got hit hard.  ",
 		"  I guess I'll help you around,  ",
 		"  even though I'm most likely...  ",
-		"  a figment of your imagination!  ",
-		"   ",
-		"   "
+		"  a figment of your imagination!  "
 	])
 	
 	if Dialoguemanager.current_line_index == 8 and Dialoguemanager.can_advance_line == true:   
