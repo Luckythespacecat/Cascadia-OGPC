@@ -1,6 +1,7 @@
 extends Node2D
 
 const woodResource = preload("res://wood.tscn")
+const radioParts = preload("res://parts.tscn") # load the parts scene for radio repair
 
 var drownLarryScene = false
 var texboxRemove = false
