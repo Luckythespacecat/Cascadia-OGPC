@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bktg2cjnoflfp" path="res://Assets/Art/Resources/Rock3.png" id="4_o54ku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46y1q"]
-size = Vector2(42.5, 30)
+size = Vector2(43.25, 39)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gtey5"]
 animations = [{
@@ -26,7 +26,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68h2w"]
-size = Vector2(43, 31)
+size = Vector2(43.5, 39)
 
 [node name="Rock" type="Node2D"]
 script = ExtResource("1_wecdg")
@@ -36,20 +36,21 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RockArea"]
 z_index = 100
-position = Vector2(31, 41)
+position = Vector2(31.375, 28.5)
 shape = SubResource("RectangleShape2D_46y1q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RockArea"]
 texture_filter = 1
 position = Vector2(33, 33)
 sprite_frames = SubResource("SpriteFrames_gtey5")
-frame_progress = 0.72171
+frame = 2
+frame_progress = 0.0478292
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(31, 42)
+position = Vector2(31.25, 28.5)
 shape = SubResource("RectangleShape2D_68h2w")
 
 [connection signal="area_entered" from="RockArea" to="." method="_on_rock_area_area_entered"]
