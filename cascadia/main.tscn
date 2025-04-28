@@ -107,7 +107,7 @@ position = Vector2(-64, 8)
 [node name="Node2D" type="Node2D" parent="Boat/Player"]
 
 [node name="PointLight2D" type="PointLight2D" parent="Boat/Player"]
-position = Vector2(4, -2)
+position = Vector2(3, -4)
 energy = 0.5
 texture = ExtResource("8_4c57u")
 texture_scale = 0.5
