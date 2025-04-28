@@ -53,5 +53,4 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_k2gqy")
-frame = 8
-frame_progress = 0.0856495
+frame_progress = 0.829615

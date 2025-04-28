@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6g35j1nhodem"]
+[gd_scene load_steps=4 format=3 uid="uid://b6g35j1nhodem"]
 
 [ext_resource type="Script" uid="uid://dqq833dih0tr0" path="res://map.gd" id="1_0kwsq"]
+[ext_resource type="PackedScene" uid="uid://nayarson8r7d" path="res://rock.tscn" id="3_e0an3"]
 [ext_resource type="PackedScene" uid="uid://bn60mckxh70u3" path="res://water_test.tscn" id="9_gqbix"]
 
 [node name="Map" type="Node2D"]
@@ -12,3 +13,23 @@ autostart = true
 
 [node name="WaterTest" parent="." instance=ExtResource("9_gqbix")]
 position = Vector2(960, 896)
+
+[node name="Rock" parent="." instance=ExtResource("3_e0an3")]
+
+[node name="Rock2" parent="." instance=ExtResource("3_e0an3")]
+position = Vector2(67, 25)
+
+[node name="Rock3" parent="." instance=ExtResource("3_e0an3")]
+position = Vector2(-86, 55)
+
+[node name="Rock4" parent="." instance=ExtResource("3_e0an3")]
+position = Vector2(-133, -92)
+
+[node name="Rock5" parent="." instance=ExtResource("3_e0an3")]
+position = Vector2(90, -108)
+
+[node name="Rock6" parent="." instance=ExtResource("3_e0an3")]
+position = Vector2(192, 0)
+
+[node name="Rock7" parent="." instance=ExtResource("3_e0an3")]
+position = Vector2(192, 0)

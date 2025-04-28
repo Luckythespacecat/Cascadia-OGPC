@@ -2,7 +2,8 @@ extends Node2D
 
 const mainScene = preload("res://main.tscn")
 
-	
+var thispartisdone = false
+
 func _ready() -> void:
 	pass
 
@@ -34,10 +35,12 @@ func _process(delta: float) -> void:
 		"  a figment of your imagination!  "
 	])
 	
-	if Dialoguemanager.current_line_index == 8 and Dialoguemanager.can_advance_line == true:   
+	if Dialoguemanager.current_line_index == 8 and Dialoguemanager.can_advance_line == true and thispartisdone == false:   
 		Global.larryAppear = 2
 		$LarryOut.start()
-
+		Dialoguemanager.text_box.queue_free()
+		Dialoguemanager.current_line_index = 0
+		thispartisdone = true
 
 
 # Day and night cycle transitions here
@@ -60,8 +63,7 @@ func _on_night_timeout() -> void:
 	print("Nights over")
 	$sun/Day.start()
 	Global.timeOfDay = "Day"
-
-
+	
 func _on_larry_out_timeout() -> void:
 	Global.cutscene = 1
 	Global.larryAnimationFinished = 0

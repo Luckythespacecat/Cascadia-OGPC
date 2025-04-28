@@ -162,7 +162,9 @@ stream = ExtResource("12_dg77c")
 stream = ExtResource("13_ycdy4")
 
 [node name="Rock" parent="." instance=ExtResource("14_w48qg")]
-position = Vector2(100, 100)
+position = Vector2(200, 200)
+
+[node name="Collision Objects" type="Node2D" parent="."]
 
 [connection signal="area_entered" from="Lighthouse/PointLight2D/LighthouseLightArea" to="." method="_on_lighthouse_light_area_area_entered"]
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]
