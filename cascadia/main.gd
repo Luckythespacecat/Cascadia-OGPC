@@ -24,7 +24,7 @@ func spawnItems(): #Spawning squence, I will use as template to make more spawn 
 		woodInstance.connect("input_event", Callable(self, "_on_wood_interacted"))
 		
 	elif itemToSpawn >= 10 and itemToSpawn < 40 :
-		var fishInstance = fish.instantiate()
+		var fishInstance = fish.instantiate() 
 		add_child(fishInstance)
 		fishInstance.position.y = spawnPosY
 		fishInstance.position.x = spawnPosX
