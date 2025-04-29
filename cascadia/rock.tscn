@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://nayarson8r7d"]
+[gd_scene load_steps=9 format=3 uid="uid://nayarson8r7d"]
 
 [ext_resource type="Texture2D" uid="uid://k0rk1t4vfosp" path="res://Assets/Art/Resources/Rock1.png" id="1_68h2w"]
 [ext_resource type="Script" uid="uid://c7a3s8j7dcxvh" path="res://rock.gd" id="1_wecdg"]
@@ -28,7 +28,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68h2w"]
 size = Vector2(43.5, 39)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o54ku"]
+size = Vector2(46.25, 28.5)
+
 [node name="Rock" type="Node2D"]
+z_index = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_wecdg")
 
@@ -54,4 +58,12 @@ collision_mask = 3
 position = Vector2(31.25, 28.5)
 shape = SubResource("RectangleShape2D_68h2w")
 
+[node name="OrderArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderArea"]
+position = Vector2(31.875, 14.25)
+shape = SubResource("RectangleShape2D_o54ku")
+
 [connection signal="area_entered" from="RockArea" to="." method="_on_rock_area_area_entered"]
+[connection signal="area_entered" from="OrderArea" to="." method="_on_order_area_area_entered"]
+[connection signal="area_exited" from="OrderArea" to="." method="_on_order_area_area_exited"]

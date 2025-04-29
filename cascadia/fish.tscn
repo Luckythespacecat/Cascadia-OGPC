@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://f6fwuoooqgah"]
+[gd_scene load_steps=13 format=3 uid="uid://f6fwuoooqgah"]
 
 [ext_resource type="Script" uid="uid://bq2t62q7hnq4f" path="res://fish.gd" id="1_8ndls"]
 [ext_resource type="Texture2D" uid="uid://n82hlfy0lpdj" path="res://Assets/Art/Resources/Fish/fish1.png" id="1_qgvfm"]
@@ -49,6 +49,8 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ndls"]
+
 [node name="Fish" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_8ndls")
@@ -57,3 +59,10 @@ script = ExtResource("1_8ndls")
 texture_filter = 1
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_k2gqy")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8ndls")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

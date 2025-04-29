@@ -155,12 +155,12 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func _on_sail_area_area_entered(area: Area2D) -> void:
 	if area.name == "FootArea" : 
-		$Player.z_index = 2
+		$Player.z_index = 1
 
 
 func _on_sail_area_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" : 
-		$Player.z_index = 4
+		$Player.z_index = 3
 
 func AdjustSailAction() :
 	for area in $SailAdjust.get_overlapping_areas() :

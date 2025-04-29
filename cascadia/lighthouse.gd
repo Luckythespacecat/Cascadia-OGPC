@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		#$AnimatedSprite2D.
 
 func _on_door_area_entered(area: Area2D) -> void:
-	if area.name == "FootArea" and Global.SceneJustIn == "Main" :
+	if area.name == "FootArea" and Global.SceneJustIn == "Main" and z_index == 0:
 		get_tree().change_scene_to_packed(next_scene)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -41,3 +41,11 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 func _on_door_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" and Global.SceneJustIn == "Lighthouse" :
 		Global.SceneJustIn == "Main"
+
+func _on_order_area_area_entered(area: Area2D) -> void:
+	if area.name == "FootArea" :
+		z_index = 5
+
+func _on_order_area_area_exited(area: Area2D) -> void:
+	if area.name == "FootArea" :
+		z_index = 0

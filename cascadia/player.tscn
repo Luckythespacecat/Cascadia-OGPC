@@ -237,6 +237,7 @@ size = Vector2(17, 13)
 size = Vector2(20, 45)
 
 [node name="Player" type="Node2D"]
+z_index = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_tpr4o")
 
@@ -251,7 +252,7 @@ shape = SubResource("RectangleShape2D_ek41f")
 texture_filter = 1
 position = Vector2(9, -1)
 sprite_frames = SubResource("SpriteFrames_70fjt")
-animation = &"Idle"
+animation = &"SwimIdle"
 flip_h = true
 
 [node name="HeadArea" type="Area2D" parent="."]

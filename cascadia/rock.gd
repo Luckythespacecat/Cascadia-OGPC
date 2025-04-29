@@ -15,3 +15,12 @@ func _on_area_entered(area: Area2D) -> void:
 		pass 
 		#Nathan take care of it the player shouldn't move when hitting a rock
 		#and I couldn't find an easy way to do that with our movement system
+
+
+func _on_order_area_area_entered(area: Area2D) -> void:
+	if area.name == "HeadArea" :
+		z_index = 5
+
+func _on_order_area_area_exited(area: Area2D) -> void:
+	if area.name == "HeadArea" :
+		z_index = 0
