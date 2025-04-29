@@ -37,10 +37,10 @@ func _process(delta: float) -> void:
 			zoom.y = lerp(zoom.y, 6.0, delta / 4 )
 	if Global.cutscene == 1 :
 		CameraToPlayer()
-		if zoom.y > 3.0 or  zoom.y < 3.0:
-			zoom.y = lerp(zoom.y, 3.0, delta / 4 )
-		if zoom.x > 3.0 or  zoom.x < 3.0:
-			zoom.x = lerp(zoom.x, 3.0, delta / 4)
+		if zoom.y > 2.0 or  zoom.y < 2.0:
+			zoom.y = lerp(zoom.y, 2.0, delta / 4 )
+		if zoom.x > 2.0 or  zoom.x < 2.0:
+			zoom.x = lerp(zoom.x, 2.0, delta / 4)
 
 		
 

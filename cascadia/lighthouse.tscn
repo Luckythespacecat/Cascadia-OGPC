@@ -36,6 +36,7 @@ height = 175.999
 size = Vector2(107, 244)
 
 [node name="Lighthouse" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_i1j62")
 
 [node name="Door" type="Area2D" parent="."]

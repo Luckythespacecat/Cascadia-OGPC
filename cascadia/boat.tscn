@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://b7eyeh16ic4ke" path="res://Assets/Art/Sail/SailV15.png" id="19_ban67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf3jn"]
-size = Vector2(113, 126)
+size = Vector2(149, 159)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h5au0"]
 animations = [{
@@ -192,10 +192,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ewa0"]
-size = Vector2(158, 112)
+size = Vector2(158, 132)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nova1"]
-size = Vector2(31, 42)
+size = Vector2(34.5, 42)
 
 [node name="Boat" type="Node2D"]
 position = Vector2(2, -2)
@@ -206,7 +206,7 @@ collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 z_index = 3
-position = Vector2(-0.5, 31)
+position = Vector2(-0.5, 47.5)
 shape = SubResource("RectangleShape2D_mf3jn")
 
 [node name="Timer" type="Timer" parent="."]
@@ -223,7 +223,7 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 25)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_h5au0")
 animation = &"Fixed"
 frame_progress = 0.725495
@@ -234,13 +234,13 @@ texture_filter = 1
 position = Vector2(-2, -9)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v5m18")
-animation = &"AngledBack"
+animation = &"Front"
 
 [node name="SailArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SailArea"]
 z_index = 4
-position = Vector2(-3, -59)
+position = Vector2(0, -36)
 shape = SubResource("RectangleShape2D_7ewa0")
 
 [node name="SailAdjust" type="Area2D" parent="."]

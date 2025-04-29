@@ -16,7 +16,7 @@ anchor_right = 0.011
 anchor_bottom = 0.02
 offset_right = 20.376
 offset_bottom = 19.92
-scale = Vector2(0.75, 0.75)
+scale = Vector2(1.25, 1.25)
 script = ExtResource("1_5liiy")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

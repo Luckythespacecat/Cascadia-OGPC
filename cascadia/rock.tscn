@@ -29,6 +29,7 @@ animations = [{
 size = Vector2(43.5, 39)
 
 [node name="Rock" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_wecdg")
 
 [node name="RockArea" type="Area2D" parent="."]

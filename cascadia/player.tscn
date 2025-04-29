@@ -49,7 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://bb063e2wr0dhi" path="res://Assets/Art/Player/PlayerSwim11.png" id="27_tkwlq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ek41f"]
-size = Vector2(18, 8)
+size = Vector2(18, 7.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_70fjt"]
 animations = [{
@@ -237,20 +237,21 @@ size = Vector2(17, 13)
 size = Vector2(20, 45)
 
 [node name="Player" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_tpr4o")
 
 [node name="FootArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FootArea"]
 z_index = 1
-position = Vector2(4, 16)
+position = Vector2(6, 17.25)
 shape = SubResource("RectangleShape2D_ek41f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(9, -1)
 sprite_frames = SubResource("SpriteFrames_70fjt")
-animation = &"Splash"
+animation = &"Idle"
 flip_h = true
 
 [node name="HeadArea" type="Area2D" parent="."]

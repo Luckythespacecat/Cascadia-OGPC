@@ -154,12 +154,12 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 			inWater.emit()
 
 func _on_sail_area_area_entered(area: Area2D) -> void:
-	if area.name == "HeadArea" : 
+	if area.name == "FootArea" : 
 		$Player.z_index = 2
 
 
 func _on_sail_area_area_exited(area: Area2D) -> void:
-	if area.name == "HeadArea" : 
+	if area.name == "FootArea" : 
 		$Player.z_index = 4
 
 func AdjustSailAction() :

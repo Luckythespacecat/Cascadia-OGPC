@@ -161,6 +161,7 @@ animations = [{
 }]
 
 [node name="Lamprey" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_x7hqm")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]

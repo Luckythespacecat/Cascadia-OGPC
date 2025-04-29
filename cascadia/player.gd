@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 			$AnimatedSprite2D.play("SwimIdle")
 		# Movement animation, pos and horizantal flip for Left
 	if not Input.is_action_pressed("ui_accept")and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") and $AnimatedSprite2D.animation != "Drown" :
-		Global.PlayerX -= 1.5
+		Global.PlayerX -= 2
 		$AnimatedSprite2D.flip_h = false
 		if Global.swimming == false:
 			$AnimatedSprite2D.play("Run")
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 			$AnimatedSprite2D.play("Swimming")
 		# Movement animation, pos and horizantal flip for Right
 	if not Input.is_action_pressed("ui_accept")  and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Right") and $AnimatedSprite2D.animation != "Drown" :
-		Global.PlayerX += 1.5
+		Global.PlayerX += 2
 		$AnimatedSprite2D.flip_h = true
 		if Global.swimming == false:
 			$AnimatedSprite2D.play("Run")
@@ -40,13 +40,13 @@ func _process(delta: float) -> void:
 			$AnimatedSprite2D.play("Swimming")
 		#up and down movement
 	if  not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Down") and $AnimatedSprite2D.animation != "Drown" :
-		Global.PlayerY += 1.5
+		Global.PlayerY += 2
 		if Global.swimming == false:
 			$AnimatedSprite2D.play("Run")
 		else :
 			$AnimatedSprite2D.play("Swimming")
 	if not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Up") and $AnimatedSprite2D.animation != "Drown" :
-		Global.PlayerY -= 1.5
+		Global.PlayerY -= 2
 		if Global.swimming == false: 
 			$AnimatedSprite2D.play("Run")
 		else :

@@ -237,6 +237,7 @@ texture = ExtResource("5_ug2bp")
 [node name="playerBody" type="CharacterBody2D" parent="."]
 z_index = 1
 position = Vector2(-39, 126)
+scale = Vector2(2, 2)
 script = ExtResource("5_cde3n")
 SPEED = 130.0
 
@@ -287,7 +288,8 @@ shape = SubResource("RectangleShape2D_gv003")
 [node name="Door" type="Sprite2D" parent="."]
 z_index = 10
 texture_filter = 1
-position = Vector2(16, 256)
+position = Vector2(17, 239)
+scale = Vector2(2, 2)
 texture = ExtResource("42_vfdtv")
 
 [node name="Doorlight" type="PointLight2D" parent="."]

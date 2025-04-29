@@ -50,6 +50,7 @@ animations = [{
 }]
 
 [node name="Fish" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_8ndls")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

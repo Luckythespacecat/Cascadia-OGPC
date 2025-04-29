@@ -30,14 +30,14 @@ script = ExtResource("1_up53h")
 [node name="NavIcon" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(144, 144)
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("1_kxhmu")
 
 [node name="Point" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(144, 144)
 rotation = 7.06857
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("2_i7dvk")
 
 [node name="LeftArrow" type="AnimatedSprite2D" parent="."]
@@ -55,8 +55,8 @@ position = Vector2(0, -3.8147e-06)
 shape = SubResource("RectangleShape2D_q287o")
 
 [node name="HungerBar" parent="." instance=ExtResource("6_r3lf1")]
-position = Vector2(1191, 62)
-scale = Vector2(2, 2)
+position = Vector2(755, 12)
+scale = Vector2(4, 4)
 
 [connection signal="mouse_entered" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_exited"]

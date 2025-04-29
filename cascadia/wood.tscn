@@ -30,6 +30,7 @@ size = Vector2(17, 13)
 
 [node name="wood" type="Node2D"]
 position = Vector2(9, 7)
+scale = Vector2(2, 2)
 script = ExtResource("1_eyjtj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

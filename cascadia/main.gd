@@ -104,7 +104,7 @@ func _on_day_timeout() -> void:
 	$TheGreatOcean.play() #Night Music
 	$sun/Night.start()
 	Global.timeOfDay = "Night"
-	Global.wind = randf_range(1, 4) / 2
+	Global.wind = randf_range(2, 4)
 
 func _on_night_timeout() -> void:
 	$TheGreatOcean.stop()
@@ -112,7 +112,7 @@ func _on_night_timeout() -> void:
 	print("Nights over")
 	$sun/Day.start()
 	Global.timeOfDay = "Day"
-	Global.wind = randf_range(1, 4) / 4
+	Global.wind = randf_range(2, 4) / 1.5
 
 func DrownLarry() :
 	Global.textPos = $Lamprey.position
@@ -136,7 +136,7 @@ func DrownLarry() :
 		texboxRemove = true
 		
 func TutorialLarry() :
-	Dialoguemanager.start_dialogue( Global.textPos, [
+	Dialoguemanager.start_dialogue( Vector2(Global.textPos.x, Global.textPos.y - 50), [
 		"  Hey over here!  ",
 		"  That is a very convienent raft you got there!  ",
 		"  Press 'E' and 'Q' to rotate the sail  " ])
