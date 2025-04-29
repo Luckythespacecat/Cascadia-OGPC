@@ -237,7 +237,7 @@ size = Vector2(17, 13)
 size = Vector2(20, 45)
 
 [node name="Player" type="Node2D"]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_tpr4o")
 
 [node name="FootArea" type="Area2D" parent="."]
