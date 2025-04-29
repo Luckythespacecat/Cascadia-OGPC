@@ -62,10 +62,13 @@ position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_k2gqy")
 frame_progress = 0.554943
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="FishArea" type="Area2D" parent="."]
+position = Vector2(0, 9.5)
+scale = Vector2(1.34345, 2.32811)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishArea"]
 position = Vector2(-2.25, -5.75)
 shape = SubResource("RectangleShape2D_8ndls")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="FishArea" to="." method="_on_fish_area_area_entered"]
+[connection signal="area_exited" from="FishArea" to="." method="_on_fish_area_area_exited"]

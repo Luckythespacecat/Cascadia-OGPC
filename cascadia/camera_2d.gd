@@ -32,10 +32,10 @@ func _process(delta: float) -> void:
 	
 	if Global.cutscene == 0 :
 		self.global_position = $/root/Main/Lamprey.global_position
-		if zoom.x < 6.0:
-			zoom.x = lerp(zoom.x, 6.0, delta / 4)
-		if zoom.y < 6.0:
-			zoom.y = lerp(zoom.y, 6.0, delta / 4 )
+		if zoom.x < 4.0:
+			zoom.x = lerp(zoom.x, 4.0, delta / 4)
+		if zoom.y < 4.0:
+			zoom.y = lerp(zoom.y, 4.0, delta / 4 )
 	if Global.cutscene == 1 :
 		CameraToPlayer()
 		if zoom.y > 2.0 or  zoom.y < 2.0:

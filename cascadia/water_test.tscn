@@ -16,7 +16,7 @@ shader_parameter/wave_speed = 1.5
 [node name="WaterTest" type="Node2D"]
 texture_repeat = 3
 position = Vector2(0, -18)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

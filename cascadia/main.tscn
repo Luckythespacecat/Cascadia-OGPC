@@ -84,7 +84,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_w48qg")
 
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
-position = Vector2(385, 251)
+position = Vector2(6559, 3633)
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighthouse"]
 position = Vector2(0.75, -146.75)
@@ -138,6 +138,7 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UserInterface" parent="CanvasLayer" instance=ExtResource("4_5vw27")]
+visible = true
 
 [node name="Lighthouse_light" type="PointLight2D" parent="CanvasLayer"]
 visible = false

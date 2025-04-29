@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxp6esaousgn2"]
+[gd_scene load_steps=10 format=3 uid="uid://dxp6esaousgn2"]
 
 [ext_resource type="Texture2D" uid="uid://byeb6w7mpyv51" path="res://Assets/Art/navIcon.png" id="1_kxhmu"]
 [ext_resource type="Script" uid="uid://u81t868obtq2" path="res://user_interface.gd" id="1_up53h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bphepir8f5ult" path="res://Assets/Art/SailDirectionArrow2.png" id="4_r3lf1"]
 [ext_resource type="Texture2D" uid="uid://cqv5fr3b2pv6e" path="res://Assets/Art/SailDirectionArrow1.png" id="5_hsgek"]
 [ext_resource type="PackedScene" uid="uid://cmjyq5h6g6krt" path="res://hunger_bar.tscn" id="6_r3lf1"]
+[ext_resource type="Texture2D" uid="uid://bh8ahbuycptk6" path="res://Assets/Art/HungerbarText.png" id="7_hsgek"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4522"]
 animations = [{
@@ -25,6 +26,8 @@ animations = [{
 size = Vector2(28.8, 28.8)
 
 [node name="UserInterface" type="Node2D"]
+visible = false
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_up53h")
 
 [node name="NavIcon" type="Sprite2D" parent="."]
@@ -55,8 +58,13 @@ position = Vector2(0, -3.8147e-06)
 shape = SubResource("RectangleShape2D_q287o")
 
 [node name="HungerBar" parent="." instance=ExtResource("6_r3lf1")]
-position = Vector2(755, 12)
+position = Vector2(1358.67, 126.667)
 scale = Vector2(4, 4)
+
+[node name="HungerbarText" type="Sprite2D" parent="HungerBar"]
+texture_filter = 1
+position = Vector2(204.75, -10)
+texture = ExtResource("7_hsgek")
 
 [connection signal="mouse_entered" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 		$CanvasLayer/Sprite2D.position = lerp($CanvasLayer/Sprite2D.position, Vector2(936.0, 1127.0), delta / 2)
 	
 	if thispartisdone == false :
-		Dialoguemanager.start_dialogue( Global.textPos, [
+		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 25, Global.textPos.y - 40), [
 		"  Hey you, its about time you woke up  ",
 		"  The names Larry  ",
 		"  Larry the Lamprey, that is!  ",

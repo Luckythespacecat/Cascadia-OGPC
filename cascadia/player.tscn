@@ -1,32 +1,45 @@
-[gd_scene load_steps=52 format=3 uid="uid://bxv1m6f121ouq"]
+[gd_scene load_steps=66 format=3 uid="uid://bxv1m6f121ouq"]
 
 [ext_resource type="Script" uid="uid://e2pbsyv7kytl" path="res://player.gd" id="1_tpr4o"]
 [ext_resource type="Texture2D" uid="uid://cajtm0lw2mkvl" path="res://Assets/Art/Player/Player12.png" id="1_y8x56"]
 [ext_resource type="Texture2D" uid="uid://bws5k43oo1twl" path="res://Assets/Art/Player/PlayerSwim20.png" id="2_8gr2b"]
+[ext_resource type="Texture2D" uid="uid://cnkyjch8rkqeh" path="res://Assets/Art/Player/PlayerDive1.png" id="2_l3lcn"]
 [ext_resource type="Texture2D" uid="uid://cyggs3pst3e1b" path="res://Assets/Art/Player/Player13.png" id="2_msi47"]
 [ext_resource type="Texture2D" uid="uid://dnnnesx3kpmpw" path="res://Assets/Art/Player/Player14.png" id="3_5y845"]
 [ext_resource type="Texture2D" uid="uid://cv5acsm4qsa70" path="res://Assets/Art/Player/PlayerSwim21.png" id="3_vl8ci"]
+[ext_resource type="Texture2D" uid="uid://cm07j7xlf6del" path="res://Assets/Art/Player/PlayerDive2.png" id="3_xry5e"]
 [ext_resource type="Texture2D" uid="uid://bjtyis6sufvdd" path="res://Assets/Art/Player/Player15.png" id="4_02eas"]
+[ext_resource type="Texture2D" uid="uid://bdxfskqn15mbe" path="res://Assets/Art/Player/PlayerDive3.png" id="4_h6w8y"]
 [ext_resource type="Texture2D" uid="uid://c65qexlstkjms" path="res://Assets/Art/Player/PlayerSwim22.png" id="4_ieltc"]
 [ext_resource type="Texture2D" uid="uid://b4q1mj6a58e2a" path="res://Assets/Art/Player/PlayerSwim23.png" id="5_fddr8"]
 [ext_resource type="Texture2D" uid="uid://demcf3qrnr4qi" path="res://Assets/Art/Player/Player7.png" id="5_rrtqa"]
+[ext_resource type="Texture2D" uid="uid://bj3fy2c11g6o0" path="res://Assets/Art/Player/PlayerDive4.png" id="5_yem3p"]
+[ext_resource type="Texture2D" uid="uid://dqqa0vd1krchp" path="res://Assets/Art/Player/PlayerDive5.png" id="6_86rna"]
 [ext_resource type="Texture2D" uid="uid://cdhu336upd8ts" path="res://Assets/Art/Player/PlayerSwim24.png" id="6_oybyf"]
 [ext_resource type="Texture2D" uid="uid://cxpg2skmq6wlh" path="res://Assets/Art/Player/Player8.png" id="6_uuxjk"]
 [ext_resource type="Texture2D" uid="uid://ckh3fw73lhmbr" path="res://Assets/Art/Player/PlayerSwim25.png" id="7_ajfva"]
 [ext_resource type="Texture2D" uid="uid://ch2expoyqnpk6" path="res://Assets/Art/Player/Player9.png" id="7_ar3j1"]
+[ext_resource type="Texture2D" uid="uid://bvf2dmd643mq4" path="res://Assets/Art/Player/PlayerDive6.png" id="7_xg1a7"]
 [ext_resource type="Texture2D" uid="uid://cdmi22xa26q64" path="res://Assets/Art/Player/Player10.png" id="8_0fmly"]
 [ext_resource type="Texture2D" uid="uid://dcrhtv5s7fy6n" path="res://Assets/Art/Player/PlayerSwim26.png" id="8_5ef02"]
+[ext_resource type="Texture2D" uid="uid://d12rxgjvojl6u" path="res://Assets/Art/Player/PlayerDive7.png" id="8_ob4mi"]
+[ext_resource type="Texture2D" uid="uid://dbeqbq02cyk8a" path="res://Assets/Art/Player/PlayerDive9.png" id="9_ax26h"]
 [ext_resource type="Texture2D" uid="uid://dpg5nxeu4o6ga" path="res://Assets/Art/Player/Player11.png" id="9_n2cml"]
 [ext_resource type="Texture2D" uid="uid://dbtxroe586a2o" path="res://Assets/Art/Player/PlayerSwim27.png" id="9_pfmca"]
 [ext_resource type="Texture2D" uid="uid://dtjhk2lqm3wnd" path="res://Assets/Art/Player/PlayerSwim28.png" id="10_76oay"]
 [ext_resource type="Texture2D" uid="uid://bvgexb1xpfi3" path="res://Assets/Art/Player/Player1.png" id="10_fp2b8"]
+[ext_resource type="Texture2D" uid="uid://bl72icj4oogv8" path="res://Assets/Art/Player/PlayerDive8.png" id="10_kh4g0"]
 [ext_resource type="Texture2D" uid="uid://db15556jeab47" path="res://Assets/Art/Player/PlayerSwim30.png" id="11_b4uyv"]
+[ext_resource type="Texture2D" uid="uid://ctm3op67mrwfu" path="res://Assets/Art/Player/PlayerDive10.png" id="11_mgmjd"]
 [ext_resource type="Texture2D" uid="uid://bttwv5m8fbi8k" path="res://Assets/Art/Player/Player2.png" id="11_r67sl"]
 [ext_resource type="Texture2D" uid="uid://38fiwmsg26ta" path="res://Assets/Art/Player/Player3.png" id="12_n8rkg"]
 [ext_resource type="Texture2D" uid="uid://d1bl1r52lqru2" path="res://Assets/Art/Player/PlayerSwim29.png" id="12_tw8ou"]
+[ext_resource type="Texture2D" uid="uid://ddg5wfjr88xla" path="res://Assets/Art/Player/PlayerDive11.png" id="12_va2xi"]
+[ext_resource type="Texture2D" uid="uid://dlxlbvo6goep" path="res://Assets/Art/Player/PlayerDive12.png" id="13_fkf2u"]
 [ext_resource type="Texture2D" uid="uid://dvld857qo3oqi" path="res://Assets/Art/Player/Player4.png" id="13_ikqbg"]
 [ext_resource type="Texture2D" uid="uid://ddh2hr1gbgolw" path="res://Assets/Art/Player/PlayerSwim31.png" id="13_ygbnx"]
 [ext_resource type="Texture2D" uid="uid://dwvwgtuth5gwr" path="res://Assets/Art/Player/Player5.png" id="14_8ttfc"]
+[ext_resource type="Texture2D" uid="uid://cdwf30yddmfcu" path="res://Assets/Art/Player/PlayerDive13.png" id="14_s7jk6"]
 [ext_resource type="Texture2D" uid="uid://dt460qkf68367" path="res://Assets/Art/Player/Player6.png" id="15_wsjic"]
 [ext_resource type="Texture2D" uid="uid://d37hwblsrsn7n" path="res://Assets/Art/Player/PlayerSwim12.png" id="17_hl5qd"]
 [ext_resource type="Texture2D" uid="uid://dwpwmvfv8rb45" path="res://Assets/Art/Player/PlayerSwim1.png" id="17_pylmc"]
@@ -53,6 +66,50 @@ size = Vector2(18, 7.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_70fjt"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l3lcn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xry5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h6w8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yem3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_86rna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xg1a7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ob4mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ax26h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kh4g0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mgmjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_va2xi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fkf2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_s7jk6")
+}],
+"loop": false,
+"name": &"Dive",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_8gr2b")
@@ -236,6 +293,8 @@ size = Vector2(17, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gr2b"]
 size = Vector2(20, 45)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3lcn"]
+
 [node name="Player" type="Node2D"]
 z_index = 1
 scale = Vector2(1.5, 1.5)
@@ -252,7 +311,7 @@ shape = SubResource("RectangleShape2D_ek41f")
 texture_filter = 1
 position = Vector2(9, -1)
 sprite_frames = SubResource("SpriteFrames_70fjt")
-animation = &"SwimIdle"
+animation = &"Dive"
 flip_h = true
 
 [node name="HeadArea" type="Area2D" parent="."]
@@ -277,9 +336,18 @@ shape = SubResource("RectangleShape2D_8gr2b")
 wait_time = 3.0
 autostart = true
 
+[node name="SwimArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwimArea"]
+position = Vector2(6.66667, -2)
+shape = SubResource("RectangleShape2D_l3lcn")
+
 [connection signal="area_entered" from="FootArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FootArea" to="." method="_on_area_2d_area_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="TImerWaitDeath" to="." method="_on_t_imer_wait_death_timeout"]
 [connection signal="timeout" from="drownTimer" to="." method="_on_drown_timer_timeout"]
+[connection signal="area_entered" from="BodyArea" to="." method="_on_body_area_area_entered"]
 [connection signal="timeout" from="HungerTimer" to="." method="_on_hunger_timer_timeout"]
+[connection signal="area_entered" from="SwimArea" to="." method="_on_swim_area_area_entered"]
+[connection signal="area_exited" from="SwimArea" to="." method="_on_swim_area_area_exited"]

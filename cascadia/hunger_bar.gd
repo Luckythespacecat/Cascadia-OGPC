@@ -7,4 +7,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Fill.size.x = int(lerp(int($Fill.size.x), int(Global.Hunger), delta ))
+	$Fill.size.x = lerpf($Fill.size.x, Global.Hunger, delta )

@@ -117,7 +117,7 @@ func _on_night_timeout() -> void:
 func DrownLarry() :
 	Global.textPos = $Lamprey.position
 	$Boat/Player/AnimatedSprite2D.pause()
-	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x, Global.textPos.y - 50), [
+	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 		"  WOOAAH ! ! !  ",
 		"  Watch it, you almost drowned!  ",
 		"  If you drown I might not be able to save you!  ",
@@ -136,7 +136,7 @@ func DrownLarry() :
 		texboxRemove = true
 		
 func TutorialLarry() :
-	Dialoguemanager.start_dialogue( Vector2(Global.textPos.x, Global.textPos.y - 50), [
+	Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 		"  Hey over here!  ",
 		"  That is a very convienent raft you got there!  ",
 		"  Press 'E' and 'Q' to rotate the sail  " ])
@@ -149,14 +149,14 @@ func TutorialLarry() :
 		texboxRemove = true
 
 func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
-	if area.name == "HeadArea" and Global.FirstDrown == false :
+	if area.name == "BodyArea" and Global.FirstDrown == false :
 		if Global.LighthouseCutsceneDone == false:
 			Global.boatDirection = 0
 			Global.larryAppear = 1
 			$Lamprey.global_position.x = $Boat/Player.global_position.x + 50
 			$Lamprey.global_position.y = $Boat/Player.global_position.y
 			Global.textPos = $Lamprey.position
-			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x, Global.textPos.y - 50), [
+			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 			"  Did you see that?  ",
 			"  That must be coming from a lighthouse!  ",
 			"  Follow the light and see where it leads!  ",

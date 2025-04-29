@@ -1,6 +1,8 @@
 extends Node2D
 
 var PlayerPos : Vector2
+var stopAnimation : bool = false
+var enteredFish = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("Idle")
@@ -8,7 +10,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+
+	if enteredFish == true:
+		if Input.is_action_just_pressed("interact") and stopAnimation == false :
+			stopAnimation = true
+			$AnimatedSprite2D.play("Dive")
+	if $AnimatedSprite2D.animation == "Dive":
+		$drownTimer.stop()
 	#drown function
 	drown()
 	# drowning aftermath
@@ -17,13 +25,13 @@ func _process(delta: float) -> void:
 	
 	#basic movement if statements
 		#Sets the animation to idle if input is stopped
-	if not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
+	if stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
 		if Global.swimming == false :
 			$AnimatedSprite2D.play("Idle")
 		else: 
 			$AnimatedSprite2D.play("SwimIdle")
 		# Movement animation, pos and horizantal flip for Left
-	if not Input.is_action_pressed("ui_accept")and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") and $AnimatedSprite2D.animation != "Drown" :
+	if stopAnimation == false and not Input.is_action_pressed("ui_accept")and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerX -= 2
 		$AnimatedSprite2D.flip_h = false
 		if Global.swimming == false:
@@ -31,7 +39,7 @@ func _process(delta: float) -> void:
 		else :
 			$AnimatedSprite2D.play("Swimming")
 		# Movement animation, pos and horizantal flip for Right
-	if not Input.is_action_pressed("ui_accept")  and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Right") and $AnimatedSprite2D.animation != "Drown" :
+	if stopAnimation == false and not Input.is_action_pressed("ui_accept")  and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Right") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerX += 2
 		$AnimatedSprite2D.flip_h = true
 		if Global.swimming == false:
@@ -39,13 +47,13 @@ func _process(delta: float) -> void:
 		else :
 			$AnimatedSprite2D.play("Swimming")
 		#up and down movement
-	if  not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Down") and $AnimatedSprite2D.animation != "Drown" :
+	if stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Down") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerY += 2
 		if Global.swimming == false:
 			$AnimatedSprite2D.play("Run")
 		else :
 			$AnimatedSprite2D.play("Swimming")
-	if not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Up") and $AnimatedSprite2D.animation != "Drown" :
+	if stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Up") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerY -= 2
 		if Global.swimming == false: 
 			$AnimatedSprite2D.play("Run")
@@ -75,6 +83,10 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		Global.AdjustSail = false
 	if $AnimatedSprite2D.animation == "Drown"  :
 		$TImerWaitDeath.start()
+		
+	if $AnimatedSprite2D.animation == "Dive" :
+		stopAnimation = false
+		Global.Hunger += 5
 	
 
 func drown():
@@ -93,3 +105,11 @@ func _on_t_imer_wait_death_timeout() -> void:
 
 func _on_hunger_timer_timeout() -> void:
 	Global.Hunger -= 2
+
+func _on_swim_area_area_entered(area: Area2D) -> void:
+	if area.name == "FishArea" : 
+		enteredFish = true
+
+func _on_swim_area_area_exited(area: Area2D) -> void:
+	if area.name == "FishArea" : 
+		enteredFish = false
