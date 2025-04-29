@@ -18,7 +18,7 @@ position = Vector2(960, 896)
 position = Vector2(318, 593)
 
 [node name="Rock2" parent="." instance=ExtResource("3_e0an3")]
-position = Vector2(1006, 160)
+position = Vector2(930, 474)
 
 [node name="Rock3" parent="." instance=ExtResource("3_e0an3")]
 position = Vector2(-86, 55)
@@ -33,4 +33,4 @@ position = Vector2(-271, -304)
 position = Vector2(-829, 483)
 
 [node name="Rock7" parent="." instance=ExtResource("3_e0an3")]
-position = Vector2(687, -746)
+position = Vector2(207, -763)

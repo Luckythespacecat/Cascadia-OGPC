@@ -1,12 +1,33 @@
 extends Camera2D
 
+@export var randomStrength: float = 30.0
+@export var shakeFade: float = 5.0
+
+var rng = RandomNumberGenerator.new()
+
+var shake_strength = 0
+var damagedNum = 0
+var CompareDamageNum = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
+func apply_shake() :
+	shake_strength = randomStrength 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if damagedNum < Global.damage :
+		apply_shake()
+
+	damagedNum = Global.damage
+
+	if shake_strength > 0 :
+		shake_strength = lerpf(shake_strength, 0 ,shakeFade * delta)
+	
+		offset = randomOffset()
 	
 	if Global.cutscene == 0 :
 		self.global_position = $/root/Main/Lamprey.global_position
@@ -23,7 +44,8 @@ func _process(delta: float) -> void:
 
 		
 
-
+func randomOffset() -> Vector2:
+	return Vector2(rng.randf_range(-shake_strength,shake_strength),rng.randf_range(-shake_strength,shake_strength))
 #Creating a tween, 'tween the camera and player
 func CameraToPlayer() :
 	var tween = get_tree().create_tween()
