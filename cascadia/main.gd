@@ -23,7 +23,7 @@ func spawnItems(): #Spawning squence, I will use as template to make more spawn 
 		wood_instances[woodInstance] = woodInstance
 		woodInstance.connect("input_event", Callable(self, "_on_wood_interacted"))
 		
-	elif itemToSpawn >= 10 and itemToSpawn < 40 :
+	elif itemToSpawn >= 10 and itemToSpawn < 15 :
 		var fishInstance = fish.instantiate() 
 		add_child(fishInstance)
 		fishInstance.position.y = spawnPosY
@@ -117,7 +117,7 @@ func _on_night_timeout() -> void:
 func DrownLarry() :
 	Global.textPos = $Lamprey.position
 	$Boat/Player/AnimatedSprite2D.pause()
-	Dialoguemanager.start_dialogue( Global.textPos, [
+	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x, Global.textPos.y - 50), [
 		"  WOOAAH ! ! !  ",
 		"  Watch it, you almost drowned!  ",
 		"  If you drown I might not be able to save you!  ",
@@ -149,13 +149,14 @@ func TutorialLarry() :
 		texboxRemove = true
 
 func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
-	if area.name == "HeadArea" :
+	if area.name == "HeadArea" and Global.FirstDrown == false :
 		if Global.LighthouseCutsceneDone == false:
+			Global.boatDirection = 0
 			Global.larryAppear = 1
-			$Lamprey.global_position.x = $Boat/Player.global_position.x + 30
+			$Lamprey.global_position.x = $Boat/Player.global_position.x + 50
 			$Lamprey.global_position.y = $Boat/Player.global_position.y
 			Global.textPos = $Lamprey.position
-			Dialoguemanager.start_dialogue( Global.textPos, [
+			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x, Global.textPos.y - 50), [
 			"  Did you see that?  ",
 			"  That must be coming from a lighthouse!  ",
 			"  Follow the light and see where it leads!  ",
@@ -163,11 +164,11 @@ func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
 			])
 			if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true:   
 				Global.LighthouseCutsceneDone == true
+				Dialoguemanager.is_dialogue_active = false
 				$Lamprey/EndDialogue.start()
 				Global.larryAppear = 2
 				texboxRemove = true
 				Global.LighthouseCutsceneDone = true
-
 
 func _on_end_dialogue_timeout() -> void:
 	if texboxRemove == true:

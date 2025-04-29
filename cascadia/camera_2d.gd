@@ -8,6 +8,7 @@ var rng = RandomNumberGenerator.new()
 var shake_strength = 0
 var damagedNum = 0
 var CompareDamageNum = 0
+var CameraZoom = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,7 +43,6 @@ func _process(delta: float) -> void:
 		if zoom.x > 2.0 or  zoom.x < 2.0:
 			zoom.x = lerp(zoom.x, 2.0, delta / 4)
 
-		
 
 func randomOffset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength,shake_strength),rng.randf_range(-shake_strength,shake_strength))
