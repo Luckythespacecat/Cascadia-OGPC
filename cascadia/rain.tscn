@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://rslkxisv6kyc"]
+
+[ext_resource type="Script" uid="uid://btiq7ci6kx16v" path="res://rain.gd" id="1_kwfd8"]
+
+[node name="Rain" type="Node2D"]
+position = Vector2(-620, -1001)
+script = ExtResource("1_kwfd8")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

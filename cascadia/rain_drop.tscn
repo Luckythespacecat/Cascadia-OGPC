@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4mv08lcu2min"]
+
+[ext_resource type="Script" uid="uid://3lslp87e7xnr" path="res://rain_drop.gd" id="1_f2142"]
+[ext_resource type="Texture2D" uid="uid://fks05nrhav6d" path="res://Assets/Art/rain.png" id="2_p4l2e"]
+[ext_resource type="Texture2D" uid="uid://cwbdl7d3m76hj" path="res://Assets/Art/rain2.png" id="3_p4l2e"]
+
+[node name="RainDrop" type="Node2D"]
+script = ExtResource("1_f2142")
+
+[node name="NightSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3, 3)
+rotation = -0.406248
+scale = Vector2(2, 2)
+texture = ExtResource("2_p4l2e")
+
+[node name="DaySprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, 3)
+rotation = -0.406662
+scale = Vector2(2, 2)
+texture = ExtResource("3_p4l2e")
+
+[node name="RainTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="RainTimer" to="." method="_on_rain_timer_timeout"]
