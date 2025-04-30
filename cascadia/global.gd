@@ -23,7 +23,9 @@ var tutorial = false
 var FirstDrown = true
 var damage = 0
 var LighthouseCutsceneDone = false
+var foodCutscene = false
 var Hunger = 250
+var foodCutsceneCalled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

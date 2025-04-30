@@ -1,16 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt14f48ont87e"]
+[gd_scene load_steps=7 format=3 uid="uid://dt14f48ont87e"]
 
 [ext_resource type="Script" uid="uid://8tt1wnbia2o4" path="res://text_box.gd" id="1_5liiy"]
 [ext_resource type="Texture2D" uid="uid://jww0ac31qvjl" path="res://Assets/Art/TextBox.png" id="2_5liiy"]
 [ext_resource type="FontFile" uid="uid://b5bg6racpvgb6" path="res://Assets/m5x7.ttf" id="3_5liiy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m41lb"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5liiy"]
+light_mode = 1
 
 [sub_resource type="Theme" id="Theme_tvwxi"]
 default_font = ExtResource("3_5liiy")
 default_font_size = 5
 
 [node name="TextBox" type="MarginContainer"]
+light_mask = 2
+visibility_layer = 2
 z_index = 100
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_m41lb")
 anchors_preset = -1
 anchor_right = 0.011
 anchor_bottom = 0.02
@@ -35,6 +44,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer"]
 z_index = 101
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_5liiy")
 layout_mode = 2
 theme = SubResource("Theme_tvwxi")
 theme_override_colors/font_color = Color(1, 0.819608, 0, 1)

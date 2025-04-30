@@ -195,7 +195,7 @@ animations = [{
 size = Vector2(158, 132)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nova1"]
-size = Vector2(34.5, 42)
+size = Vector2(77, 100)
 
 [node name="Boat" type="Node2D"]
 position = Vector2(2, -2)
@@ -226,7 +226,7 @@ position = Vector2(0, 25)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_h5au0")
 animation = &"Fixed"
-frame_progress = 0.725495
+frame_progress = 0.54999
 
 [node name="Sail" type="AnimatedSprite2D" parent="."]
 z_index = 2
@@ -235,6 +235,7 @@ position = Vector2(-2, -9)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v5m18")
 animation = &"Front"
+frame_progress = 0.887047
 
 [node name="SailArea" type="Area2D" parent="."]
 
@@ -246,7 +247,7 @@ shape = SubResource("RectangleShape2D_7ewa0")
 [node name="SailAdjust" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SailAdjust"]
-position = Vector2(-1.5, 19)
+position = Vector2(-2.5, 18)
 shape = SubResource("RectangleShape2D_nova1")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

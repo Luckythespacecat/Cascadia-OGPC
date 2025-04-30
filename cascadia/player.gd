@@ -10,7 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
+	if Global.foodCutscene == true:
+		$AnimatedSprite2D.play("SwimIdle")
 	if enteredFish == true:
 		if Input.is_action_just_pressed("interact") and stopAnimation == false :
 			stopAnimation = true
@@ -25,13 +26,13 @@ func _process(delta: float) -> void:
 	
 	#basic movement if statements
 		#Sets the animation to idle if input is stopped
-	if stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
+	if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
 		if Global.swimming == false :
 			$AnimatedSprite2D.play("Idle")
 		else: 
 			$AnimatedSprite2D.play("SwimIdle")
 		# Movement animation, pos and horizantal flip for Left
-	if stopAnimation == false and not Input.is_action_pressed("ui_accept")and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") and $AnimatedSprite2D.animation != "Drown" :
+	if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept")and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerX -= 2
 		$AnimatedSprite2D.flip_h = false
 		if Global.swimming == false:
@@ -39,7 +40,7 @@ func _process(delta: float) -> void:
 		else :
 			$AnimatedSprite2D.play("Swimming")
 		# Movement animation, pos and horizantal flip for Right
-	if stopAnimation == false and not Input.is_action_pressed("ui_accept")  and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Right") and $AnimatedSprite2D.animation != "Drown" :
+	if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept")  and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Right") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerX += 2
 		$AnimatedSprite2D.flip_h = true
 		if Global.swimming == false:
@@ -47,13 +48,13 @@ func _process(delta: float) -> void:
 		else :
 			$AnimatedSprite2D.play("Swimming")
 		#up and down movement
-	if stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Down") and $AnimatedSprite2D.animation != "Drown" :
+	if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Down") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerY += 2
 		if Global.swimming == false:
 			$AnimatedSprite2D.play("Run")
 		else :
 			$AnimatedSprite2D.play("Swimming")
-	if stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Up") and $AnimatedSprite2D.animation != "Drown" :
+	if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Up") and $AnimatedSprite2D.animation != "Drown" :
 		Global.PlayerY -= 2
 		if Global.swimming == false: 
 			$AnimatedSprite2D.play("Run")
@@ -83,11 +84,11 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		Global.AdjustSail = false
 	if $AnimatedSprite2D.animation == "Drown"  :
 		$TImerWaitDeath.start()
-		
+	
 	if $AnimatedSprite2D.animation == "Dive" :
 		stopAnimation = false
 		Global.Hunger += 5
-	
+		$drownTimer.start()
 
 func drown():
 	if Global.swimming == true and $drownTimer.time_left == 0 and Global.tutorial == true:
@@ -109,7 +110,6 @@ func _on_hunger_timer_timeout() -> void:
 func _on_swim_area_area_entered(area: Area2D) -> void:
 	if area.name == "FishArea" : 
 		enteredFish = true
-
 func _on_swim_area_area_exited(area: Area2D) -> void:
 	if area.name == "FishArea" : 
 		enteredFish = false

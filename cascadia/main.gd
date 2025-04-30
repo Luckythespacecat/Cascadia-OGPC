@@ -7,6 +7,8 @@ const fish = preload("res://fish.tscn")
 var drownLarryScene = false
 var texboxRemove = false
 var wood_instances = {}
+var tempFishscene = false
+var saveIndex = 0
 
 func spawnItems(): #Spawning squence, I will use as template to make more spawn functions
 	var playerX = Global.PlayerX
@@ -40,7 +42,7 @@ func _on_wood_interacted(viewport, event, shape_idx):
 				break
 	
 func _ready() -> void:
-	Global.wind = 1
+	Global.wind = 2
 	if Global.SceneJustIn != "Lighthouse":
 		Global.cutscene = 1
 		Global.larryAppear = 1
@@ -53,6 +55,13 @@ func ReSetupScene() :
 	print("Timer started")
 
 func _process(delta: float) -> void:
+	
+	if Global.foodCutscene == true:
+		FishLarryCutscene()
+		$Boat/Player/drownTimer.stop()
+		if tempFishscene == false :
+			Global.larryAppear = 1
+			tempFishscene = true
 	
 	if Global.tutorial == false :
 		TutorialLarry()
@@ -70,6 +79,7 @@ func _process(delta: float) -> void:
 	if Global.Dead == true:
 		if Global.FirstDrown == true :
 			if drownLarryScene == false :
+				saveIndex = $Boat/Player.z_index
 				Global.larryAppear = 1
 				drownLarryScene = true
 				$Lamprey.global_position.x = $Boat/Player.global_position.x + 30
@@ -104,7 +114,7 @@ func _on_day_timeout() -> void:
 	$TheGreatOcean.play() #Night Music
 	$sun/Night.start()
 	Global.timeOfDay = "Night"
-	Global.wind = randf_range(2, 4)
+	Global.wind = randf_range(3, 4)
 
 func _on_night_timeout() -> void:
 	$TheGreatOcean.stop()
@@ -112,9 +122,10 @@ func _on_night_timeout() -> void:
 	print("Nights over")
 	$sun/Day.start()
 	Global.timeOfDay = "Day"
-	Global.wind = randf_range(2, 4) / 1.5
+	Global.wind = randf_range(2, 3)
 
 func DrownLarry() :
+	$Boat/Player.z_index = $Lamprey.z_index - 1
 	Global.textPos = $Lamprey.position
 	$Boat/Player/AnimatedSprite2D.pause()
 	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
@@ -134,6 +145,7 @@ func DrownLarry() :
 		$Boat/Player/AnimatedSprite2D.play("Idle")
 		Global.Dead = false
 		texboxRemove = true
+		$Boat/Player.z_index = saveIndex
 		
 func TutorialLarry() :
 	Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
@@ -153,7 +165,7 @@ func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
 		if Global.LighthouseCutsceneDone == false:
 			Global.boatDirection = 0
 			Global.larryAppear = 1
-			$Lamprey.global_position.x = $Boat/Player.global_position.x + 50
+			$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
 			$Lamprey.global_position.y = $Boat/Player.global_position.y
 			Global.textPos = $Lamprey.position
 			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
@@ -170,8 +182,28 @@ func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
 				texboxRemove = true
 				Global.LighthouseCutsceneDone = true
 
+func FishLarryCutscene():
+	print("Custcene should be workig")
+	$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
+	$Lamprey.global_position.y = $Boat/Player.global_position.y
+	Global.textPos = $Lamprey.position
+	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
+		"  Well looky here, its a fish ",
+		"  you can eat it if your hungry  ",
+		"  press 'E' to dive down and eat that fish  " ])
+	
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 :
+		Dialoguemanager.is_dialogue_active = false
+		$Lamprey/EndDialogue.start()
+		Global.larryAppear = 2
+		texboxRemove = true
+		$Boat/Player/drownTimer.start()
+		Global.foodCutscene =  false
+
 func _on_end_dialogue_timeout() -> void:
 	if texboxRemove == true:
 		Dialoguemanager.text_box.queue_free()
 		Dialoguemanager.current_line_index = 0
 		texboxRemove = false
+		
+	

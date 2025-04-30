@@ -127,7 +127,7 @@ energy = 0.0
 blend_mode = 1
 
 [node name="Day" type="Timer" parent="sun"]
-wait_time = 60.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
