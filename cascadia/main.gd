@@ -9,6 +9,7 @@ var texboxRemove = false
 var wood_instances = {}
 var tempFishscene = false
 var saveIndex = 0
+var LighthouseCalled = false
 
 func spawnItems(): #Spawning squence, I will use as template to make more spawn functions
 	var playerX = Global.PlayerX
@@ -56,6 +57,9 @@ func ReSetupScene() :
 
 func _process(delta: float) -> void:
 	
+	if LighthouseCalled == true and Global.LighthouseCutsceneDone == false:
+		LighthouseLarry()
+
 	if Global.foodCutscene == true:
 		FishLarryCutscene()
 		$Boat/Player/drownTimer.stop()
@@ -65,6 +69,7 @@ func _process(delta: float) -> void:
 	
 	if Global.tutorial == false :
 		TutorialLarry()
+		LighthouseCalled = true
 	
 	#var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
 	#$CanvasLayer/UserInterface/Point.rotation = dir.angle()
@@ -161,26 +166,21 @@ func TutorialLarry() :
 		texboxRemove = true
 
 func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
-	if area.name == "BodyArea" and Global.onBoat == true :
-		if Global.LighthouseCutsceneDone == false:
-			Global.boatDirection = 0
-			Global.larryAppear = 1
-			$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
-			$Lamprey.global_position.y = $Boat/Player.global_position.y
-			Global.textPos = $Lamprey.position
-			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
-			"  Did you see that?  ",
-			"  That must be coming from a lighthouse!  ",
-			"  Follow the light and see where it leads!  ",
-			"  Maybe there, we can call for help!  "
-			])
-			if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true:   
-				Global.LighthouseCutsceneDone == true
-				Dialoguemanager.is_dialogue_active = false
-				$Lamprey/EndDialogue.start()
-				Global.larryAppear = 2
-				texboxRemove = true
-				Global.LighthouseCutsceneDone = true
+
+	if area.name == "BodyArea" and Global.onBoat == true and Global.LighthouseCutsceneDone == false:
+		Global.boatDirection = 0
+		Global.larryAppear = 1
+		$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
+		$Lamprey.global_position.y = $Boat/Player.global_position.y
+		Global.textPos = $Lamprey.position
+		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
+	"  Did you see that?  ",
+	"  That must be coming from a lighthouse!  ",
+	"  Follow the light and see where it leads!  ",
+	"  Maybe there, we can call for help!  "
+		])
+		LighthouseCalled = true
+		print("Lighthouse")
 
 func FishLarryCutscene():
 	print("Custcene should be workig")
@@ -205,5 +205,12 @@ func _on_end_dialogue_timeout() -> void:
 		Dialoguemanager.text_box.queue_free()
 		Dialoguemanager.current_line_index = 0
 		texboxRemove = false
-		
-	
+
+func LighthouseLarry():
+	if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true:   
+		Global.LighthouseCutsceneDone == true
+		Dialoguemanager.is_dialogue_active = false
+		$Lamprey/EndDialogue.start()
+		Global.larryAppear = 2
+		texboxRemove = true
+		Global.LighthouseCutsceneDone = true

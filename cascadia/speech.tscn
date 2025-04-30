@@ -1,11 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt14f48ont87e"]
+[gd_scene load_steps=6 format=3 uid="uid://dt14f48ont87e"]
 
 [ext_resource type="Script" uid="uid://8tt1wnbia2o4" path="res://text_box.gd" id="1_5liiy"]
 [ext_resource type="Texture2D" uid="uid://jww0ac31qvjl" path="res://Assets/Art/TextBox.png" id="2_5liiy"]
 [ext_resource type="FontFile" uid="uid://b5bg6racpvgb6" path="res://Assets/m5x7.ttf" id="3_5liiy"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tvwxi"]
-light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5liiy"]
 light_mode = 1
@@ -29,7 +26,6 @@ script = ExtResource("1_5liiy")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_tvwxi")
 layout_mode = 2
 texture = ExtResource("2_5liiy")
 region_rect = Rect2(0, 0, 32, 32)
