@@ -149,7 +149,7 @@ func TutorialLarry() :
 		texboxRemove = true
 
 func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
-	if area.name == "BodyArea" and Global.FirstDrown == false :
+	if area.name == "BodyArea" and Global.onBoat == true :
 		if Global.LighthouseCutsceneDone == false:
 			Global.boatDirection = 0
 			Global.larryAppear = 1
