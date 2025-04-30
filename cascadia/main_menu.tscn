@@ -228,3 +228,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="timeout" from="Name/StretchOut" to="." method="_on_stretch_out_timeout"]
 [connection signal="timeout" from="TweenMoreTimer" to="." method="_on_tween_more_timer_timeout"]
 [connection signal="pressed" from="Icon/Play" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="Icon2/Credits" to="." method="_on_credits_button_down"]

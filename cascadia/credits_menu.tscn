@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct0jg1ur74rbi"]
+
+[ext_resource type="Script" uid="uid://wxy58cd0t68" path="res://credits_menu.gd" id="1_kdv4w"]
+[ext_resource type="Texture2D" uid="uid://dg5hsejvatqj6" path="res://Assets/Art/TitlescreenImage3.png" id="2_tgbea"]
+
+[sub_resource type="SystemFont" id="SystemFont_xwscs"]
+font_names = PackedStringArray("Footlight MT", "Segoe UI")
+
+[node name="Credits Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kdv4w")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+z_index = 1
+layout_mode = 2
+theme_override_constants/separation = -40
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.388156, 0.237396, 0.732166, 1)
+theme_override_colors/font_outline_color = Color(0.241213, 0.131663, 0.480553, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = SubResource("SystemFont_xwscs")
+theme_override_font_sizes/font_size = 75
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit Button" type="Button" parent="MarginContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+z_index = -1
+z_as_relative = false
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.00784314, 0.00784314, 0.00784314, 0.501961)
+
+[node name="Sky" type="Sprite2D" parent="."]
+z_index = -2
+texture_filter = 1
+position = Vector2(855.65, 474.5)
+scale = Vector2(13, 13)
+texture = ExtResource("2_tgbea")
