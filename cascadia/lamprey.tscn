@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d0wo3wr75bh72"]
+[gd_scene load_steps=34 format=3 uid="uid://d0wo3wr75bh72"]
 
 [ext_resource type="Script" uid="uid://csq74fdemfso1" path="res://lamprey.gd" id="1_x7hqm"]
 [ext_resource type="Texture2D" uid="uid://dp7ab0jc05lw6" path="res://Assets/Art/Larry/Larry5.png" id="2_q7mru"]
@@ -160,6 +160,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifc7h"]
+size = Vector2(13, 5.5)
+
 [node name="Lamprey" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_x7hqm")
@@ -181,5 +184,11 @@ texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_m8id0")
 animation = &"InWater"
+
+[node name="LarryArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LarryArea"]
+position = Vector2(-1.5, -5.75)
+shape = SubResource("RectangleShape2D_ifc7h")
 
 [connection signal="animation_finished" from="WaterAnimition" to="." method="_on_water_animition_animation_finished"]

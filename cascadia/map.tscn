@@ -12,6 +12,7 @@ wait_time = 0.05
 autostart = true
 
 [node name="WaterTest" parent="." instance=ExtResource("9_gqbix")]
+z_index = -2
 position = Vector2(960, 896)
 
 [node name="Rock" parent="." instance=ExtResource("3_e0an3")]

@@ -1,31 +1,41 @@
 extends Node
 
-var PlayerX = 0
-var PlayerY = 0
+#Player variables
+var PlayerX : float = 0
+var PlayerY : float = 0
 var PlayerPos : Vector2 = Vector2(0,0)
-var onBoat = false
-var wind = 1
-var boatDirection := 0 
-var swimming = false 
+var swimming : bool = false 
+var timeOfDay : String = "Day"
+var Dead : bool = false #DOes not mean actually dead just drowining
+var FirstDrown : bool = true
+var Hunger : int = 250
+
+#boat variables
+var wind : float = 1 
+var onBoat : bool = false
+var boatDirection : int = 0 
 var boatPos : Vector2 = Vector2(0,0)
-var timeOfDay = "Day"
-var Dead = false
-var AdjustSail = false
-var SailMovedE = false     
-var SailMovedQ = false                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-var SceneJustIn = "Main"
 var NewBoatPos : Vector2 = Vector2(0, 60)
-var cutscene = 0
+var AdjustSail : bool = false
+var SailMovedE : bool= false     
+var SailMovedQ : bool= false  
+var damage : int = 0
+  
+#Scene switching                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+var SceneJustIn : String = "Main"
+var cutscene : int = 0
+
+#Larry
 var larryAppear = 1
-var larryAnimationFinished = 0
+var larryAnimationFinished : int = 0
 var textPos : Vector2 = Vector2( 0, 0)
-var tutorial = false
-var FirstDrown = true
-var damage = 0
-var LighthouseCutsceneDone = false
-var foodCutscene = false
-var Hunger = 250
-var foodCutsceneCalled = false
+var tutorial : bool = false
+var LighthouseCutsceneDone : bool = false
+var foodCutscene : bool = false
+var foodCutsceneCalled : bool = false
+
+#Telescope variable
+var partNumb : int = 0 #Interger that will repersent what number of part the player needs to get for telescope
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

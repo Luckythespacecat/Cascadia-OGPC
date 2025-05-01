@@ -110,6 +110,10 @@ func _on_hunger_timer_timeout() -> void:
 func _on_swim_area_area_entered(area: Area2D) -> void:
 	if area.name == "FishArea" : 
 		enteredFish = true
+	if area.name == "LarryArea" :
+		z_index = -1
 func _on_swim_area_area_exited(area: Area2D) -> void:
 	if area.name == "FishArea" : 
 		enteredFish = false
+	if area.name == "LarryArea" :
+		z_index = 1
