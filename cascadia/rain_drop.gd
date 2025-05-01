@@ -18,7 +18,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position.x += randSpeed
 	position.y += randSpeed
-	
 
 func _on_rain_timer_timeout() -> void:
 	queue_free()

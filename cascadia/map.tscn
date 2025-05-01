@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6g35j1nhodem"]
+[gd_scene load_steps=5 format=3 uid="uid://b6g35j1nhodem"]
 
 [ext_resource type="Script" uid="uid://dqq833dih0tr0" path="res://map.gd" id="1_0kwsq"]
 [ext_resource type="PackedScene" uid="uid://nayarson8r7d" path="res://rock.tscn" id="3_e0an3"]
+[ext_resource type="PackedScene" uid="uid://dheugr4gabqd4" path="res://car.tscn" id="4_p5pve"]
 [ext_resource type="PackedScene" uid="uid://bn60mckxh70u3" path="res://water_test.tscn" id="9_gqbix"]
 
 [node name="Map" type="Node2D"]
@@ -35,3 +36,6 @@ position = Vector2(-829, 483)
 
 [node name="Rock7" parent="." instance=ExtResource("3_e0an3")]
 position = Vector2(452, -1177)
+
+[node name="Car" parent="." instance=ExtResource("4_p5pve")]
+position = Vector2(-467, -158)
