@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://duuwm1fvd87y"]
+[gd_scene load_steps=55 format=3 uid="uid://duuwm1fvd87y"]
 
 [ext_resource type="Script" uid="uid://dt6ptlffad6xp" path="res://lighthouse_room.gd" id="1_cde3n"]
 [ext_resource type="Texture2D" uid="uid://dvn0u6vi8x38a" path="res://Assets/Art/pink.png" id="1_rhv4f"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://34dl6u5ill5" path="res://Assets/Art/Lighthouse-Room_LightTexture.png" id="43_5fadf"]
 [ext_resource type="AudioStream" uid="uid://dvofuvx5uvkmv" path="res://Assets/Sound/Music/Raindrops.mp3" id="43_abqyo"]
 [ext_resource type="PackedScene" uid="uid://ee1tq5rrmaey" path="res://radio_station.tscn" id="44_abqyo"]
+[ext_resource type="PackedScene" uid="uid://bhtqsqaps73ok" path="res://telescope.tscn" id="44_sr61x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_36v51"]
 
@@ -184,6 +185,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65iyk"]
+size = Vector2(18, 6)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cde3n"]
 size = Vector2(384, 21)
 
@@ -219,7 +223,7 @@ region_rect = Rect2(0, 0, 272, 344)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-40, -24)
 scale = Vector2(1e-05, 1e-05)
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 
 [node name="Wall" type="Sprite2D" parent="."]
 z_index = 10
@@ -236,7 +240,8 @@ texture = ExtResource("5_ug2bp")
 
 [node name="playerBody" type="CharacterBody2D" parent="."]
 z_index = 1
-position = Vector2(-24, 91)
+position = Vector2(-43, 93)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("5_cde3n")
 SPEED = 130.0
 
@@ -251,6 +256,12 @@ position = Vector2(32, 32)
 sprite_frames = SubResource("SpriteFrames_shtrl")
 animation = &"Idle"
 flip_h = true
+
+[node name="FootArea" type="Area2D" parent="playerBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerBody/FootArea"]
+position = Vector2(28, 50)
+shape = SubResource("RectangleShape2D_65iyk")
 
 [node name="WallDown" type="StaticBody2D" parent="."]
 
@@ -320,6 +331,10 @@ scale = Vector2(2, 2)
 [node name="Raindrops" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("43_abqyo")
 autoplay = true
+
+[node name="Telescope" parent="." instance=ExtResource("44_sr61x")]
+position = Vector2(140, -8)
+scale = Vector2(2, 2)
 
 [connection signal="body_entered" from="Doorlight/DoorArea" to="." method="_on_door_area_body_entered"]
 [connection signal="finished" from="Raindrops" to="." method="_on_raindrops_finished"]

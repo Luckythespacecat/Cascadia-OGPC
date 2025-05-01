@@ -11,8 +11,6 @@ func _ready() -> void:
 	else:
 		print("main_scene is NULL!")
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$Camera2D.position = lerp($Camera2D.position, $playerBody.position, 5 * delta)
