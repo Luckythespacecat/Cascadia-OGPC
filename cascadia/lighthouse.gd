@@ -1,11 +1,11 @@
 extends Node2D
 
 var next_scene = preload("res://lighthouse_room.tscn")
-
+var target_position = Global.part1Pos
+var direction = target_position - global_position
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -15,7 +15,21 @@ func _process(delta: float) -> void:
 			Global.swimming = false
 	
 	if Global.timeOfDay == "Night" :
-		$PointLight2D.rotate(delta / 4)
+		if Global.partNumb == 0:
+			$PointLight2D.rotate(delta / 4)
+		elif Global.partNumb == 1 :
+			target_position = Global.part1Pos
+			direction = target_position - global_position
+			$PointLight2D.rotation = direction.angle()
+		elif Global.partNumb == 2 :
+			target_position = Global.part2Pos
+			direction = target_position - global_position
+			$PointLight2D.rotation = direction.angle()
+		elif Global.partNumb == 3 :
+			target_position = Global.part3Pos
+			direction = target_position - global_position
+			$PointLight2D.rotation = direction.angle()
+
 		if $PointLight2D.energy <= .5:
 			$PointLight2D.energy += .001
 	if Global.timeOfDay == "Day" :

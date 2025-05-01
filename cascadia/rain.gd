@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	randomPos()
 
 func randomPos():
-	randy = randi_range(1000, -1000.0)
+	randy = randi_range(1500, -1500.0)
 	randVector = Vector2(randx, randy)
 
 func spawnRain():

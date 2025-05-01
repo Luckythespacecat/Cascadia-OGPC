@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://btiq7ci6kx16v" path="res://rain.gd" id="1_kwfd8"]
 
 [node name="Rain" type="Node2D"]
-position = Vector2(-620, -1001)
+position = Vector2(-953, -1651)
 script = ExtResource("1_kwfd8")
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.01
+wait_time = 0.001
 autostart = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

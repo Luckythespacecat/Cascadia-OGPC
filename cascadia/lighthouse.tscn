@@ -33,7 +33,7 @@ radius = 39.9998
 height = 175.999
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3m66"]
-size = Vector2(107, 248)
+size = Vector2(152, 268)
 
 [node name="Lighthouse" type="Node2D"]
 scale = Vector2(2, 2)
@@ -73,7 +73,7 @@ position = Vector2(-0.5, -90)
 
 [node name="OrderArea" type="CollisionShape2D" parent="OrderArea"]
 z_index = 10
-position = Vector2(0, -2)
+position = Vector2(0.5, -12)
 shape = SubResource("RectangleShape2D_p3m66")
 
 [connection signal="area_entered" from="Door" to="." method="_on_door_area_entered"]

@@ -6,7 +6,7 @@ var PlayerY : float = 0
 var PlayerPos : Vector2 = Vector2(0,0)
 var swimming : bool = false 
 var timeOfDay : String = "Day"
-var Dead : bool = false #DOes not mean actually dead just drowining
+var Dead : bool = false #Does not mean actually dead just drowining
 var FirstDrown : bool = true
 var Hunger : int = 250
 
@@ -34,9 +34,18 @@ var LighthouseCutsceneDone : bool = false
 var foodCutscene : bool = false
 var foodCutsceneCalled : bool = false
 
-#Telescope variable
+#Telescope variables
 var partNumb : int = 0 #Interger that will repersent what number of part the player needs to get for telescope
-
+#Change above variable when the player needs to find a certain piece, 
+#For example if the player gets to the lighthouse and presses interact on the telescope
+# then it changes partNumb to 1 and the lighthouse will automatically look at the part1pos Vector
+var part1Pos : Vector2 = Vector2(500,500)
+var part2Pos : Vector2 = Vector2(0,0)
+var part3Pos : Vector2 = Vector2(0,0)
+#Change these variables when the player actually gets the parts
+var part1Obtained = false
+var part2Obtained = false
+var part3Obtained = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

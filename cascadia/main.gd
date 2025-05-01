@@ -71,9 +71,7 @@ func _process(delta: float) -> void:
 		TutorialLarry()
 		LighthouseCalled = true
 	
-	#var dir = $Boat/Player.global_position.direction_to($Boat.global_position)
-	#$CanvasLayer/UserInterface/Point.rotation = dir.angle()
-	#scene transition setup
+
 	if Global.SceneJustIn == "Main" :
 		pass
 	elif  Global.SceneJustIn == "Lighthouse" :
