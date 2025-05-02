@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://bct6rempjb28w"]
+
+[ext_resource type="Script" uid="uid://c7a3s8j7dcxvh" path="res://rock.gd" id="1_tougp"]
+[ext_resource type="Texture2D" uid="uid://k0rk1t4vfosp" path="res://Assets/Art/Resources/Rock1.png" id="2_0wyqh"]
+[ext_resource type="Texture2D" uid="uid://c2rfmg01di1ts" path="res://Assets/Art/Resources/Rock2.png" id="3_5r56l"]
+[ext_resource type="Texture2D" uid="uid://bktg2cjnoflfp" path="res://Assets/Art/Resources/Rock3.png" id="4_vnbpo"]
+[ext_resource type="PackedScene" uid="uid://nayarson8r7d" path="res://rock.tscn" id="5_ty8ny"]
+[ext_resource type="PackedScene" uid="uid://bs1yua8vkxwc5" path="res://parts.tscn" id="6_0wyqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46y1q"]
+size = Vector2(43.25, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gtey5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0wyqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5r56l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vnbpo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68h2w"]
+size = Vector2(43.5, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o54ku"]
+size = Vector2(46.25, 28.5)
+
+[node name="PartsArea" type="Node2D"]
+z_index = 2
+position = Vector2(155, 561)
+scale = Vector2(2, 2)
+script = ExtResource("1_tougp")
+
+[node name="RockArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RockArea"]
+z_index = 100
+position = Vector2(31.375, 28.5)
+shape = SubResource("RectangleShape2D_46y1q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RockArea"]
+texture_filter = 1
+position = Vector2(33, 33)
+sprite_frames = SubResource("SpriteFrames_gtey5")
+frame = 2
+frame_progress = 0.0478292
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(31.25, 28.5)
+shape = SubResource("RectangleShape2D_68h2w")
+
+[node name="OrderArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderArea"]
+position = Vector2(31.875, 14.25)
+shape = SubResource("RectangleShape2D_o54ku")
+
+[node name="Rock7" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(305.5, -2.5)
+
+[node name="Rock8" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(604, 227.5)
+
+[node name="Rock9" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(217, 284.5)
+
+[node name="Rock10" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(581, -190.5)
+
+[node name="Rock11" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(117.5, -340)
+
+[node name="Rock12" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(-214, 216)
+
+[node name="Rock13" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(-306, -235)
+
+[node name="Rock14" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(-220, -610)
+
+[node name="Rock15" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(-10.5, 550.5)
+
+[node name="Rock16" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(268.5, -741)
+
+[node name="Rock17" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(574.5, -514)
+
+[node name="Rock18" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(949.5, -322)
+
+[node name="Rock19" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(225, 829.5)
+
+[node name="Rock20" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(984.5, 480.5)
+
+[node name="Rock21" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(1071.5, 53.5)
+
+[node name="Rock22" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(1403, 306)
+
+[node name="Rock23" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(696.5, 960.5)
+
+[node name="Rock24" parent="." instance=ExtResource("5_ty8ny")]
+position = Vector2(531, 568.5)
+
+[node name="Parts" parent="." instance=ExtResource("6_0wyqh")]
+position = Vector2(453, 233)
+scale = Vector2(3, 3)
+
+[connection signal="area_entered" from="RockArea" to="." method="_on_rock_area_area_entered"]
+[connection signal="area_entered" from="OrderArea" to="." method="_on_order_area_area_entered"]
+[connection signal="area_exited" from="OrderArea" to="." method="_on_order_area_area_exited"]
