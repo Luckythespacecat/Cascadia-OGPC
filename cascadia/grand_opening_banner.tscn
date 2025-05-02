@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://chuiec4vdx5mn"]
+
+[ext_resource type="Texture2D" uid="uid://cwjad671r8h10" path="res://Assets/Art/GrandBanner1.png" id="1_7tiuq"]
+[ext_resource type="Texture2D" uid="uid://cpknq1c3ysorl" path="res://Assets/Art/GrandBanner2.png" id="2_04r2y"]
+[ext_resource type="Texture2D" uid="uid://q0fnahfd2j0b" path="res://Assets/Art/GrandBanner3.png" id="3_6kfxn"]
+[ext_resource type="Texture2D" uid="uid://dja45p3fkpe8k" path="res://Assets/Art/GrandBanner4.png" id="4_kancn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3uojp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7tiuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_04r2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6kfxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kancn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="GrandOpeningBanner" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_3uojp")
+frame_progress = 0.0672942

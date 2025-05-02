@@ -35,4 +35,4 @@ script = ExtResource("1_c0xxw")
 texture_filter = 1
 position = Vector2(15, 5)
 sprite_frames = SubResource("SpriteFrames_vyqtu")
-frame_progress = 0.955892
+frame_progress = 0.93635
