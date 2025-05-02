@@ -47,4 +47,4 @@ position = Vector2(-467, -158)
 position = Vector2(16433.8, 24973.2)
 
 [node name="PartsArea" parent="." instance=ExtResource("5_urblq")]
-position = Vector2(-9631, 5856)
+position = Vector2(-2738, 831)

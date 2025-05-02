@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bct6rempjb28w"]
+[gd_scene load_steps=11 format=3 uid="uid://7nvkod0joofg"]
 
-[ext_resource type="Script" uid="uid://c7a3s8j7dcxvh" path="res://rock.gd" id="1_tougp"]
-[ext_resource type="Texture2D" uid="uid://k0rk1t4vfosp" path="res://Assets/Art/Resources/Rock1.png" id="2_0wyqh"]
-[ext_resource type="Texture2D" uid="uid://c2rfmg01di1ts" path="res://Assets/Art/Resources/Rock2.png" id="3_5r56l"]
-[ext_resource type="Texture2D" uid="uid://bktg2cjnoflfp" path="res://Assets/Art/Resources/Rock3.png" id="4_vnbpo"]
-[ext_resource type="PackedScene" uid="uid://nayarson8r7d" path="res://rock.tscn" id="5_ty8ny"]
-[ext_resource type="PackedScene" uid="uid://bs1yua8vkxwc5" path="res://parts.tscn" id="6_0wyqh"]
+[ext_resource type="Script" uid="uid://c7a3s8j7dcxvh" path="res://rock.gd" id="1_hyudx"]
+[ext_resource type="Texture2D" uid="uid://k0rk1t4vfosp" path="res://Assets/Art/Resources/Rock1.png" id="2_u0lvd"]
+[ext_resource type="Texture2D" uid="uid://c2rfmg01di1ts" path="res://Assets/Art/Resources/Rock2.png" id="3_j5h70"]
+[ext_resource type="Texture2D" uid="uid://bktg2cjnoflfp" path="res://Assets/Art/Resources/Rock3.png" id="4_syani"]
+[ext_resource type="PackedScene" uid="uid://nayarson8r7d" path="res://rock.tscn" id="5_640xs"]
+[ext_resource type="PackedScene" uid="uid://bs1yua8vkxwc5" path="res://parts.tscn" id="6_3a2gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46y1q"]
 size = Vector2(43.25, 39)
@@ -14,13 +14,13 @@ size = Vector2(43.25, 39)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_0wyqh")
+"texture": ExtResource("2_u0lvd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_5r56l")
+"texture": ExtResource("3_j5h70")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_vnbpo")
+"texture": ExtResource("4_syani")
 }],
 "loop": true,
 "name": &"default",
@@ -37,7 +37,7 @@ size = Vector2(46.25, 28.5)
 z_index = 2
 position = Vector2(155, 561)
 scale = Vector2(2, 2)
-script = ExtResource("1_tougp")
+script = ExtResource("1_hyudx")
 
 [node name="RockArea" type="Area2D" parent="."]
 collision_mask = 3
@@ -67,61 +67,61 @@ shape = SubResource("RectangleShape2D_68h2w")
 position = Vector2(31.875, 14.25)
 shape = SubResource("RectangleShape2D_o54ku")
 
-[node name="Rock7" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock7" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(353.5, 52)
 
-[node name="Rock8" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock8" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(560, 160.5)
 
-[node name="Rock9" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock9" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(306.5, 284.5)
 
-[node name="Rock10" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock10" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(550.5, -29)
 
-[node name="Rock11" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock11" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(125, 137.5)
 
-[node name="Rock12" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock12" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(104.5, 329.5)
 
-[node name="Rock13" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock13" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(171.5, -58)
 
-[node name="Rock14" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock14" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(376, -157)
 
-[node name="Rock15" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock15" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(285, 476.5)
 
-[node name="Rock16" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock16" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(505.5, 347)
 
-[node name="Rock17" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock17" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(748.5, 70.5)
 
-[node name="Rock18" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock18" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(731, 296)
 
-[node name="Rock19" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock19" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(680, 452)
 
-[node name="Rock20" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock20" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(181.5, -241)
 
-[node name="Rock21" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock21" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(2, -202)
 
-[node name="Rock22" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock22" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(-106.5, 169)
 
-[node name="Rock23" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock23" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(-106.5, 416.5)
 
-[node name="Rock24" parent="." instance=ExtResource("5_ty8ny")]
+[node name="Rock24" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(531, 568.5)
 
-[node name="Parts" parent="." instance=ExtResource("6_0wyqh")]
+[node name="Parts" parent="." instance=ExtResource("6_3a2gk")]
 position = Vector2(453, 233)
 scale = Vector2(3, 3)
 
