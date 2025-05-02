@@ -65,5 +65,10 @@ texture_filter = 1
 position = Vector2(204.75, -10)
 texture = ExtResource("7_hsgek")
 
+[node name="SeagullSpawn" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
 [connection signal="mouse_entered" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="SeagullSpawn" to="." method="_on_seagull_spawn_timeout"]

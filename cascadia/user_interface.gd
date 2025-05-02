@@ -1,5 +1,6 @@
 extends Node2D
 
+var seagullScene = preload("res://seagulls.tscn")
 var newPointRotation = 405.0
 
 # Called when the node enters the scene tree for the first time.
@@ -29,3 +30,12 @@ func _on_area_2d_mouse_entered() -> void:
 func _on_area_2d_mouse_exited() -> void:
 	$LeftArrow.frame = 0
 	print("UM stop hovering u brat")
+
+func spawnSeagull():
+	var seagullInstance = seagullScene.instantiate()
+	add_child(seagullInstance)
+
+
+func _on_seagull_spawn_timeout() -> void:
+	if Global.timeOfDay == "Day" :
+		spawnSeagull()
