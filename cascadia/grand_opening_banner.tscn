@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://chuiec4vdx5mn"]
+[gd_scene load_steps=6 format=3 uid="uid://cp02fywuardbs"]
 
 [ext_resource type="Texture2D" uid="uid://cwjad671r8h10" path="res://Assets/Art/GrandBanner1.png" id="1_7tiuq"]
 [ext_resource type="Texture2D" uid="uid://cpknq1c3ysorl" path="res://Assets/Art/GrandBanner2.png" id="2_04r2y"]
@@ -26,6 +26,7 @@ animations = [{
 }]
 
 [node name="GrandOpeningBanner" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
