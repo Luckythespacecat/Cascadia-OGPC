@@ -31,3 +31,4 @@ animations = [{
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5ig0v")
 animation = &"Talk"
+frame_progress = 0.941149

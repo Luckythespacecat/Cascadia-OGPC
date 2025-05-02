@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cp02fywuardbs" path="res://grand_opening_banner.tscn" id="1_70lxg"]
 [ext_resource type="PackedScene" uid="uid://dheugr4gabqd4" path="res://car.tscn" id="2_g4kqx"]
 [ext_resource type="PackedScene" uid="uid://dmxauqoqpdym0" path="res://parts_2.tscn" id="3_oa01f"]
-[ext_resource type="PackedScene" path="res://Assets/Art/dealership_sign.tscn" id="4_pjfpv"]
+[ext_resource type="PackedScene" uid="uid://buctx81ti4008" path="res://Assets/Art/dealership_sign.tscn" id="4_pjfpv"]
 
 [node name="UsedCars" type="Node2D"]
 
@@ -16,6 +16,7 @@ position = Vector2(528, 238)
 
 [node name="Parts2" parent="." instance=ExtResource("3_oa01f")]
 position = Vector2(503, 434)
+scale = Vector2(5, 5)
 
 [node name="Car2" parent="." instance=ExtResource("2_g4kqx")]
 position = Vector2(269, -1)

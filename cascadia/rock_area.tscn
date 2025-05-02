@@ -123,7 +123,7 @@ position = Vector2(531, 568.5)
 
 [node name="Parts" parent="." instance=ExtResource("6_3a2gk")]
 position = Vector2(453, 233)
-scale = Vector2(3, 3)
+scale = Vector2(5, 5)
 
 [connection signal="area_entered" from="RockArea" to="." method="_on_rock_area_area_entered"]
 [connection signal="area_entered" from="OrderArea" to="." method="_on_order_area_area_entered"]
