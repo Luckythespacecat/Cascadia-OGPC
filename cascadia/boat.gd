@@ -211,13 +211,13 @@ func AdjustSailAction() :
 		if area.name == "FootArea" : 
 			Global.AdjustSail = true
 
-	if Global.AdjustSail == true and Input.is_action_just_pressed("boatClockwise") and Global.onBoat == true:
+	if  Global.TalkingToBarry == false and Global.AdjustSail == true and Input.is_action_just_pressed("boatClockwise") and Global.onBoat == true:
 		$Player/AnimatedSprite2D.play("Pick_Up")
 		animationStarted = false
 		boatMovement()
 
 
-	if Global.AdjustSail == true and Input.is_action_just_pressed("boatcounterClockwise") and Global.onBoat == true:
+	if Global.TalkingToBarry == false and Global.AdjustSail == true and Input.is_action_just_pressed("boatcounterClockwise") and Global.onBoat == true:
 		$Player/AnimatedSprite2D.play("Pick_Up")
 		animationStarted = false
 		boatMovement2()

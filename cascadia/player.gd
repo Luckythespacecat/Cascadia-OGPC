@@ -22,44 +22,49 @@ func _process(delta: float) -> void:
 	drown()
 	# drowning aftermath
 		
+	if Global.TalkingToBarry == true :
+		if Global.onBoat == true :
+			$AnimatedSprite2D.play("Idle")
+		if Global.onBoat == false :
+			$AnimatedSprite2D.play("SwimIdle")
 	
-	
+	if Global.TalkingToBarry == false :
 	#basic movement if statements
 		#Sets the animation to idle if input is stopped
-	if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
-		if Global.swimming == false :
-			$AnimatedSprite2D.play("Idle")
-		else: 
-			$AnimatedSprite2D.play("SwimIdle")
+		if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
+			if Global.swimming == false :
+				$AnimatedSprite2D.play("Idle")
+			else: 
+				$AnimatedSprite2D.play("SwimIdle")
 		# Movement animation, pos and horizantal flip for Left
-	if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept")and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") and $AnimatedSprite2D.animation != "Drown" :
-		Global.PlayerX -= 2
-		$AnimatedSprite2D.flip_h = false
-		if Global.swimming == false:
-			$AnimatedSprite2D.play("Run")
-		else :
-			$AnimatedSprite2D.play("Swimming")
+		if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept")and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") and $AnimatedSprite2D.animation != "Drown" :
+			Global.PlayerX -= 2
+			$AnimatedSprite2D.flip_h = false
+			if Global.swimming == false:
+				$AnimatedSprite2D.play("Run")
+			else :
+				$AnimatedSprite2D.play("Swimming")
 		# Movement animation, pos and horizantal flip for Right
-	if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept")  and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Right") and $AnimatedSprite2D.animation != "Drown" :
-		Global.PlayerX += 2
-		$AnimatedSprite2D.flip_h = true
-		if Global.swimming == false:
-			$AnimatedSprite2D.play("Run")
-		else :
-			$AnimatedSprite2D.play("Swimming")
+		if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept")  and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Right") and $AnimatedSprite2D.animation != "Drown" :
+			Global.PlayerX += 2
+			$AnimatedSprite2D.flip_h = true
+			if Global.swimming == false:
+				$AnimatedSprite2D.play("Run")
+			else :
+				$AnimatedSprite2D.play("Swimming")
 		#up and down movement
-	if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Down") and $AnimatedSprite2D.animation != "Drown" :
-		Global.PlayerY += 2
-		if Global.swimming == false:
-			$AnimatedSprite2D.play("Run")
-		else :
-			$AnimatedSprite2D.play("Swimming")
-	if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Up") and $AnimatedSprite2D.animation != "Drown" :
-		Global.PlayerY -= 2
-		if Global.swimming == false: 
-			$AnimatedSprite2D.play("Run")
-		else :
-			$AnimatedSprite2D.play("Swimming")
+		if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Down") and $AnimatedSprite2D.animation != "Drown" :
+			Global.PlayerY += 2
+			if Global.swimming == false:
+				$AnimatedSprite2D.play("Run")
+			else :
+				$AnimatedSprite2D.play("Swimming")
+		if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Up") and $AnimatedSprite2D.animation != "Drown" :
+			Global.PlayerY -= 2
+			if Global.swimming == false: 
+				$AnimatedSprite2D.play("Run")
+			else :
+				$AnimatedSprite2D.play("Swimming")
 		
 	
 	#Change the players position accordingly every frame

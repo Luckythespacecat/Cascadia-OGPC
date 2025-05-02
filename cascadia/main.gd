@@ -1,6 +1,7 @@
 extends Node2D
 
 const woodResource = preload("res://wood.tscn")
+const BarryResource = preload("res://rock_area.tscn")
 const radioParts = preload("res://parts.tscn") # load the parts scene for radio repair
 const fish = preload("res://fish.tscn")
 
@@ -11,6 +12,11 @@ var tempFishscene = false
 var saveIndex = 0
 var LighthouseCalled = false
 
+func setupBarry():
+	var BarryInstance = BarryResource.instantiate()
+	add_child(BarryInstance)
+	BarryInstance.position = Vector2(-793.0, -766.0)
+	BarryInstance.scale = Vector2(1, 1)
 func spawnItems(): #Spawning squence, I will use as template to make more spawn functions
 	var playerX = Global.PlayerX
 	var playerY = Global.PlayerY
@@ -43,10 +49,13 @@ func _on_wood_interacted(viewport, event, shape_idx):
 				break
 	
 func _ready() -> void:
-	Global.wind = 2
+	Global.partNumb = 1
+	Global.wind = 3
 	if Global.SceneJustIn != "Lighthouse":
 		Global.cutscene = 1
 		Global.larryAppear = 1
+	if Global.partNumb == 1 :
+		setupBarry()
 
 func ReSetupScene() :
 	Global.boatDirection = 0

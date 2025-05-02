@@ -8,6 +8,12 @@
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_46y1q"]
 points = PackedVector2Array(22.5, 19, -21, 19, -20.875, 5, -12, 1, -5.5, -16.5, 14.5, -21.5)
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_o54ku"]
+points = PackedVector2Array(-21.5, 18.5, -21.25, 4.5, -11.75, 1, -5.75, -16.5, 14.25, -21.5, 22.75, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o54ku"]
+size = Vector2(46.25, 28.5)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_gtey5"]
 animations = [{
 "frames": [{
@@ -19,17 +25,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_o54ku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_46y1q")
 }],
 "loop": true,
 "name": &"default",
 "speed": 3.0
 }]
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_o54ku"]
-points = PackedVector2Array(-21.5, 18.5, -21.25, 4.5, -11.75, 1, -5.75, -16.5, 14.25, -21.5, 22.75, 18)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o54ku"]
-size = Vector2(46.25, 28.5)
 
 [node name="Rock" type="Node2D"]
 z_index = 2
@@ -44,13 +47,6 @@ z_index = 100
 position = Vector2(31.5, 28)
 shape = SubResource("ConvexPolygonShape2D_46y1q")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RockArea"]
-texture_filter = 1
-position = Vector2(33, 33)
-sprite_frames = SubResource("SpriteFrames_gtey5")
-frame = 2
-frame_progress = 0.0478292
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_mask = 3
 
@@ -63,6 +59,13 @@ shape = SubResource("ConvexPolygonShape2D_o54ku")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OrderArea"]
 position = Vector2(31.875, 14.25)
 shape = SubResource("RectangleShape2D_o54ku")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(33, 33)
+sprite_frames = SubResource("SpriteFrames_gtey5")
+frame = 1
+frame_progress = 0.216312
 
 [connection signal="area_entered" from="RockArea" to="." method="_on_rock_area_area_entered"]
 [connection signal="area_entered" from="OrderArea" to="." method="_on_order_area_area_entered"]

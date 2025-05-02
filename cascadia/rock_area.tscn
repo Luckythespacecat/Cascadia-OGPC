@@ -1,74 +1,40 @@
-[gd_scene load_steps=11 format=3 uid="uid://7nvkod0joofg"]
+[gd_scene load_steps=7 format=3 uid="uid://7nvkod0joofg"]
 
-[ext_resource type="Script" uid="uid://c7a3s8j7dcxvh" path="res://rock.gd" id="1_hyudx"]
-[ext_resource type="Texture2D" uid="uid://k0rk1t4vfosp" path="res://Assets/Art/Resources/Rock1.png" id="2_u0lvd"]
-[ext_resource type="Texture2D" uid="uid://c2rfmg01di1ts" path="res://Assets/Art/Resources/Rock2.png" id="3_j5h70"]
-[ext_resource type="Texture2D" uid="uid://bktg2cjnoflfp" path="res://Assets/Art/Resources/Rock3.png" id="4_syani"]
+[ext_resource type="Script" uid="uid://b2v5f202vrfp" path="res://rock_area.gd" id="1_0iui3"]
+[ext_resource type="PackedScene" uid="uid://c87lj46oglr6c" path="res://barry.tscn" id="4_0iui3"]
 [ext_resource type="PackedScene" uid="uid://nayarson8r7d" path="res://rock.tscn" id="5_640xs"]
-[ext_resource type="PackedScene" uid="uid://bs1yua8vkxwc5" path="res://parts.tscn" id="6_3a2gk"]
+[ext_resource type="PackedScene" uid="uid://c8rn63kf6jjg1" path="res://green_rock.tscn" id="5_hyudx"]
+[ext_resource type="PackedScene" uid="uid://c61cxrk1dkar3" path="res://rock_sign.tscn" id="5_kmnv7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_46y1q"]
-size = Vector2(43.25, 39)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gtey5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_u0lvd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_j5h70")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_syani")
-}],
-"loop": true,
-"name": &"default",
-"speed": 3.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_68h2w"]
-size = Vector2(43.5, 39)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o54ku"]
-size = Vector2(46.25, 28.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmnv7"]
+size = Vector2(422, 368)
 
 [node name="PartsArea" type="Node2D"]
 z_index = 2
-position = Vector2(155, 561)
+position = Vector2(291, -152)
 scale = Vector2(2, 2)
-script = ExtResource("1_hyudx")
+script = ExtResource("1_0iui3")
 
-[node name="RockArea" type="Area2D" parent="."]
-collision_mask = 3
+[node name="Rock11" parent="." instance=ExtResource("5_640xs")]
+position = Vector2(100, 334.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RockArea"]
-z_index = 100
-position = Vector2(31.375, 28.5)
-shape = SubResource("RectangleShape2D_46y1q")
+[node name="Barry" parent="Rock11" instance=ExtResource("4_0iui3")]
+z_index = 2
+position = Vector2(32, 34)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RockArea"]
-texture_filter = 1
-position = Vector2(33, 33)
-sprite_frames = SubResource("SpriteFrames_gtey5")
-frame = 2
-frame_progress = 0.0478292
+[node name="Area2D" type="Area2D" parent="Rock11/Barry"]
+position = Vector2(-29.5, -69.25)
+scale = Vector2(0.182311, 0.219566)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(31.25, 28.5)
-shape = SubResource("RectangleShape2D_68h2w")
-
-[node name="OrderArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderArea"]
-position = Vector2(31.875, 14.25)
-shape = SubResource("RectangleShape2D_o54ku")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock11/Barry/Area2D"]
+position = Vector2(170.5, 407)
+shape = SubResource("RectangleShape2D_kmnv7")
 
 [node name="Rock7" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(353.5, 52)
+
+[node name="Rock25" parent="." instance=ExtResource("5_640xs")]
+position = Vector2(-53.5, -51.5)
 
 [node name="Rock8" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(560, 160.5)
@@ -79,11 +45,8 @@ position = Vector2(306.5, 284.5)
 [node name="Rock10" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(550.5, -29)
 
-[node name="Rock11" parent="." instance=ExtResource("5_640xs")]
-position = Vector2(125, 137.5)
-
 [node name="Rock12" parent="." instance=ExtResource("5_640xs")]
-position = Vector2(104.5, 329.5)
+position = Vector2(124.5, 116)
 
 [node name="Rock13" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(171.5, -58)
@@ -92,7 +55,7 @@ position = Vector2(171.5, -58)
 position = Vector2(376, -157)
 
 [node name="Rock15" parent="." instance=ExtResource("5_640xs")]
-position = Vector2(285, 476.5)
+position = Vector2(313.5, 450.5)
 
 [node name="Rock16" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(505.5, 347)
@@ -116,15 +79,18 @@ position = Vector2(2, -202)
 position = Vector2(-106.5, 169)
 
 [node name="Rock23" parent="." instance=ExtResource("5_640xs")]
-position = Vector2(-106.5, 416.5)
+position = Vector2(-118.5, 367)
 
 [node name="Rock24" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(531, 568.5)
 
-[node name="Parts" parent="." instance=ExtResource("6_3a2gk")]
-position = Vector2(453, 233)
-scale = Vector2(3, 3)
+[node name="RockSign" parent="." instance=ExtResource("5_kmnv7")]
+position = Vector2(172.5, 349.5)
+scale = Vector2(2, 2)
 
-[connection signal="area_entered" from="RockArea" to="." method="_on_rock_area_area_entered"]
-[connection signal="area_entered" from="OrderArea" to="." method="_on_order_area_area_entered"]
-[connection signal="area_exited" from="OrderArea" to="." method="_on_order_area_area_exited"]
+[node name="GreenRock" parent="." instance=ExtResource("5_hyudx")]
+position = Vector2(399.5, 155)
+scale = Vector2(2, 2)
+
+[connection signal="area_entered" from="Rock11/Barry/Area2D" to="Rock11/Barry" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Rock11/Barry/Area2D" to="Rock11/Barry" method="_on_area_2d_area_exited"]

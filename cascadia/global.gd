@@ -33,6 +33,9 @@ var tutorial : bool = false
 var LighthouseCutsceneDone : bool = false
 var foodCutscene : bool = false
 var foodCutsceneCalled : bool = false
+#barrys rocks
+var TalkingToBarry = false
+
 
 #Telescope variables
 var partNumb : int = 0 #Interger that will repersent what number of part the player needs to get for telescope
@@ -47,6 +50,13 @@ var part1Obtained = false
 var part2Obtained = false
 var part3Obtained = false
 # Called when the node enters the scene tree for the first time.
+
+#Textbox stuff
+var letter_index = 0
+
+var letter_time = 0.1
+var space_time = 0.05
+var punctuation_time = 0.1
 func _ready() -> void:
 	pass # Replace with function body.
 

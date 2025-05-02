@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8rn63kf6jjg1"]
+
+[ext_resource type="Texture2D" uid="uid://w3mkqfw8f0l8" path="res://Assets/Art/Resources/GreenRock1.png" id="1_c812p"]
+[ext_resource type="Script" uid="uid://jycj8m6wx1qd" path="res://green_rock.gd" id="1_y7fbj"]
+[ext_resource type="Texture2D" uid="uid://d3d0i0f5m1amu" path="res://Assets/Art/Resources/GreenRock2.png" id="2_y7fbj"]
+[ext_resource type="Texture2D" uid="uid://xl1qjw0okoeh" path="res://Assets/Art/Resources/GreenRock3.png" id="3_k8oh6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8deq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c812p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y7fbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k8oh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y7fbj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_c812p"]
+points = PackedVector2Array(-21.5, 18.5, -21.25, 4.5, -11.75, 1, -5.75, -16.5, 14.25, -21.5, 22.75, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7fbj"]
+size = Vector2(46.25, 28.5)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_y7fbj"]
+points = PackedVector2Array(22.5, 19, -21, 19, -20.875, 5, -12, 1, -5.5, -16.5, 14.5, -21.5)
+
+[node name="GreenRock" type="Node2D"]
+script = ExtResource("1_y7fbj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(33, 32)
+sprite_frames = SubResource("SpriteFrames_8deq8")
+frame = 1
+frame_progress = 0.514925
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(31.5, 28)
+shape = SubResource("ConvexPolygonShape2D_c812p")
+
+[node name="OrderArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderArea"]
+position = Vector2(31.875, 14.25)
+shape = SubResource("RectangleShape2D_y7fbj")
+
+[node name="RockArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RockArea"]
+z_index = 100
+position = Vector2(31.5, 28)
+shape = SubResource("ConvexPolygonShape2D_y7fbj")
+
+[connection signal="area_entered" from="OrderArea" to="." method="_on_order_area_area_entered"]
+[connection signal="area_exited" from="OrderArea" to="." method="_on_order_area_area_exited"]
+[connection signal="area_entered" from="RockArea" to="." method="_on_rock_area_area_entered"]

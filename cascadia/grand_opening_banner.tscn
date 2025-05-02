@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp02fywuardbs"]
+[gd_scene load_steps=7 format=3 uid="uid://cp02fywuardbs"]
 
+[ext_resource type="Script" uid="uid://dmmdub0602v4f" path="res://grand_opening_banner.gd" id="1_04r2y"]
 [ext_resource type="Texture2D" uid="uid://cwjad671r8h10" path="res://Assets/Art/GrandBanner1.png" id="1_7tiuq"]
 [ext_resource type="Texture2D" uid="uid://cpknq1c3ysorl" path="res://Assets/Art/GrandBanner2.png" id="2_04r2y"]
 [ext_resource type="Texture2D" uid="uid://q0fnahfd2j0b" path="res://Assets/Art/GrandBanner3.png" id="3_6kfxn"]
@@ -27,6 +28,7 @@ animations = [{
 
 [node name="GrandOpeningBanner" type="Node2D"]
 scale = Vector2(2, 2)
+script = ExtResource("1_04r2y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

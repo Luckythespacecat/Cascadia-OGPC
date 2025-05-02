@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://buctx81ti4008"]
+[gd_scene load_steps=6 format=3 uid="uid://buctx81ti4008"]
 
 [ext_resource type="Texture2D" uid="uid://484nm8emj8nw" path="res://Assets/Art/Dealership_Sign1.png" id="1_6beqv"]
+[ext_resource type="Script" uid="uid://ctqdqamhshl0t" path="res://Assets/Art/dealership_sign.gd" id="1_ysmlq"]
 [ext_resource type="Texture2D" uid="uid://detkhpnfsh2cw" path="res://Assets/Art/Dealership_Sign2.png" id="2_nkr6k"]
 [ext_resource type="Texture2D" uid="uid://0sgq3cvkt0ir" path="res://Assets/Art/Dealership_Sign3.png" id="3_pyr0s"]
 
@@ -26,6 +27,7 @@ animations = [{
 
 [node name="DealershipSign" type="Node2D"]
 scale = Vector2(2, 2)
+script = ExtResource("1_ysmlq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
