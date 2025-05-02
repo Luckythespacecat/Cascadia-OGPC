@@ -18,13 +18,13 @@ func _ready() -> void:
 	NametweenPos.tween_property($Name, "position", Vector2(1100.0, 70.0), 3).set_trans(Tween.TRANS_QUART)
 
 	var PlayButtontweenPos = get_tree().create_tween()
-	PlayButtontweenPos.tween_property($Icon, "position", Vector2(1150.0, 490.0), 3).set_trans(Tween.TRANS_QUART)
+	PlayButtontweenPos.tween_property($"Play Button", "position", Vector2(1020.0, 475.0), 3).set_trans(Tween.TRANS_QUART)
 
 	var CreditsButtonPos = get_tree().create_tween()
 	CreditsButtonPos.tween_property($Icon2, "position", Vector2(1700.0, 940.0), 3).set_trans(Tween.TRANS_QUART)
 
 	var SettingsButtonPos = get_tree().create_tween()
-	SettingsButtonPos.tween_property($Icon3, "position", Vector2(1520.0, 540.0), 3).set_trans(Tween.TRANS_QUART)
+	SettingsButtonPos.tween_property($Icon3, "position", Vector2(1560.0, 575.0), 3).set_trans(Tween.TRANS_QUART)
 
 #Initiates the title's animation
 	$Name/StretchOut.start()
@@ -61,7 +61,7 @@ func SlowTweens() :
 	Landtweenlong.tween_property($Sea, "position", Vector2(381.0, 400), 30).set_trans(Tween.TRANS_QUART)
 
 #The function that changes scenes when the play button is clicked.
-func _on_button_pressed() -> void:
+func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://LarryIntroduction.tscn")
 
 func _on_credits_button_down() -> void:
