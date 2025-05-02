@@ -1,3 +1,79 @@
-[gd_scene format=3 uid="uid://tmf3ulux73ad"]
+[gd_scene load_steps=5 format=3 uid="uid://tmf3ulux73ad"]
+
+[ext_resource type="PackedScene" uid="uid://cp02fywuardbs" path="res://grand_opening_banner.tscn" id="1_70lxg"]
+[ext_resource type="PackedScene" uid="uid://dheugr4gabqd4" path="res://car.tscn" id="2_g4kqx"]
+[ext_resource type="PackedScene" uid="uid://dmxauqoqpdym0" path="res://parts_2.tscn" id="3_oa01f"]
+[ext_resource type="PackedScene" path="res://Assets/Art/dealership_sign.tscn" id="4_pjfpv"]
 
 [node name="UsedCars" type="Node2D"]
+
+[node name="GrandOpeningBanner" parent="." instance=ExtResource("1_70lxg")]
+position = Vector2(1261, 799)
+rotation = -2.35347
+
+[node name="Car" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(528, 238)
+
+[node name="Parts2" parent="." instance=ExtResource("3_oa01f")]
+position = Vector2(503, 434)
+
+[node name="Car2" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(269, -1)
+
+[node name="Car3" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(-131, 85)
+
+[node name="Car4" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(795, 977)
+
+[node name="Car5" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(225, 220)
+
+[node name="Car6" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(-76, 323)
+
+[node name="Car7" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(-152, 560)
+
+[node name="Car8" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(515, 624)
+
+[node name="Car9" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(787, 772)
+
+[node name="Car10" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(489, 876)
+
+[node name="Car11" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(79, 733)
+
+[node name="Car12" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(144, 925)
+
+[node name="Car13" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(201, 451)
+
+[node name="Car14" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(783, 528)
+
+[node name="Car15" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(1023, 404)
+
+[node name="Car16" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(878, 59)
+
+[node name="Car17" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(1285, 570)
+
+[node name="Car18" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(1119, -91)
+
+[node name="Car19" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(1490, 342)
+
+[node name="Car20" parent="." instance=ExtResource("2_g4kqx")]
+position = Vector2(562, 69)
+skew = 0.506145
+
+[node name="DealershipSign" parent="." instance=ExtResource("4_pjfpv")]
+position = Vector2(-451, 951)

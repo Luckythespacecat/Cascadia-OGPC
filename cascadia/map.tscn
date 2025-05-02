@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6g35j1nhodem"]
+[gd_scene load_steps=7 format=3 uid="uid://b6g35j1nhodem"]
 
 [ext_resource type="Script" uid="uid://dqq833dih0tr0" path="res://map.gd" id="1_0kwsq"]
 [ext_resource type="PackedScene" uid="uid://nayarson8r7d" path="res://rock.tscn" id="3_e0an3"]
 [ext_resource type="PackedScene" uid="uid://dheugr4gabqd4" path="res://car.tscn" id="4_p5pve"]
 [ext_resource type="PackedScene" uid="uid://bct6rempjb28w" path="res://parts_area.tscn" id="5_urblq"]
+[ext_resource type="PackedScene" uid="uid://tmf3ulux73ad" path="res://used_cars.tscn" id="6_iw27f"]
 [ext_resource type="PackedScene" uid="uid://bn60mckxh70u3" path="res://water_test.tscn" id="9_gqbix"]
 
 [node name="Map" type="Node2D"]
@@ -48,3 +49,6 @@ position = Vector2(16433.8, 24973.2)
 
 [node name="PartsArea" parent="." instance=ExtResource("5_urblq")]
 position = Vector2(-2738, 831)
+
+[node name="UsedCars" parent="." instance=ExtResource("6_iw27f")]
+position = Vector2(1940, -2140)
