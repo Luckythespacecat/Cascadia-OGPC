@@ -66,3 +66,5 @@ texture_filter = 1
 position = Vector2(855.65, 474.5)
 scale = Vector2(13, 13)
 texture = ExtResource("2_tgbea")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit Button" to="." method="_on_exit_button_pressed"]
