@@ -3,9 +3,11 @@ extends Node2D
 @onready var RockArea = $RockArea
 
 func _ready():
-	pass
 	$AnimatedSprite2D.play()
 	
+func _process(delta: float) -> void:
+	Global.GreenRockPos = global_position
+
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "Area2D":
 		Global.damage = Global.damage + 1
@@ -25,6 +27,7 @@ func _on_order_area_area_exited(area: Area2D) -> void:
 	if area.name == "HeadArea" :
 		z_index = 0
 
-
 func _on_rock_area_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+	if area.name == "BodyArea" and Global.GreenRockSceneFinished == false :
+		Global.AtGreenRock = true
+		

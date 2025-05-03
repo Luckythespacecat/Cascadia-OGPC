@@ -48,8 +48,7 @@ func _on_wood_interacted(viewport, event, shape_idx):
 				wood_instances.erase(woodInstance)
 				break
 	
-func _ready() -> void:
-	Global.partNumb = 1
+func _ready() -> void:	
 	Global.wind = 3
 	if Global.SceneJustIn != "Lighthouse":
 		Global.cutscene = 1
@@ -146,7 +145,7 @@ func DrownLarry() :
 		"  If you drown I might not be able to save you!  ",
 		"  And then you might get sick or something  " ])
 	
-	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 3 :
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 3 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
 		Global.FirstDrown = false
 		Dialoguemanager.is_dialogue_active = false
 		$Lamprey/EndDialogue.start()
@@ -165,7 +164,7 @@ func TutorialLarry() :
 		"  That is a very convienent raft you got there!  ",
 		"  Press 'E' and 'Q' to rotate the sail  " ])
 	
-	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 :
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
 		Global.tutorial = true
 		Dialoguemanager.is_dialogue_active = false
 		$Lamprey/EndDialogue.start()
@@ -174,7 +173,7 @@ func TutorialLarry() :
 
 func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
 
-	if area.name == "BodyArea" and Global.onBoat == true and Global.LighthouseCutsceneDone == false:
+	if area.name == "BodyArea" and Global.timeOfDay == "Night" and Global.onBoat == true and Global.LighthouseCutsceneDone == false and Global.AtGreenRock == false:
 		Global.boatDirection = 0
 		Global.larryAppear = 1
 		$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
@@ -199,7 +198,7 @@ func FishLarryCutscene():
 		"  you can eat it if your hungry  ",
 		"  press 'E' to dive down and eat that fish  " ])
 	
-	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 :
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
 		Dialoguemanager.is_dialogue_active = false
 		$Lamprey/EndDialogue.start()
 		Global.larryAppear = 2
@@ -214,7 +213,7 @@ func _on_end_dialogue_timeout() -> void:
 		texboxRemove = false
 
 func LighthouseLarry():
-	if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true:   
+	if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true and Global.TalkingToBarry == false and Global.AtGreenRock == false:   
 		Global.LighthouseCutsceneDone == true
 		Dialoguemanager.is_dialogue_active = false
 		$Lamprey/EndDialogue.start()

@@ -85,7 +85,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_w48qg")
 
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
-position = Vector2(441, 270)
+position = Vector2(602, 242)
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighthouse"]
 position = Vector2(0.75, -146.75)

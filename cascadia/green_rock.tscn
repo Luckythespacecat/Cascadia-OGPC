@@ -39,12 +39,13 @@ script = ExtResource("1_y7fbj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(33, 32)
+position = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_8deq8")
 frame = 1
 frame_progress = 0.514925
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-31, -28)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -52,12 +53,14 @@ position = Vector2(31.5, 28)
 shape = SubResource("ConvexPolygonShape2D_c812p")
 
 [node name="OrderArea" type="Area2D" parent="."]
+position = Vector2(-28, -28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OrderArea"]
 position = Vector2(31.875, 14.25)
 shape = SubResource("RectangleShape2D_y7fbj")
 
 [node name="RockArea" type="Area2D" parent="."]
+position = Vector2(-31, -28)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RockArea"]

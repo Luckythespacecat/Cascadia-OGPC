@@ -84,18 +84,12 @@ position = Vector2(-118.5, 367)
 [node name="Rock24" parent="." instance=ExtResource("5_640xs")]
 position = Vector2(531, 568.5)
 
-<<<<<<< HEAD
 [node name="RockSign" parent="." instance=ExtResource("5_kmnv7")]
 position = Vector2(172.5, 349.5)
 scale = Vector2(2, 2)
-=======
-[node name="Parts" parent="." instance=ExtResource("6_3a2gk")]
-position = Vector2(453, 233)
-scale = Vector2(5, 5)
->>>>>>> 6849be8dc001fd7c8b50725a758eee46aa2d974c
 
 [node name="GreenRock" parent="." instance=ExtResource("5_hyudx")]
-position = Vector2(399.5, 155)
+position = Vector2(400.5, 227.5)
 scale = Vector2(2, 2)
 
 [connection signal="area_entered" from="Rock11/Barry/Area2D" to="Rock11/Barry" method="_on_area_2d_area_entered"]

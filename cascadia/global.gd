@@ -35,7 +35,9 @@ var foodCutscene : bool = false
 var foodCutsceneCalled : bool = false
 #barrys rocks
 var TalkingToBarry = false
-
+var AtGreenRock = false
+var GreenRockSceneFinished = false
+var GreenRockPos : Vector2 = Vector2(0,0)
 
 #Telescope variables
 var partNumb : int = 0 #Interger that will repersent what number of part the player needs to get for telescope

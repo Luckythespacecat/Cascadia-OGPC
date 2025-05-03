@@ -22,13 +22,14 @@ func _process(delta: float) -> void:
 	drown()
 	# drowning aftermath
 		
-	if Global.TalkingToBarry == true :
+	if Global.TalkingToBarry == true or Global.AtGreenRock == true:
+		$drownTimer.stop()
 		if Global.onBoat == true :
 			$AnimatedSprite2D.play("Idle")
 		if Global.onBoat == false :
 			$AnimatedSprite2D.play("SwimIdle")
 	
-	if Global.TalkingToBarry == false :
+	if Global.TalkingToBarry == false and Global.AtGreenRock == false :
 	#basic movement if statements
 		#Sets the animation to idle if input is stopped
 		if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
