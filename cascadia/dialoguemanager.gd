@@ -8,7 +8,7 @@ var current_line_index = 0
 var text_box
 var text_box_position: Vector2
 
-var is_dialogue_active = false
+@onready var is_dialogue_active = false
 var can_advance_line = false
 
 func _ready() -> void:
@@ -16,7 +16,9 @@ func _ready() -> void:
 
 func start_dialogue(position: Vector2, lines: Array[String]):
 	if is_dialogue_active:
-		return
+		text_box.queue_free()
+		is_dialogue_active = false
+		current_line_index = 0
 	
 	dialogue_lines = lines
 	text_box_position = position
