@@ -153,12 +153,6 @@ texture_scale = 5.0
 
 [node name="Rain3" parent="CanvasLayer" instance=ExtResource("11_vivmo")]
 
-[node name="Rain4" parent="CanvasLayer" instance=ExtResource("11_vivmo")]
-
-[node name="Rain5" parent="CanvasLayer" instance=ExtResource("11_vivmo")]
-
-[node name="Rain6" parent="CanvasLayer" instance=ExtResource("11_vivmo")]
-
 [node name="SceneReset" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
