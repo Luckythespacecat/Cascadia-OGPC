@@ -18,5 +18,7 @@ func _process(delta: float) -> void:
 			InWood = false
 
 func _on_wood_body_area_entered(area: Area2D) -> void:
-	if area.name == "BodyArea" :
+	if area.name == "BodyArea" or area.name == "SwimArea" or area.name == "HeadArea" or area.name == "FootArea":
 		InWood = true
+	else:
+		queue_free()

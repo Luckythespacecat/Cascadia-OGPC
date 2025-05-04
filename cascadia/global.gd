@@ -20,6 +20,7 @@ var AdjustSail : bool = false
 var SailMovedE : bool= false     
 var SailMovedQ : bool= false  
 var damage : int = 0
+var BoatInputStop : int = 10
   
 #Scene switching                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 var SceneJustIn : String = "Main"
@@ -59,6 +60,13 @@ var letter_index = 0
 var letter_time = 0.1
 var space_time = 0.05
 var punctuation_time = 0.1
+
+# sloppy collison
+var last_key_pressed: String = ""
+var NoLeft = false
+var NoRight = false
+var NoUp = false
+var NoDown = false
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -69,4 +77,8 @@ func _process(delta: float) -> void:
 		NewBoatPos = Vector2(320.0, 641.0)
 	elif SceneJustIn == "Main" :
 		NewBoatPos = boatPos
-		
+	for keycode in range(KEY_A, KEY_Z + 1):  # Or any range you want
+		if Input.is_key_pressed(keycode):
+			last_key_pressed = OS.get_keycode_string(keycode)
+			print("Last key pressed: ", last_key_pressed)
+			break

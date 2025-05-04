@@ -21,6 +21,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_fish_area_area_exited(area: Area2D) -> void:
 	if area.name == "SwimArea" :
 		PlayerEntered = false
+	if area.name == "BodyArea" or area.name == "SwimArea" or area.name == "HeadArea" or area.name == "FootArea":
+		pass
+	else:
+		queue_free()
 
 func _on_fish_area_area_entered(area: Area2D) -> void:
 	if area.name == "SwimArea" :

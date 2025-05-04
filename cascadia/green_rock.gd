@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	Global.GreenRockPos = global_position
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.name == "Area2D":
+	if area.name == "BoatArea2D":
 		Global.damage = Global.damage + 1
 		Global.boatDirection = 0
 		
