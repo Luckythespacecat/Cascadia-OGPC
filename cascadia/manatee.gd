@@ -8,6 +8,7 @@ var choicetime = 0.0
 var choiceready = false
 var inputready = false
 var time = false
+var optionsgiven = false
 
 func _ready():
 	dialogue_step = 0
@@ -20,6 +21,11 @@ func _ready():
 	time = false
 
 func _process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("Dialogue1") or Input.is_action_just_pressed("Dialogue2") and optionsgiven == true :
+		Global.DontSpacebar = false
+		Dialoguemanager2.text_box.queue_free()
+		Dialoguemanager.text_box.queue_free()
 	
 	$BodySprite.play()
 	$HeadSprite.frame = $BodySprite.frame
@@ -44,13 +50,14 @@ func choice():
 
 func fail():
 	if failure == true:
-		get_node("Manatee").queue_free()
+		pass
+		#get_node("Manatee").queue_free()
 
 func manatee10():
 	if dialogue_step == 0 and Input.is_action_just_pressed("advance_dialogue"):
 		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 200), [
 			"  Look, it worked!  ",
-			"  This is what Clyde will say to initiate our dialogue tree.  ",
+			"  This is what Wetherby will say to initiate our dialogue tree.  ",
 		])
 		dialogue_step = -1
 	elif dialogue_step == -1 and not Dialoguemanager.is_dialogue_active:
@@ -82,10 +89,16 @@ func givePart():
 	pass
 
 func show_choice_options():
-	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 200), [
+	if Global.DontSpacebar == false :
+		Global.DontSpacebar = true
+		optionsgiven = true
+		
+		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 100, Global.textPos.y + 200), [
 		"  Option 1: Dialogue1 (Press 'z')",
-		"  Option 2: Dialogue2 (Press 'x')"
-	])
+		])
+		Dialoguemanager2.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 200), [
+		"  Option 2: Dialogue2 (Press 'x')",
+		])
 
 func show_correct_response():
 	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x+ 200, Global.textPos.y + 200), [

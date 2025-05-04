@@ -69,12 +69,12 @@ animations = [{
 }]
 
 [node name="Manatee" type="Node2D"]
+position = Vector2(36, 39)
 script = ExtResource("1_40kdp")
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6u8dp")
-frame_progress = 0.0736544
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

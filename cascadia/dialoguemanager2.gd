@@ -1,6 +1,6 @@
 extends Node
 
-@onready var text_box_scene = preload("res://speech.tscn")
+@onready var text_box_scene = preload("res://speech2.tscn")
 
 var dialogue_lines: Array[String] = []
 var current_line_index = 0
@@ -28,13 +28,13 @@ func start_dialogue(position: Vector2, lines: Array[String]):
 	
 func _show_text_box():
 	text_box = text_box_scene.instantiate()
-	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
+	text_box.finished_displaying2.connect(_on_text_box_finished_displaying2)
 	get_tree().root.add_child(text_box)
 	text_box.global_position = text_box_position
 	text_box.display_text(dialogue_lines[current_line_index])
 	can_advance_line = false
 
-func _on_text_box_finished_displaying():
+func _on_text_box_finished_displaying2():
 	can_advance_line = true
 
 func _unhandled_input(event):

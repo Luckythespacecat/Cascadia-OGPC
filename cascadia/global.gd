@@ -56,10 +56,10 @@ var part3Obtained = false
 
 #Textbox stuff
 var letter_index = 0
-
 var letter_time = 0.1
 var space_time = 0.05
 var punctuation_time = 0.1
+var DontSpacebar = false
 
 # sloppy collison
 var last_key_pressed: String = ""
@@ -80,5 +80,4 @@ func _process(delta: float) -> void:
 	for keycode in range(KEY_A, KEY_Z + 1):  # Or any range you want
 		if Input.is_key_pressed(keycode):
 			last_key_pressed = OS.get_keycode_string(keycode)
-			print("Last key pressed: ", last_key_pressed)
 			break
