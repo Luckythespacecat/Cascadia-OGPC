@@ -7,6 +7,7 @@ func _ready():
 	pass
 	#$AnimatedSprite2D.play()
 
+
 func _on_order_area_area_entered(area: Area2D) -> void:
 	if area.name == "HeadArea" :
 		z_index = 5
