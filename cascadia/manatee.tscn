@@ -1,6 +1,82 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo7rcjusfp3hv"]
+[gd_scene load_steps=13 format=3 uid="uid://bo7rcjusfp3hv"]
 
 [ext_resource type="Script" uid="uid://crjjqa26jig0m" path="res://manatee.gd" id="1_40kdp"]
+[ext_resource type="Texture2D" uid="uid://bxc3t4iohtxly" path="res://Assets/Art/Manatee/ManateeBody1.png" id="2_6o1k7"]
+[ext_resource type="Texture2D" uid="uid://c4cy0j81nqmh5" path="res://Assets/Art/Manatee/ManateeBody2.png" id="3_1rl46"]
+[ext_resource type="Texture2D" uid="uid://b8odbs53xhq1i" path="res://Assets/Art/Manatee/ManateeBody3.png" id="4_6pog0"]
+[ext_resource type="Texture2D" uid="uid://dke47v1npn48q" path="res://Assets/Art/Manatee/ManateeHead1.png" id="5_pfoxn"]
+[ext_resource type="Texture2D" uid="uid://b4uceadcvesy8" path="res://Assets/Art/Manatee/ManateeHead2.png" id="6_xeufa"]
+[ext_resource type="Texture2D" uid="uid://qn508lb0jmw1" path="res://Assets/Art/Manatee/ManateeHead3.png" id="7_pdlfw"]
+[ext_resource type="Texture2D" uid="uid://bttps12lvoidg" path="res://Assets/Art/Manatee/ManateeHead4.png" id="8_heb3r"]
+[ext_resource type="Texture2D" uid="uid://lyu0rvdtmwpa" path="res://Assets/Art/Manatee/ManateeHead5.png" id="9_ieirs"]
+[ext_resource type="Texture2D" uid="uid://bjb4kktcvp514" path="res://Assets/Art/Manatee/ManateeHead6.png" id="10_ot8jw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6u8dp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6o1k7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1rl46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6pog0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1rl46")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ayap7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_pfoxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xeufa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pdlfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xeufa")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_heb3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ieirs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ot8jw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ieirs")
+}],
+"loop": true,
+"name": &"Talk",
+"speed": 5.0
+}]
 
 [node name="Manatee" type="Node2D"]
 script = ExtResource("1_40kdp")
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6u8dp")
+frame_progress = 0.0736544
+
+[node name="HeadSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ayap7")
+animation = &"Idle"

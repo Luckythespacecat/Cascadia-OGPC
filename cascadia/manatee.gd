@@ -20,6 +20,10 @@ func _ready():
 	time = false
 
 func _process(delta: float) -> void:
+	
+	$BodySprite.play()
+	$HeadSprite.frame = $BodySprite.frame
+
 	if not inputready:
 		return 
 	if choicetime > 0:
