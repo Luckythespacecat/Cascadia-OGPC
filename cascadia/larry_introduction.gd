@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("advance_dialogue") or Dialoguemanager.current_line_index != 0 :
 		$CanvasLayer/Sprite2D.position = lerp($CanvasLayer/Sprite2D.position, Vector2(936.0, 1127.0), delta / 2)
-	
+
 	if thispartisdone == false :
 		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 25, Global.textPos.y - 40), [
 		"  Hey you, its about time you woke up  ",
@@ -50,7 +50,6 @@ func _process(delta: float) -> void:
 
 	if Global.timeOfDay == "Day" and  $sun.energy > 0:
 		$sun.energy -= .0025
-
 
 #Day and night TImers defined here
 #look in scene tree under "sun" node to change the time for day and night cycles

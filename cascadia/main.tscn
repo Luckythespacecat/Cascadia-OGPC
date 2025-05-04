@@ -33,7 +33,7 @@ size = Vector2(96, 88)
 b = Vector2(-199.44, -205.176)
 
 [node name="Main" type="Node2D"]
-position = Vector2(-42, -26)
+position = Vector2(-42, 0)
 script = ExtResource("1_7mycd")
 
 [node name="Map" parent="." instance=ExtResource("3_ad2nh")]

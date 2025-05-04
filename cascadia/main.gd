@@ -160,14 +160,14 @@ func DrownLarry() :
 		$Boat/Player.z_index = saveIndex
 		
 func TutorialLarry() :
-	Dialoguemanager2.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
+	Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 		"  Hey over here!  ",
 		"  That is a very convienent raft you got there!  ",
 		"  Press 'E' and 'Q' to rotate the sail  " ])
 	
-	if Dialoguemanager2.can_advance_line == true and Dialoguemanager2.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
 		Global.tutorial = true
-		Dialoguemanager2.is_dialogue_active = false
+		Dialoguemanager.is_dialogue_active = false
 		$Lamprey/EndDialogue.start()
 		Global.larryAppear = 2
 		texboxRemove = true

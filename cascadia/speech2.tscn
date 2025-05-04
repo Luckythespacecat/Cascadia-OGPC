@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpcnh6vgmpq0p"]
+[gd_scene load_steps=5 format=3 uid="uid://bpcnh6vgmpq0p"]
 
-[ext_resource type="Script" uid="uid://djt338hbcb4fb" path="res://speech_2.gd" id="1_pw2m1"]
 [ext_resource type="Texture2D" uid="uid://jww0ac31qvjl" path="res://Assets/Art/TextBox.png" id="2_kg1h6"]
 [ext_resource type="FontFile" uid="uid://b5bg6racpvgb6" path="res://Assets/m5x7.ttf" id="3_b5ba6"]
 
@@ -22,7 +21,6 @@ anchor_bottom = 0.02
 offset_right = 20.376
 offset_bottom = 19.92
 scale = Vector2(1.25, 1.25)
-script = ExtResource("1_pw2m1")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 texture_filter = 1

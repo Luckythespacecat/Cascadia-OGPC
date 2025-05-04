@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://global.gd"
 Dialoguemanager="*res://dialoguemanager.gd"
-Dialoguemanager2="*res://dialoguemanager2.gd"
+Dialoguemanager2="res://dialoguemanager2.gd"
 
 [display]
 

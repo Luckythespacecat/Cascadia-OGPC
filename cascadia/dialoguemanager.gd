@@ -15,6 +15,7 @@ func _ready() -> void:
 	set_process_unhandled_input(true)
 
 func start_dialogue(position: Vector2, lines: Array[String]):
+	print("Dialogue started by:", get_tree().current_scene.name)
 	if is_dialogue_active:
 		text_box.queue_free()
 		is_dialogue_active = false
@@ -41,8 +42,8 @@ func _unhandled_input(event):
 	if (
 		event.is_action_pressed("advance_dialogue") &&
 		is_dialogue_active &&
-		can_advance_line &&
-		Global.DontSpacebar == false
+		can_advance_line #&&
+		#Global.DontSpacebar == false
 	):
 		text_box.queue_free()
 
