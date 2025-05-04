@@ -29,47 +29,46 @@ func manatee10():
 		"  This is what Clyde will say to initiate our dialogue tree  ",
 		])
 		temp1 = true
-		if Input.is_action_just_pressed("advance_dialogue"):
+		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX - 100, Global.textPos.y + Global.PlayerY), [
+				"  Incorrect choice to obtain part  "
+			])
+		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX + 100, Global.textPos.y + Global.PlayerY), [
+				"  Correct choice to obtain part  "
+			])
+		if Input.is_action_just_pressed("Dialogue1"):
 			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX - 100, Global.textPos.y + Global.PlayerY), [
 				"  Incorrect choice to obtain part  "
 			])
-			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX + 100, Global.textPos.y + Global.PlayerY), [
+			failure = true
+			if Input.is_action_just_pressed("Dialogue2"):
+				Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX, Global.textPos.y + Global.PlayerY), [
 				"  Correct choice to obtain part  "
-			])
-			if Input.is_action_just_pressed("Dialogue1"):
-				Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX - 100, Global.textPos.y + Global.PlayerY), [
-					"  Incorrect choice to obtain part  "
 				])
-				failure = true
-				if Input.is_action_just_pressed("Dialogue2"):
-					Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX, Global.textPos.y + Global.PlayerY), [
+				Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + 100, Global.textPos.y + 100), [
+				"  Look, it worked !  ",
+				"  This is what Clyde will say next  ",
+				])
+				if Input.is_action_just_pressed("advance_dialogue"):
+					Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX - 100, Global.textPos.y + Global.PlayerY), [
+					"  Incorrect choice to obtain part  "
+					])
+					Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX + 100, Global.textPos.y + Global.PlayerY), [
 					"  Correct choice to obtain part  "
 					])
-					Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + 100, Global.textPos.y + 100), [
-					"  Look, it worked !  ",
-					"  This is what Clyde will say next  ",
-					])
-					if Input.is_action_just_pressed("advance_dialogue"):
+					if Input.is_action_just_pressed("Dialogue1"):
 						Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX - 100, Global.textPos.y + Global.PlayerY), [
 						"  Incorrect choice to obtain part  "
 						])
-						Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX + 100, Global.textPos.y + Global.PlayerY), [
+						failure = true
+					if Input.is_action_just_pressed("Dialogue2"):
+						Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX, Global.textPos.y + Global.PlayerY), [
 						"  Correct choice to obtain part  "
 						])
-						if Input.is_action_just_pressed("Dialogue1"):
-							Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX - 100, Global.textPos.y + Global.PlayerY), [
-							"  Incorrect choice to obtain part  "
-							])
-							failure = true
-						if Input.is_action_just_pressed("Dialogue2"):
-							Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + Global.PlayerX, Global.textPos.y + Global.PlayerY), [
-							"  Correct choice to obtain part  "
-							])
-							Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + 100, Global.textPos.y + 100), [
-							"  Look, it worked !  ",
-							"  This is what Clyde will say before giving the part  ",
-							])
-							givePart()
+						Dialoguemanager.start_dialogue( Vector2(Global.textPos.x + 100, Global.textPos.y + 100), [
+						"  Look, it worked !  ",
+						"  This is what Clyde will say before giving the part  ",
+						])
+						givePart()
 func givePart():
 	pass
 	#animation for giving part/whatever happens after part is given.
