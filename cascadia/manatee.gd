@@ -107,6 +107,7 @@ func show_correct_response():
 	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x+ 200, Global.textPos.y + 200), [
 		"  Correct choice to obtain part.  "
 	])
+	
 
 func show_incorrect_response():
 	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 100, Global.textPos.y + 200), [

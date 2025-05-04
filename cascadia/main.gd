@@ -11,6 +11,10 @@ var wood_instances = {}
 var tempFishscene = false
 var saveIndex = 0
 var LighthouseCalled = false
+var triggeronce = false
+var triggeronceDrown = false
+var triggeronceFish = false
+var triggeronceLighthouse = false
 
 func setupBarry():
 	var BarryInstance = BarryResource.instantiate()
@@ -140,12 +144,13 @@ func DrownLarry() :
 	$Boat/Player.z_index = $Lamprey.z_index - 1
 	Global.textPos = $Lamprey.position
 	$Boat/Player/AnimatedSprite2D.pause()
-	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
+	if triggeronceDrown == false :
+		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 		"  WOOAAH ! ! !  ",
 		"  Watch it, you almost drowned!  ",
 		"  If you drown I might not be able to save you!  ",
 		"  And then you might get sick or something  " ])
-	
+		triggeronceDrown = true
 	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 3 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
 		Global.FirstDrown = false
 		Dialoguemanager.is_dialogue_active = false
@@ -160,11 +165,12 @@ func DrownLarry() :
 		$Boat/Player.z_index = saveIndex
 		
 func TutorialLarry() :
-	Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
+	if triggeronce == false :
+		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 		"  Hey over here!  ",
 		"  That is a very convienent raft you got there!  ",
 		"  Press 'E' and 'Q' to rotate the sail  " ])
-	
+		triggeronce = true
 	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
 		Global.tutorial = true
 		Dialoguemanager.is_dialogue_active = false
@@ -173,39 +179,41 @@ func TutorialLarry() :
 		texboxRemove = true
 
 func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
-
 	if area.name == "BodyArea" and Global.timeOfDay == "Night" and Global.onBoat == true and Global.LighthouseCutsceneDone == false and Global.AtGreenRock == false:
 		Global.boatDirection = 0
 		Global.larryAppear = 1
 		$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
 		$Lamprey.global_position.y = $Boat/Player.global_position.y
 		Global.textPos = $Lamprey.position
-		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
+		if triggeronceLighthouse == false :
+			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 	"  Did you see that?  ",
 	"  That must be coming from a lighthouse!  ",
 	"  Follow the light and see where it leads!  ",
 	"  Maybe there, we can call for help!  "
-		])
-		LighthouseCalled = true
-		print("Lighthouse")
+				])
+			triggeronceLighthouse = true
+			LighthouseCalled = true
 
 func FishLarryCutscene():
+	
 	print("Custcene should be workig")
 	$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
 	$Lamprey.global_position.y = $Boat/Player.global_position.y
 	Global.textPos = $Lamprey.position
-	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
+	if triggeronceFish == false :
+		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 		"  Well looky here, its a fish ",
 		"  you can eat it if your hungry  ",
 		"  press 'E' to dive down and eat that fish  " ])
-	
-	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
-		Dialoguemanager.is_dialogue_active = false
-		$Lamprey/EndDialogue.start()
-		Global.larryAppear = 2
-		texboxRemove = true
-		$Boat/Player/drownTimer.start()
-		Global.foodCutscene =  false
+		triggeronceFish = true
+		if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
+			Dialoguemanager.is_dialogue_active = false
+			$Lamprey/EndDialogue.start()
+			Global.larryAppear = 2
+			texboxRemove = true
+			$Boat/Player/drownTimer.start()
+			Global.foodCutscene =  false
 
 func _on_end_dialogue_timeout() -> void:
 	if texboxRemove == true:
