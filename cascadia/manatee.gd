@@ -4,6 +4,10 @@ var failure = false
 var temp1 = false
 
 func _process(delta: float) -> void:
+	
+	$BodySprite.play()
+	$HeadSprite.frame = $BodySprite.frame
+	
 	manatee10()
 
 func choice():
