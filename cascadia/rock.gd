@@ -7,9 +7,9 @@ func _ready():
 	#$AnimatedSprite2D.play()
 	
 func _on_area_entered(area: Area2D) -> void:
-	if area.name == "Area2D":
+	if area.name == "RockArea":
 		Global.damage = Global.damage + 1
-		Global.boatDirection = 0
+		Global.boatDirection = Global.boatDirection + 1
 		
 	if area.name == "FootArea" or area.name == "HeadArea" or area.name == "BodyArea":
 		pass 
