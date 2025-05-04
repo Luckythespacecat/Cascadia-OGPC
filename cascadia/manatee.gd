@@ -17,6 +17,7 @@ func _ready():
 	inputready = false
 	await get_tree().process_frame
 	inputready = true
+	time = false
 
 func _process(delta: float) -> void:
 	if not inputready:
@@ -25,8 +26,6 @@ func _process(delta: float) -> void:
 		choicetime -= delta
 	else:
 		choiceready = true
-	while Dialoguemanager.is_dialogue_active == true:
-		time == true
 	manatee10()
 
 func choice():
@@ -44,13 +43,14 @@ func fail():
 		get_node("Manatee").queue_free()
 
 func manatee10():
-	if dialogue_step == 0:
+	if dialogue_step == 0 and Input.is_action_just_pressed("advance_dialogue"):
 		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 200), [
 			"  Look, it worked!  ",
 			"  This is what Clyde will say to initiate our dialogue tree.  ",
 		])
-		if time == true:
-			dialogue_step = 1
+		dialogue_step = -1
+	elif dialogue_step == -1 and not Dialoguemanager.is_dialogue_active:
+		dialogue_step = 1
 	elif dialogue_step == 1 and not waiting_for_choice:
 		show_choice_options()
 		waiting_for_choice = true
