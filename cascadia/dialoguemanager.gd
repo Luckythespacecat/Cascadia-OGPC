@@ -28,6 +28,7 @@ func start_dialogue(position: Vector2, lines: Array[String]):
 	is_dialogue_active = true
 	
 func _show_text_box():
+	print("should be showing box")
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
 	get_tree().root.add_child(text_box)
@@ -37,14 +38,16 @@ func _show_text_box():
 
 func _on_text_box_finished_displaying():
 	can_advance_line = true
+	print("Can advance line")
 
 func _unhandled_input(event):
 	if (
 		event.is_action_pressed("advance_dialogue") &&
 		is_dialogue_active &&
-		can_advance_line #&&
-		#Global.DontSpacebar == false
+		can_advance_line &&
+		Global.DontSpacebar == false
 	):
+		print("should queue free")
 		text_box.queue_free()
 
 		

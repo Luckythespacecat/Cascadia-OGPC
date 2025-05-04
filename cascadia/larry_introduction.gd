@@ -3,7 +3,7 @@ extends Node2D
 const mainScene = preload("res://main.tscn")
 
 var thispartisdone = false
-
+var triggeronce = false
 func _ready() -> void:
 	pass
 
@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("advance_dialogue") or Dialoguemanager.current_line_index != 0 :
 		$CanvasLayer/Sprite2D.position = lerp($CanvasLayer/Sprite2D.position, Vector2(936.0, 1127.0), delta / 2)
 
-	if thispartisdone == false :
+	if thispartisdone == false and triggeronce == false:
 		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 25, Global.textPos.y - 40), [
 		"  Hey you, its about time you woke up  ",
 		"  The names Larry  ",
@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 		"  even though I'm most likely...  ",
 		"  a figment of your imagination!  "
 		])
+		triggeronce = true
 	
 	if Dialoguemanager.current_line_index == 8 and Dialoguemanager.can_advance_line == true and thispartisdone == false:   
 		Global.larryAppear = 2

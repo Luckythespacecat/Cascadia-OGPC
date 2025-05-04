@@ -41,18 +41,18 @@ func _unhandled_input(event):
 	if (
 		event.is_action_pressed("advance_dialogue") &&
 		is_dialogue_active &&
-		can_advance_line #&&
-		#Global.DontSpacebar == false
+		can_advance_line &&
+		Global.DontSpacebar == false
 	):
 		text_box.queue_free()
-	#if (Input.is_action_just_pressed("Dialogue1") or Input.is_action_just_pressed("Dialogue2")) :
-		#if (
-			#Global.optionsgiven == true &&
-			#is_dialogue_active &&
-			#can_advance_line &&
-			#Global.DontSpacebar == false
-		#):
-			#text_box.queue_free()
+	if (Input.is_action_just_pressed("Dialogue1") or Input.is_action_just_pressed("Dialogue2")) :
+		if (
+			Global.optionsgiven == true &&
+			is_dialogue_active &&
+			can_advance_line &&
+			Global.DontSpacebar == false
+		):
+			text_box.queue_free()
 		
 		current_line_index += 1
 		if current_line_index >= dialogue_lines.size():
