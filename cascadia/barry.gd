@@ -18,14 +18,14 @@ func _process(delta: float) -> void:
 	
 	if Global.AtGreenRock == true and Global.GreenRockSceneFinished == false and ongreenrock == false:
 		Dialoguemanager.start_dialogue( Vector2(global_position.x, global_position.y + 100), [
-	"  Oh wow thanks  ",
-	"  the 'Journey' was quite shorter than I expected  ",
-	"  But a deals a deal  ",
-	"  As promised heres your radio part  ",
-	"  Tell all your friends to shop at Bary's Rocks  ",
-	"  unless they all died from the tsunami  ",
-	"  that would sure suck..  ",
-	"  well I suppose this is goodbye  ",
+	"  Oh wow, thanks  !  ",
+	"  The 'Journey' was much shorter than I expected  ",
+	"  But a deals a deal  !  ",
+	"  As promised, heres your radio part  ",
+	"  Tell all your friends to shop at Barry's Rocks  !  ",
+	"  Unless they all died from the tsunami  ...  ",
+	"  That would sure suck  ...  ",
+	"  Well I suppose this is goodbye  !  ",
 	"  GOODBYE!!  "
 		])
 		visible = true
@@ -42,30 +42,30 @@ func _process(delta: float) -> void:
 	if onBack == false  and Global.TalkingToBarry == true :
 		
 		Dialoguemanager.start_dialogue( Vector2(global_position.x, global_position.y + 100), [
-	"  Bary's Rocks! Get your Rocks from Bary  ",
+	"  Barry's Rocks! Get your Rocks from Barry  ",
 	"  Fresh from the Tsunami!  ",
-	"  10 year warranty guranteed for Bary's Rocks  ",
+	"  10 year warranty guranteed for Barry's Rocks  ",
 	"  Hey you, want some rocks?  ",
 	"  I can cut you a great deal  ",
-	"  Looking for a radio part  ",
-	"  well dont I have the deal for you  ",
-	"  right now, ive got an exclusive deal  ",
-	"  buy a rock get a radio part free  ",
-	"  what do ya think???  ",
-	"  I mean c'mon its a steal  ",
-	"  youre practically robbing me  ",
-	"  YOURE ROBBING ME, AHHH!!!  ",
-	"  So its a deal then, alright  ",
-	"  wait you dont got any plankton...  ",
-	"  how bout this  ",
-	"  since youre such a nice gal  ",
-	"  ill give you your rock radio part for free  ",
-	"  but you must take me to...  ",
-	"  THE lEGENDARY GREEN ROCK  ",
-	"  It will be quite the journey  ",
-	"  you may not be ready for it  ",
-	"  they say barnacles who travel there never make it back  ",
-	"  Awesome, Ill just hop on your back here  "
+	"  Looking for a radio part  ?  ",
+	"  Well, dont I have the deal for you  !  ",
+	"  Right now, ive got an exclusive deal...  ",
+	"  Buy a rock, get a radio part free  !  ",
+	"  What do ya think???  ",
+	"  I mean c'mon its a steal!  ",
+	"  You're practically robbing me, in fact!  ",
+	"  WAIT, YOU'RE ROBBING ME, AHHH!!!  ",
+	"  So its a deal then, alright?  ",
+	"  Wait, you dont got any plankton...  ",
+	"  How 'bout this  ",
+	"  Since you're such a nice gal...  ",
+	"  I'll give you your rock radio part for free...  ",
+	"  But you must take me to...  ",
+	"  THE lEGENDARY GREEN ROCK!  ",
+	"  It will be quite the journey...  ",
+	"  You may not be ready for it...  ",
+	"  They say barnacles who travel there never make it back...  ",
+	"  Awesome, Ill just hop on your back here !  "
 		])
 		onBack = true
 		
