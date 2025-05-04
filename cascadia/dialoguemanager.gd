@@ -45,6 +45,7 @@ func _unhandled_input(event):
 		Global.DontSpacebar == false
 	):
 		text_box.queue_free()
+
 		
 		current_line_index += 1
 		if current_line_index >= dialogue_lines.size():

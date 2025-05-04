@@ -22,8 +22,9 @@ func _ready():
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("Dialogue1") or Input.is_action_just_pressed("Dialogue2") and optionsgiven == true :
+	if Input.is_action_just_pressed("Dialogue1") or Input.is_action_just_pressed("Dialogue2") and Global.optionsgiven == true :
 		Global.DontSpacebar = false
+		Global.optionsgiven = false
 		Dialoguemanager2.text_box.queue_free()
 		Dialoguemanager.text_box.queue_free()
 	
@@ -56,8 +57,10 @@ func fail():
 func manatee10():
 	if dialogue_step == 0 and Input.is_action_just_pressed("advance_dialogue"):
 		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 200), [
-			"  Look, it worked!  ",
-			"  This is what Wetherby will say to initiate our dialogue tree.  ",
+			"  Well I'll be, look its a human  ",
+			"  My names Wetherby, you are?  ",
+			"  Meredith you say, what a nice name  ",
+			"  So why are you talking to me?  "
 		])
 		dialogue_step = -1
 	elif dialogue_step == -1 and not Dialoguemanager.is_dialogue_active:
@@ -91,13 +94,13 @@ func givePart():
 func show_choice_options():
 	if Global.DontSpacebar == false :
 		Global.DontSpacebar = true
-		optionsgiven = true
+		Global.optionsgiven = true
 		
 		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 100, Global.textPos.y + 200), [
-		"  Option 1: Dialogue1 (Press 'z')",
+		"  I'm looking for a redio compenent have you seen one? (Press 'z')  ",
 		])
 		Dialoguemanager2.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 200), [
-		"  Option 2: Dialogue2 (Press 'x')",
+		"  Just to meet new people, find anything cool lately? (Press 'x')  ",
 		])
 
 func show_correct_response():

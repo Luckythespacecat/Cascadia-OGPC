@@ -60,6 +60,7 @@ var letter_time = 0.1
 var space_time = 0.05
 var punctuation_time = 0.1
 var DontSpacebar = false
+var optionsgiven = false
 
 # sloppy collison
 var last_key_pressed: String = ""
