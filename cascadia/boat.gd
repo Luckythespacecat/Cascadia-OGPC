@@ -66,11 +66,12 @@ func _process(delta: float) -> void:
 
 	Global.boatPos = position
 	if $Player/AnimatedSprite2D.animation != "Splash" :
-		sailMovement()
+		if Global.BoatInputStop != Global.boatDirection and Global.BoatInputStop != Global.boatDirection +1 and Global.BoatInputStop != Global.boatDirection -1:
+			sailMovement()
 
 func sailMovement():
 	#leftdown
-	if Global.boatDirection == 1 :
+	if Global.boatDirection == 1  :
 		position.x -= .25 * Global.wind
 		position.y += .25 * Global.wind
 		if animationStarted == false:
