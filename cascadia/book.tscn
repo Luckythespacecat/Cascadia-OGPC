@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dahiapttpi7yy"]
+
+[ext_resource type="Texture2D" uid="uid://bkapaa8kab7tv" path="res://Assets/Art/Items/Book.png" id="1_kh36y"]
+[ext_resource type="Script" uid="uid://bb7fgoss6m7oc" path="res://book.gd" id="1_y0hms"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0hms"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kh36y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fijbg"]
+size = Vector2(18, 20)
+
+[node name="Book" type="Node2D"]
+script = ExtResource("1_y0hms")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_y0hms")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_fijbg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

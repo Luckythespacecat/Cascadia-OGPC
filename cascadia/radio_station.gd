@@ -8,12 +8,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Dialoguemanager.is_dialogue_active == true :
+		Global.deleteText == true
+			
+	if Dialoguemanager.is_dialogue_active == false :
+		Global.deleteText == false
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "FootArea" or "HeadArea" or "BodyArea" :
+	
+	if body.name == "playerBody" :
 		Dialoguemanager.start_dialogue( Vector2(global_position.x,global_position.y - 50 ), [
-			"  hello world Your goofy  ",
-			"  Test2  "
+			"  Error contacting server  ",
+			"  Major compenent missing: Satelite Dish  ",
+			"  Refer to lighthouse intstruction manual to troubleshoot  "
 		])

@@ -43,6 +43,7 @@ var GreenRockSceneFinished = false
 var GreenRockPos : Vector2 = Vector2(0,0)
 
 #Telescope variables
+var deleteText = true
 var partNumb : int = 0 #Interger that will repersent what number of part the player needs to get for telescope
 #Change above variable when the player needs to find a certain piece, 
 #For example if the player gets to the lighthouse and presses interact on the telescope
