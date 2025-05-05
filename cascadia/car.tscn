@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dheugr4gabqd4"]
+[gd_scene load_steps=9 format=3 uid="uid://dheugr4gabqd4"]
 
 [ext_resource type="Script" uid="uid://yld0amaap1is" path="res://car.gd" id="1_06lh1"]
 [ext_resource type="Texture2D" uid="uid://n2ubt07lmjj0" path="res://Assets/Art/Car1.png" id="1_k61xc"]
 [ext_resource type="Texture2D" uid="uid://dey41wg1ll7q7" path="res://Assets/Art/Car2.png" id="2_06lh1"]
 [ext_resource type="Texture2D" uid="uid://1ok5xa3mk3bt" path="res://Assets/Art/Car3.png" id="3_td361"]
+[ext_resource type="AudioStream" uid="uid://c2e14ar8hpm4t" path="res://Assets/Sound/SFX/Hit_hurt 3.wav" id="5_td361"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_06lh1"]
 points = PackedVector2Array(-57, 4, -51, 12.5, 44.5, 11, 51.5, 9, 34, -5.5, 9, -14, -26.5, -16.5, -50.5, -9.5)
@@ -48,6 +49,9 @@ sprite_frames = SubResource("SpriteFrames_72krn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("ConvexPolygonShape2D_td361")
+
+[node name="HitHurt3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_td361")
 
 [connection signal="area_entered" from="CarArea" to="." method="_on_car_area_area_entered"]
 [connection signal="area_exited" from="CarArea" to="." method="_on_car_area_area_exited"]

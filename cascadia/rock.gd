@@ -25,6 +25,7 @@ func _on_rock_area_area_entered(area: Area2D) -> void:
 		if Global.boatDirection > 8:
 			Global.boatDirection = addLater - 8
 		Global.BoatInputStop = boatAngle
+		$HitHurt3.play()
 
 	if area.name == "SwimArea" :
 		for i in Global.last_key_pressed :

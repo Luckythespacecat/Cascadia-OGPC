@@ -147,8 +147,7 @@ func _on_night_timeout() -> void:
 	print("Nights over")
 	$sun/Day.start()
 	Global.timeOfDay = "Day"
-	Global.wind = randf_range(2, 3)
-
+	Global.wind = randf_range(2, 3) 
 func DrownLarry() :
 	$Boat/Player.z_index = $Lamprey.z_index - 1
 	Global.textPos = $Lamprey.position
@@ -222,7 +221,7 @@ func FishLarryCutscene():
 		Global.larryAppear = 2
 		texboxRemove = true
 		$Boat/Player/drownTimer.start()
-		Global.foodCutscene =  false
+		Global.foodCutscene = false
 
 func _on_end_dialogue_timeout() -> void:
 	if texboxRemove == true:

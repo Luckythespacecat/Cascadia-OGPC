@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://duuwm1fvd87y"]
+[gd_scene load_steps=57 format=3 uid="uid://duuwm1fvd87y"]
 
 [ext_resource type="Script" uid="uid://dt6ptlffad6xp" path="res://lighthouse_room.gd" id="1_cde3n"]
 [ext_resource type="Texture2D" uid="uid://dvn0u6vi8x38a" path="res://Assets/Art/pink.png" id="1_rhv4f"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://ee1tq5rrmaey" path="res://radio_station.tscn" id="44_abqyo"]
 [ext_resource type="PackedScene" uid="uid://bhtqsqaps73ok" path="res://telescope.tscn" id="44_sr61x"]
 [ext_resource type="PackedScene" uid="uid://dahiapttpi7yy" path="res://book.tscn" id="45_sr61x"]
+[ext_resource type="Texture2D" uid="uid://bdopk4o8ye5io" path="res://Assets/Art/Instructio_UI.png" id="46_gv003"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_36v51"]
 
@@ -341,9 +342,13 @@ scale = Vector2(2, 2)
 position = Vector2(68, -98)
 scale = Vector2(2, 2)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="Book"]
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+[node name="Page" type="Sprite2D" parent="Book/CanvasLayer"]
+visible = false
+position = Vector2(860, 688)
+scale = Vector2(2, 2)
+texture = ExtResource("46_gv003")
 
 [connection signal="body_entered" from="Doorlight/DoorArea" to="." method="_on_door_area_body_entered"]
 [connection signal="finished" from="Raindrops" to="." method="_on_raindrops_finished"]

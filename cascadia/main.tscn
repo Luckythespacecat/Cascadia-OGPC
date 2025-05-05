@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=26 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Script" uid="uid://bf5q0piq01r8i" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
@@ -10,8 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://bd150n0k7527m" path="res://lighthouse.tscn" id="5_ixv4j"]
 [ext_resource type="Texture2D" uid="uid://dlbdkmdaxo7j7" path="res://Assets/Art/lighthouse-lighttexture.png" id="5_kek77"]
 [ext_resource type="Texture2D" uid="uid://ba6hublqfsgni" path="res://Assets/Art/lightTexutre.png" id="8_4c57u"]
+[ext_resource type="AudioStream" uid="uid://naj2g04c32ab" path="res://Assets/Sound/SFX/eat.wav" id="10_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://d0wo3wr75bh72" path="res://lamprey.tscn" id="10_efxa6"]
+[ext_resource type="AudioStream" uid="uid://c4iipghfqt3r1" path="res://Assets/Sound/SFX/Walking.wav" id="11_074og"]
 [ext_resource type="PackedScene" uid="uid://rslkxisv6kyc" path="res://rain.tscn" id="11_vivmo"]
+[ext_resource type="AudioStream" uid="uid://dnq15ocaqolbe" path="res://Assets/Sound/SFX/Sail.wav" id="11_yaehf"]
+[ext_resource type="AudioStream" uid="uid://d13dh8wi0ly1b" path="res://Assets/Sound/SFX/Swim.wav" id="12_cegan"]
 [ext_resource type="AudioStream" uid="uid://cvpm45g7wr55t" path="res://Assets/Sound/Music/TheGreatOcean.mp3" id="12_dg77c"]
 [ext_resource type="AudioStream" uid="uid://i6dvhdo8wy54" path="res://Assets/Sound/Music/ANewFuture.mp3" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://nayarson8r7d" path="res://rock.tscn" id="14_w48qg"]
@@ -116,6 +120,19 @@ position = Vector2(3, -4)
 energy = 0.5
 texture = ExtResource("8_4c57u")
 texture_scale = 0.5
+
+[node name="Eat" type="AudioStreamPlayer" parent="Boat/Player"]
+stream = ExtResource("10_2cqfq")
+
+[node name="Walking" type="AudioStreamPlayer" parent="Boat/Player"]
+stream = ExtResource("11_074og")
+
+[node name="Swim" type="AudioStreamPlayer" parent="Boat/Player"]
+stream = ExtResource("12_cegan")
+volume_db = 13.684
+
+[node name="Sail2" type="AudioStreamPlayer" parent="Boat"]
+stream = ExtResource("11_yaehf")
 
 [node name="TestingTiles" type="Node" parent="."]
 

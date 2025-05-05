@@ -18,6 +18,7 @@ func flip():
 
 func _on_car_area_area_entered(area: Area2D) -> void:
 	if area.name == "BoatArea2D":
+		$HitHurt3.play()
 		boatAngle = Global.boatDirection
 		Global.damage = Global.damage + 1
 		Global.boatDirection += 4

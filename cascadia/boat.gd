@@ -39,6 +39,7 @@ func BoatDamage():
 		pass
 		
 func boatMovement():
+	$Sail2.play()
 	Global.boatDirection += 1
 	Global.SailMovedE = true
 	if Global.boatDirection > 8:
@@ -48,6 +49,7 @@ func boatMovement():
 
 
 func boatMovement2():
+	$Sail2.play()
 	Global.boatDirection -= 1
 	Global.SailMovedQ = true
 	if Global.boatDirection > 8:
@@ -235,7 +237,6 @@ func _on_hold_timer_1_timeout() -> void:
 		recordPress1 = false
 		$HoldTimer1.stop()
 		Global.boatDirection = 0
-
 func _on_hold_timer_2_timeout() -> void:
 	if Input.is_action_pressed("boatcounterClockwise"):
 		recordPress2 = false

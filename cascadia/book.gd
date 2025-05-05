@@ -12,4 +12,8 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "playerBody" :
-		pass
+		$CanvasLayer/Page.visible = true
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.name == "playerBody" :
+		$CanvasLayer/Page.visible = false

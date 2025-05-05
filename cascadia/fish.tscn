@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://f6fwuoooqgah"]
+[gd_scene load_steps=14 format=3 uid="uid://f6fwuoooqgah"]
 
 [ext_resource type="Script" uid="uid://bq2t62q7hnq4f" path="res://fish.gd" id="1_8ndls"]
 [ext_resource type="Texture2D" uid="uid://n82hlfy0lpdj" path="res://Assets/Art/Resources/Fish/fish1.png" id="1_qgvfm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ccjqq3cqnyn7y" path="res://Assets/Art/Resources/Fish/fish7.png" id="7_x3ly3"]
 [ext_resource type="Texture2D" uid="uid://bvblnjawsh3ui" path="res://Assets/Art/Resources/Fish/fish8.png" id="8_88fb6"]
 [ext_resource type="Texture2D" uid="uid://b6oi5eymcaepk" path="res://Assets/Art/Larry/InWater/LarryInWater11.png" id="9_8v5cd"]
+[ext_resource type="AudioStream" uid="uid://c2e14ar8hpm4t" path="res://Assets/Sound/SFX/Hit_hurt 3.wav" id="11_pgahs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k2gqy"]
 animations = [{
@@ -69,6 +70,9 @@ scale = Vector2(1.34345, 2.32811)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishArea"]
 position = Vector2(-2.25, -5.75)
 shape = SubResource("RectangleShape2D_8ndls")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_pgahs")
 
 [connection signal="area_entered" from="FishArea" to="." method="_on_fish_area_area_entered"]
 [connection signal="area_exited" from="FishArea" to="." method="_on_fish_area_area_exited"]

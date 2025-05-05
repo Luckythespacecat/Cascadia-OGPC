@@ -3,6 +3,8 @@ extends Node2D
 var PlayerPos : Vector2
 var stopAnimation : bool = false
 var enteredFish = false
+var boattriggeronce =  false
+var boattriggeronce2 =  false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("Idle")
@@ -16,11 +18,22 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("interact") and stopAnimation == false :
 			stopAnimation = true
 			$AnimatedSprite2D.play("Dive")
+			$Eat.play()
 	if $AnimatedSprite2D.animation == "Dive":
 		$drownTimer.stop()
 	#drown function
 	drown()
 	# drowning aftermath
+	if Global.onBoat == true and boattriggeronce ==  false:
+		$Swim.stop()
+		$Walking.play()
+		boattriggeronce = true
+		boattriggeronce2 = false
+	if Global.onBoat == false and boattriggeronce2 ==  false:
+		$Walking.stop()
+		$Swim.play()
+		boattriggeronce2 = true
+		boattriggeronce = false
 		
 	if Global.TalkingToBarry == true or Global.AtGreenRock == true:
 		$drownTimer.stop()
@@ -35,8 +48,10 @@ func _process(delta: float) -> void:
 		if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
 			if Global.swimming == false :
 				$AnimatedSprite2D.play("Idle")
+				$Walking.stop()
 			else: 
 				$AnimatedSprite2D.play("SwimIdle")
+				$Swim.stop()
 		# Movement animation, pos and horizantal flip for Left
 		if Global.NoLeft == false and Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept")and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") and $AnimatedSprite2D.animation != "Drown" :
 			Global.PlayerX -= 2
