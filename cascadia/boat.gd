@@ -6,6 +6,8 @@ var rand
 var animationStarted = false
 var justDamaged = false
 var damageAnimation = "Fixed"
+var recordPress1 = false
+var recordPress2 = false
 
 #Timer for the 'rowing animation'
 func _ready(): 
@@ -57,6 +59,7 @@ func boatMovement2():
 
 #function to choose which rowing speed will occur
 func _process(delta: float) -> void: 
+	lowerSail()
 	
 	$AnimatedSprite2D.play(damageAnimation)
 	
@@ -66,12 +69,11 @@ func _process(delta: float) -> void:
 
 	Global.boatPos = position
 	if $Player/AnimatedSprite2D.animation != "Splash" :
-		if Global.BoatInputStop != Global.boatDirection and Global.BoatInputStop != Global.boatDirection +1 and Global.BoatInputStop != Global.boatDirection -1:
 			sailMovement()
 
 func sailMovement():
 	#leftdown
-	if Global.boatDirection == 1  :
+	if Global.boatDirection == 2  :
 		position.x -= .25 * Global.wind
 		position.y += .25 * Global.wind
 		if animationStarted == false:
@@ -85,7 +87,7 @@ func sailMovement():
 			Global.PlayerX -= .25 * Global.wind
 			Global.PlayerY += .25 * Global.wind
 	#leftup
-	if Global.boatDirection == 7 :
+	if Global.boatDirection == 8 :
 		position.x -= .25 * Global.wind
 		position.y -= .25 * Global.wind
 		if animationStarted == false:
@@ -99,7 +101,7 @@ func sailMovement():
 			Global.PlayerX -= .25 * Global.wind
 			Global.PlayerY -= .25 * Global.wind
 	#rightdown
-	if Global.boatDirection == 3 :
+	if Global.boatDirection == 4 :
 		position.x += .25 * Global.wind
 		position.y += .25 * Global.wind
 		if animationStarted == false:
@@ -113,7 +115,7 @@ func sailMovement():
 			Global.PlayerX += .25 * Global.wind
 			Global.PlayerY += .25 * Global.wind
 	#rightup
-	if Global.boatDirection == 5 :
+	if Global.boatDirection == 6 :
 		position.x += .25 * Global.wind
 		position.y -= .25 * Global.wind
 		if animationStarted == false:
@@ -126,7 +128,7 @@ func sailMovement():
 			Global.PlayerX += .25 * Global.wind
 			Global.PlayerY -= .25 * Global.wind
 	#right
-	if Global.boatDirection == 4 :
+	if Global.boatDirection == 5 :
 		position.x += .25  * Global.wind
 		position.y += 0  
 		if animationStarted == false:
@@ -140,7 +142,7 @@ func sailMovement():
 			Global.PlayerX += .25  * Global.wind
 			Global.PlayerY += 0
 	#up
-	if Global.boatDirection == 6 :
+	if Global.boatDirection == 7 :
 		position.x += 0
 		position.y -= .25 * Global.wind
 		if animationStarted == false:
@@ -154,7 +156,7 @@ func sailMovement():
 			Global.PlayerX += 0
 			Global.PlayerY -= .25 * Global.wind
 	#left
-	if Global.boatDirection == 8 :
+	if Global.boatDirection == 1 :
 		position.x -= .25 * Global.wind
 		position.y += 0
 		if animationStarted == false:
@@ -168,7 +170,7 @@ func sailMovement():
 			Global.PlayerX -= .25 * Global.wind
 			Global.PlayerY += 0
 	#down
-	if Global.boatDirection == 2 :
+	if Global.boatDirection == 3 :
 		position.x += 0
 		position.y += .25 * Global.wind
 		if animationStarted == false:
@@ -189,8 +191,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if area.name == "RockArea" : 
 			justDamaged = true
 
-		
-
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" : 
 		if $Player/AnimatedSprite2D.animation != "Splash" and $Player/AnimatedSprite2D.animation != "SwimIdle" :
@@ -201,7 +201,6 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 func _on_sail_area_area_entered(area: Area2D) -> void:
 	if area.name == "FootArea" : 
 		$Player.z_index = 1
-
 
 func _on_sail_area_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" : 
@@ -222,3 +221,23 @@ func AdjustSailAction() :
 		$Player/AnimatedSprite2D.play("Pick_Up")
 		animationStarted = false
 		boatMovement2()
+
+func lowerSail():
+	if Input.is_action_just_pressed("boatClockwise")  :
+		recordPress1 = true
+		$HoldTimer1.start()
+	if Input.is_action_just_pressed("boatcounterClockwise") :
+		recordPress2 = true
+		$HoldTimer2.start()
+
+func _on_hold_timer_1_timeout() -> void:
+	if Input.is_action_pressed("boatClockwise"):
+		recordPress1 = false
+		$HoldTimer1.stop()
+		Global.boatDirection = 0
+
+func _on_hold_timer_2_timeout() -> void:
+	if Input.is_action_pressed("boatcounterClockwise"):
+		recordPress2 = false
+		$HoldTimer2.stop()
+		Global.boatDirection = 0

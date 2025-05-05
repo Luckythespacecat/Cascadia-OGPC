@@ -30,6 +30,8 @@ func _process(delta: float) -> void:
 		])
 		visible = true
 		ongreenrock = true
+	if ongreenrock == true and Global.AtGreenRock == true :
+		Global.part1Obtained = true
 		
 	if Dialoguemanager.can_advance_line == true :
 		$AnimatedSprite2D.play("Idle")

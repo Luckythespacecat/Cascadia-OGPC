@@ -2,8 +2,10 @@ extends Node2D
 
 const woodResource = preload("res://wood.tscn")
 const BarryResource = preload("res://rock_area.tscn")
+const DealershipResource = preload("res://used_cars.tscn")
 const radioParts = preload("res://parts.tscn") # load the parts scene for radio repair
 const fish = preload("res://fish.tscn")
+
 
 var drownLarryScene = false
 var texboxRemove = false
@@ -11,7 +13,6 @@ var wood_instances = {}
 var tempFishscene = false
 var saveIndex = 0
 var LighthouseCalled = false
-var triggeronce = false
 var triggeronceDrown = false
 var triggeronceFish = false
 var triggeronceLighthouse = false
@@ -21,13 +22,18 @@ func setupBarry():
 	add_child(BarryInstance)
 	BarryInstance.position = Vector2(-793.0, -766.0)
 	BarryInstance.scale = Vector2(1, 1)
+func setupDealership():
+	var DealershipInstance = DealershipResource.instantiate()
+	add_child(DealershipInstance)
+	DealershipInstance.position = Vector2(-793.0, -766.0)
+	DealershipInstance.scale = Vector2(1, 1)
 func spawnItems(): #Spawning squence, I will use as template to make more spawn functions
 	var playerX = Global.PlayerX
 	var playerY = Global.PlayerY
 	var spawnPosX = randi_range( playerX-2000,playerX+2000)
 	var spawnPosY = randi_range( playerY-1000,playerY+1000)
 	var itemToSpawn = randi_range(1,100)
-	if itemToSpawn >= 1 and itemToSpawn < 10 :
+	if itemToSpawn >= 1 and itemToSpawn < 5 :
 		var woodInstance = woodResource.instantiate()
 		add_child(woodInstance)
 		woodInstance.position.y = spawnPosY
@@ -55,11 +61,15 @@ func _on_wood_interacted(viewport, event, shape_idx):
 func _ready() -> void:
 	Global.DontSpacebar == false
 	Global.wind = 3
-	if Global.SceneJustIn != "Lighthouse":
+	if Global.Tutorialtriggeronce == false :
 		Global.cutscene = 1
 		Global.larryAppear = 1
+	if Global.Tutorialtriggeronce == true :
+		Global.larryAppear = 3
 	if Global.partNumb == 1 :
 		setupBarry()
+	if Global.partNumb == 2:
+		setupDealership()
 
 func ReSetupScene() :
 	Global.boatDirection = 0
@@ -79,11 +89,10 @@ func _process(delta: float) -> void:
 		if tempFishscene == false :
 			Global.larryAppear = 1
 			tempFishscene = true
-	
+
 	if Global.tutorial == false :
 		TutorialLarry()
 		LighthouseCalled = true
-	
 
 	if Global.SceneJustIn == "Main" :
 		pass
@@ -125,7 +134,7 @@ func _on_resource_timer_timeout() -> void:
 #Day and night TImers defined here
 #look in scene tree under "sun" node to change the time for day and night cycles
 func _on_day_timeout() -> void:
-	$ANewFuture.stop()
+	$ANewFuture.stop() 
 	print("Day over")
 	$TheGreatOcean.play() #Night Music
 	$sun/Night.start()
@@ -165,13 +174,15 @@ func DrownLarry() :
 		$Boat/Player.z_index = saveIndex
 		
 func TutorialLarry() :
-	if triggeronce == false :
+	if Global.Tutorialtriggeronce == false :
 		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 		"  Hey over here!  ",
 		"  That is a very convienent raft you got there!  ",
-		"  Press 'E' and 'Q' to rotate the sail  " ])
-		triggeronce = true
-	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
+		"  Press 'E' or 'Q' to rotate the sail  ",
+		"  Hold 'E' or 'Q' to lower the sail  "  
+		])
+		Global.Tutorialtriggeronce = true
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 3 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
 		Global.tutorial = true
 		Dialoguemanager.is_dialogue_active = false
 		$Lamprey/EndDialogue.start()
@@ -196,8 +207,6 @@ func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
 			LighthouseCalled = true
 
 func FishLarryCutscene():
-	
-	print("Custcene should be workig")
 	$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
 	$Lamprey.global_position.y = $Boat/Player.global_position.y
 	Global.textPos = $Lamprey.position
@@ -207,13 +216,13 @@ func FishLarryCutscene():
 		"  you can eat it if your hungry  ",
 		"  press 'E' to dive down and eat that fish  " ])
 		triggeronceFish = true
-		if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
-			Dialoguemanager.is_dialogue_active = false
-			$Lamprey/EndDialogue.start()
-			Global.larryAppear = 2
-			texboxRemove = true
-			$Boat/Player/drownTimer.start()
-			Global.foodCutscene =  false
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
+		Dialoguemanager.is_dialogue_active = false
+		$Lamprey/EndDialogue.start()
+		Global.larryAppear = 2
+		texboxRemove = true
+		$Boat/Player/drownTimer.start()
+		Global.foodCutscene =  false
 
 func _on_end_dialogue_timeout() -> void:
 	if texboxRemove == true:

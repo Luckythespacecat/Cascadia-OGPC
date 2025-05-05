@@ -20,11 +20,12 @@ var AdjustSail : bool = false
 var SailMovedE : bool= false     
 var SailMovedQ : bool= false  
 var damage : int = 0
-var BoatInputStop : int = 10
+var BoatInputStop : int = 15
   
 #Scene switching                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 var SceneJustIn : String = "Main"
 var cutscene : int = 0
+
 
 #Larry
 var larryAppear = 1
@@ -34,6 +35,7 @@ var tutorial : bool = false
 var LighthouseCutsceneDone : bool = false
 var foodCutscene : bool = false
 var foodCutsceneCalled : bool = false
+var Tutorialtriggeronce : bool = false
 #barrys rocks
 var TalkingToBarry = false
 var AtGreenRock = false

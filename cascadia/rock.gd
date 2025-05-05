@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var RockArea = $RockArea
 var boatAngle = 0
-
+var addLater = 0
 func _ready():
 	pass
 	#$AnimatedSprite2D.play()
@@ -20,9 +20,12 @@ func _on_rock_area_area_entered(area: Area2D) -> void:
 	if area.name == "BoatArea2D":
 		boatAngle = Global.boatDirection
 		Global.damage = Global.damage + 1
-		Global.boatDirection = 0
+		Global.boatDirection += 4
+		addLater = Global.boatDirection
+		if Global.boatDirection > 8:
+			Global.boatDirection = addLater - 8
 		Global.BoatInputStop = boatAngle
-		
+
 	if area.name == "SwimArea" :
 		for i in Global.last_key_pressed :
 			if i == "W" :
@@ -37,7 +40,7 @@ func _on_rock_area_area_entered(area: Area2D) -> void:
 
 func _on_rock_area_area_exited(area: Area2D) -> void:
 	if area.name == "BoatArea2D":
-		Global.BoatInputStop = 10
+		Global.BoatInputStop = 15
 	if area.name == "SwimArea" :
 		Global.NoUp = false
 		Global.NoDown = false

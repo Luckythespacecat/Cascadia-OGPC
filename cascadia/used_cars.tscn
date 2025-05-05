@@ -8,7 +8,7 @@
 [node name="UsedCars" type="Node2D"]
 
 [node name="GrandOpeningBanner" parent="." instance=ExtResource("1_70lxg")]
-position = Vector2(1261, 799)
+position = Vector2(-390, 156)
 rotation = 0.560361
 
 [node name="Car" parent="." instance=ExtResource("2_g4kqx")]
@@ -77,4 +77,4 @@ position = Vector2(562, 69)
 skew = 0.506145
 
 [node name="DealershipSign" parent="." instance=ExtResource("4_pjfpv")]
-position = Vector2(-451, 951)
+position = Vector2(-114, -262)

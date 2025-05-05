@@ -30,7 +30,7 @@ size = Vector2(2.62201, 287.88)
 size = Vector2(96, 88)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
-b = Vector2(-199.44, -205.176)
+b = Vector2(-295.027, -289.756)
 
 [node name="Main" type="Node2D"]
 position = Vector2(-42, 0)
@@ -85,11 +85,11 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_w48qg")
 
 [node name="Lighthouse" parent="." instance=ExtResource("5_ixv4j")]
-position = Vector2(602, 242)
+position = Vector2(643, 159)
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighthouse"]
 position = Vector2(0.75, -146.75)
-scale = Vector2(15.8494, 15.3819)
+scale = Vector2(36.3644, 34.6553)
 texture = ExtResource("5_kek77")
 
 [node name="Node2D" type="Node2D" parent="Lighthouse/PointLight2D"]
@@ -128,12 +128,12 @@ energy = 0.0
 blend_mode = 1
 
 [node name="Day" type="Timer" parent="sun"]
-wait_time = 60.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 
 [node name="Night" type="Timer" parent="sun"]
-wait_time = 60.0
+wait_time = 30.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

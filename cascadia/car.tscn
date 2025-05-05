@@ -48,3 +48,6 @@ sprite_frames = SubResource("SpriteFrames_72krn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("ConvexPolygonShape2D_td361")
+
+[connection signal="area_entered" from="CarArea" to="." method="_on_car_area_area_entered"]
+[connection signal="area_exited" from="CarArea" to="." method="_on_car_area_area_exited"]

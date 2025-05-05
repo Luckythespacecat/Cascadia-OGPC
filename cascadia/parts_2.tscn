@@ -1,7 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmxauqoqpdym0"]
+[gd_scene load_steps=4 format=3 uid="uid://dmxauqoqpdym0"]
 
 [ext_resource type="PackedScene" uid="uid://bs1yua8vkxwc5" path="res://parts.tscn" id="1_3p01u"]
+[ext_resource type="Script" uid="uid://elbo3m5phivo" path="res://parts_2.gd" id="1_n7128"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p01u"]
+size = Vector2(13, 11)
 
 [node name="Parts2" type="Node2D"]
+script = ExtResource("1_n7128")
 
 [node name="Parts" parent="." instance=ExtResource("1_3p01u")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_3p01u")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
