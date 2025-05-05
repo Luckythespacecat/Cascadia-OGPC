@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0yurixd6c16x"]
+
+[ext_resource type="Script" uid="uid://cea73564gi0mu" path="res://settings_menu.gd" id="1_0cmel"]
+[ext_resource type="Texture2D" uid="uid://dg5hsejvatqj6" path="res://Assets/Art/TitlescreenImage3.png" id="1_ufg0w"]
+[ext_resource type="PackedScene" uid="uid://b0313gkxna1hi" path="res://settings_tabs.tscn" id="2_mlw3h"]
+
+[sub_resource type="SystemFont" id="SystemFont_0cmel"]
+font_names = PackedStringArray("Footlight MT", "Segoe UI")
+
+[node name="Settings Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0cmel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+z_index = 1
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.388156, 0.237396, 0.732166, 1)
+theme_override_colors/font_outline_color = Color(0.241213, 0.131663, 0.480553, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = SubResource("SystemFont_0cmel")
+theme_override_font_sizes/font_size = 75
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings Tabs" parent="MarginContainer" instance=ExtResource("2_mlw3h")]
+layout_mode = 2
+
+[node name="Exit Button" type="Button" parent="MarginContainer/Settings Tabs"]
+z_index = 1
+layout_mode = 2
+offset_left = 852.0
+offset_top = 941.0
+offset_right = 931.0
+offset_bottom = 1004.0
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="Sky" type="Sprite2D" parent="."]
+z_index = -2
+texture_filter = 1
+position = Vector2(855.65, 474.5)
+scale = Vector2(13, 13)
+texture = ExtResource("1_ufg0w")
+
+[connection signal="button_down" from="MarginContainer/Settings Tabs/Exit Button" to="." method="_on_exit_button_button_down"]

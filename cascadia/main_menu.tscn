@@ -186,13 +186,6 @@ stream = ExtResource("6_qe12f")
 volume_db = -9.643
 autoplay = true
 
-[node name="Icon" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(2650, -532)
-rotation = 0.150098
-scale = Vector2(4.4336, 0.78125)
-texture = ExtResource("7_8qtwp")
-
 [node name="Icon2" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(3406, 2458)
@@ -232,7 +225,8 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(148.383, 36.6126)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_colors/icon_hover_color = Color(1, 0, 0, 0.321569)
+theme_override_colors/icon_hover_color = Color(0.419608, 0.419608, 0.419608, 0.411765)
+theme_override_colors/icon_pressed_color = Color(0.243137, 0.243137, 0.243137, 0.584314)
 theme_override_styles/hover = ExtResource("9_dy7ct")
 theme_override_styles/normal = ExtResource("9_dy7ct")
 action_mode = 0
@@ -243,4 +237,5 @@ icon = ExtResource("7_8qtwp")
 [connection signal="timeout" from="Name/StretchOut" to="." method="_on_stretch_out_timeout"]
 [connection signal="timeout" from="TweenMoreTimer" to="." method="_on_tween_more_timer_timeout"]
 [connection signal="button_down" from="Icon2/Credits" to="." method="_on_credits_button_down"]
+[connection signal="button_down" from="Icon3/Settings" to="." method="_on_settings_button_down"]
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]
