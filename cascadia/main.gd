@@ -3,7 +3,7 @@ extends Node2D
 const woodResource = preload("res://wood.tscn")
 const BarryResource = preload("res://rock_area.tscn")
 const DealershipResource = preload("res://used_cars.tscn")
-const radioParts = preload("res://parts.tscn") # load the parts scene for radio repair
+const radioParts = preload("res://parts.tscn") # load the parts scene for radio repair`
 const fish = preload("res://fish.tscn")
 
 
@@ -80,7 +80,7 @@ func ReSetupScene() :
 
 func _process(delta: float) -> void:
 	
-	if LighthouseCalled == true and Global.LighthouseCutsceneDone == false:
+	if Global.LighthouseCutsceneDone == false:
 		LighthouseLarry()
 
 	if Global.foodCutscene == true:
@@ -92,7 +92,6 @@ func _process(delta: float) -> void:
 
 	if Global.tutorial == false :
 		TutorialLarry()
-		LighthouseCalled = true
 
 	if Global.SceneJustIn == "Main" :
 		pass
@@ -146,7 +145,7 @@ func _on_night_timeout() -> void:
 	$ANewFuture.play() #Day Music
 	print("Nights over")
 	$sun/Day.start()
-	Global.timeOfDay = "Day"
+	Global.timeOfDay = "Day"  
 	Global.wind = randf_range(2, 3) 
 func DrownLarry() :
 	$Boat/Player.z_index = $Lamprey.z_index - 1
@@ -159,7 +158,7 @@ func DrownLarry() :
 		"  If you drown I might not be able to save you!  ",
 		"  And then you might get sick or something  " ])
 		triggeronceDrown = true
-	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 3 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 3:
 		Global.FirstDrown = false
 		Dialoguemanager.is_dialogue_active = false
 		$Lamprey/EndDialogue.start()
@@ -189,21 +188,24 @@ func TutorialLarry() :
 		texboxRemove = true
 
 func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
-	if area.name == "BodyArea" and Global.timeOfDay == "Night" and Global.onBoat == true and Global.LighthouseCutsceneDone == false and Global.AtGreenRock == false:
-		Global.boatDirection = 0
-		Global.larryAppear = 1
-		$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
-		$Lamprey.global_position.y = $Boat/Player.global_position.y
-		Global.textPos = $Lamprey.position
-		if triggeronceLighthouse == false :
-			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
-	"  Did you see that?  ",
-	"  That must be coming from a lighthouse!  ",
-	"  Follow the light and see where it leads!  ",
-	"  Maybe there, we can call for help!  "
+	if area.name == "BodyArea" :
+		if Global.timeOfDay == "Night" and Global.AtGreenRock == false and Global.TalkingToBarry == false and Global.LighthouseCutsceneDone == false:
+				print("Should speak then")
+				Global.boatDirection = 0
+				
+				Global.larryAppear = 1
+				$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
+				$Lamprey.global_position.y = $Boat/Player.global_position.y
+				Global.textPos = $Lamprey.position
+				Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
+				"  Did you see that?  ",
+				"  That must be coming from a lighthouse!  ",
+				"  Follow the light and see where it leads!  ",
+				"  Maybe there, we can call for help!  "
 				])
-			triggeronceLighthouse = true
-			LighthouseCalled = true
+				triggeronceLighthouse = true
+				LighthouseCalled = true
+			
 
 func FishLarryCutscene():
 	$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
@@ -230,10 +232,10 @@ func _on_end_dialogue_timeout() -> void:
 		texboxRemove = false
 
 func LighthouseLarry():
-	if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true and Global.TalkingToBarry == false and Global.AtGreenRock == false:   
-		Global.LighthouseCutsceneDone == true
+	if Dialoguemanager.current_line_index == 3 and Dialoguemanager.can_advance_line == true and LighthouseCalled == true:  
 		Dialoguemanager.is_dialogue_active = false
 		$Lamprey/EndDialogue.start()
 		Global.larryAppear = 2
 		texboxRemove = true
 		Global.LighthouseCutsceneDone = true
+		print("Should be completley working")
