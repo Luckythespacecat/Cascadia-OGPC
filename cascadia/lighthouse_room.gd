@@ -13,6 +13,26 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.PlayerEnteredTelescope == true:
+		if Input.is_action_just_pressed("interact") :
+			if Global.partNumb == 0:
+				Global.partNumb = 1
+				$Camera2D.apply_shake()
+				$playerBody/AnimatedSprite2D.play("Pick_Up")
+				
+			elif Global.partNumb == 1 and Global.part1Obtained == true :
+				Global.partNumb = 2
+				$Camera2D.apply_shake()
+				$playerBody/AnimatedSprite2D.play("Pick_Up")
+				
+			elif Global.partNumb == 2 and Global.part2Obtained == true :
+				Global.partNumb = 3
+				$Camera2D.apply_shake()
+				$playerBody/AnimatedSprite2D.play("Pick_Up")
+				
+			elif Global.partNumb == 3 and Global.part3Obtained == true :
+				print("End of game")
+
 	$Camera2D.position = lerp($Camera2D.position, $playerBody.position, 5 * delta)
 	
 	if Global.timeOfDay == "Night" :
@@ -32,3 +52,10 @@ func _on_door_area_body_entered(body: Node2D) -> void:
 
 func _on_raindrops_finished() -> void:
 	$Raindrops.play()
+	
+#apply_shake()
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if $playerBody/AnimatedSprite2D.animation == "Pick_Up" :
+		$playerBody/AnimatedSprite2D.play("Idle")
