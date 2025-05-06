@@ -148,6 +148,7 @@ func _on_night_timeout() -> void:
 	Global.timeOfDay = "Day"  
 	Global.wind = randf_range(2, 3) 
 func DrownLarry() :
+	Global.boatDirection = 0
 	$Boat/Player.z_index = $Lamprey.z_index - 1
 	Global.textPos = $Lamprey.position
 	$Boat/Player/AnimatedSprite2D.pause()
@@ -176,11 +177,12 @@ func TutorialLarry() :
 		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 		"  Hey over here!  ",
 		"  That is a very convienent raft you got there!  ",
+		"  Use WASD controls to walk around and swim  ",
 		"  Press 'E' or 'Q' to rotate the sail  ",
 		"  Hold 'E' or 'Q' to lower the sail  "  
 		])
 		Global.Tutorialtriggeronce = true
-	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 3 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
+	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 4 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
 		Global.tutorial = true
 		Dialoguemanager.is_dialogue_active = false
 		$Lamprey/EndDialogue.start()
@@ -208,6 +210,7 @@ func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
 			
 
 func FishLarryCutscene():
+	Global.boatDirection = 0
 	$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
 	$Lamprey.global_position.y = $Boat/Player.global_position.y
 	Global.textPos = $Lamprey.position
