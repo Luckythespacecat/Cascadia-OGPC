@@ -43,7 +43,7 @@ func _on_text_box_finished_displaying():
 func _unhandled_input(event):
 	if (
 		event.is_action_pressed("advance_dialogue") &&
-		is_dialogue_active &&
+		is_dialogue_active &&  
 		can_advance_line &&
 		Global.DontSpacebar == false
 	):

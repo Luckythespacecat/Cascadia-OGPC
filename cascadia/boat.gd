@@ -63,6 +63,8 @@ func boatMovement2():
 func _process(delta: float) -> void: 
 	lowerSail()
 	
+	$AnimatedSprite2D.z_index = $Player.z_index -2 
+	
 	$AnimatedSprite2D.play(damageAnimation)
 	
 	AdjustSailAction()
@@ -202,24 +204,20 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func _on_sail_area_area_entered(area: Area2D) -> void:
 	if area.name == "FootArea" : 
-		$Player.z_index = 1
+		$Sail.z_index = $Player.z_index + 2
 
 func _on_sail_area_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" : 
-		$Player.z_index = 3
+		$Sail.z_index = $Player.z_index - 1
 
-func AdjustSailAction() :
-	for area in $SailAdjust.get_overlapping_areas() :
-		if area.name == "FootArea" : 
-			Global.AdjustSail = true
-
-	if  Global.TalkingToBarry == false and Global.AdjustSail == true and Input.is_action_just_pressed("boatClockwise") and Global.onBoat == true:
+func AdjustSailAction():
+	if  Global.TalkingToBarry == false and Input.is_action_just_pressed("boatClockwise") and Global.onBoat == true:
 		$Player/AnimatedSprite2D.play("Pick_Up")
 		animationStarted = false
 		boatMovement()
 
 
-	if Global.TalkingToBarry == false and Global.AdjustSail == true and Input.is_action_just_pressed("boatcounterClockwise") and Global.onBoat == true:
+	if Global.TalkingToBarry == false  and Input.is_action_just_pressed("boatcounterClockwise") and Global.onBoat == true:
 		$Player/AnimatedSprite2D.play("Pick_Up")
 		animationStarted = false
 		boatMovement2()

@@ -3,6 +3,8 @@ extends Node2D
 var next_scene = preload("res://lighthouse_room.tscn")
 var target_position = Global.part1Pos
 var direction = target_position - global_position
+var boatAngle = 0
+var addLater = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
@@ -47,10 +49,20 @@ func _on_door_area_entered(area: Area2D) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "HeadArea" :
 		Global.swimming = false
+	if area.name == "BoatArea2D":
+		boatAngle = Global.boatDirection
+		Global.damage = Global.damage + 1
+		Global.boatDirection += 4
+		addLater = Global.boatDirection
+		if Global.boatDirection > 8:
+			Global.boatDirection = addLater - 8
+		Global.BoatInputStop = boatAngle
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" :
 		Global.swimming = true
+	if area.name == "BoatArea2D":
+		Global.BoatInputStop = 15
 
 func _on_door_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" and Global.SceneJustIn == "Lighthouse" :
