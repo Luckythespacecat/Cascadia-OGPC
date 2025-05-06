@@ -1,13 +1,19 @@
 extends Control
 
 #var fullscreentrue = settingspref.get_value("fullscreen", fullscreen, null)
-var fullscreen
+var fullscreentrue
 var resolution
-var settingspref = ConfigFile.new()
+#var settingspref = ConfigFile.new()
 
 func _ready() -> void:
-	load("user://settings.ini")
+	#load("user://settings.ini")
 	$MarginContainer/TabContainer.current_tab = 0
+	if DisplayServer.window_get_mode(DisplayServer.WINDOW_MODE_FULLSCREEN) == 3:
+		fullscreentrue = 1
+		print("fullscreen enabled")
+	elif DisplayServer.window_get_mode(DisplayServer.WINDOW_MODE_WINDOWED) == 2:
+		fullscreentrue = 0
+		print("windowed enabled")
 #	if fullscreentrue == 1:
 #		$MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/Fullscreen/CheckButton.button_pressed = true
 #	elif fullscreentrue == 0:
@@ -17,15 +23,17 @@ func _on_test_button_pressed() -> void:
 	print("TestWorked")
 
 
-func _on_check_button_toggled():
+func _on_check_button_toggled(toggled_on):
 	if $MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/Fullscreen/CheckButton.button_pressed == true:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		settingspref.set_value("fullscreen", fullscreen, 1)
-		settingspref.save("user://settings.ini")
+		print("fullscreen")
+		#settingspref.set_value("fullscreen", fullscreen, 1)
+		#settingspref.save("user://settings.ini")
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		settingspref.set_value("fullscreen", fullscreen, 0)
-		settingspref.save("user://settings.ini")
+		print("windowed")
+		#settingspref.set_value("fullscreen", fullscreen, 0)
+		#settingspref.save("user://settings.ini")
 
 
 func _on_option_button_item_selected(index) -> void:
@@ -39,7 +47,7 @@ func _on_option_button_item_selected(index) -> void:
 		2:
 			print("446 x 251")
 			DisplayServer.window_set_size(Vector2i(446,251))
-	settingspref.set_value("resolution", resolution, index)
+	#settingspref.set_value("resolution", resolution, index)
 
 
 func _on_music_volume_value_changed(value: float) -> void:

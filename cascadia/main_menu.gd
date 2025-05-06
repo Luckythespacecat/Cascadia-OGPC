@@ -24,7 +24,7 @@ func _ready() -> void:
 	CreditsButtonPos.tween_property($Icon2, "position", Vector2(1700.0, 940.0), 3).set_trans(Tween.TRANS_QUART)
 
 	var SettingsButtonPos = get_tree().create_tween()
-	SettingsButtonPos.tween_property($Icon3, "position", Vector2(1560.0, 575.0), 3).set_trans(Tween.TRANS_QUART)
+	SettingsButtonPos.tween_property($SettingsButton, "position", Vector2(1500.0, 505.0), 3).set_trans(Tween.TRANS_QUART)
 
 #Initiates the title's animation
 	$Name/StretchOut.start()
