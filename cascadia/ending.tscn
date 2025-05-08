@@ -1,10 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://phoeoxa74g5p"]
+[gd_scene load_steps=13 format=3 uid="uid://phoeoxa74g5p"]
 
 [ext_resource type="Script" uid="uid://cpq46nrgpkgxu" path="res://ending.gd" id="1_4jooh"]
 [ext_resource type="PackedScene" uid="uid://bd60vsst01the" path="res://helicopter.tscn" id="1_fsb5k"]
 [ext_resource type="PackedScene" uid="uid://b6g35j1nhodem" path="res://map.tscn" id="2_dmh3q"]
 [ext_resource type="Texture2D" uid="uid://bqhwu7o77gi3y" path="res://Assets/Art/lighthouseFinal1.png" id="3_iggq8"]
 [ext_resource type="Texture2D" uid="uid://bh0ptemmjkl7y" path="res://Assets/Art/rope.png" id="5_k7rdy"]
+[ext_resource type="Texture2D" uid="uid://b7rg4gugnmfsj" path="res://Assets/Art/Player/Rope/RopeCLimb1.png" id="6_a2d7o"]
+[ext_resource type="Texture2D" uid="uid://dpg5nxeu4o6ga" path="res://Assets/Art/Player/Player11.png" id="6_m7rhh"]
+[ext_resource type="Texture2D" uid="uid://cajtm0lw2mkvl" path="res://Assets/Art/Player/Player12.png" id="7_e2dv3"]
+[ext_resource type="Texture2D" uid="uid://4onmkqvd8oex" path="res://Assets/Art/Player/Rope/RopeCLimb2.png" id="7_ujx65"]
+[ext_resource type="Texture2D" uid="uid://cyggs3pst3e1b" path="res://Assets/Art/Player/Player13.png" id="8_0t84q"]
+[ext_resource type="Texture2D" uid="uid://dcw6b3rxe50ce" path="res://Assets/Art/Player/Rope/RopeCLimb3.png" id="8_3740v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a2d7o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_a2d7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ujx65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3740v")
+}],
+"loop": false,
+"name": &"HoldOn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_m7rhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e2dv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0t84q")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
 
 [node name="Ending" type="Node2D"]
 script = ExtResource("1_4jooh")
@@ -12,8 +49,9 @@ script = ExtResource("1_4jooh")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Helicopter" parent="CanvasLayer" instance=ExtResource("1_fsb5k")]
+z_index = 2
 position = Vector2(840, 0)
-scale = Vector2(4, 4)
+scale = Vector2(6, 6)
 
 [node name="Rope" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
@@ -29,13 +67,27 @@ zoom = Vector2(2, 2)
 
 [node name="Lighthouse" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(116, -123)
+position = Vector2(-19, -129)
 scale = Vector2(2, 2)
 texture = ExtResource("3_iggq8")
 
 [node name="FlyIn" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 12.0
 one_shot = true
 autostart = true
 
+[node name="RopeDone" type="Timer" parent="."]
+wait_time = 17.0
+one_shot = true
+autostart = true
+
+[node name="Meridith" type="AnimatedSprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+position = Vector2(-102, 92)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_a2d7o")
+animation = &"HoldOn"
+
 [connection signal="timeout" from="FlyIn" to="." method="_on_fly_in_timeout"]
+[connection signal="timeout" from="RopeDone" to="." method="_on_rope_done_timeout"]
