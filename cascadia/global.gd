@@ -63,9 +63,9 @@ var part3Obtained = false
 
 #Textbox stuff
 var letter_index = 0
-var letter_time = 0.05
-var space_time = 0.03
-var punctuation_time = 0.1
+var letter_time = .05
+var space_time = .03
+var punctuation_time = .1
 var DontSpacebar = false
 var optionsgiven = false
 

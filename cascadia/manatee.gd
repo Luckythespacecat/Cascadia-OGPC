@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Dialogue1") or Input.is_action_just_pressed("Dialogue2") and Global.optionsgiven == true :
 		Global.DontSpacebar = false
 		Global.optionsgiven = false
-		#Dialoguemanager2.text_box.queue_free()
+		Dialoguemanager2.text_box.queue_free()
 		#Dialoguemanager.text_box.queue_free()
 	
 	$BodySprite.play()
@@ -57,6 +57,7 @@ func fail():
 		pass
 
 func manatee10():
+	#Start
 	if dialogue_step == 0 and Input.is_action_just_pressed("advance_dialogue"):
 		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 300), [
 			"  Well I'll be, look its a human  ",
@@ -67,13 +68,15 @@ func manatee10():
 		dialogue_step = -1
 	elif dialogue_step == -1 and not Dialoguemanager.is_dialogue_active:
 		dialogue_step = 1
-	elif dialogue_step == 1 and not waiting_for_choice:
+	#show choice q1
+	elif dialogue_step == 1:# and not waiting_for_choice:
 		question1 = true
 		show_choice_options()
 		waiting_for_choice = true
 		choicetime = 0.1
 		choiceready = false
-	elif dialogue_step == 1 and waiting_for_choice and choiceready:
+	#determine choice q1
+	elif dialogue_step == 1:# and waiting_for_choice and choiceready:
 		if Input.is_action_just_pressed("Dialogue1"):
 			show_incorrect_response()
 			failure = true
@@ -85,7 +88,8 @@ func manatee10():
 			dialogue_step = 2
 			waiting_for_choice = false
 			choiceready = false
-	elif dialogue_step == 1 and not waiting_for_choice:
+	#q2 start
+	elif dialogue_step == 1:# and not waiting_for_choice:
 		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 300), [
 			"  Weatherby second statement/question here  "
 			])
@@ -94,7 +98,7 @@ func manatee10():
 		waiting_for_choice = true
 		choicetime = 0.1
 		choiceready = false
-	elif dialogue_step == 2 and waiting_for_choice and choiceready:
+	elif dialogue_step == 2:# and waiting_for_choice and choiceready:
 		if Input.is_action_just_pressed("Dialogue1"):
 			show_incorrect_response()
 			failure = true
@@ -106,7 +110,8 @@ func manatee10():
 			dialogue_step = 3
 			waiting_for_choice = false
 			choiceready = false
-	elif dialogue_step == 1 and not waiting_for_choice:
+	#potential bug
+	elif dialogue_step == 2:# and not waiting_for_choice:
 		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 300), [
 			"  Weatherby third statement/question here  "
 			])
@@ -115,7 +120,8 @@ func manatee10():
 		waiting_for_choice = true
 		choicetime = 0.1
 		choiceready = false
-	elif dialogue_step == 3 and waiting_for_choice and choiceready:
+	#q3 start
+	elif dialogue_step == 3:# and waiting_for_choice and choiceready:
 		if Input.is_action_just_pressed("Dialogue1"):
 			show_incorrect_response()
 			failure = true
@@ -127,6 +133,7 @@ func manatee10():
 			dialogue_step = 4
 			waiting_for_choice = false
 			choiceready = false
+	#q4/end
 	elif dialogue_step == 4 and Input.is_action_just_pressed("advance_dialogue"):
 		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 300), [
 			"  This is what Clyde will say before giving the part.  ",
@@ -148,6 +155,7 @@ func show_choice_options():
 		"  Just to meet new people, find anything cool lately? (Press 'e')  ",
 		])
 		question1 = false
+		dialogue_step = 2
 	if Global.DontSpacebar == false and question2 == true :
 		Global.DontSpacebar = true
 		Global.optionsgiven = true
@@ -159,6 +167,7 @@ func show_choice_options():
 		"  2 Correct  ",
 		])
 		question2 = false
+		dialogue_step = 3
 	if Global.DontSpacebar == false and question3 == true :
 		Global.DontSpacebar = true
 		Global.optionsgiven = true
@@ -170,11 +179,13 @@ func show_choice_options():
 		"  3 Correct  ",
 		])
 		question3 = false
+		dialogue_step = 4
 
 func show_correct_response():
 	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x+ 200, Global.textPos.y + 300), [
 		"  Weatherby 'correct choice' here  "
 	])
+	dialogue_step = 2
 	
 
 func show_incorrect_response():

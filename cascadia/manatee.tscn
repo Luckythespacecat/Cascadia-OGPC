@@ -69,7 +69,7 @@ animations = [{
 }]
 
 [node name="Manatee" type="Node2D"]
-position = Vector2(36, 39)
+position = Vector2(568, 94)
 script = ExtResource("1_40kdp")
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
