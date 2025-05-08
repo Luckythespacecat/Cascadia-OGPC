@@ -45,7 +45,6 @@ func _on_door_area_body_entered(body: Node2D) -> void:
 		Global.SceneJustIn = "Lighthouse"
 		print("Scene switching...")
 		if main_scene:
-			Dialoguemanager.current_line_index = 0
 			get_tree().change_scene_to_file("res://main.tscn")
 		else:
 			print("main_scene is NULL")

@@ -15,8 +15,9 @@ rotation = 0.560361
 position = Vector2(528, 238)
 
 [node name="Parts2" parent="." instance=ExtResource("3_oa01f")]
-position = Vector2(503, 434)
-scale = Vector2(5, 5)
+z_index = 2
+position = Vector2(259, 459)
+scale = Vector2(2, 2)
 
 [node name="Car2" parent="." instance=ExtResource("2_g4kqx")]
 position = Vector2(269, -1)

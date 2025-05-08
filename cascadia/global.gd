@@ -26,7 +26,6 @@ var BoatInputStop : int = 15
 var SceneJustIn : String = "Main"
 var cutscene : int = 0
 
-
 #Larry
 var larryAppear = 1
 var larryAnimationFinished : int = 0
@@ -36,11 +35,15 @@ var LighthouseCutsceneDone = false
 var foodCutscene : bool = false
 var foodCutsceneCalled : bool = false
 var Tutorialtriggeronce : bool = false
+var triggeronceRock : bool = false
+var RockLarrySceneDone = false
+var StartRockLarryScene = false
 #barrys rocks
 var TalkingToBarry = false
 var AtGreenRock = false
 var GreenRockSceneFinished = false
 var GreenRockPos : Vector2 = Vector2(0,0)
+var triggeronceFish : bool = false
 
 #Telescope variables
 var PlayerEnteredTelescope = false

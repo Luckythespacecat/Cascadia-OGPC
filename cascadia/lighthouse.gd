@@ -11,6 +11,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.swimming == false:
+		pass
+		#print("Player shouldnt be swimming rn")
+	if Global.swimming == true:
+		pass
+		#print("Player should be swimming rn")
 	
 	for area in $Area2D.get_overlapping_areas() :
 		if area.name == "HeadArea" :
@@ -37,7 +43,9 @@ func _process(delta: float) -> void:
 	if Global.timeOfDay == "Day" :
 		if $PointLight2D.energy > 0:
 			$PointLight2D.energy -= .0025
-	
+	for area in $Area2D.get_overlapping_areas() :
+		if area.name == "FootArea" :
+			Global.swimming = false
 	if Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right") :
 		pass
 		#$AnimatedSprite2D.
@@ -47,7 +55,7 @@ func _on_door_area_entered(area: Area2D) -> void:
 		get_tree().change_scene_to_packed(next_scene)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.name == "HeadArea" :
+	if area.name == "FootArea" :
 		Global.swimming = false
 	if area.name == "BoatArea2D":
 		boatAngle = Global.boatDirection
@@ -61,6 +69,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" :
 		Global.swimming = true
+		Global.onBoat = false
 	if area.name == "BoatArea2D":
 		Global.BoatInputStop = 15
 

@@ -16,6 +16,8 @@ var LighthouseCalled = false
 var triggeronceDrown = false
 var triggeronceFish = false
 var triggeronceLighthouse = false
+var fishInstance : Node 
+var rockTriggerOnce = false
 
 func setupBarry():
 	var BarryInstance = BarryResource.instantiate()
@@ -43,7 +45,7 @@ func spawnItems(): #Spawning squence, I will use as template to make more spawn 
 		woodInstance.connect("input_event", Callable(self, "_on_wood_interacted"))
 		
 	elif itemToSpawn >= 10 and itemToSpawn < 15 :
-		var fishInstance = fish.instantiate() 
+		fishInstance = fish.instantiate() 
 		add_child(fishInstance)
 		fishInstance.position.y = spawnPosY
 		fishInstance.position.x = spawnPosX
@@ -70,15 +72,32 @@ func _ready() -> void:
 		setupBarry()
 	if Global.partNumb == 2:
 		setupDealership()
+	$Boat/Player.position.y -= 20
 
 func ReSetupScene() :
 	Global.boatDirection = 0
 	Global.PlayerY += 10
-	Global.swimming = false
 	$SceneReset.start()
 	print("Timer started")
 
 func _process(delta: float) -> void:
+	
+	if Dialoguemanager.is_dialogue_active == false and Global.triggeronceRock == true and Global.RockLarrySceneDone == false:
+		$Lamprey/EndDialogue.start()
+		Global.larryAppear = 2
+		print("Rock larry out")
+		$Boat/Player/drownTimer.start()
+		Global.RockLarrySceneDone = true
+	if Global.StartRockLarryScene == true and rockTriggerOnce == false:
+		RockLarry()
+		rockTriggerOnce = true
+	
+	if Global.damage == 1:
+		Global.wind = 2
+	if Global.damage == 2:
+		Global.wind = 1
+	if Global.damage == 3:
+		Global.wind = .25
 	
 	if Global.LighthouseCutsceneDone == false:
 		LighthouseLarry()
@@ -164,6 +183,7 @@ func DrownLarry() :
 		Dialoguemanager.is_dialogue_active = false
 		$Lamprey/EndDialogue.start()
 		Global.larryAppear = 2
+		print("Larry drowning away")
 		Global.PlayerPos = $Boat.position
 		Global.PlayerX = Global.PlayerPos.x
 		Global.PlayerY = Global.PlayerPos.y
@@ -207,26 +227,41 @@ func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
 				])
 				triggeronceLighthouse = true
 				LighthouseCalled = true
-			
 
 func FishLarryCutscene():
 	Global.boatDirection = 0
 	$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
 	$Lamprey.global_position.y = $Boat/Player.global_position.y
 	Global.textPos = $Lamprey.position
-	if triggeronceFish == false :
+	if Global.triggeronceFish == false :
 		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 		"  Well looky here, its a fish ",
 		"  you can eat it if your hungry  ",
 		"  press 'E' to dive down and eat that fish  " ])
-		triggeronceFish = true
-	if Dialoguemanager.can_advance_line == true and Dialoguemanager.current_line_index == 2 and Global.TalkingToBarry == false and Global.AtGreenRock == false:
+		Global.triggeronceFish = true
+		
+	if Dialoguemanager.is_dialogue_active == false and Global.TalkingToBarry == false and Global.AtGreenRock == false:
 		Dialoguemanager.is_dialogue_active = false
+		print("Hey dont stay idle")
 		$Lamprey/EndDialogue.start()
+		print("Fish larry out")
 		Global.larryAppear = 2
-		texboxRemove = true
 		$Boat/Player/drownTimer.start()
 		Global.foodCutscene = false
+		fishInstance.CutsceneOver()
+
+func RockLarry():
+	Global.larryAppear = 1
+	$Lamprey.global_position.x = $Boat/Player.global_position.x
+	$Lamprey.global_position.y = $Boat/Player.global_position.y + 150
+	Global.textPos = $Lamprey.position
+	if Global.triggeronceRock == false :
+		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
+		"  Ouch, watch out for those rocks ",
+		"  they will for sure mess up your boat  ",
+		"  press 'E' on driftwood to repair it  " ])
+		Global.triggeronceRock = true
+		
 
 func _on_end_dialogue_timeout() -> void:
 	if texboxRemove == true:

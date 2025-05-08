@@ -52,6 +52,7 @@ func _process(delta: float) -> void:
 			else: 
 				$AnimatedSprite2D.play("SwimIdle")
 				$Swim.stop()
+				
 		# Movement animation, pos and horizantal flip for Left
 		if Global.NoLeft == false and Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept")and $AnimatedSprite2D.animation != "Splash" and Input.is_action_pressed("Left") and $AnimatedSprite2D.animation != "Drown" :
 			Global.PlayerX -= 2
@@ -107,7 +108,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	
 	if $AnimatedSprite2D.animation == "Dive" :
 		stopAnimation = false
-		Global.Hunger += 5
+		Global.Hunger += 10
 		$drownTimer.start()
 
 func drown():

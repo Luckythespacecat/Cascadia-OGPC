@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://ps7jaodjgl4b" path="res://lighthouse_light_body.gd" id="4_4c57u"]
 [ext_resource type="PackedScene" uid="uid://dxp6esaousgn2" path="res://user_interface.tscn" id="4_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ctm54eyu0b5jf" path="res://boat.tscn" id="5_hm6kk"]
-[ext_resource type="PackedScene" uid="uid://bd150n0k7527m" path="res://lighthouse.tscn" id="5_ixv4j"]
+[ext_resource type="PackedScene" uid="uid://bd150n0k7527m" path="res://Assets/Art/lighthouse.tscn" id="5_ixv4j"]
 [ext_resource type="Texture2D" uid="uid://dlbdkmdaxo7j7" path="res://Assets/Art/lighthouse-lighttexture.png" id="5_kek77"]
 [ext_resource type="Texture2D" uid="uid://ba6hublqfsgni" path="res://Assets/Art/lightTexutre.png" id="8_4c57u"]
 [ext_resource type="AudioStream" uid="uid://naj2g04c32ab" path="res://Assets/Sound/SFX/eat.wav" id="10_2cqfq"]

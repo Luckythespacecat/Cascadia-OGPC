@@ -213,6 +213,7 @@ size = Vector2(34, 48)
 size = Vector2(7.78906, 4.00547)
 
 [node name="Lighthouse_Room" type="Node2D"]
+position = Vector2(78645, 46603)
 script = ExtResource("1_cde3n")
 
 [node name="Room" type="Sprite2D" parent="."]

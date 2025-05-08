@@ -8,7 +8,7 @@ var justDamaged = false
 var damageAnimation = "Fixed"
 var recordPress1 = false
 var recordPress2 = false
-
+var RockLarryScene = false
 #Timer for the 'rowing animation'
 func _ready(): 
 	$Sail.frame = 0
@@ -24,6 +24,7 @@ func BoatDamage():
 		$Sail.frame = 0
 		damageAnimation = "Fixed"
 	elif Global.damage == 1:
+		RockLarry()
 		$AnimatedSprite2D.frame = 0
 		$Sail.frame = 0
 		damageAnimation = "Damaged1"
@@ -240,3 +241,9 @@ func _on_hold_timer_2_timeout() -> void:
 		recordPress2 = false
 		$HoldTimer2.stop()
 		Global.boatDirection = 0
+
+func RockLarry():
+	if Global.RockLarrySceneDone == false :
+		Global.StartRockLarryScene = true
+		
+		
