@@ -52,9 +52,9 @@ var partNumb : int = 0 #Interger that will repersent what number of part the pla
 #Change above variable when the player needs to find a certain piece, 
 #For example if the player gets to the lighthouse and presses interact on the telescope
 # then it changes partNumb to 1 and the lighthouse will automatically look at the part1pos Vector
-var part1Pos : Vector2 = Vector2(500,500)
-var part2Pos : Vector2 = Vector2(0,0)
-var part3Pos : Vector2 = Vector2(0,0)
+var part1Pos : Vector2 = Vector2(-793.0, -766.0)
+var part2Pos : Vector2 = Vector2(-793.0, -766.0)
+var part3Pos : Vector2 = Vector2(24, -24)
 #Change these variables when the player actually gets the parts
 var part1Obtained = false
 var part2Obtained = false

@@ -3,6 +3,7 @@ extends Node2D
 const woodResource = preload("res://wood.tscn")
 const BarryResource = preload("res://rock_area.tscn")
 const DealershipResource = preload("res://used_cars.tscn")
+const ManateeResource = preload("res://manatee.tscn")
 const radioParts = preload("res://parts.tscn") # load the parts scene for radio repair`
 const fish = preload("res://fish.tscn")
 
@@ -22,13 +23,19 @@ var rockTriggerOnce = false
 func setupBarry():
 	var BarryInstance = BarryResource.instantiate()
 	add_child(BarryInstance)
-	BarryInstance.position = Vector2(-793.0, -766.0)
+	BarryInstance.position = Global.part1Pos
 	BarryInstance.scale = Vector2(1, 1)
 func setupDealership():
 	var DealershipInstance = DealershipResource.instantiate()
 	add_child(DealershipInstance)
-	DealershipInstance.position = Vector2(-793.0, -766.0)
+	DealershipInstance.position =  Global.part2Pos
 	DealershipInstance.scale = Vector2(1, 1)
+func setupManatee():
+	var ManateeInstance = ManateeResource.instantiate()
+	add_child(ManateeInstance)
+	ManateeInstance.position =  Global.part3Pos
+	ManateeInstance.scale = Vector2(2, 2)
+	
 func spawnItems(): #Spawning squence, I will use as template to make more spawn functions
 	var playerX = Global.PlayerX
 	var playerY = Global.PlayerY
@@ -69,12 +76,15 @@ func _ready() -> void:
 	if Global.Tutorialtriggeronce == true :
 		Global.larryAppear = 3
 	if Global.partNumb == 1 :
-		setupBarry()
-	if Global.partNumb == 2:
+		setupManatee()
+	elif Global.partNumb == 2:
 		setupDealership()
+	elif Global.partNumb == 3:
+		setupBarry()
 	$Boat/Player.position.y -= 20
 
 func ReSetupScene() :
+	
 	Global.boatDirection = 0
 	Global.PlayerY += 10
 	$SceneReset.start()
@@ -276,4 +286,3 @@ func LighthouseLarry():
 		Global.larryAppear = 2
 		texboxRemove = true
 		Global.LighthouseCutsceneDone = true
-		print("Should be completley working")

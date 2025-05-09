@@ -12,6 +12,15 @@ var optionsgiven = false
 var question1 = false
 var question2 = false
 var question3 = false
+var triggerOnce1 = false
+var NiceScale = 0 # Adds if player says right thing subtracts if they dont.
+var Reset = false
+var ResetTriggeronce = false
+
+# Vector variables for the positions of text, change these to change positions
+var wetherbySpeakingPos : Vector2 = Vector2(self.global_position.x - 250 , self.global_position.y -50)
+var Response1Pos : Vector2 = Vector2(self.global_position.x - 350, self.global_position.y + 50)
+var Response2Pos : Vector2 = Vector2(self.global_position.x - 150, self.global_position.y + 50)
 
 func _ready():
 	dialogue_step = 0
@@ -24,12 +33,13 @@ func _ready():
 	time = false
 
 func _process(delta: float) -> void:
+	$Transition2.z_index += 1
 	
-	if Input.is_action_just_pressed("Dialogue1") or Input.is_action_just_pressed("Dialogue2") and Global.optionsgiven == true :
-		Global.DontSpacebar = false
-		Global.optionsgiven = false
-		Dialoguemanager2.text_box.queue_free()
-		#Dialoguemanager.text_box.queue_free()
+	if Reset :
+		$Transition2.scale = lerp($Transition2.scale, Vector2(1,1), delta)
+		if not ResetTriggeronce :
+			$Transition2/TryAgain.start()
+			ResetTriggeronce = true
 	
 	$BodySprite.play()
 	$HeadSprite.frame = $BodySprite.frame
@@ -42,16 +52,6 @@ func _process(delta: float) -> void:
 		choiceready = true
 	manatee10()
 
-func choice():
-	if Input.is_action_just_pressed("Dialogue1"):
-		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 300), [
-			"  Look, it worked !  "
-		])
-	if Input.is_action_just_pressed("Dialogue2"):
-		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 200), [
-			"  Hey, this worked2  ! "
-		])
-
 func fail():
 	if failure == true:
 		pass
@@ -59,7 +59,7 @@ func fail():
 func manatee10():
 	#Start
 	if dialogue_step == 0 and Input.is_action_just_pressed("advance_dialogue"):
-		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 300), [
+		Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
 			"  Well I'll be, look its a human  ",
 			"  My names Wetherby, you are?  ",
 			"  Meredith you say, what a nice name  ",
@@ -69,126 +69,165 @@ func manatee10():
 	elif dialogue_step == -1 and not Dialoguemanager.is_dialogue_active:
 		dialogue_step = 1
 	#show choice q1
-	elif dialogue_step == 1:# and not waiting_for_choice:
-		question1 = true
-		show_choice_options()
-		waiting_for_choice = true
-		choicetime = 0.1
-		choiceready = false
-	#determine choice q1
-	elif dialogue_step == 1:# and waiting_for_choice and choiceready:
-		if Input.is_action_just_pressed("Dialogue1"):
-			show_incorrect_response()
-			failure = true
-			dialogue_step = 0
-			waiting_for_choice = false
-			choiceready = false
-		elif Input.is_action_just_pressed("Dialogue2"):
-			show_correct_response()
-			dialogue_step = 2
-			waiting_for_choice = false
-			choiceready = false
-	#q2 start
-	elif dialogue_step == 1:# and not waiting_for_choice:
-		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 300), [
-			"  Weatherby second statement/question here  "
-			])
-		question2 = true
-		show_choice_options()
-		waiting_for_choice = true
-		choicetime = 0.1
-		choiceready = false
-	elif dialogue_step == 2:# and waiting_for_choice and choiceready:
-		if Input.is_action_just_pressed("Dialogue1"):
-			show_incorrect_response()
-			failure = true
-			dialogue_step = 0
-			waiting_for_choice = false
-			choiceready = false
-		elif Input.is_action_just_pressed("Dialogue2"):
-			show_correct_response()
-			dialogue_step = 3
-			waiting_for_choice = false
-			choiceready = false
-	#potential bug
-	elif dialogue_step == 2:# and not waiting_for_choice:
-		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 300), [
-			"  Weatherby third statement/question here  "
-			])
-		question3 = true
-		show_choice_options()
-		waiting_for_choice = true
-		choicetime = 0.1
-		choiceready = false
-	#q3 start
-	elif dialogue_step == 3:# and waiting_for_choice and choiceready:
-		if Input.is_action_just_pressed("Dialogue1"):
-			show_incorrect_response()
-			failure = true
-			dialogue_step = 0
-			waiting_for_choice = false
-			choiceready = false
-		elif Input.is_action_just_pressed("Dialogue2"):
-			show_correct_response()
-			dialogue_step = 4
-			waiting_for_choice = false
-			choiceready = false
-	#q4/end
-	elif dialogue_step == 4 and Input.is_action_just_pressed("advance_dialogue"):
-		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 300), [
-			"  This is what Clyde will say before giving the part.  ",
-		])
-		givePart()
-		dialogue_step = 0
-func givePart():
-	pass
-
-func show_choice_options():
-	if Global.DontSpacebar == false and question1 == true :
-		Global.DontSpacebar = true
-		Global.optionsgiven = true
-		
-		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 100, Global.textPos.y + 300), [
+	elif dialogue_step == 1 : # and not waiting_for_choice:
+		if Global.DontSpacebar == false:
+			Dialoguemanager.start_dialogue(Response1Pos, [
 		"  I'm looking for a redio compenent have you seen one? (Press 'q')  ",
 		])
-		Dialoguemanager2.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 200), [
+			Dialoguemanager2.start_dialogue(Response2Pos, [
 		"  Just to meet new people, find anything cool lately? (Press 'e')  ",
 		])
-		question1 = false
+			Global.DontSpacebar = true
+			question1 = true
+			choicetime = 0.1
+			choiceready = false
+			triggerOnce1 = false
+		#determine choice q1
+		if Input.is_action_just_pressed("Dialogue1"):
+			Global.DontSpacebar = false
+			Global.optionsgiven = false
+			Dialoguemanager2.text_box.visible = false
+			NiceScale -= 1
+			#asking question here
+			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			"  Maybe, maybe not.  ",
+			"  if i DID have the piece  ",
+			"  I would be hesitant to give it away  "
+			])
+
+			dialogue_step = 2.5
+			waiting_for_choice = false
+			choiceready = false
+		elif Input.is_action_just_pressed("Dialogue2"):
+			Global.DontSpacebar = false
+			Global.optionsgiven = false
+			Dialoguemanager2.text_box.visible = false
+			NiceScale += 1
+			#asking question here
+			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			"  Oh, why thankyou for speaking with me  ",
+			"  but yes I found this nifty radio part  ",
+			"  here, take a look at it!  ",
+			"  what do you think, pretty cool huh?  "
+			])
+			dialogue_step = 2.5
+			waiting_for_choice = false
+			choiceready = false
+	elif dialogue_step == 2.5 and not Dialoguemanager.is_dialogue_active:
 		dialogue_step = 2
-	if Global.DontSpacebar == false and question2 == true :
-		Global.DontSpacebar = true
-		Global.optionsgiven = true
-		
-		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 100, Global.textPos.y + 300), [
-		"  2 Incorrect  ",
+	#q2 start
+	elif dialogue_step == 2 : # and not waiting_for_choice:
+		if Global.DontSpacebar == false:
+			Dialoguemanager.start_dialogue(Response1Pos, [
+		"  Can I have that, I really need that radio piece (Press 'q')  ",
 		])
-		Dialoguemanager2.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 200), [
-		"  2 Correct  ",
+			Dialoguemanager2.start_dialogue(Response2Pos, [
+		"   Oh nice, could I buy it off you?  (Press 'e')  ",
 		])
-		question2 = false
+			Global.DontSpacebar = true
+			choicetime = 0.1
+			choiceready = false
+			triggerOnce1 = false
+		#determine choice q1
+		if Input.is_action_just_pressed("Dialogue1"):
+			Global.DontSpacebar = false
+			Global.optionsgiven = false
+			Dialoguemanager2.text_box.visible = false
+			NiceScale -= 1
+			#asking question here
+			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			"  I would but i just named it Clyde ",
+			"  It's my friend  ",
+			"  Hey, you humans got awfully wierd traditions as well  "
+			])
+			dialogue_step = 3.5
+			waiting_for_choice = false
+			choiceready = false
+		elif Input.is_action_just_pressed("Dialogue2"):
+			Global.DontSpacebar = false
+			Global.optionsgiven = false
+			Dialoguemanager2.text_box.visible = false
+			NiceScale += 1
+			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			"  I would but I just adopted him  ",
+			"  his names Clyde  ",
+			"  the Manatee oath sates we cant give away named objects  ",
+			"  atleast without verifying the new caregiver  "
+			])
+			dialogue_step = 3.5
+			waiting_for_choice = false
+			choiceready = false
+	elif dialogue_step == 3.5 and not Dialoguemanager.is_dialogue_active:
 		dialogue_step = 3
-	if Global.DontSpacebar == false and question3 == true :
-		Global.DontSpacebar = true
-		Global.optionsgiven = true
-		
-		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 100, Global.textPos.y + 300), [
-		"  3 Incorrect  ",
+	elif dialogue_step == 3 : # and not waiting_for_choice:
+		if Global.DontSpacebar == false:
+			Dialoguemanager.start_dialogue(Response1Pos, [
+		"  I could adopt Clyde? (Press 'q')  ",
 		])
-		Dialoguemanager2.start_dialogue(Vector2(Global.textPos.x + 200, Global.textPos.y + 200), [
-		"  3 Correct  ",
+			Dialoguemanager2.start_dialogue(Response2Pos, [
+		"  I'll adopt him on one condition, his name gets to be Darwin (Press 'e')  ",
 		])
-		question3 = false
-		dialogue_step = 4
+			Global.DontSpacebar = true
+			choicetime = 0.1
+			choiceready = false
+			triggerOnce1 = false
+		#determine choice q1
+		if Input.is_action_just_pressed("Dialogue1"):
+			Global.DontSpacebar = false
+			Global.optionsgiven = false
+			Dialoguemanager2.text_box.visible = false
+			NiceScale += 1
+			#asking question here
+			if  NiceScale > 0 :
+				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			"  Well I suppose that would work  ",
+			"  Just make sure Clyde has a comfy home  ",
+			"  There you go, all yours  "
+			])
+				givePart()
+			else :
+				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			" I dont trust you sorry... "
+				])
+				Reset = true
+			dialogue_step = 4.5
+			waiting_for_choice = false
+			choiceready = false
+		elif Input.is_action_just_pressed("Dialogue2"):
+			Global.DontSpacebar = false
+			Global.optionsgiven = false
+			Dialoguemanager2.text_box.visible = false
+			NiceScale -= 1
+			
+			if  NiceScale > 0 :
+				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			"  Well I suppose that would work  ",
+			"  Just make sure Darwin has a comfy home  ",
+			"  There you go, all yours  "
+			])
+				givePart()
+			else :
+				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			" I dont trust you sorry... "
+			])
+				Reset = true
+				
+			
+			dialogue_step = 4.5
+			waiting_for_choice = false
+			choiceready = false
+func givePart():
+	Global.part3Obtained = true
 
-func show_correct_response():
-	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x+ 200, Global.textPos.y + 300), [
-		"  Weatherby 'correct choice' here  "
-	])
-	dialogue_step = 2
-	
 
-func show_incorrect_response():
-	Dialoguemanager.start_dialogue(Vector2(Global.textPos.x + 100, Global.textPos.y + 300), [
-		"  Weatherby 'incorrect choice' here  "
-	])
+func ResetScene():
+	pass
+
+
+func _on_try_again_timeout() -> void:
+	$Transition2.play("Out")
+	$Transition2/Timer.start()
+
+
+func _on_timer_timeout() -> void:
+	get_tree().reload_current_scene()

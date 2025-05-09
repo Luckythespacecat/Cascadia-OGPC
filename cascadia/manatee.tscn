@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bo7rcjusfp3hv"]
+[gd_scene load_steps=16 format=3 uid="uid://bo7rcjusfp3hv"]
 
 [ext_resource type="Script" uid="uid://crjjqa26jig0m" path="res://manatee.gd" id="1_40kdp"]
 [ext_resource type="Texture2D" uid="uid://bxc3t4iohtxly" path="res://Assets/Art/Manatee/ManateeBody1.png" id="2_6o1k7"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bttps12lvoidg" path="res://Assets/Art/Manatee/ManateeHead4.png" id="8_heb3r"]
 [ext_resource type="Texture2D" uid="uid://lyu0rvdtmwpa" path="res://Assets/Art/Manatee/ManateeHead5.png" id="9_ieirs"]
 [ext_resource type="Texture2D" uid="uid://bjb4kktcvp514" path="res://Assets/Art/Manatee/ManateeHead6.png" id="10_ot8jw"]
+[ext_resource type="Texture2D" uid="uid://b6adgvhrikpmj" path="res://Assets/Art/BlackTransitionGoofy2.png" id="11_6pog0"]
+[ext_resource type="Texture2D" uid="uid://bbjrof8h3xu2d" path="res://Assets/Art/BlackTransitionGoofy1.png" id="12_pfoxn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6u8dp"]
 animations = [{
@@ -68,8 +70,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_xeufa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_6pog0")
+}],
+"loop": true,
+"name": &"Out",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_pfoxn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Manatee" type="Node2D"]
-position = Vector2(568, 94)
+position = Vector2(610, 322)
+scale = Vector2(2, 2)
 script = ExtResource("1_40kdp")
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
@@ -80,3 +102,17 @@ sprite_frames = SubResource("SpriteFrames_6u8dp")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ayap7")
 animation = &"Idle"
+
+[node name="Transition2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_xeufa")
+
+[node name="TryAgain" type="Timer" parent="Transition2"]
+wait_time = 5.0
+
+[node name="Timer" type="Timer" parent="Transition2"]
+wait_time = 2.0
+
+[connection signal="timeout" from="Transition2/TryAgain" to="." method="_on_try_again_timeout"]
+[connection signal="timeout" from="Transition2/Timer" to="." method="_on_timer_timeout"]

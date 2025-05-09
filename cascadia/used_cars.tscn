@@ -53,7 +53,7 @@ position = Vector2(79, 733)
 position = Vector2(144, 925)
 
 [node name="Car13" parent="." instance=ExtResource("2_g4kqx")]
-position = Vector2(201, 451)
+position = Vector2(250, 374)
 
 [node name="Car14" parent="." instance=ExtResource("2_g4kqx")]
 position = Vector2(783, 528)
