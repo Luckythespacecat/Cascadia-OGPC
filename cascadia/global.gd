@@ -76,6 +76,9 @@ var NoLeft = false
 var NoRight = false
 var NoUp = false
 var NoDown = false
+
+#Manatee
+var ManateeScene = false
 func _ready() -> void:
 	pass # Replace with function body.
 

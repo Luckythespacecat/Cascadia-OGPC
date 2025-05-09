@@ -4,6 +4,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.timeOfDay = "Night"
 	print("main_scene set in Inspector:", main_scene)
 	if main_scene:
 		var inst = main_scene.instantiate()

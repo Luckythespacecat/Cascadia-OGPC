@@ -18,9 +18,9 @@ var Reset = false
 var ResetTriggeronce = false
 
 # Vector variables for the positions of text, change these to change positions
-var wetherbySpeakingPos : Vector2 = Vector2(self.global_position.x - 250 , self.global_position.y -50)
-var Response1Pos : Vector2 = Vector2(self.global_position.x - 350, self.global_position.y + 50)
-var Response2Pos : Vector2 = Vector2(self.global_position.x - 150, self.global_position.y + 50)
+var wetherbySpeakingPos : Vector2 = Vector2(self.global_position.x -600 , self.global_position.y -400)
+var Response1Pos : Vector2 = Vector2(self.global_position.x - 850, self.global_position.y - 100)
+var Response2Pos : Vector2 = Vector2(self.global_position.x - 350, self.global_position.y - 100)
 
 func _ready():
 	dialogue_step = 0
@@ -58,7 +58,7 @@ func fail():
 
 func manatee10():
 	#Start
-	if dialogue_step == 0 and Input.is_action_just_pressed("advance_dialogue"):
+	if dialogue_step == 0 and Global.ManateeScene :
 		Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
 			"  Well I'll be, look its a human  ",
 			"  My names Wetherby, you are?  ",
@@ -218,6 +218,7 @@ func manatee10():
 			choiceready = false
 func givePart():
 	Global.part3Obtained = true
+	Global.ManateeScene = false
 
 
 func ResetScene():

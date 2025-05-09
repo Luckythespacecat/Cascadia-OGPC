@@ -286,3 +286,8 @@ func LighthouseLarry():
 		Global.larryAppear = 2
 		texboxRemove = true
 		Global.LighthouseCutsceneDone = true
+
+func ManateeScene():
+	if Global.ManateeScene:
+		Global.boatDirection = 0
+	

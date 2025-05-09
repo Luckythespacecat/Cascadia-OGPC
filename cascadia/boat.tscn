@@ -225,8 +225,7 @@ texture_filter = 1
 position = Vector2(0, 25)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_h5au0")
-animation = &"Fixed"
-frame_progress = 0.54999
+animation = &"Damaged3"
 
 [node name="Sail" type="AnimatedSprite2D" parent="."]
 z_index = 2
@@ -234,8 +233,7 @@ texture_filter = 1
 position = Vector2(-2, -9)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v5m18")
-animation = &"Front"
-frame_progress = 0.887047
+animation = &"AngledFront"
 
 [node name="SailArea" type="Area2D" parent="."]
 

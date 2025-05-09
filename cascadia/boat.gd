@@ -212,16 +212,16 @@ func _on_sail_area_area_exited(area: Area2D) -> void:
 		$Sail.z_index = $Player.z_index - 1
 
 func AdjustSailAction():
-	if  Global.TalkingToBarry == false and Input.is_action_just_pressed("boatClockwise") and Global.onBoat == true:
-		$Player/AnimatedSprite2D.play("Pick_Up")
-		animationStarted = false
-		boatMovement()
+	if not Global.ManateeScene :
+		if  Global.TalkingToBarry == false and Input.is_action_just_pressed("boatClockwise") and Global.onBoat == true:
+			$Player/AnimatedSprite2D.play("Pick_Up")
+			animationStarted = false
+			boatMovement()
 
-
-	if Global.TalkingToBarry == false  and Input.is_action_just_pressed("boatcounterClockwise") and Global.onBoat == true:
-		$Player/AnimatedSprite2D.play("Pick_Up")
-		animationStarted = false
-		boatMovement2()
+		if Global.TalkingToBarry == false  and Input.is_action_just_pressed("boatcounterClockwise") and Global.onBoat == true:
+			$Player/AnimatedSprite2D.play("Pick_Up")
+			animationStarted = false
+			boatMovement2()
 
 func lowerSail():
 	if Input.is_action_just_pressed("boatClockwise")  :

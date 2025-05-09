@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bo7rcjusfp3hv"]
+[gd_scene load_steps=17 format=3 uid="uid://bo7rcjusfp3hv"]
 
 [ext_resource type="Script" uid="uid://crjjqa26jig0m" path="res://manatee.gd" id="1_40kdp"]
 [ext_resource type="Texture2D" uid="uid://bxc3t4iohtxly" path="res://Assets/Art/Manatee/ManateeBody1.png" id="2_6o1k7"]
@@ -89,6 +89,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pog0"]
+size = Vector2(97, 97)
+
 [node name="Manatee" type="Node2D"]
 position = Vector2(610, 322)
 scale = Vector2(2, 2)
@@ -113,6 +116,12 @@ wait_time = 5.0
 
 [node name="Timer" type="Timer" parent="Transition2"]
 wait_time = 2.0
+
+[node name="ManateeScene" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ManateeScene"]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_6pog0")
 
 [connection signal="timeout" from="Transition2/TryAgain" to="." method="_on_try_again_timeout"]
 [connection signal="timeout" from="Transition2/Timer" to="." method="_on_timer_timeout"]

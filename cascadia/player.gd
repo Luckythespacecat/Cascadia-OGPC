@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 		if Global.onBoat == false :
 			$AnimatedSprite2D.play("SwimIdle")
 	
-	if Global.TalkingToBarry == false and Global.AtGreenRock == false and Global.tutorial == true:
+	if Global.TalkingToBarry == false and Global.AtGreenRock == false and Global.tutorial == true and not Global.ManateeScene:
 	#basic movement if statements
 		#Sets the animation to idle if input is stopped
 		if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
@@ -133,6 +133,8 @@ func _on_swim_area_area_entered(area: Area2D) -> void:
 		enteredFish = true
 	if area.name == "LarryArea" and Global.onBoat == false: 
 		z_index = -1
+	if area.name == "ManateeScene":
+		Global.ManateeScene = true
 func _on_swim_area_area_exited(area: Area2D) -> void:
 	if area.name == "FishArea" and Global.onBoat == false: 
 		enteredFish = false
