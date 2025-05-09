@@ -91,7 +91,7 @@ func manatee10():
 			#asking question here
 			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
 			"  Maybe, maybe not.  ",
-			"  if i DID have the piece  ",
+			"  if I DID have the piece  ",
 			"  I would be hesitant to give it away  "
 			])
 
@@ -105,7 +105,7 @@ func manatee10():
 			NiceScale += 1
 			#asking question here
 			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			"  Oh, why thankyou for speaking with me  ",
+			"  Oh, why thank you for speaking with me  ",
 			"  but yes I found this nifty radio part  ",
 			"  here, take a look at it!  ",
 			"  what do you think, pretty cool huh?  "
@@ -136,9 +136,9 @@ func manatee10():
 			NiceScale -= 1
 			#asking question here
 			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			"  I would but i just named it Clyde ",
-			"  It's my friend  ",
-			"  Hey, you humans got awfully wierd traditions as well  "
+			"  I would but I just named it Clyde. ",
+			"  It's my friend.  ",
+			"  Hey, you humans got awfully weird traditions as well.  "
 			])
 			dialogue_step = 3.5
 			waiting_for_choice = false
@@ -150,9 +150,9 @@ func manatee10():
 			NiceScale += 1
 			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
 			"  I would but I just adopted him  ",
-			"  his names Clyde  ",
-			"  the Manatee oath sates we cant give away named objects  ",
-			"  atleast without verifying the new caregiver  "
+			"  his names Clyde!  ",
+			"  The Manatee oath states we can't give away named objects,  ",
+			"  at least without verifying the new caregiver  "
 			])
 			dialogue_step = 3.5
 			waiting_for_choice = false
@@ -181,7 +181,7 @@ func manatee10():
 			if  NiceScale > 0 :
 				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
 			"  Well I suppose that would work  ",
-			"  Just make sure Clyde has a comfy home  ",
+			"  Just make sure Clyde has a comfy home.  ",
 			"  There you go, all yours  "
 			])
 				givePart()
@@ -202,7 +202,7 @@ func manatee10():
 			if  NiceScale > 0 :
 				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
 			"  Well I suppose that would work  ",
-			"  Just make sure Darwin has a comfy home  ",
+			"  Just make sure Darwin has a comfy home.  ",
 			"  There you go, all yours  "
 			])
 				givePart()

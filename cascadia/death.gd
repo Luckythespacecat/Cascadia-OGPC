@@ -1,19 +1,34 @@
 extends Node2D
 
 var deathOption : String = ""
-var toggle = false
-# Called when the node enters the scene tree for the first time.
+var death2 = false
+const death4 = preload("res://main.tscn")
+
+
 func _ready() -> void:
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if toggle == false:
-		Dialoguemanager.start_dialogue(Vector2(400,518), [
-	"  Um, your forgot to eat  ",
-	"  oh well!  ",
-	"  your eternal damnation is reliving the worst day of your life  ",
-	"  Have fun!!!!!!!  " ])
-		toggle = true
-	if Dialoguemanager.is_dialogue_active == true:
-		Dialoguemanager.text_box.scale = Vector2(4,4)
+	condition()
+	if Global.toggle == false:
+		death2 = true
+		Global.PlayerX = 0.0
+		Global.PlayerY = 0.0
+		Dialoguemanager.start_dialogue(Vector2(Global.PlayerX + 100, Global.PlayerY), [
+		"  Um, you forgot to eat, or your boat broke  ",
+		"  oh well!  ",
+		"  your eternal damnation is reliving the worst day of your life  ",
+		"  Have fun ! ! !  " 
+		])
+		Global.toggle = true
+		death2 = false
+		Global.damage = 0
+		get_tree().change_scene_to_packed(death4)
+
+
+
+func condition():
+	if Global.damage == 3:
+		Global.toggle = false
+	if Global.Hunger <= 10:
+		Global.toggle = false

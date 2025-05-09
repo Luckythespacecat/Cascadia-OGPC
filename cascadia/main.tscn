@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=27 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Script" uid="uid://bf5q0piq01r8i" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cvpm45g7wr55t" path="res://Assets/Sound/Music/TheGreatOcean.mp3" id="12_dg77c"]
 [ext_resource type="AudioStream" uid="uid://i6dvhdo8wy54" path="res://Assets/Sound/Music/ANewFuture.mp3" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://nayarson8r7d" path="res://rock.tscn" id="14_w48qg"]
+[ext_resource type="PackedScene" uid="uid://mnh5o2lcihla" path="res://death.tscn" id="20_82xsv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(1842, 50)
@@ -191,6 +192,8 @@ autoplay = true
 position = Vector2(191, -398)
 
 [node name="Collision Objects" type="Node2D" parent="."]
+
+[node name="Death" parent="." instance=ExtResource("20_82xsv")]
 
 [connection signal="area_entered" from="Lighthouse/PointLight2D/LighthouseLightArea" to="." method="_on_lighthouse_light_area_area_entered"]
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]

@@ -9,6 +9,7 @@ var timeOfDay : String = "Day"
 var Dead : bool = false #Does not mean actually dead just drowining
 var FirstDrown : bool = true
 var Hunger : int = 250
+var toggle : bool = true
 
 #boat variables
 var wind : float = 1 
@@ -17,8 +18,8 @@ var boatDirection : int = 0
 var boatPos : Vector2 = Vector2(0,0)
 var NewBoatPos : Vector2 = Vector2(0, 60)
 var AdjustSail : bool = false
-var SailMovedE : bool= false     
-var SailMovedQ : bool= false  
+var SailMovedE : bool = false
+var SailMovedQ : bool = false
 var damage : int = 0
 var BoatInputStop : int = 15
   
