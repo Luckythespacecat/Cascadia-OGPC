@@ -60,10 +60,10 @@ func manatee10():
 	#Start
 	if dialogue_step == 0 and Global.ManateeScene :
 		Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			"  Well I'll be, look its a human  ",
-			"  My names Wetherby, you are?  ",
+			"  Most incredible, a human !  ",
+			"  The name's Weatherby, my dear - ah, what is your name?  ",
 			"  Meredith you say, what a nice name  ",
-			"  So why are you talking to me?  "
+			"  So, what did you need?  "
 		])
 		dialogue_step = -1
 	elif dialogue_step == -1 and not Dialoguemanager.is_dialogue_active:
@@ -72,7 +72,7 @@ func manatee10():
 	elif dialogue_step == 1 : # and not waiting_for_choice:
 		if Global.DontSpacebar == false:
 			Dialoguemanager.start_dialogue(Response1Pos, [
-		"  I'm looking for a redio compenent have you seen one? (Press 'q')  ",
+		"  I'm looking for a radio component, have you seen one? (Press 'q')  ",
 		])
 			Dialoguemanager2.start_dialogue(Response2Pos, [
 		"  Just to meet new people, find anything cool lately? (Press 'e')  ",
@@ -90,9 +90,9 @@ func manatee10():
 			NiceScale -= 1
 			#asking question here
 			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			"  Maybe, maybe not.  ",
-			"  if I DID have the piece  ",
-			"  I would be hesitant to give it away  "
+			"  Perhaps . . .  ",
+			"  Assuming I did have such an object,  ",
+			"  why, I might hesitate to give it away . . .  "
 			])
 
 			dialogue_step = 2.5
@@ -105,10 +105,10 @@ func manatee10():
 			NiceScale += 1
 			#asking question here
 			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			"  Oh, why thank you for speaking with me  ",
-			"  but yes I found this nifty radio part  ",
-			"  here, take a look at it!  ",
-			"  what do you think, pretty cool huh?  "
+			"  Oh my, I appreciate you speaking so politely,  ",
+			"  but, yes, I did happen across what you are looking for.  ",
+			"  Here, have a good look !  ",
+			"  Quite rad, is it not ?  "
 			])
 			dialogue_step = 2.5
 			waiting_for_choice = false
@@ -136,9 +136,9 @@ func manatee10():
 			NiceScale -= 1
 			#asking question here
 			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			"  I would but I just named it Clyde. ",
-			"  It's my friend.  ",
-			"  Hey, you humans got awfully weird traditions as well.  "
+			"  Ah, I may have before, but you came at the wrong time . . . ",
+			"  I just named it Clyde,  ", 
+			"  it is my friend . . .  "
 			])
 			dialogue_step = 3.5
 			waiting_for_choice = false
@@ -150,9 +150,9 @@ func manatee10():
 			NiceScale += 1
 			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
 			"  I would but I just adopted him  ",
-			"  his names Clyde!  ",
-			"  The Manatee oath states we can't give away named objects,  ",
-			"  at least without verifying the new caregiver  "
+			"  I call him Clyde  ",
+			"  The Manatee oath states we can't give away named objects . . .   ",
+			"  At least without verifying the new caregiver . . .  "
 			])
 			dialogue_step = 3.5
 			waiting_for_choice = false
@@ -162,10 +162,10 @@ func manatee10():
 	elif dialogue_step == 3 : # and not waiting_for_choice:
 		if Global.DontSpacebar == false:
 			Dialoguemanager.start_dialogue(Response1Pos, [
-		"  I could adopt Clyde? (Press 'q')  ",
+		"  Could I adopt Clyde? (Press 'q')  ",
 		])
 			Dialoguemanager2.start_dialogue(Response2Pos, [
-		"  I'll adopt him on one condition, his name gets to be Darwin (Press 'e')  ",
+		"  I'll adopt him on one condition, his name will forever remain as Clyde (Press 'e')  ",
 		])
 			Global.DontSpacebar = true
 			choicetime = 0.1
@@ -180,14 +180,14 @@ func manatee10():
 			#asking question here
 			if  NiceScale > 0 :
 				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			"  Well I suppose that would work  ",
-			"  Just make sure Clyde has a comfy home.  ",
-			"  There you go, all yours  "
+			"  Why, by all means, that might work !  ",
+			"  Please, allow Clyde to always have a good home . . .  ",
+			"  Here you are, farewell !  "
 			])
 				givePart()
 			else :
 				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			" I dont trust you sorry... "
+			" I could not trust one such as you . . .  "
 				])
 				Reset = true
 			dialogue_step = 4.5
@@ -201,14 +201,14 @@ func manatee10():
 			
 			if  NiceScale > 0 :
 				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			"  Well I suppose that would work  ",
-			"  Just make sure Darwin has a comfy home.  ",
-			"  There you go, all yours  "
+			"  That might work, actually !  ",
+			"  Just make sure the name never changes.  ",
+			"  Farewell !  "
 			])
 				givePart()
 			else :
 				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			" I dont trust you sorry... "
+			" I could not trust one such as you . . . "
 			])
 				Reset = true
 				
