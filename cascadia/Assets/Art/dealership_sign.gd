@@ -9,3 +9,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	#for area in $DealerShipArea.get_overlapping_areas() :
+		#if area.name == "BoatArea2D2" or "BodyArea" :
+			#z_index = 0
+		#else: 
+			#z_index = 1000

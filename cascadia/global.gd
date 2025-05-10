@@ -61,6 +61,9 @@ var part3Pos : Vector2 = Vector2(1984.025, -2081.0)
 var part1Obtained = false
 var part2Obtained = false
 var part3Obtained = false
+var part1TriggerOnce = false
+var part2TriggerOnce = false
+var part3TriggerOnce = false
 # Called when the node enters the scene tree for the first time.
 
 #Textbox stuff

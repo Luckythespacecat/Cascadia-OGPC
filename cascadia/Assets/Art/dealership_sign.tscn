@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://buctx81ti4008"]
+[gd_scene load_steps=7 format=3 uid="uid://buctx81ti4008"]
 
 [ext_resource type="Texture2D" uid="uid://484nm8emj8nw" path="res://Assets/Art/Dealership_Sign1.png" id="1_6beqv"]
 [ext_resource type="Script" uid="uid://ctqdqamhshl0t" path="res://Assets/Art/dealership_sign.gd" id="1_ysmlq"]
@@ -25,6 +25,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysmlq"]
+size = Vector2(131.5, 5.5)
+
 [node name="DealershipSign" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_ysmlq")
@@ -36,3 +39,12 @@ rotation = -0.378811
 sprite_frames = SubResource("SpriteFrames_m4bq3")
 frame = 2
 frame_progress = 0.778867
+
+[node name="DealerShipArea" type="Area2D" parent="."]
+z_index = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealerShipArea"]
+position = Vector2(-8, 29.75)
+shape = SubResource("RectangleShape2D_ysmlq")
+
+[connection signal="area_entered" from="DealerShipArea" to="." method="_on_dealer_ship_area_area_entered"]

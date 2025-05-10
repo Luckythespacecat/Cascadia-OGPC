@@ -196,6 +196,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if area.name == "RockArea" : 
 			justDamaged = true
 
+
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "FootArea" : 
 		if $Player/AnimatedSprite2D.animation != "Splash" and $Player/AnimatedSprite2D.animation != "SwimIdle" :

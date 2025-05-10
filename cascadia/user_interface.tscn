@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxp6esaousgn2"]
+[gd_scene load_steps=14 format=3 uid="uid://dxp6esaousgn2"]
 
 [ext_resource type="Texture2D" uid="uid://byeb6w7mpyv51" path="res://Assets/Art/navIcon.png" id="1_kxhmu"]
 [ext_resource type="Script" uid="uid://u81t868obtq2" path="res://user_interface.gd" id="1_up53h"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cqv5fr3b2pv6e" path="res://Assets/Art/SailDirectionArrow1.png" id="5_hsgek"]
 [ext_resource type="PackedScene" uid="uid://cmjyq5h6g6krt" path="res://hunger_bar.tscn" id="6_r3lf1"]
 [ext_resource type="Texture2D" uid="uid://bh8ahbuycptk6" path="res://Assets/Art/HungerbarText.png" id="7_hsgek"]
+[ext_resource type="Texture2D" uid="uid://ymcgf4u75kkh" path="res://Assets/Art/Part1Text.png" id="8_q4f8x"]
+[ext_resource type="Texture2D" uid="uid://c52ot1rjlvh4" path="res://Assets/Art/Part2Text.png" id="9_pe3dc"]
+[ext_resource type="Texture2D" uid="uid://dyguibcejkgne" path="res://Assets/Art/Part3Text.png" id="10_tsqwh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4522"]
 animations = [{
@@ -24,6 +27,33 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q287o"]
 size = Vector2(28.8, 28.8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hsgek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_q4f8x")
+}],
+"loop": true,
+"name": &"Part1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_pe3dc")
+}],
+"loop": true,
+"name": &"Part2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_tsqwh")
+}],
+"loop": true,
+"name": &"Part3",
+"speed": 5.0
+}]
 
 [node name="UserInterface" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -69,6 +99,18 @@ texture = ExtResource("7_hsgek")
 wait_time = 30.0
 autostart = true
 
+[node name="ObtainedText" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(1664, 1880)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_hsgek")
+animation = &"Part1"
+
+[node name="TextTimer" type="Timer" parent="ObtainedText"]
+wait_time = 2.0
+
 [connection signal="mouse_entered" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="SeagullSpawn" to="." method="_on_seagull_spawn_timeout"]
+[connection signal="timeout" from="ObtainedText/TextTimer" to="." method="_on_text_timer_timeout"]
