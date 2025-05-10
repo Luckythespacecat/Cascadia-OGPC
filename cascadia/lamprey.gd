@@ -5,6 +5,8 @@ func _ready():
 	Global.textPos = position
 
 func _process(delta):
+	if Global.Died :
+		position = Vector2(901,-314)
 	if Global.larryAppear == 3 :
 		$Body.visible = false
 		$Head.visible = false

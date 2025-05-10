@@ -26,17 +26,11 @@ func _process(delta: float) -> void:
 		if Global.partNumb == 0:
 			$PointLight2D.rotate(delta / 4)
 		elif Global.partNumb == 1 :
-			target_position = Global.part1Pos
-			direction = target_position - global_position
-			$PointLight2D.rotation = direction.angle()
+			$PointLight2D.rotation = deg_to_rad(-219.6)
 		elif Global.partNumb == 2 :
-			target_position = Global.part2Pos
-			direction = target_position - global_position
-			$PointLight2D.rotation = direction.angle()
+			$PointLight2D.rotation = deg_to_rad(-112.5)
 		elif Global.partNumb == 3 :
-			target_position = Global.part3Pos
-			direction = target_position - global_position
-			$PointLight2D.rotation = direction.angle()
+			$PointLight2D.rotation = deg_to_rad(-279.9)
 
 		if $PointLight2D.energy <= .5:
 			$PointLight2D.energy += .001

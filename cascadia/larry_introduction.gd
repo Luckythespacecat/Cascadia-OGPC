@@ -5,7 +5,8 @@ const mainScene = preload("res://main.tscn")
 var thispartisdone = false
 var triggeronce = false
 func _ready() -> void:
-	pass
+	Global.cutscene = 0
+	Global.larryAppear = 1
 
 func ReSetupScene() :
 	Global.boatDirection = 0
@@ -17,14 +18,18 @@ func ReSetupScene() :
 
 func _process(delta: float) -> void:
 	
+	if Global.Died :
+		$Camera2D.position = Vector2(0,0)
+	
 	if Dialoguemanager.current_line_index == 0 : 
 		$CanvasLayer/Sprite2D.position = lerp($CanvasLayer/Sprite2D.position, Vector2(913.0, 850.0), delta / 4)
 
 	if Input.is_action_just_pressed("advance_dialogue") or Dialoguemanager.current_line_index != 0 :
 		$CanvasLayer/Sprite2D.position = lerp($CanvasLayer/Sprite2D.position, Vector2(936.0, 1127.0), delta / 2)
 
-	if thispartisdone == false and triggeronce == false:
-		Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 25, Global.textPos.y - 40), [
+	if not Global.Died :
+		if thispartisdone == false and triggeronce == false:
+			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 25, Global.textPos.y - 40), [
 		"  Hey you, its about time you woke up  ",
 		"  The names Larry  ",
 		"  Larry the Lamprey, that is!  ",
@@ -35,11 +40,25 @@ func _process(delta: float) -> void:
 		"  even though I'm most likely...  ",
 		"  a figment of your imagination!  "
 		])
-		triggeronce = true
+			triggeronce = true
+	if Global.Died :
+		if thispartisdone == false and triggeronce == false:
+			Dialoguemanager.start_dialogue( Vector2(Global.textPos.x - 25, Global.textPos.y - 40), [
+		"  Hmm, seems like you just starved to death  ",
+		"  Thats a shame, you better start eating more fish  ",
+		"  I'll give you another chance I suppose  "
+		])
+			triggeronce = true
 	
 	if Dialoguemanager.current_line_index == 8 and Dialoguemanager.can_advance_line == true and thispartisdone == false:   
 		Global.larryAppear = 2
 		$LarryOut.start()
+		Dialoguemanager.is_dialogue_active = false
+		thispartisdone = true
+	if Dialoguemanager.current_line_index == 2 and Dialoguemanager.can_advance_line == true and thispartisdone == false and Global.Died:   
+		Global.larryAppear = 2
+		$LarryOut.start()
+		Global.SceneJustIn = "Death"
 		Dialoguemanager.is_dialogue_active = false
 		thispartisdone = true
 
@@ -69,8 +88,8 @@ func _on_larry_out_timeout() -> void:
 	Global.larryAnimationFinished = 0
 	Dialoguemanager.text_box.queue_free()
 	Dialoguemanager.current_line_index = 0
+	Global.Hunger = 250
 	get_tree().change_scene_to_packed(mainScene)
-
 
 func _on_lamprey_intro_finished() -> void:
 	$LampreyIntro.play()

@@ -21,9 +21,14 @@ func apply_shake() :
 func _process(delta: float) -> void:
 	
 	if damagedNum < Global.damage :
+		randomStrength = 30
 		apply_shake()
 
 	damagedNum = Global.damage
+
+	if Global.Hunger < 40 :
+		randomStrength = 15
+		apply_shake()
 
 	if shake_strength > 0 :
 		shake_strength = lerpf(shake_strength, 0 ,shakeFade * delta)
@@ -38,10 +43,10 @@ func _process(delta: float) -> void:
 			zoom.y = lerp(zoom.y, 4.0, delta / 4 )
 	if Global.cutscene == 1 :
 		CameraToPlayer()
-		if zoom.y > 2.0 or  zoom.y < 2.0:
-			zoom.y = lerp(zoom.y, 2.0, delta / 4 )
-		if zoom.x > 2.0 or  zoom.x < 2.0:
-			zoom.x = lerp(zoom.x, 2.0, delta / 4)
+		if zoom.y > 1.75 or  zoom.y < 1.75:
+			zoom.y = lerp(zoom.y, 1.75, delta / 4 )
+		if zoom.x > 1.75 or  zoom.x < 1.75:
+			zoom.x = lerp(zoom.x, 1.75, delta / 4)
 
 
 func randomOffset() -> Vector2:

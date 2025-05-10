@@ -103,12 +103,10 @@ sprite_frames = SubResource("SpriteFrames_6u8dp")
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_ayap7")
 animation = &"Idle"
 
 [node name="Transition2" type="AnimatedSprite2D" parent="."]
-visible = false
 texture_filter = 1
 scale = Vector2(20, 20)
 sprite_frames = SubResource("SpriteFrames_xeufa")
@@ -120,8 +118,6 @@ wait_time = 5.0
 wait_time = 2.0
 
 [node name="ManateeScene" type="Area2D" parent="."]
-position = Vector2(0.5, -5.5)
-scale = Vector2(1, 0.639999)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ManateeScene"]
 position = Vector2(0.5, -4)

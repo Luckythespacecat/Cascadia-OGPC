@@ -16,13 +16,10 @@ var triggerOnce1 = false
 var NiceScale = 0 # Adds if player says right thing subtracts if they dont.
 var Reset = false
 var ResetTriggeronce = false
-
 # Vector variables for the positions of text, change these to change positions
-var wetherbySpeakingPos : Vector2 = Vector2(self.global_position.x -600 , self.global_position.y -400)
-var Response1Pos : Vector2 = Vector2(self.global_position.x - 850, self.global_position.y - 100)
-var Response2Pos : Vector2 = Vector2(self.global_position.x - 350, self.global_position.y - 100)
 
 func _ready():
+	$Transition2.visible = false
 	dialogue_step = 0
 	waiting_for_choice = false
 	choiceready = false
@@ -33,9 +30,12 @@ func _ready():
 	time = false
 
 func _process(delta: float) -> void:
+	
+	Global.ManateePos = $BodySprite.position
 	$Transition2.z_index += 1
 	
 	if Reset :
+		$Transition2.visible = true
 		$Transition2.scale = lerp($Transition2.scale, Vector2(1,1), delta)
 		if not ResetTriggeronce :
 			$Transition2/TryAgain.start()
@@ -59,7 +59,8 @@ func fail():
 func manatee10():
 	#Start
 	if dialogue_step == 0 and Global.ManateeScene :
-		Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+		Global.boatDirection = 0
+		Dialoguemanager.start_dialogue(Global.wetherbySpeakingPos, [
 			"  Most incredible, a human !  ",
 			"  The name's Weatherby, my dear - ah, what is your name?  ",
 			"  Meredith you say, what a nice name  ",
@@ -71,11 +72,11 @@ func manatee10():
 	#show choice q1
 	elif dialogue_step == 1 : # and not waiting_for_choice:
 		if Global.DontSpacebar == false:
-			Dialoguemanager.start_dialogue(Response1Pos, [
+			Dialoguemanager.start_dialogue(Global.Response1Pos, [
 		"  I'm looking for a radio component, have you seen one? (Press 'q')  ",
 		])
-			Dialoguemanager2.start_dialogue(Response2Pos, [
-		"  Just to meet new people, find anything cool lately? (Press 'e')  ",
+			Dialoguemanager2.start_dialogue(Global.Response2Pos, [
+		"  Just talking to new people, find anything cool lately? (Press 'e')  ",
 		])
 			Global.DontSpacebar = true
 			question1 = true
@@ -89,7 +90,7 @@ func manatee10():
 			Dialoguemanager2.text_box.visible = false
 			NiceScale -= 1
 			#asking question here
-			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			Dialoguemanager.start_dialogue(Global.wetherbySpeakingPos, [
 			"  Perhaps . . .  ",
 			"  Assuming I did have such an object,  ",
 			"  why, I might hesitate to give it away . . .  "
@@ -104,7 +105,7 @@ func manatee10():
 			Dialoguemanager2.text_box.visible = false
 			NiceScale += 1
 			#asking question here
-			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			Dialoguemanager.start_dialogue(Global.wetherbySpeakingPos, [
 			"  Oh my, I appreciate you speaking so politely,  ",
 			"  but, yes, I did happen across what you are looking for.  ",
 			"  Here, have a good look !  ",
@@ -118,10 +119,10 @@ func manatee10():
 	#q2 start
 	elif dialogue_step == 2 : # and not waiting_for_choice:
 		if Global.DontSpacebar == false:
-			Dialoguemanager.start_dialogue(Response1Pos, [
+			Dialoguemanager.start_dialogue(Global.Response1Pos, [
 		"  Can I have that, I really need that radio piece (Press 'q')  ",
 		])
-			Dialoguemanager2.start_dialogue(Response2Pos, [
+			Dialoguemanager2.start_dialogue(Global.Response2Pos, [
 		"   Oh nice, could I buy it off you?  (Press 'e')  ",
 		])
 			Global.DontSpacebar = true
@@ -135,7 +136,7 @@ func manatee10():
 			Dialoguemanager2.text_box.visible = false
 			NiceScale -= 1
 			#asking question here
-			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			Dialoguemanager.start_dialogue(Global.wetherbySpeakingPos, [
 			"  Ah, I may have before, but you came at the wrong time . . . ",
 			"  I just named it Clyde,  ", 
 			"  it is my friend . . .  "
@@ -148,7 +149,7 @@ func manatee10():
 			Global.optionsgiven = false
 			Dialoguemanager2.text_box.visible = false
 			NiceScale += 1
-			Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+			Dialoguemanager.start_dialogue(Global.wetherbySpeakingPos, [
 			"  I would but I just adopted him  ",
 			"  I call him Clyde  ",
 			"  The Manatee oath states we can't give away named objects . . .   ",
@@ -161,11 +162,11 @@ func manatee10():
 		dialogue_step = 3
 	elif dialogue_step == 3 : # and not waiting_for_choice:
 		if Global.DontSpacebar == false:
-			Dialoguemanager.start_dialogue(Response1Pos, [
+			Dialoguemanager.start_dialogue(Global.Response1Pos, [
 		"  Could I adopt Clyde? (Press 'q')  ",
 		])
-			Dialoguemanager2.start_dialogue(Response2Pos, [
-		"  I'll adopt him on one condition, his name will forever remain as Clyde (Press 'e')  ",
+			Dialoguemanager2.start_dialogue(Global.Response2Pos, [
+		"  I'll adopt him on one condition, his name will forever remain as Darwin (Press 'e')  ",
 		])
 			Global.DontSpacebar = true
 			choicetime = 0.1
@@ -179,14 +180,14 @@ func manatee10():
 			NiceScale += 1
 			#asking question here
 			if  NiceScale > 0 :
-				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+				Dialoguemanager.start_dialogue(Global.wetherbySpeakingPos, [
 			"  Why, by all means, that might work !  ",
 			"  Please, allow Clyde to always have a good home . . .  ",
 			"  Here you are, farewell !  "
 			])
 				givePart()
 			else :
-				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+				Dialoguemanager.start_dialogue(Global.wetherbySpeakingPos, [
 			" I could not trust one such as you . . .  "
 				])
 				Reset = true
@@ -200,17 +201,18 @@ func manatee10():
 			NiceScale -= 1
 			
 			if  NiceScale > 0 :
-				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
-			"  That might work, actually !  ",
-			"  Just make sure the name never changes.  ",
-			"  Farewell !  "
+				Dialoguemanager.start_dialogue(Global.wetherbySpeakingPos, [
+			"  Why, by all means, that might work !  ",
+			"  Please, allow Darwin to always have a good home . . .  ",
+			"  Here you are, farewell !  "
 			])
 				givePart()
 			else :
-				Dialoguemanager.start_dialogue(wetherbySpeakingPos, [
+				Dialoguemanager.start_dialogue(Global.wetherbySpeakingPos, [
 			" I could not trust one such as you . . . "
 			])
 				Reset = true
+				
 				
 			
 			dialogue_step = 4.5
@@ -219,6 +221,7 @@ func manatee10():
 func givePart():
 	Global.part3Obtained = true
 	Global.ManateeScene = false
+	Global.ManateeEndScene = true
 
 
 func ResetScene():

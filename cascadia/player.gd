@@ -108,7 +108,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	
 	if $AnimatedSprite2D.animation == "Dive" :
 		stopAnimation = false
-		Global.Hunger += 10
+		Global.Hunger += 35
 		$drownTimer.start()
 
 func drown():
@@ -126,7 +126,8 @@ func _on_t_imer_wait_death_timeout() -> void:
 		$AnimatedSprite2D.pause()
 
 func _on_hunger_timer_timeout() -> void:
-	Global.Hunger -= 2
+	if not Global.ManateeScene :
+		Global.Hunger -= 2
 
 func _on_swim_area_area_entered(area: Area2D) -> void:
 	if area.name == "FishArea" and Global.onBoat == false: 
@@ -134,7 +135,8 @@ func _on_swim_area_area_entered(area: Area2D) -> void:
 	if area.name == "LarryArea" and Global.onBoat == false: 
 		z_index = -1
 	if area.name == "ManateeScene":
-		Global.ManateeScene = true
+		if not Global.ManateeEndScene :
+			Global.ManateeScene = true
 func _on_swim_area_area_exited(area: Area2D) -> void:
 	if area.name == "FishArea" and Global.onBoat == false: 
 		enteredFish = false

@@ -38,7 +38,6 @@ size = Vector2(96, 88)
 b = Vector2(-295.027, -289.756)
 
 [node name="Main" type="Node2D"]
-position = Vector2(-42, 0)
 script = ExtResource("1_7mycd")
 
 [node name="Map" parent="." instance=ExtResource("3_ad2nh")]
@@ -94,7 +93,8 @@ position = Vector2(643, 159)
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighthouse"]
 position = Vector2(0.75, -146.75)
-scale = Vector2(36.3644, 34.6553)
+rotation = -4.88518
+scale = Vector2(20, 20)
 texture = ExtResource("5_kek77")
 
 [node name="Node2D" type="Node2D" parent="Lighthouse/PointLight2D"]
@@ -110,7 +110,7 @@ shape = SubResource("SegmentShape2D_ycdy4")
 
 [node name="Boat" parent="." instance=ExtResource("5_hm6kk")]
 z_index = 1
-position = Vector2(24, -24)
+position = Vector2(-239, -116)
 
 [node name="Player" parent="Boat" instance=ExtResource("2_ybs1s")]
 z_index = 2
@@ -194,6 +194,12 @@ position = Vector2(191, -398)
 [node name="Collision Objects" type="Node2D" parent="."]
 
 [node name="Death" parent="." instance=ExtResource("20_82xsv")]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1984.03, -2081)
+
+[node name="TopText" type="Sprite2D" parent="."]
+position = Vector2(2218, -1992)
 
 [connection signal="area_entered" from="Lighthouse/PointLight2D/LighthouseLightArea" to="." method="_on_lighthouse_light_area_area_entered"]
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]

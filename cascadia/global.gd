@@ -15,8 +15,8 @@ var toggle : bool = true
 var wind : float = 1 
 var onBoat : bool = false
 var boatDirection : int = 0 
-var boatPos : Vector2 = Vector2(0,0)
-var NewBoatPos : Vector2 = Vector2(0, 60)
+var boatPos : Vector2 = Vector2(-239.0,-116.0)
+var NewBoatPos : Vector2 = Vector2(361.0, 80)
 var AdjustSail : bool = false
 var SailMovedE : bool = false
 var SailMovedQ : bool = false
@@ -26,6 +26,7 @@ var BoatInputStop : int = 15
 #Scene switching                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 var SceneJustIn : String = "Main"
 var cutscene : int = 0
+var Died = false
 
 #Larry
 var larryAppear = 1
@@ -53,9 +54,9 @@ var partNumb : int = 0 #Interger that will repersent what number of part the pla
 #Change above variable when the player needs to find a certain piece, 
 #For example if the player gets to the lighthouse and presses interact on the telescope
 # then it changes partNumb to 1 and the lighthouse will automatically look at the part1pos Vector
-var part1Pos : Vector2 = Vector2(-793.0, -766.0)
-var part2Pos : Vector2 = Vector2(-793.0, -766.0)
-var part3Pos : Vector2 = Vector2(24, -24)
+var part1Pos : Vector2 = Vector2(3590.0, -647.0)
+var part2Pos : Vector2 = Vector2(-632.975, 3930.0)
+var part3Pos : Vector2 = Vector2(1984.025, -2081.0)
 #Change these variables when the player actually gets the parts
 var part1Obtained = false
 var part2Obtained = false
@@ -79,14 +80,24 @@ var NoDown = false
 
 #Manatee
 var ManateeScene = false
+var ManateeEndScene = false
+var ManateePos : Vector2 = Vector2(0,0)
+var wetherbySpeakingPos : Vector2 = Vector2(1986.0 , -2185.0)
+var Response1Pos : Vector2 = Vector2(1724.0, -1998.0)
+var Response2Pos : Vector2 = Vector2(2218.0, -1998.0)
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Hunger > 250 :
+		Hunger = 250
+	if Died :
+		Hunger = 250
+	
 	if SceneJustIn == "Lighthouse" and boatDirection == 0 :
-		NewBoatPos = Vector2(320.0, 641.0)
+		NewBoatPos = Vector2(361.0, 84.0)
 	elif SceneJustIn == "Main" :
 		NewBoatPos = boatPos
 	for keycode in range(KEY_A, KEY_Z + 1):  # Or any range you want

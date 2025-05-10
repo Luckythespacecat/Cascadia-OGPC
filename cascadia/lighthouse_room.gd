@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 		$Doorlight.energy = .35
 
 func _on_door_area_body_entered(body: Node2D) -> void:
-	if body.name == "playerBody":
+	if body.name == "playerBody" and not Global.part3Obtained :
 		Global.SceneJustIn = "Lighthouse"
 		print("Scene switching...")
 		if main_scene:
@@ -60,3 +60,7 @@ func _on_raindrops_finished() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $playerBody/AnimatedSprite2D.animation == "Pick_Up" :
 		$playerBody/AnimatedSprite2D.play("Idle")
+
+
+func _on_you_win_timeout() -> void:
+	get_tree().change_scene_to_file("res://ending.tscn")

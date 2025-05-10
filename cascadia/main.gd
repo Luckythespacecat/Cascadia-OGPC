@@ -7,7 +7,6 @@ const ManateeResource = preload("res://manatee.tscn")
 const radioParts = preload("res://parts.tscn") # load the parts scene for radio repair`
 const fish = preload("res://fish.tscn")
 
-
 var drownLarryScene = false
 var texboxRemove = false
 var wood_instances = {}
@@ -18,7 +17,7 @@ var triggeronceDrown = false
 var triggeronceFish = false
 var triggeronceLighthouse = false
 var fishInstance : Node 
-var rockTriggerOnce = false
+var rockTriggerOnce = false 
 
 func setupBarry():
 	var BarryInstance = BarryResource.instantiate()
@@ -76,12 +75,17 @@ func _ready() -> void:
 	if Global.Tutorialtriggeronce == true :
 		Global.larryAppear = 3
 	if Global.partNumb == 1 :
-		setupManatee()
+		setupBarry()
 	elif Global.partNumb == 2:
 		setupDealership()
 	elif Global.partNumb == 3:
-		setupBarry()
+		setupManatee()
 	$Boat/Player.position.y -= 20
+	if Global.Died :
+		print("Deathreset works?")
+		ReSetupScene()
+		Global.SceneJustIn = "Main"
+		Global.Died = false
 
 func ReSetupScene() :
 	
@@ -89,6 +93,7 @@ func ReSetupScene() :
 	Global.PlayerY += 10
 	$SceneReset.start()
 	print("Timer started")
+
 
 func _process(delta: float) -> void:
 	
@@ -128,6 +133,7 @@ func _process(delta: float) -> void:
 		get_tree().reload_current_scene()
 		ReSetupScene()
 		Global.SceneJustIn = "Main"
+	
 
 	if Global.Dead == true:
 		if Global.FirstDrown == true :
@@ -221,7 +227,7 @@ func TutorialLarry() :
 
 func _on_lighthouse_light_area_area_entered(area: Area2D) -> void:
 	if area.name == "BodyArea" :
-		if Global.timeOfDay == "Night" and Global.AtGreenRock == false and Global.TalkingToBarry == false and Global.LighthouseCutsceneDone == false:
+		if Global.partNumb == 0 and Global.timeOfDay == "Night" and Global.AtGreenRock == false and Global.TalkingToBarry == false and Global.LighthouseCutsceneDone == false:
 				print("Should speak then")
 				Global.boatDirection = 0
 				
@@ -271,7 +277,6 @@ func RockLarry():
 		"  they will for sure mess up your boat  ",
 		"  press 'E' on driftwood to repair it  " ])
 		Global.triggeronceRock = true
-		
 
 func _on_end_dialogue_timeout() -> void:
 	if texboxRemove == true:

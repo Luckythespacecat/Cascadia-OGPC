@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c2e14ar8hpm4t" path="res://Assets/Sound/SFX/Hit_hurt 3.wav" id="5_td361"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_06lh1"]
-points = PackedVector2Array(-57, 4, -51, 12.5, 44.5, 11, 51.5, 9, 34, -5.5, 9, -14, -26.5, -16.5, -50.5, -9.5)
+points = PackedVector2Array(-57, 4, -51, 12.5, 44.5, 11, 51.5, 9, 34, -1.5, 5.5, -7.5, -32, -7, -53.5, -3)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_72krn"]
 animations = [{
@@ -30,7 +30,7 @@ animations = [{
 }]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_td361"]
-points = PackedVector2Array(-56.5, 4, -51.5, 12, 44.5, 12, 52, 9, 34, -6, 7.5, -14, -27, -16, -51, -9.5)
+points = PackedVector2Array(-56.5, 4, -51.5, 12, 44.5, 12, 52, 9, 33.5, -2.5, 6, -6.5, -32.5, -6.5, -54, -2.5)
 
 [node name="Car" type="Node2D"]
 scale = Vector2(2, 2)
