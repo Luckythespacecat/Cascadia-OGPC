@@ -4,6 +4,7 @@ var move : int = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Meridith.play("Idle")
+	$Survived.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,7 +29,9 @@ func _on_fly_in_timeout() -> void:
 	if move == 1:
 		move = 2
 
-
 func _on_rope_done_timeout() -> void:
 	move = 3 
-	
+
+
+func _on_last_timer_timeout() -> void:
+	$Survived.visible = true
