@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dari3urqap7db"]
+[gd_scene load_steps=27 format=3 uid="uid://dari3urqap7db"]
 
 [ext_resource type="Script" uid="uid://bf5q0piq01r8i" path="res://main.gd" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bxv1m6f121ouq" path="res://player.tscn" id="2_ybs1s"]
@@ -20,7 +20,6 @@
 [ext_resource type="AudioStream" uid="uid://i6dvhdo8wy54" path="res://Assets/Sound/Music/ANewFuture.mp3" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://nayarson8r7d" path="res://rock.tscn" id="14_w48qg"]
 [ext_resource type="PackedScene" uid="uid://mnh5o2lcihla" path="res://death.tscn" id="20_82xsv"]
-[ext_resource type="PackedScene" uid="uid://buctx81ti4008" path="res://Assets/Art/dealership_sign.tscn" id="21_getpj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(1842, 50)
@@ -201,9 +200,6 @@ position = Vector2(1984.03, -2081)
 
 [node name="TopText" type="Sprite2D" parent="."]
 position = Vector2(2218, -1992)
-
-[node name="DealershipSign" parent="." instance=ExtResource("21_getpj")]
-position = Vector2(62, -326)
 
 [connection signal="area_entered" from="Lighthouse/PointLight2D/LighthouseLightArea" to="." method="_on_lighthouse_light_area_area_entered"]
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]

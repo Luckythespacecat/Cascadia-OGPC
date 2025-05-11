@@ -2,14 +2,14 @@ extends Node
 
 var TimeOut1 = 0
 var SkyFinalPos = Vector2(900.0, 500.0)
-
+var mouse_in_settings = false
 # These variables and functions are to animate the elements of the main menu.
 func _ready() -> void:
 	var Seatween = get_tree().create_tween()
 	Seatween.tween_property($Sea, "position", Vector2(700, 550), 3).set_trans(Tween.TRANS_QUINT)
 
 	var Landtween = get_tree().create_tween()
-	Landtween.tween_property($Island, "position", Vector2(1180, 910), 3).set_trans(Tween.TRANS_QUINT)
+	Landtween.tween_property($Island, "position", Vector2(1180, 940), 3).set_trans(Tween.TRANS_QUINT)
 
 	var Skytween = get_tree().create_tween()
 	Skytween.tween_property($Sky, "position", Vector2(855.65, 474.5), 3).set_trans(Tween.TRANS_QUART)
@@ -24,13 +24,15 @@ func _ready() -> void:
 	CreditsButtonPos.tween_property($Icon2, "position", Vector2(1700.0, 940.0), 3).set_trans(Tween.TRANS_QUART)
 
 	var SettingsButtonPos = get_tree().create_tween()
-	SettingsButtonPos.tween_property($SettingsButton, "position", Vector2(1500.0, 505.0), 3).set_trans(Tween.TRANS_QUART)
+	SettingsButtonPos.tween_property($TextBox, "position", Vector2(1500.0, 505.0), 3).set_trans(Tween.TRANS_QUART)
 
 #Initiates the title's animation
 	$Name/StretchOut.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if mouse_in_settings and Input.is_action_just_pressed("Click"):
+		get_tree().change_scene_to_file("res://settings_menu.tscn")
 
 #This creates the background effect of moving opposite of the mouse. The TimeOut1 variable is to track when the
 #sky is in position.
@@ -67,5 +69,11 @@ func _on_play_button_pressed() -> void:
 func _on_credits_button_down() -> void:
 	get_tree().change_scene_to_file("res://credits_menu.tscn")
 
-func _on_settings_button_down() -> void:
-	get_tree().change_scene_to_file("res://settings_menu.tscn")
+
+
+func _on_button_area_mouse_entered() -> void:
+	mouse_in_settings = true
+
+
+func _on_button_area_mouse_exited() -> void:
+	mouse_in_settings = false

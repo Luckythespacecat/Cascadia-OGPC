@@ -40,7 +40,6 @@ func BoatDamage():
 		pass
 		
 func boatMovement():
-	$Sail2.play()
 	Global.boatDirection += 1
 	Global.SailMovedE = true
 	if Global.boatDirection > 8:
@@ -50,7 +49,6 @@ func boatMovement():
 
 
 func boatMovement2():
-	$Sail2.play()
 	Global.boatDirection -= 1
 	Global.SailMovedQ = true
 	if Global.boatDirection > 8:

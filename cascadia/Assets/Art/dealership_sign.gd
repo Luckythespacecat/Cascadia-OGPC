@@ -13,4 +13,4 @@ func _process(delta: float) -> void:
 		#if area.name == "BoatArea2D2" or "BodyArea" :
 			#z_index = 0
 		#else: 
-			#z_index = 1000
+			#z_index = 1000S

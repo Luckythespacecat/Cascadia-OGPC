@@ -120,7 +120,7 @@ wait_time = 5.0
 wait_time = 2.0
 
 [node name="ManateeScene" type="Area2D" parent="."]
-position = Vector2(0.5, -5.5)
+position = Vector2(0, -4.5)
 scale = Vector2(1, 0.639999)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ManateeScene"]
