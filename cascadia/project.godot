@@ -26,6 +26,12 @@ Dialoguemanager2="*res://dialoguemanager2.gd"
 window/size/viewport_width=1784
 window/size/viewport_height=1004
 
+[editor]
+
+movie_writer/mjpeg_quality=1.0
+movie_writer/movie_file="C:/Users/ilike/OneDrive/Documents/cascadia/Cascadia-OGPC/cascadia/Clips/Recording.avi"
+movie_writer/fps=24
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gaea/plugin.cfg")
@@ -130,3 +136,8 @@ Dialogue2={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
