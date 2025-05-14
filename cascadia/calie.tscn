@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl66n8w0uy63r"]
+
+[ext_resource type="Texture2D" uid="uid://dyyp6u7q00suf" path="res://Assets/Art/Calie/Calie1.png" id="1_1rnjp"]
+[ext_resource type="Script" uid="uid://bh8hw8vg7jigq" path="res://calie.gd" id="1_e2ne0"]
+[ext_resource type="Texture2D" uid="uid://b8s5ftewfjbp7" path="res://Assets/Art/Calie/Calie2.png" id="2_e2ne0"]
+[ext_resource type="Texture2D" uid="uid://bhsdhf57es3da" path="res://Assets/Art/Calie/Calie3.png" id="3_7migk"]
+[ext_resource type="Texture2D" uid="uid://dcldk3421emtf" path="res://Assets/Art/Calie/Calie4.png" id="4_3calo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j7r3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1rnjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e2ne0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7migk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3calo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Calie" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_e2ne0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_j7r3f")

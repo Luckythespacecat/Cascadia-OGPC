@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4bwcixkyd48q"]
+
+[ext_resource type="Script" uid="uid://c3ft3b0fjotim" path="res://squibert.gd" id="1_guvj6"]
+[ext_resource type="Texture2D" uid="uid://igprftov3cye" path="res://Assets/Art/Squibert/Squidbert1.png" id="1_s0gxe"]
+[ext_resource type="Texture2D" uid="uid://dms1hqo4fooqr" path="res://Assets/Art/Squibert/Squidbert2.png" id="2_guvj6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lgm12"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s0gxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_guvj6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0gxe"]
+size = Vector2(134, 109)
+
+[node name="Squibert" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_guvj6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_lgm12")
+frame = 1
+frame_progress = 0.0165299
+
+[node name="SquibertArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SquibertArea"]
+position = Vector2(-0.5, -10)
+shape = SubResource("RectangleShape2D_s0gxe")

@@ -40,6 +40,10 @@ var Tutorialtriggeronce : bool = false
 var triggeronceRock : bool = false
 var RockLarrySceneDone = false
 var StartRockLarryScene = false
+var LarrySquidScene = false
+var LarrySquidSceneTriggered = false
+var StartSquidLarry = false
+
 #barrys rocks
 var TalkingToBarry = false
 var AtGreenRock = false

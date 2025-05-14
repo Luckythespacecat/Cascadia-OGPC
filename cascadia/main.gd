@@ -96,6 +96,9 @@ func ReSetupScene() :
 
 
 func _process(delta: float) -> void:
+	if Global.StartSquidLarry == true:
+		print("StartScene")
+		SquidLarryCutscene()
 	
 	if Dialoguemanager.is_dialogue_active == false and Global.triggeronceRock == true and Global.RockLarrySceneDone == false:
 		$Lamprey/EndDialogue.start()
@@ -260,11 +263,30 @@ func FishLarryCutscene():
 		Dialoguemanager.is_dialogue_active = false
 		print("Hey dont stay idle")
 		$Lamprey/EndDialogue.start()
-		print("Fish larry out")
 		Global.larryAppear = 2
 		$Boat/Player/drownTimer.start()
 		Global.foodCutscene = false
 		fishInstance.CutsceneOver()
+func SquidLarryCutscene():
+	print("iniitiate custscne for squid")
+	Global.boatDirection = 0
+	$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
+	$Lamprey.global_position.y = $Boat/Player.global_position.y
+	Global.textPos = $Lamprey.position
+	if Global.LarrySquidSceneTriggered == false :
+		Global.LarrySquidScene = true
+		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
+		"  Hey its a baby Squid ",
+		"  Legends say if you eat a youngling after the collapse of the Northwest your Hunger is cured  ",
+		"  Ofcourse it is just a legend  " ])
+		Global.LarrySquidSceneTriggered = true
+		
+	if Dialoguemanager.is_dialogue_active == false and Global.TalkingToBarry == false and Global.AtGreenRock == false and Global.LarrySquidScene == true:
+		Dialoguemanager.is_dialogue_active = false
+		$Lamprey/EndDialogue.start()
+		Global.larryAppear = 2
+		$Boat/Player/drownTimer.start()
+		Global.StartSquidLarry = false
 
 func RockLarry():
 	Global.larryAppear = 1
@@ -277,6 +299,7 @@ func RockLarry():
 		"  they will for sure mess up your boat  ",
 		"  press 'E' on driftwood to repair it  " ])
 		Global.triggeronceRock = true
+		
 
 func _on_end_dialogue_timeout() -> void:
 	if texboxRemove == true:
