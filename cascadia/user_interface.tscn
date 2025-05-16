@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxp6esaousgn2"]
+[gd_scene load_steps=15 format=3 uid="uid://dxp6esaousgn2"]
 
 [ext_resource type="Texture2D" uid="uid://byeb6w7mpyv51" path="res://Assets/Art/navIcon.png" id="1_kxhmu"]
 [ext_resource type="Script" uid="uid://u81t868obtq2" path="res://user_interface.gd" id="1_up53h"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ymcgf4u75kkh" path="res://Assets/Art/Part1Text.png" id="8_q4f8x"]
 [ext_resource type="Texture2D" uid="uid://c52ot1rjlvh4" path="res://Assets/Art/Part2Text.png" id="9_pe3dc"]
 [ext_resource type="Texture2D" uid="uid://dyguibcejkgne" path="res://Assets/Art/Part3Text.png" id="10_tsqwh"]
+[ext_resource type="Texture2D" uid="uid://dmwbcth000pdl" path="res://Assets/Art/CameraCrimsonFilter.png" id="11_pe3dc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4522"]
 animations = [{
@@ -109,6 +110,12 @@ animation = &"Part1"
 
 [node name="TextTimer" type="Timer" parent="ObtainedText"]
 wait_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1750, 736)
+scale = Vector2(10.9841, 6.30089)
+texture = ExtResource("11_pe3dc")
 
 [connection signal="mouse_entered" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArrow/Area2D" to="." method="_on_area_2d_mouse_exited"]

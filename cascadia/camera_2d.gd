@@ -19,6 +19,8 @@ func apply_shake() :
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.YOUATETHESQUID == true :
+		Global.cutscene = 3
 	
 	if damagedNum < Global.damage :
 		randomStrength = 30
@@ -47,6 +49,10 @@ func _process(delta: float) -> void:
 			zoom.y = lerp(zoom.y, 1.75, delta / 4 )
 		if zoom.x > 1.75 or  zoom.x < 1.75:
 			zoom.x = lerp(zoom.x, 1.75, delta / 4)
+	if Global.cutscene == 3:
+		CameraToPlayer()
+		zoom.x = lerp(zoom.x, 7.0, delta / 8)
+		zoom.y = lerp(zoom.y, 7.0, delta / 8 )
 
 
 func randomOffset() -> Vector2:

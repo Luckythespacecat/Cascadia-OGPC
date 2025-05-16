@@ -43,6 +43,7 @@ var StartRockLarryScene = false
 var LarrySquidScene = false
 var LarrySquidSceneTriggered = false
 var StartSquidLarry = false
+var YOUATETHESQUID = false
 
 #barrys rocks
 var TalkingToBarry = false

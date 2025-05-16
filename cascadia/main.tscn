@@ -110,6 +110,15 @@ z_index = 10
 position = Vector2(-0.0473204, -0.0812644)
 shape = SubResource("SegmentShape2D_ycdy4")
 
+[node name="Squibert" parent="Lighthouse" instance=ExtResource("21_ryguw")]
+position = Vector2(-442, 86)
+scale = Vector2(1, 1)
+
+[node name="Calie" parent="Lighthouse" instance=ExtResource("21_getpj")]
+z_index = 100
+position = Vector2(-290.5, -221)
+scale = Vector2(1, 1)
+
 [node name="Boat" parent="." instance=ExtResource("5_hm6kk")]
 z_index = 1
 position = Vector2(-239, -116)
@@ -202,12 +211,6 @@ position = Vector2(1984.03, -2081)
 
 [node name="TopText" type="Sprite2D" parent="."]
 position = Vector2(2218, -1992)
-
-[node name="Squibert" parent="." instance=ExtResource("21_ryguw")]
-position = Vector2(-134, 337)
-
-[node name="Calie" parent="." instance=ExtResource("21_getpj")]
-position = Vector2(-20, -354)
 
 [connection signal="area_entered" from="Lighthouse/PointLight2D/LighthouseLightArea" to="." method="_on_lighthouse_light_area_area_entered"]
 [connection signal="inWater" from="Boat" to="Boat/Player" method="_on_boat_in_water"]

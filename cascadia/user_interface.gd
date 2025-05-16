@@ -9,6 +9,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.YOUATETHESQUID == true :
+		$Sprite2D.modulate = lerp($Sprite2D.modulate, Color(255 , 255 , 255 , 184), delta / 4)
+	
 	if Global.part1Obtained and not Global.part1TriggerOnce:
 		$ObtainedText.visible = true
 		$ObtainedText.play("Part1")

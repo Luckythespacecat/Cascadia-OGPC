@@ -3,6 +3,7 @@ extends Node2D
 var PlayerPos : Vector2
 var stopAnimation : bool = false
 var enteredFish = false
+var enteredSquid = false
 var boattriggeronce =  false
 var boattriggeronce2 =  false
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +16,10 @@ func _process(delta: float) -> void:
 	if Global.foodCutscene == true:
 		$AnimatedSprite2D.play("SwimIdle")
 	if enteredFish == true:
+		if Input.is_action_just_pressed("interact") and stopAnimation == false :
+			stopAnimation = true
+			$AnimatedSprite2D.play("Dive")
+	if enteredSquid :
 		if Input.is_action_just_pressed("interact") and stopAnimation == false :
 			stopAnimation = true
 			$AnimatedSprite2D.play("Dive")
@@ -38,7 +43,7 @@ func _process(delta: float) -> void:
 		if Global.onBoat == false :
 			$AnimatedSprite2D.play("SwimIdle")
 	
-	if Global.TalkingToBarry == false and Global.AtGreenRock == false and Global.tutorial == true and not Global.ManateeScene:
+	if not Global.StartSquidLarry and Global.TalkingToBarry == false and Global.AtGreenRock == false and Global.tutorial == true and not Global.ManateeScene:
 	#basic movement if statements
 		#Sets the animation to idle if input is stopped
 		if Global.foodCutscene == false and stopAnimation == false and not Input.is_action_pressed("ui_accept") and $AnimatedSprite2D.animation != "Splash" and (Input.is_action_just_released("Down") or Input.is_action_just_released("Up") or Input.is_action_just_released("Left") or Input.is_action_just_released("Right")) and $AnimatedSprite2D.animation != "Drown" :
@@ -125,7 +130,9 @@ func _on_hunger_timer_timeout() -> void:
 
 func _on_swim_area_area_entered(area: Area2D) -> void:
 	if area.name == "SquibertArea" :
-		Global.StartSquidLarry == true
+		enteredSquid = true
+		if Global.LarrySquidSceneTriggered == false:
+			Global.StartSquidLarry = true
 	if area.name == "FishArea" and Global.onBoat == false: 
 		enteredFish = true
 	if area.name == "LarryArea" and Global.onBoat == false: 
@@ -134,6 +141,8 @@ func _on_swim_area_area_entered(area: Area2D) -> void:
 		if not Global.ManateeEndScene :
 			Global.ManateeScene = true
 func _on_swim_area_area_exited(area: Area2D) -> void:
+	if area.name == "SquibertArea" :
+		enteredSquid = false
 	if area.name == "FishArea" and Global.onBoat == false: 
 		enteredFish = false
 	if area.name == "LarryArea" and Global.onBoat == false: 

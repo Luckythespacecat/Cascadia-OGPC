@@ -97,8 +97,9 @@ func ReSetupScene() :
 
 func _process(delta: float) -> void:
 	if Global.StartSquidLarry == true:
-		print("StartScene")
+		$Boat/Player/drownTimer.start()
 		SquidLarryCutscene()
+		
 	
 	if Dialoguemanager.is_dialogue_active == false and Global.triggeronceRock == true and Global.RockLarrySceneDone == false:
 		$Lamprey/EndDialogue.start()
@@ -268,16 +269,18 @@ func FishLarryCutscene():
 		Global.foodCutscene = false
 		fishInstance.CutsceneOver()
 func SquidLarryCutscene():
-	print("iniitiate custscne for squid")
 	Global.boatDirection = 0
 	$Lamprey.global_position.x = $Boat/Player.global_position.x + 150
 	$Lamprey.global_position.y = $Boat/Player.global_position.y
 	Global.textPos = $Lamprey.position
 	if Global.LarrySquidSceneTriggered == false :
+		Global.larryAppear = 1
+		$Boat/Player/drownTimer.stop()
 		Global.LarrySquidScene = true
 		Dialoguemanager.start_dialogue(Vector2(Global.textPos.x - 55, Global.textPos.y - 50), [
 		"  Hey its a baby Squid ",
 		"  Legends say if you eat a youngling after the collapse of the Northwest your Hunger is cured  ",
+		"  Permentely  ",
 		"  Ofcourse it is just a legend  " ])
 		Global.LarrySquidSceneTriggered = true
 		

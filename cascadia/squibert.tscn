@@ -29,10 +29,13 @@ script = ExtResource("1_guvj6")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_lgm12")
 frame = 1
-frame_progress = 0.0165299
+frame_progress = 0.381444
 
 [node name="SquibertArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SquibertArea"]
 position = Vector2(-0.5, -10)
 shape = SubResource("RectangleShape2D_s0gxe")
+
+[connection signal="area_entered" from="SquibertArea" to="." method="_on_squibert_area_area_entered"]
+[connection signal="area_exited" from="SquibertArea" to="." method="_on_squibert_area_area_exited"]
